@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-
+import SideNav from '../components/SideNav';
 import styled from "styled-components";
 import Chart from "chart.js/auto";
 import './Dashboard.css';
@@ -35,7 +35,7 @@ function Dashboard() {
  
   return (
     <Container>
-      <Header />
+      <SideNav/>
       <Wrap>
         <canvas className="reportsByGroup"></canvas>
        
