@@ -1,12 +1,11 @@
 import React from 'react'
 import Header from '../components/Header'
-import SideNav from '../components/SideNav';
 import styled from "styled-components";
 import Chart from "chart.js/auto";
 import './Dashboard.css';
 //import { getRelativePosition } from "chart.js/helpers";
 function Dashboard() {
-    const ctx = document.getElementsByClassName('reportsByGroup');
+    const ctx = document.getElementsById('reportsByGroup');
     let chartStatus = Chart.getChart("reportsByGroup");
     if (chartStatus !== undefined) {
       chartStatus.destroy();
@@ -35,11 +34,15 @@ function Dashboard() {
  
   return (
     <Container>
-      <SideNav/>
-      <Wrap>
-        <canvas className="reportsByGroup"></canvas>
-       
-      </Wrap>
+        <Contain>
+            <Header />
+            <PreWrap> 
+                <Wrap>
+                    <canvas id="reportsByGroup"></canvas>
+                </Wrap>
+            </PreWrap>
+        </Contain>
+     
     </Container>
   );
 }
@@ -48,7 +51,13 @@ export default Dashboard
 
 const Container = styled.div`
   
-`;
+`
+const Contain =styled.div`
+
+`
+const PreWrap = styled.div`
+
+`
 const Wrap =styled.div`
     width: 400px;
     height: 400px;
