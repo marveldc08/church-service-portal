@@ -1,11 +1,15 @@
 import React from 'react'
 import Header from '../components/Header'
+import SideNav from '../components/SideNav'
+
 import styled from "styled-components";
 import Chart from "chart.js/auto";
 import './Dashboard.css';
 //import { getRelativePosition } from "chart.js/helpers";
 function Dashboard() {
-    const ctx = document.getElementsById('reportsByGroup');
+
+    //code for Charts starts...
+    const ctx = document.getElementById('reportsByGroup');
     let chartStatus = Chart.getChart("reportsByGroup");
     if (chartStatus !== undefined) {
       chartStatus.destroy();
@@ -30,18 +34,18 @@ function Dashboard() {
      options: {
        devicePixelRatio: 10
      },
-   });
+   }); //Code for Charts ends...
  
   return (
     <Container>
-        
+        <SideNav />
         <Contain>
             <Header />
-            <PreWrap> 
+            <Content> 
                 <Wrap>
                     <canvas id="reportsByGroup"></canvas>
                 </Wrap>
-            </PreWrap>
+            </Content>
         </Contain>
      
     </Container>
@@ -51,12 +55,12 @@ function Dashboard() {
 export default Dashboard
 
 const Container = styled.div`
-  
+  display: flex;
 `
 const Contain =styled.div`
-
+    flex: 80;
 `
-const PreWrap = styled.div`
+const Content = styled.div`
 
 `
 const Wrap =styled.div`
