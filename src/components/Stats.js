@@ -6,72 +6,72 @@ function Stats() {
     return (
       <Container>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>72</Figure>
             <p>Churches</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>203</Figure>
             <p>Submitted Reports</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>130</Figure>
             <p>Completed Reports</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>70</Figure>
             <p>Awaiting Acknowledgement</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>50</Figure>
             <p>Churches With Reports</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>40</Figure>
             <p>Churches With Complete Reports</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>30</Figure>
             <p>Churches With Acknowledgement</p>
           </Detail>
         </Wrap>
         <Wrap>
-          <Icon>
+          <IconWrap className="bg-warning-active text-warning-light">
             <img src="./images/admin.jpg" />
-          </Icon>
+          </IconWrap>
           <Detail>
             <Figure>15</Figure>
             <p>Churches With Missing Reports</p>
@@ -103,7 +103,17 @@ const Wrap = styled.div`
   padding-top: 1em;
   padding-bottom: 1em;
 `
-const Icon = styled.div`
+const IconWrap = styled.div`
+   //position: relative;
+    line-height: 1;
+    white-space: nowrap;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
   img {
     width: 40px;
     height: 40px;
