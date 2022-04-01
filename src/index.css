@@ -84,7 +84,7 @@ code {
   --button-size: calc(var(--nav-size) * 0.5);
   width: var(--button-size);
   height: var(--button-size);
-  background-color: #b6cec7;
+  background-color: #E5F2FF;
   border-radius: 50%;
   padding: 5px;
   margin: 2px;

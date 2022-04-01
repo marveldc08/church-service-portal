@@ -7,10 +7,11 @@ import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { CSSTransition } from "react-transition-group";
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
+import { CSSTransition } from "react-transition-group"; 
 import styled from 'styled-components';
 
 function Header() {
-     const [burgernav, setBurgernav] = useState(false);
+     //const [burgernav, setBurgernav] = useState(false);
   return (
     <Nav>
       <LeftMenu>
@@ -18,51 +19,12 @@ function Header() {
           <i
             className="fas fa-bars"
             aria-hidden="true"
-            onClick={() => setBurgernav(true)}
+            // onClick={() => setBurgernav(true)}
           ></i>
         </span>
       </LeftMenu>
 
-      <BurgerNav show={burgernav}>
-        <Close>
-          <span>
-            <i
-              className="fas fa-times"
-              aria-hidden="true"
-              onClick={() => setBurgernav(false)}
-            ></i>
-          </span>
-        </Close>
-
-        <li>
-          <a>
-            <span>Home</span>
-            <i className="fas fa-home" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>Our Services</span>
-            <i className="fas fa-hands primary" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>About Us</span>
-            <i className="fas fa-seedling" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>Contact Us</span>
-            <i className="fas fa-phone-alt" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <Foot>
-          <span>CopyRight 2022. All Rights Reserved.</span>
-        </Foot>
-      </BurgerNav>
+     
       <Isme>
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
