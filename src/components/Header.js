@@ -1,26 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext} from 'react'
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as CogIcon } from './icons/cog.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { CSSTransition } from "react-transition-group";
-import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
+import { AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
-import { CSSTransition } from "react-transition-group"; 
 import styled from 'styled-components';
+import Context from './Contexts';
 
 function Header() {
      //const [burgernav, setBurgernav] = useState(false);
+     const userContext = useContext(Context);
   return (
     <Nav>
       <LeftMenu>
         <span>
-          <i
-            className="fas fa-bars"
-            aria-hidden="true"
-            // onClick={() => setBurgernav(true)}
-          ></i>
+          {userContext.isOpened ? <AiOutlineBars onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine onClick={()=> {userContext.openSideNav()}}/>}
         </span>
       </LeftMenu>
 

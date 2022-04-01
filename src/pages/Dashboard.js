@@ -1,17 +1,17 @@
-import React from 'react'
+import React, {useContext, useState} from 'react'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
 import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
-
+import Context from '../components/Contexts';
 import './Dashboard.css';
 function Dashboard() {
- 
+  const userContext = useContext(Context);
   return (
     <Container>
       <SideNav />
-      <Contain>
+      <Contain show = {userContext.isOpened}>
         <Header />
         <Content>
           <h3>Welcome</h3>
@@ -31,10 +31,11 @@ const Container = styled.div`
 `
 const Contain =styled.div`
     position: relative;
-    margin-left: 300px;
+    margin-left: ${props => props.show ? '300px':'78px'};
     height: 100vh;
     overflow: auto;
     background-color: #f1f2f3;
+    transition: width 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
     &::-webkit-scrollbar{
           display: none;
     }
