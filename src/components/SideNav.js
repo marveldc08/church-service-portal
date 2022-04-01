@@ -1,11 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
+/* import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
 import { IoDesktopOutline } from "react-icons/io5";
 import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
 import { BsFillCollectionFill } from "react-icons/bs";
 import { MdAdminPanelSettings, MdOutlineAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
-import { useContext } from 'react';
+import { useContext } from 'react'; */
+import { AiFillCaretDown, AiFillCaretRight} from "react-icons/ai";
+
+import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
+import { MdAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
+
 function SideNav() {
      const [toggleDropDown, setToogleDropDown] = useState(false);
   return (
@@ -135,7 +140,7 @@ const Navigations = styled.nav`
                display: flex;
                align-items: center;
                justify-content: space-between;
-               border
+               //border
           }
           .icon-toggle-down{
                color: #003366;
