@@ -5,6 +5,8 @@ import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as CogIcon } from './icons/cog.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { CSSTransition } from "react-transition-group";
+import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
+import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 
 function Header() {

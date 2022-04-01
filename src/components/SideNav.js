@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
+import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
 import { IoDesktopOutline } from "react-icons/io5";
 import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
 import { BsFillCollectionFill } from "react-icons/bs";
