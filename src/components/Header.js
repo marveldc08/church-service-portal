@@ -72,7 +72,7 @@ const Nav = styled.nav`
    padding: 0 39px;
    overflow: hidden;
    border-bottom: 1px solid #808080;
-   background: #ffffff;
+   background: #fafbfd;
 `
 
 const UserImg =styled.img`
