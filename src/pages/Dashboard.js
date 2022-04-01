@@ -26,8 +26,7 @@ function Dashboard() {
 export default Dashboard
 
 const Container = styled.div`
-  display: flex;
- 
+
   position: relative;
 `
 const Contain =styled.div`

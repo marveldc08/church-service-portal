@@ -64,7 +64,7 @@ function Header() {
       <Isme>
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
-          <DropdownMenu></DropdownMenu>
+          <DropdownMenu className="dropdown"></DropdownMenu>
         </NavItem>
       </Isme>
     
@@ -98,7 +98,7 @@ function DropdownMenu() {
   function DropdownItem(props) {
     return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
-        <span className="icon-button">{props.leftIcon}</span>
+        <span className={props.active ? 'hi':"icon-button"}>{props.leftIcon}</span>
         {props.children}
         <span className="icon-right">{props.rightIcon}</span>
       </a>
@@ -114,7 +114,7 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem>Hi Admin</DropdownItem>
+          <DropdownItem active >Hi Admin</DropdownItem>
            <DropdownItem
              leftIcon={<CogIcon />}
             rightIcon={<ChevronIcon />}
@@ -146,6 +146,7 @@ const Nav = styled.nav`
    overflow: hidden;
    border-bottom: 1px solid #808080;
    background: #fafbfd;
+   z-index: 9;
 `
 
 const UserImg =styled.img`

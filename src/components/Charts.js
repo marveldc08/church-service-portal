@@ -1,5 +1,6 @@
 import React from 'react'
-import { VictoryChart,VictoryLine, VictoryPie, VictoryTheme } from "victory"; 
+import { VictoryChart, VictoryLine, VictoryPie, VictoryTheme } from 'victory'; 
+
 import styled from 'styled-components'
 function Charts() {
   return (
