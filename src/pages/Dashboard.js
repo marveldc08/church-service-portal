@@ -34,13 +34,13 @@ const Contain =styled.div`
     margin-left: 300px;
     height: 100vh;
     overflow: auto;
-    background-color: #e5f2ff;
+    background-color: #f1f2f3;
     &::-webkit-scrollbar{
           display: none;
     }
 `
 const Content = styled.div`
-  background: #e5f2ff;
+  background: #f1f2f3;
   height: calc(100vh - 70px);
   padding: 1rem;
 `;
