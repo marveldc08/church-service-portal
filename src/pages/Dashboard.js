@@ -1,53 +1,24 @@
 import React from 'react'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav'
-
+import Stats from '../components/Stats';
+import Charts from '../components/Charts';
 import styled from "styled-components";
-import Chart from "chart.js/auto";
-import './Dashboard.css';
-//import { getRelativePosition } from "chart.js/helpers";
-function Dashboard() {
 
-    //code for Charts starts...
-    const ctx = document.getElementById('reportsByGroup');
-    let chartStatus = Chart.getChart("reportsByGroup");
-    if (chartStatus !== undefined) {
-      chartStatus.destroy();
-    }  
-    const data = {   
-        labels: ['Green','Blue','Yellow'],
-        datasets: [{
-            label: 'My First Dataset',
-            data: [300, 50, 100],
-            backgroundColor: [
-            'rgb(255, 99, 132)',
-            'rgb(54, 162, 235)',
-            'rgb(255, 205, 86)'
-            ],
-            hoverOffset: 4
-        }]
-    }
-   const chart = new Chart( ctx, {
-     type: "pie",
-     data: data,
-     // borderColor: "red",
-     options: {
-       devicePixelRatio: 10
-     },
-   }); //Code for Charts ends...
+import './Dashboard.css';
+function Dashboard() {
  
   return (
     <Container>
-        <SideNav />
-        <Contain>
-            <Header />
-            <Content> 
-                <Wrap>
-                    <canvas id="reportsByGroup"></canvas>
-                </Wrap>
-            </Content>
-        </Contain>
-     
+      <SideNav />
+      <Contain>
+        <Header />
+        <Content>
+          <h3>Welcome</h3>
+          <Stats />
+          <Charts />
+        </Content>
+      </Contain>
     </Container>
   );
 }
@@ -55,20 +26,22 @@ function Dashboard() {
 export default Dashboard
 
 const Container = styled.div`
-  display: flex;
+
+  position: relative;
 `
 const Contain =styled.div`
-    flex: 80;
-`
-const Content = styled.div`
-
-`
-const Wrap =styled.div`
-    width: 400px;
-    height: 400px;
-    canvas{
-        width: 100%;
-        height: 100%;
-        //border: 4px solid #ff0000; 
+    position: relative;
+    margin-left: 300px;
+    height: 100vh;
+    overflow: auto;
+    background-color: #f1f2f3;
+    &::-webkit-scrollbar{
+          display: none;
     }
 `
+const Content = styled.div`
+  background: #f1f2f3;
+  height: calc(100vh - 70px);
+  padding: 1rem;
+`;
+
