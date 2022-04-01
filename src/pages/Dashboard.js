@@ -12,7 +12,7 @@ function Dashboard() {
       chartStatus.destroy();
     }  
     const data = {   
-        labels: ['Green','Blue','Yellow'],
+        labels: ['red','Blue','Yellow'],
         datasets: [{
             label: 'My First Dataset',
             data: [300, 50, 100],
