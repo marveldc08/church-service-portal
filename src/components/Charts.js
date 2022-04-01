@@ -8,7 +8,6 @@ function Charts() {
         <Wrap>
           <h5>Reports By Group</h5>
           <VictoryPie
-            className="brder"
             data={[
               { x: "Alakuko Group", y: 30 },
               { x: "Central Group", y: 50 },
