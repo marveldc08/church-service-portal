@@ -134,7 +134,7 @@ const Detail = styled.div`
         opacity: 0.6;
         text-transform: capitalize;
   }
-`;
+` 
 const Figure = styled.span`
     font-weight: 500;
     line-height: 1.25;
