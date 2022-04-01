@@ -25,7 +25,8 @@ function Dashboard() {
 
 export default Dashboard
 
-const Container = styled.div` 
+const Container = styled.div`
+
   position: relative;
 `
 const Contain =styled.div`
