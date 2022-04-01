@@ -19,10 +19,11 @@ export function AccessContexts(props){
      const value = {
           openSideNav: openSideNav,
           collapseSideNav: closeSideNav,
-          isOpenSide: isOpenSideNav
+          isOpened: isOpenSideNav
      }
      return <Context.Provider value = {value}>
           {props.children}
      </Context.Provider>
 }
+export default Context;
 //https://github.com/marveldc08/church-service-portal.git

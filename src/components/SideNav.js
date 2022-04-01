@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 /* import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
+import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
 import { IoDesktopOutline } from "react-icons/io5";
 import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
 import { BsFillCollectionFill } from "react-icons/bs";
@@ -10,13 +11,15 @@ import { AiFillCaretDown, AiFillCaretRight} from "react-icons/ai";
 
 import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
 import { MdAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
-
-function SideNav() {
+import { useContext } from 'react';
+import Context from './Contexts';
+function SideNav(props) {
      const [toggleDropDown, setToogleDropDown] = useState(false);
+     const userContext = useContext(Context);
   return (
-     <Nav>
+     <Nav show = {userContext.isOpened}>
           <LogoDiv>
-               <div className='logoCont'>
+               <div className={userContext.isOpened? 'logoCont': 'hide'}>
                     <img src='/images/logo-light.png'/>
                </div>
                <div className='logoText'>CELZ4</div>
@@ -68,8 +71,8 @@ function SideNav() {
           </Navigations>
           <NavFooter>
                <div className='admin-shortcuts'>
-                    <img src='/images/admin.jpg' />
-                    <p className='admin-details'> 
+                    <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} />
+                    <p className={userContext.isOpened? 'admin-details': 'hide'}> 
                          <span className='name'>Michael Chinye</span>
                          <span className='office'>Web Developer</span>
                     </p>
@@ -77,7 +80,7 @@ function SideNav() {
                          <BiLogOut className ='logout-icon' />
                     </a>
                </div>
-               <p>Christ Embasssy Lagos Zone 4 <span><BiCopyright/></span> 2022</p>
+               <p className={userContext.isOpened? '': 'hide'}>Christ Embasssy Lagos Zone 4 <span><BiCopyright/></span> 2022</p>
           </NavFooter>
      </Nav>
   )
@@ -89,9 +92,10 @@ const Nav = styled.div`
      top: 0;
      left: 0;
      bottom: 0;
-     width: 300px;
+     width: ${props => props.show ? '300px':'78px'};
      height: 100vh;
      background-color: #ffffff; 
+     transition: width 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
 `
 const LogoDiv = styled.div`
      height: 70px;

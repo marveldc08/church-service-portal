@@ -1,66 +1,27 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext} from 'react'
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as CogIcon } from './icons/cog.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
 import { CSSTransition } from "react-transition-group";
+import { AiOutlineBars } from "react-icons/ai";
+import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
+import Context from './Contexts';
 
 function Header() {
-     const [burgernav, setBurgernav] = useState(false);
+     //const [burgernav, setBurgernav] = useState(false);
+     const userContext = useContext(Context);
   return (
     <Nav>
       <LeftMenu>
         <span>
-          <i
-            className="fas fa-bars"
-            aria-hidden="true"
-            onClick={() => setBurgernav(true)}
-          ></i>
+          {userContext.isOpened ? <AiOutlineBars onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine onClick={()=> {userContext.openSideNav()}}/>}
         </span>
       </LeftMenu>
 
-      <BurgerNav show={burgernav}>
-        <Close>
-          <span>
-            <i
-              className="fas fa-times"
-              aria-hidden="true"
-              onClick={() => setBurgernav(false)}
-            ></i>
-          </span>
-        </Close>
-
-        <li>
-          <a>
-            <span>Home</span>
-            <i className="fas fa-home" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>Our Services</span>
-            <i className="fas fa-hands primary" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>About Us</span>
-            <i className="fas fa-seedling" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a>
-            <span>Contact Us</span>
-            <i className="fas fa-phone-alt" aria-hidden="true"></i>
-          </a>
-        </li>
-
-        <Foot>
-          <span>CopyRight 2022. All Rights Reserved.</span>
-        </Foot>
-      </BurgerNav>
+     
       <Isme>
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
