@@ -46,7 +46,7 @@ function Charts() {
       </PieChart>
       <LineChart>
         <h5>Financial Report</h5>
-        <VictoryChart>
+        <VictoryChart theme={VictoryTheme.material}  height={200}   width={500} >
           <VictoryLine
             style={{
               data: { stroke: "#c43a31" },
@@ -66,10 +66,9 @@ function Charts() {
               { x: "Nov", y: 90 },
               { x: "Dec", y: 900 },
             ]}
-            theme={VictoryTheme.material}
-            height={200}
-            width={200}
-            padding={{ top: 1, bottom: 1 }}
+            
+           
+            padding={{ top: 0, bottom: 0 }}
           />
         </VictoryChart>
       </LineChart>
@@ -86,17 +85,29 @@ const PieChart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 3em;
+  border-radius: 10px;
+  background: #ffffff;
+  margin: 1em 0;
 `
 const LineChart = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 600px;
-  height: 600px;
-  padding: 16px;
+  height: 400px;
+  padding: 3em;
+  border-radius: 10px;
+  background: #ffffff;
+  margin-top: 1em ;
+  //margin-bottom: 3em;
 `;
 const Wrap =styled.div`
-  width: 400px;
-  height: 400px;
+  width: 380px;
+  height: 380px;
+  padding: 3px;
+
+  h5{
+    margin-bottom: 1em;
+  }
 `

@@ -25,8 +25,7 @@ function Dashboard() {
 
 export default Dashboard
 
-const Container = styled.div`
-
+const Container = styled.div` 
   position: relative;
 `
 const Contain =styled.div`
@@ -43,5 +42,9 @@ const Content = styled.div`
   background: #f1f2f3;
   height: calc(100vh - 70px);
   padding: 1rem;
+
+  h3{
+    margin-bottom: 1em;
+  }
 `;
 

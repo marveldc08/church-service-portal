@@ -2,79 +2,89 @@ import React from 'react';
 
 import styled from 'styled-components';
 
+import { BiChurch } from "react-icons/bi";
+import {
+  AiOutlineFileDone,
+  AiOutlineFileText,
+  AiOutlineFileSync,
+  AiOutlineFileProtect,
+  AiOutlineFileSearch
+} from "react-icons/ai";
+
+
 function Stats() {
     return (
       <Container>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-teal-active ">
+            <BiChurch className="icons" />
           </IconWrap>
           <Detail>
             <Figure>72</Figure>
-            <p>Churches</p>
+            <Highlight>Churches</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-primary-active ">
+            <AiOutlineFileText className="icons" />
           </IconWrap>
           <Detail>
             <Figure>203</Figure>
-            <p>Submitted Reports</p>
+            <Highlight>Submitted Reports</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-success-active ">
+            <AiOutlineFileDone className="icons" />
           </IconWrap>
           <Detail>
             <Figure>130</Figure>
-            <p>Completed Reports</p>
+            <Highlight>Completed Reports</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-warning-active ">
+            <AiOutlineFileSync className="icons" />
           </IconWrap>
           <Detail>
             <Figure>70</Figure>
-            <p>Awaiting Acknowledgement</p>
+            <Highlight>Awaiting Acknowledgement</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-primary-active ">
+            <AiOutlineFileText className="icons" />
           </IconWrap>
           <Detail>
             <Figure>50</Figure>
-            <p>Churches With Reports</p>
+            <Highlight>Churches With Reports</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-success-active ">
+            <AiOutlineFileDone className="icons" />
           </IconWrap>
           <Detail>
             <Figure>40</Figure>
-            <p>Churches With Complete Reports</p>
+            <Highlight>Churches With Complete Report</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-info-active ">
+            <AiOutlineFileProtect className="icons" />
           </IconWrap>
           <Detail>
             <Figure>30</Figure>
-            <p>Churches With Acknowledgement</p>
+            <Highlight>Acknowledged Churches</Highlight>
           </Detail>
         </Wrap>
         <Wrap>
-          <IconWrap className="bg-warning-active text-warning-light">
-            <img src="./images/admin.jpg" />
+          <IconWrap className="bg-danger-active ">
+            <AiOutlineFileSearch className="icons" />
           </IconWrap>
           <Detail>
             <Figure>15</Figure>
-            <p>Churches With Missing Reports</p>
+            <Highlight>Churches With Missing Report</Highlight>
           </Detail>
         </Wrap>
       </Container>
@@ -85,7 +95,7 @@ export default Stats;
 
 const Container = styled.div`
     display: grid;
-    grid-gap: 25px;
+    grid-gap: 23px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     justify-content: center;
     align-items: center;
@@ -100,44 +110,44 @@ const Wrap = styled.div`
   justify-content: space-between;
   align-items: center;
   background: #ffffff;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em;
+  
 `
 const IconWrap = styled.div`
-   //position: relative;
-    line-height: 1;
-    white-space: nowrap;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -ms-flex-align: center;
-    align-items: center;
-    overflow: hidden;
-  img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-left: 6px;
-  }
+  //position: relative;
+  line-height: 1;
+  white-space: nowrap;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -ms-flex-align: center;
+  align-items: center;
+  overflow: hidden;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  
 `;
 const Detail = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
-  p {
-        font-size: 12px;
-        line-height: 1.3;
-        opacity: 0.6;
-        text-transform: capitalize;
-  }
 ` 
+const Highlight = styled.p`
+  font-size: 11px;
+  line-height: 1.3;
+  opacity: 0.6;
+  text-transform: capitalize;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+`;
 const Figure = styled.span`
     font-weight: 500;
     line-height: 1.25;
-    font-size: 2em;
+    font-size: 1.5em;
     text-transform: capitalize;
 `
