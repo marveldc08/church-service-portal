@@ -46,7 +46,7 @@ function Charts() {
       </PieChart>
       <LineChart>
         <h5>Financial Report</h5>
-        <VictoryChart theme={VictoryTheme.material}  height={200}   width={500} >
+        <VictoryChart theme={VictoryTheme.material} height={400} width={600}>
           <VictoryLine
             style={{
               data: { stroke: "#c43a31" },
@@ -62,12 +62,52 @@ function Charts() {
               { x: "July", y: 230 },
               { x: "Aug", y: 80.99 },
               { x: "Sept", y: 95.3 },
-              { x: "Oct", y: 670 },
+              { x: "Oct", y: 70 },
               { x: "Nov", y: 90 },
               { x: "Dec", y: 900 },
             ]}
-            
-           
+            padding={{ top: 0, bottom: 0 }}
+          />
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+            }}
+            data={[
+              { x: "Jan", y: 20.5 },
+              { x: "Feb", y: 3.6 },
+              { x: "Mar", y: 400 },
+              { x: "Apr", y: 10 },
+              { x: "May", y: 90 },
+              { x: "June", y: 90.0 },
+              { x: "July", y: 30 },
+              { x: "Aug", y: 67 },
+              { x: "Sept", y: 95.3 },
+              { x: "Oct", y: 670 },
+              { x: "Nov", y: 8 },
+              { x: "Dec", y: 90 },
+            ]}
+            padding={{ top: 0, bottom: 0 }}
+          />
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+            }}
+            data={[
+              { x: "Jan", y: 200.5 },
+              { x: "Feb", y: 300.6 },
+              { x: "Mar", y: 90 },
+              { x: "Apr", y: 800 },
+              { x: "May", y: 90 },
+              { x: "June", y: 90.0 },
+              { x: "July", y: 30 },
+              { x: "Aug", y: 67 },
+              { x: "Sept", y: 5.3 },
+              { x: "Oct", y: 60 },
+              { x: "Nov", y: 50 },
+              { x: "Dec", y: 10 },
+            ]}
             padding={{ top: 0, bottom: 0 }}
           />
         </VictoryChart>
@@ -85,7 +125,7 @@ const PieChart = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 3em;
+  padding: 4em;
   border-radius: 10px;
   background: #ffffff;
   margin: 1em 0;
@@ -95,19 +135,23 @@ const LineChart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 400px;
+  height: 600px;
   padding: 3em;
   border-radius: 10px;
   background: #ffffff;
   margin-top: 1em ;
   //margin-bottom: 3em;
 `;
-const Wrap =styled.div`
+const Wrap = styled.div`
   width: 380px;
   height: 380px;
   padding: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
-  h5{
+  h5 {
     margin-bottom: 1em;
   }
-`
+`;
