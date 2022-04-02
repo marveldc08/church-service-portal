@@ -109,10 +109,14 @@ const LogoDiv = styled.div`
 
      .logoCont{
           flex: 60%;
-          height: 50px;
           display: flex;
-          justify-content: center;
           align-items: center;
+          justify-content: space-between;
+          img{
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+          }
      }
      .logoText{
           flex: 40%;
@@ -140,11 +144,11 @@ const Navigations = styled.nav`
           position: relative;
           margin: 15px 0px;
           padding: 5px;
+          transition: height 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
                display: flex;
                align-items: center;
                justify-content: space-between;
-               //border
           }
           .icon-toggle-down{
                color: #003366;
