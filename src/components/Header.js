@@ -23,6 +23,8 @@ function Header() {
 
      
       <Isme>
+        <h4 className='Adminsname'>Stephen Nzubechukwu</h4>
+        {/* <h5>Church Admin</h5> */}
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
@@ -75,7 +77,7 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem active >Hi Admin</DropdownItem>
+          <DropdownItem active >Hi Stephen</DropdownItem>
            <DropdownItem
              leftIcon={<CogIcon />}
             rightIcon={<ChevronIcon />}
