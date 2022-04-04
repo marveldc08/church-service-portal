@@ -9,6 +9,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 import Context from './Contexts';
+import './Header.css';
 
 function Header() {
      //const [burgernav, setBurgernav] = useState(false);
@@ -17,14 +18,17 @@ function Header() {
     <Nav>
       <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine onClick={()=> {userContext.openSideNav()}}/>}
+          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
         </span>
       </LeftMenu>
 
      
       <Isme>
-        <h4 className='Adminsname'>Stephen Nzubechukwu</h4>
-        {/* <h5>Church Admin</h5> */}
+      <Name>
+        <AdminsName>Stephen Nzubechukwu</AdminsName>
+        <ChurchAdmin>Church Admin</ChurchAdmin>
+      </Name>
+     
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
@@ -110,6 +114,22 @@ const Nav = styled.nav`
    border-bottom: 1px solid #808080;
    background: #fafbfd;
    z-index: 9;
+   .icon{
+     width: 30px;
+     height: 30px;
+   }
+`
+const AdminsName = styled.div`
+  margin-right: 25px;
+  display: flexbox;
+  align-items: center;
+`
+const Name =styled.div``
+
+const ChurchAdmin = styled.div`
+  text-align: center;
+  margin-right: 20px;
+  font-weight: bold;
 `
 
 const UserImg =styled.img`
@@ -201,7 +221,5 @@ const Foot = styled.div`
   font-size: 12px;
 `
 
+
 const dropdownRef =styled.div``
-
-
-
