@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useContext} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
@@ -14,6 +15,7 @@ import './Header.css';
 function Header() {
      //const [burgernav, setBurgernav] = useState(false);
      const userContext = useContext(Context);
+     
   return (
     <Nav>
       <LeftMenu>
@@ -63,6 +65,7 @@ function DropdownMenu() {
   }
 
   function DropdownItem(props) {
+    
     return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className={props.active ? 'hi':"icon-button"}>{props.leftIcon}</span>
@@ -71,7 +74,7 @@ function DropdownMenu() {
       </a>
     );
   }
-
+  const navigate = useNavigate();
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
       <CSSTransition
@@ -91,7 +94,7 @@ function DropdownMenu() {
            <DropdownItem
               leftIcon={<ArrowIcon />}
               rightIcon={<ChevronIcon />}
-             goToMenu="Sign Out">
+             goToMenu="Sign Out" onClick={() => { navigate('/') }}>
              Sign Out
           </DropdownItem>
          </div>
