@@ -29,6 +29,35 @@ function Charts() {
               height={400}
               width={400}
             />
+            <ColorKey>
+              <h5>Color Key</h5>
+              <ColorGrid>
+                <DetailWrap>
+                  <Key className="bg-tomato"></Key>
+                  <span>Alakuko Group</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-navy"></Key>
+                  <span>Central Group</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-gold"></Key>
+                  <span>U-Turn Group</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-cyan"></Key>
+                  <span>Otta Group</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-orange"></Key>
+                  <span>Iyana Ipaja Group</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-blue"></Key>
+                  <span>Ijoko Group</span>
+                </DetailWrap>
+              </ColorGrid>
+            </ColorKey>
           </Wrap>
           <Wrap>
             <h5>Reports By Time</h5>
@@ -48,37 +77,37 @@ function Charts() {
               height={400}
               width={400}
             />
+            <ColorKey>
+              <h5>Color Key</h5>
+              <ColorGrid>
+                <DetailWrap>
+                  <Key className="bg-tomato"></Key>
+                  <span>9:45am</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-navy"></Key>
+                  <span>3:00pm</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-gold"></Key>
+                  <span>7:20am</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-cyan"></Key>
+                  <span>2:02pm</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-orange"></Key>
+                  <span>5:00pm</span>
+                </DetailWrap>
+                <DetailWrap>
+                  <Key className="bg-blue"></Key>
+                  <span>6:07am</span>
+                </DetailWrap>
+              </ColorGrid>
+            </ColorKey>
           </Wrap>
         </MainWap>
-        <ColorKey>
-          <h5>Color Key</h5>
-          <ColorGrid>
-            <DetailWrap>
-              <Key className="bg-tomato"></Key>
-              <span>Alakuko Group</span>
-            </DetailWrap>
-            <DetailWrap>
-              <Key className="bg-navy"></Key>
-              <span>Central Group</span>
-            </DetailWrap>
-            <DetailWrap>
-              <Key className="bg-gold"></Key>
-              <span>U-Turn Group</span>
-            </DetailWrap>
-            <DetailWrap>
-              <Key className="bg-cyan"></Key>
-              <span>Otta Group</span>
-            </DetailWrap>
-            <DetailWrap>
-              <Key className="bg-orange"></Key>
-              <span>Iyana Ipaja Group</span>
-            </DetailWrap>
-            <DetailWrap>
-              <Key className="bg-blue"></Key>
-              <span>Ijoko Group</span>
-            </DetailWrap>
-          </ColorGrid>
-        </ColorKey>
       </PieChart>
 
       <LineChart>
@@ -104,11 +133,11 @@ function Charts() {
               { x: "Dec", y: 900 },
             ]}
             interpolation="natural"
-            padding={{ top: 0, bottom: 0 }}
+            padding={{ top: 200, bottom: 200 }}
           />
           <VictoryLine
             style={{
-              data: { stroke: "#c43a41" },
+              data: { stroke: "#645200" },
               parent: { border: "1px solid #ccc" },
             }}
             data={[
@@ -126,11 +155,11 @@ function Charts() {
               { x: "Dec", y: 90 },
             ]}
             interpolation="natural"
-            padding={{ top: 0, bottom: 0 }}
+            padding={{ top: 200, bottom: 200 }}
           />
           <VictoryLine
             style={{
-              data: { stroke: "#c43b31" },
+              data: { stroke: "#083e55" },
               parent: { border: "1px solid #ccc" },
             }}
             data={[
@@ -148,7 +177,7 @@ function Charts() {
               { x: "Dec", y: 10 },
             ]}
             interpolation="natural"
-            padding={{ top: 0, bottom: 0 }}
+            padding={{ top: 200, bottom: 200 }}
           />
         </VictoryChart>
       </LineChart>
@@ -180,7 +209,7 @@ const MainWap = styled.div`
 
 const Wrap = styled.div`
   width: 380px;
-  height: 380px;
+  height: auto;
   padding: 3px;
   display: flex;
   flex-direction: column;
@@ -199,16 +228,16 @@ const ColorKey= styled.div`
  }
 `
 const ColorGrid = styled.div`
-  display: grid;
-  grid-gap: 23px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 `;
 const DetailWrap = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
+  margin-bottom: 12px;
 
   span {
     font-size: 11px;
@@ -218,8 +247,9 @@ const DetailWrap = styled.div`
   }
 `;
 const Key = styled.div`
-  width: 40px;
-  height: 25px;
+  width: 70px;
+  height: 12px;
+  margin-right: 4px;
 `
 
 const LineChart = styled.div`
