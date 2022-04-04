@@ -207,11 +207,13 @@ const ColorGrid = styled.div`
 const DetailWrap = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   span {
     font-size: 11px;
     line-height: 1.3;
-    opacity: 0.4;
+    opacity: 0.8;
     text-transform: capitalize;
   }
 `;
