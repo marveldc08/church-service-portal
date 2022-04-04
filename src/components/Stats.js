@@ -135,7 +135,7 @@ const Detail = styled.div`
   align-items: end;
   justify-content: end;
 
-` 
+`  
 const Highlight = styled.p`
   font-size: 11px;
   line-height: 1.3;
