@@ -265,6 +265,25 @@ code {
 .bg-secondary-light {
   background-color: #dfe0e3 !important; }
 
+/*Chart ColorKey below   "tomato", "navy", "gold", "cyan", "orange", "blue"*/
+.bg-blue{
+  background-color: blue;
+}
+.bg-cyan{
+  background-color: cyan;
+}
+.bg-gold{
+  background-color: gold;
+}
+.bg-navy{
+  background-color: navy;
+}
+.bg-orange{
+  background-color: orange;
+}
+.bg-tomato{
+  background-color: tomato;
+}
 
 .hide{
   display: none;

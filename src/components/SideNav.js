@@ -2,15 +2,15 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 /* import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
-import { IoDesktopOutline } from "react-icons/io5";
 import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
-import { BsFillCollectionFill } from "react-icons/bs";
+
 import { MdAdminPanelSettings, MdOutlineAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
 import { useContext } from 'react'; */
-import { AiFillCaretDown, AiFillCaretRight} from "react-icons/ai";
-
+import { AiFillCaretDown, AiFillCaretRight, AiOutlineFileText, AiOutlineLineChart} from "react-icons/ai";
+import { BsFillCollectionFill , BsBroadcast } from "react-icons/bs";
 import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
 import { MdAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
+import { FaHandHoldingUsd, FaRegListAlt } from "react-icons/fa";
 import { useContext } from 'react';
 import Context from './Contexts';
 function SideNav(props) {
@@ -31,10 +31,11 @@ function SideNav(props) {
                               <BiGridAlt className='icon' />
                               <span className='link-name'>Dashboard</span>
                          </a>
+                         
                     </li>
                     <li className='items'>
                          <a href='#'>
-                              <MdHomeRepairService className='icon' />
+                              <BsBroadcast className='icon' />
                               <span className='link-name'>Manage Service</span>
                          </a>
                     </li>
@@ -47,11 +48,11 @@ function SideNav(props) {
                               { toggleDropDown ? <AiFillCaretDown className='icon-toggle-down' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/> :  <AiFillCaretRight className='icon-toggle-right' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/>}
                          </div>
                          <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
-                              <li><a href='#'>Service Report</a></li>
-                              <li><a href='#'>Finacial Report</a></li>
-                              <li><a href='#'>Partnership Report</a></li>
-                              <li><a href='#'>Attendance Report</a></li>
-                              <li><a href='#'>Cell Report</a></li>
+                              <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
+                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Finacial Report</a></li>
+                              <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
+                              <li><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
+                              <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
                               
                          </ul>
                     </li>
@@ -71,7 +72,7 @@ function SideNav(props) {
           </Navigations>
           <NavFooter>
                <div className='admin-shortcuts'>
-                    <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} />
+                    {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
                     <p className={userContext.isOpened? 'admin-details': 'hide'}> 
                          <span className='name'>Michael Chinye</span>
                          <span className='office'>Web Developer</span>
@@ -94,8 +95,8 @@ const Nav = styled.div`
      bottom: 0;
      width: ${props => props.show ? '300px':'78px'};
      height: 100vh;
-     background-color: #ffffff; 
-     transition: width 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+     background-color: #003366; 
+     transition: all 0.35s ease; 
 `
 const LogoDiv = styled.div`
      height: 70px;
@@ -105,7 +106,7 @@ const LogoDiv = styled.div`
      justify-content: center;
      align-items: center;
      border-bottom: 1px solid #c4c4c4;
-     background-color: #003366 !important;
+     background-color: #002D62 !important;
 
      .logoCont{
           flex: 60%;
@@ -132,6 +133,7 @@ const LogoDiv = styled.div`
 const Navigations = styled.nav`
      height: 70vh;
      overflow: auto;
+     padding: 0px 15px;
      &::-webkit-scrollbar{
           display: none;
      }
@@ -144,29 +146,32 @@ const Navigations = styled.nav`
           position: relative;
           margin: 15px 0px;
           padding: 5px;
-          transition: height 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+          transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
                display: flex;
                align-items: center;
-               justify-content: space-between;
+               
           }
           .icon-toggle-down{
-               color: #003366;
+               color: #ffffff;
                cursor: pointer;
+               margin-left: 12px;
           }
           .icon-toggle-right{
                cursor: pointer;
+               color: #ffffff;
+                margin-left: 12px;
           }
           a{
                display: flex;
                align-items: center;
                text-decoration: none;
                .icon{
-                    min-width: 78px;
+                    min-width: 50px;
                     height: 40px;
                     line-height: 40px;
                     border-radius: 4px;
-                    color: #003366;
+                    color: #ffffff;
                     cursor: pointer;
                     transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
                }
@@ -175,7 +180,7 @@ const Navigations = styled.nav`
 
                }
                .link-name{
-                    color: #003366;
+                    color: #ffffff;
                     font-size: 18px;
                     font-weight: 600;
                     padding-left: 15px;
@@ -186,19 +191,37 @@ const Navigations = styled.nav`
           }
           .sub-menu{
                padding: 6px 6px 14px 80px;
-               background-color: #fafbfd;
+               background-color: #003366;
                li{
                     list-style-type: none;
                     cursor: pointer;
-                    padding: 10px ;
+                    padding: 10px 5px;
+                    display: flex;
+                    align-items:center;
                     a{
-                         color: #003366;
+                         color: #ffffff;
                          font-size: 14px;
                          font-weight: 600;
                          transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+                         padding: 5px;
                     }
                     a:hover{
                          color: gold;
+                         
+                    }
+                    a:hover ~ span{
+                         .small-icon{
+                              color: gold;
+                         }
+                    }
+                    
+                    span{
+                         .small-icon{
+                              color: #ffffff;
+                              width: 20px;
+                              height: 20px;
+                              transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+                         }
                     }
                }
           }
@@ -227,10 +250,11 @@ const NavFooter = styled.div`
      justify-content: center;
      align-items: center;
      height: calc(100vh - (70vh + 70px));
-     background-color: #003366;
+     background-color: #002D62;
+     border-top: 1px solid #f1f2f3;
      .admin-shortcuts{
           display: flex;
-          justify-content: space-between;
+          justify-content: space-around;
           padding: 5px;
           width: 100%;
           position: relative;
@@ -289,4 +313,14 @@ const NavFooter = styled.div`
           color: gold;
           font-weight: 700;
      }
+`
+
+const SideMenuList = styled.span`
+     position: absolute;
+     display: inline-block;
+     left: 100%;
+     top: -20px;
+     background: black !important;
+     z-index: 100;
+     color: white;
 `
