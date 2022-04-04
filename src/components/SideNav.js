@@ -16,6 +16,10 @@ import Context from './Contexts';
 function SideNav(props) {
      const [toggleDropDown, setToogleDropDown] = useState(false);
      const userContext = useContext(Context);
+
+     if(userContext.isOpened == false && toggleDropDown == true){
+          setToogleDropDown(false);
+     }
   return (
      <Nav show = {userContext.isOpened}>
           <LogoDiv>
@@ -74,8 +78,8 @@ function SideNav(props) {
                <div className='admin-shortcuts'>
                     {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
                     <p className={userContext.isOpened? 'admin-details': 'hide'}> 
-                         <span className='name'>Michael Chinye</span>
-                         <span className='office'>Web Developer</span>
+                         <span className='name'>Stephen Nzubechukwu</span>
+                         <span className='office'>Church Admin</span>
                     </p>
                     <a href=''>
                          <BiLogOut className ='logout-icon' />
@@ -190,7 +194,7 @@ const Navigations = styled.nav`
                text-decoration: none;
           }
           .sub-menu{
-               padding: 6px 6px 14px 80px;
+               padding: 6px 6px 14px 70px;
                background-color: #003366;
                li{
                     list-style-type: none;
