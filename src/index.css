@@ -123,11 +123,14 @@ code {
 
   .menu {
   width: 100%;
-  
+  border: 1px solid #BFBFBF;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
 } 
 
   .dropdown{
-    z-index: 100; 
+    z-index: 100;
+    border-radius: 5px;
   }
 
  .menu-item {
@@ -262,6 +265,25 @@ code {
 .bg-secondary-light {
   background-color: #dfe0e3 !important; }
 
+/*Chart ColorKey below   "tomato", "navy", "gold", "cyan", "orange", "blue"*/
+.bg-blue{
+  background-color: blue;
+}
+.bg-cyan{
+  background-color: cyan;
+}
+.bg-gold{
+  background-color: gold;
+}
+.bg-navy{
+  background-color: navy;
+}
+.bg-orange{
+  background-color: orange;
+}
+.bg-tomato{
+  background-color: tomato;
+}
 
 .hide{
   display: none;

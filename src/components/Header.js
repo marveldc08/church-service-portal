@@ -17,12 +17,17 @@ function Header() {
     <Nav>
       <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine onClick={()=> {userContext.openSideNav()}}/>}
+          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
         </span>
       </LeftMenu>
 
      
       <Isme>
+      <Name>
+        <AdminsName>Stephen Nzubechukwu</AdminsName>
+        <ChurchAdmin>Church Admin</ChurchAdmin>
+      </Name>
+     
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
@@ -75,7 +80,7 @@ function DropdownMenu() {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem active >Hi Admin</DropdownItem>
+          <DropdownItem active >Hi Stephen</DropdownItem>
            <DropdownItem
              leftIcon={<CogIcon />}
             rightIcon={<ChevronIcon />}
@@ -108,6 +113,22 @@ const Nav = styled.nav`
    border-bottom: 1px solid #808080;
    background: #fafbfd;
    z-index: 9;
+   .icon{
+     width: 30px;
+     height: 30px;
+   }
+`
+const AdminsName = styled.div`
+  margin-right: 25px;
+  display: flexbox;
+  align-items: center;
+`
+const Name =styled.div``
+
+const ChurchAdmin = styled.div`
+  text-align: center;
+  margin-right: 20px;
+  font-weight: bold;
 `
 
 const UserImg =styled.img`
@@ -200,6 +221,3 @@ const Foot = styled.div`
 `
 
 const dropdownRef =styled.div``
-
-
-
