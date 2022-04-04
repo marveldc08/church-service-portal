@@ -5,6 +5,7 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
+// import Modal from '../components/Modal';
 import './Dashboard.css';
 function Dashboard() {
   const userContext = useContext(Context);
@@ -17,6 +18,7 @@ function Dashboard() {
           <h3>Welcome</h3>
           <Stats />
           <Charts />
+          {/* <Modal /> */}
         </Content>
       </Contain>
     </Container>

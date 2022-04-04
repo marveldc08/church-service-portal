@@ -23,8 +23,11 @@ function Header() {
 
      
       <Isme>
-        <h4 className='Adminsname'>Stephen Nzubechukwu</h4>
-        {/* <h5>Church Admin</h5> */}
+      <Name>
+        <AdminsName>Stephen Nzubechukwu</AdminsName>
+        <ChurchAdmin>Church Admin</ChurchAdmin>
+      </Name>
+     
         <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
@@ -110,6 +113,18 @@ const Nav = styled.nav`
    border-bottom: 1px solid #808080;
    background: #fafbfd;
    z-index: 9;
+`
+const AdminsName = styled.div`
+  margin-right: 25px;
+  display: flexbox;
+  align-items: center;
+`
+const Name =styled.div``
+
+const ChurchAdmin = styled.div`
+  text-align: center;
+  margin-right: 20px;
+  font-weight: bold;
 `
 
 const UserImg =styled.img`
@@ -202,6 +217,3 @@ const Foot = styled.div`
 `
 
 const dropdownRef =styled.div``
-
-
-
