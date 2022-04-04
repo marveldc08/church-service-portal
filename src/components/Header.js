@@ -17,7 +17,7 @@ function Header() {
     <Nav>
       <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine onClick={()=> {userContext.openSideNav()}}/>}
+          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
         </span>
       </LeftMenu>
 
@@ -108,6 +108,10 @@ const Nav = styled.nav`
    border-bottom: 1px solid #808080;
    background: #fafbfd;
    z-index: 9;
+   .icon{
+     width: 30px;
+     height: 30px;
+   }
 `
 
 const UserImg =styled.img`
