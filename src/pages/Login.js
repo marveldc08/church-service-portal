@@ -6,7 +6,7 @@ const Login = () => {
         <div className="login-block">
         <nav>
             <div className="img">
-                <img src="./images/UIHere.jpeg" />
+                <img className="img-sub" src="./images/UIHere.jpeg" />
             </div>
         </nav>
             <div className="sub-main">
@@ -17,6 +17,7 @@ const Login = () => {
                     <input type="email"></input>
                     <label>Password:</label>
                     <input type="email"></input>
+                    <button>Log In</button>
                 </form>
             </div>
         </div>
