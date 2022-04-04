@@ -34,7 +34,7 @@ const Contain =styled.div`
     height: 100vh;
     overflow: auto;
     background-color: #f1f2f3;
-    transition: width 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+    transition: all 0.35s ease; 
     &::-webkit-scrollbar{
           display: none;
     }
@@ -46,6 +46,7 @@ const Content = styled.div`
 
   h3{
     margin-bottom: 1em;
+    color: rgba(24, 35, 89, 0.85) !important;
   }
-`;
+`
 

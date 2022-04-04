@@ -132,8 +132,8 @@ const IconWrap = styled.div`
 const Detail = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: end;
+  justify-content: end;
 
 ` 
 const Highlight = styled.p`
@@ -143,11 +143,14 @@ const Highlight = styled.p`
   text-transform: capitalize;
   display: flex;
   justify-content: end;
-  align-items: flex-end;
+  align-items: end;
 `;
-const Figure = styled.span`
+const Figure = styled.span` 
     font-weight: 500;
     line-height: 1.25;
     font-size: 1.5em;
     text-transform: capitalize;
+    display: flex;
+    justify-content: end;
+    align-items: end;
 `
