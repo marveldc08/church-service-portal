@@ -9,6 +9,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 import Context from './Contexts';
+import './Header.css';
 
 function Header() {
      //const [burgernav, setBurgernav] = useState(false);
@@ -219,5 +220,6 @@ const Foot = styled.div`
   color: #ffffff;
   font-size: 12px;
 `
+
 
 const dropdownRef =styled.div``
