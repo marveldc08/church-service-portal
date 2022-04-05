@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-/* import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
-import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
-import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
-
-import { MdAdminPanelSettings, MdOutlineAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
-import { useContext } from 'react'; */
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineFileText, AiOutlineLineChart} from "react-icons/ai";
 import { BsFillCollectionFill , BsBroadcast } from "react-icons/bs";
 import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
@@ -35,7 +29,6 @@ function SideNav(props) {
                               <BiGridAlt className='icon' />
                               <span className='link-name'>Dashboard</span>
                          </a>
-                         
                     </li>
                     <li className='items'>
                          <a href='#'>
@@ -151,6 +144,7 @@ const Navigations = styled.nav`
           margin: 15px 0px;
           padding: 5px;
           transition: all 0.35s ease; 
+          /* border: 1px solid red; */
           .icon-link{
                display: flex;
                align-items: center;
@@ -320,12 +314,12 @@ const NavFooter = styled.div`
      }
 `
 
-const SideMenuList = styled.span`
-     position: absolute;
-     display: inline-block;
-     left: 100%;
-     top: -20px;
+const SideMenuList = styled.div`
      background: black !important;
-     z-index: 100;
      color: white;
+     position: absolute;
+     top: -20px;
+     left: 145%;
+     margin-left: -60px;
+     border: 1px solid green;
 `
