@@ -143,8 +143,7 @@ const Navigations = styled.nav`
           position: relative;
           margin: 15px 0px;
           padding: 5px;
-          transition: all 0.35s ease; 
-          /* border: 1px solid red; */
+          transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
                display: flex;
                align-items: center;
@@ -190,7 +189,6 @@ const Navigations = styled.nav`
           .sub-menu{
                padding: 6px 6px 14px 70px;
                background-color: #003366;
-               transition: all 0.35s ease; 
                li{
                     list-style-type: none;
                     cursor: pointer;
