@@ -154,72 +154,7 @@ const LeftMenu =styled.div`
     display: flex;
   }
 `
-const BurgerNav = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: darkblue;
-  width: 300px;
-  z-index: 16;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  text-align: end;
-  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(-100%)")};
-  transition: transform 0.2s ease-in;
 
-  li {
-    padding: 15px 0;
-    padding-left: 3px;
-    border-bottom: 1px solid #ffffff;
-    cursor: pointer;
-
-    a {
-      span {
-        font-size: 13px;
-        letter-spacing: 1.42px;
-        position: relative;
-        color: #ffffff;
-        padding-left: 4px;
-      }
-      &:hover {
-        span:after {
-          transform: scaleX(1);
-          opacity: 1;
-        }
-      }
-      i.fa-home,
-      .fa-hands,
-      .fa-seedling,
-      .fa-phone-alt {
-        color: #ffffff;
-      }
-    }
-  }
-`;
-const Close = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  cursor: pointer;
-
-  span {
-    i.fa-times {
-      color: #ffffff;
-    }
-  }
-`;
-const Foot = styled.div`
-  position:absolute;
-  bottom: 35px;
-  display: flex;
-  justify-content: center;
-  padding-left: 12px;
-  flex-direction: column;
-  color: #ffffff;
-  font-size: 12px;
-`
 
 
 const dropdownRef =styled.div``
