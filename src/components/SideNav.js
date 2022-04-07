@@ -15,14 +15,14 @@ function SideNav(props) {
           setToogleDropDown(false);
      }
   return (
-     <Nav show = {userContext.isOpened}>
+     <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
           <LogoDiv>
                <div className={userContext.isOpened? 'logoCont': 'hide'}>
                     <img src='/images/logo-light.png'/>
                </div>
                <div className='logoText'>CELZ4</div>
           </LogoDiv>
-          <Navigations>
+          <Navigations show = {userContext.isOpened}>
                <ul className='menu'>
                     <li className='items'>
                          <a href='#'>
@@ -131,7 +131,7 @@ const LogoDiv = styled.div`
 const Navigations = styled.nav`
      height: 70vh;
      overflow-Y: auto;
-     padding: 0px 15px;
+     padding: ${props => props.show ? '0px 15px':'0px 5px'};
      &::-webkit-scrollbar{
           display: none;
      }
@@ -142,8 +142,7 @@ const Navigations = styled.nav`
      .items{
           list-style-type: none;
           position: relative;
-          border: 1px solid red ;
-          margin: 15px 0px;
+          margin: 15px 0px ;
           padding: 5px;
           transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
