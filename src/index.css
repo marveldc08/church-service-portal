@@ -105,11 +105,13 @@ code {
 
 
 .hide{
+  transition: all 0.35s ease; 
   display: none;
+  
 }
 .show{
+  transition: all 0.35s ease; 
   display: 'block';
-  transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
   background-color: #fafbfd;
 }
 .icons{

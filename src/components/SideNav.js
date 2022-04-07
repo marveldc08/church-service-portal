@@ -1,11 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-/* import { AiFillCaretDown, AiFillCaretRight, AiFillCaretUp } from "react-icons/ai";
-import { AiFillCaretDown, AiFillCaretRight, AiOutlineBars } from "react-icons/ai";
-import { BiGridAlt, BiGridSmall, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
-
-import { MdAdminPanelSettings, MdOutlineAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
-import { useContext } from 'react'; */
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineFileText, AiOutlineLineChart} from "react-icons/ai";
 import { BsFillCollectionFill , BsBroadcast } from "react-icons/bs";
 import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
@@ -33,21 +27,21 @@ function SideNav(props) {
                     <li className='items'>
                          <a href='#'>
                               <BiGridAlt className='icon' />
-                              <span className='link-name'>Dashboard</span>
+                              <span className={userContext.isOpened? 'link-name': 'hide'}>Dashboard</span>
                          </a>
                          
                     </li>
                     <li className='items'>
                          <a href='#'>
                               <BsBroadcast className='icon' />
-                              <span className='link-name'>Manage Service</span>
+                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Service</span>
                          </a>
                     </li>
                     <li className='items'>
                          <div className='icon-link'>
                               <a href='#'>
                                    <BiCollection className='icon' />
-                                   <span className='link-name' onClick={()=>{setToogleDropDown(!toggleDropDown)} }>Manage Report</span>
+                                   <span className={userContext.isOpened? 'link-name': 'hide'} onClick={()=>{setToogleDropDown(!toggleDropDown)} }>Manage Report</span>
                               </a>
                               { toggleDropDown ? <AiFillCaretDown className='icon-toggle-down' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/> :  <AiFillCaretRight className='icon-toggle-right' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/>}
                          </div>
@@ -63,13 +57,13 @@ function SideNav(props) {
                     <li className='items'>
                          <a href='#'>
                               <BiChurch className='icon' />
-                              <span className='link-name'>Manage Church</span>
+                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
                          </a>
                     </li>
                     <li className='items'>
                          <a href='#'>
                               <MdAdminPanelSettings className='icon' />
-                              <span className='link-name'>Manage Admin</span>
+                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Admin</span>
                          </a>
                     </li>
                </ul>
@@ -136,7 +130,7 @@ const LogoDiv = styled.div`
 `
 const Navigations = styled.nav`
      height: 70vh;
-     overflow: auto;
+     overflow-Y: auto;
      padding: 0px 15px;
      &::-webkit-scrollbar{
           display: none;
@@ -148,9 +142,10 @@ const Navigations = styled.nav`
      .items{
           list-style-type: none;
           position: relative;
+          border: 1px solid red ;
           margin: 15px 0px;
           padding: 5px;
-          transition: all 0.35s ease; 
+          transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
                display: flex;
                align-items: center;
@@ -196,7 +191,6 @@ const Navigations = styled.nav`
           .sub-menu{
                padding: 6px 6px 14px 70px;
                background-color: #003366;
-               transition: all 0.35s ease; 
                li{
                     list-style-type: none;
                     cursor: pointer;
@@ -214,11 +208,7 @@ const Navigations = styled.nav`
                          color: gold;
                          
                     }
-                    a:hover ~ span{
-                         .small-icon{
-                              color: gold;
-                         }
-                    }
+                    
                     
                     span{
                          .small-icon{
@@ -227,6 +217,11 @@ const Navigations = styled.nav`
                               height: 20px;
                               transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
                          }
+                    }
+               }
+               li:hover{
+                    .small-icon, a{
+                         color: gold;
                     }
                }
           }
@@ -320,12 +315,13 @@ const NavFooter = styled.div`
      }
 `
 
-const SideMenuList = styled.span`
-     position: absolute;
-     display: inline-block;
-     left: 100%;
-     top: -20px;
+const SideMenuList = styled.div`
      background: black !important;
-     z-index: 100;
      color: white;
+     position: absolute;
+     top: 0px;
+     right: -20px;
+     margin-left: -60px;
+     border: 1px solid green;
+     z-index: 100;
 `
