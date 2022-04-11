@@ -1,64 +1,64 @@
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  } 
-  
-    a {
-    color: var(--text-color);
-    text-decoration: none;;
-  } 
-  
-  /* <li> */
-    .nav-item {
-    width: calc(var(--nav-size) * 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }  
-  
-  .hi{
-    --button-size: calc(var(--nav-size) * 0.5);
-    width: var(--button-size);
-    height: var(--button-size);
-    background-color: green !important;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 300ms;
-  }
-  
-  /* Icon Button */
-   .icon-button {
-    --button-size: calc(var(--nav-size) * 0.5);
-    width: var(--button-size);
-    height: var(--button-size);
-    background-color: #E5F2FF;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 300ms;
-  } 
-  
-   .icon-button:hover {
-    filter: brightness(1.2);
-    text-decoration: none;
-  } 
-  
-   .icon-button svg { 
-    fill: var(--text-color);
-    width: 20px;
-    height: 20px;
-  } 
+  ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} 
 
-  /* Dropdown Menu */
-  .dropdown{
+ a {
+  color: var(--text-color);
+  text-decoration: none;;
+} 
+
+ /*<li> */
+   .nav-item {
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}  
+
+.hi{
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: green !important;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+} 
+
+/*Icon Button */
+  .icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #E5F2FF;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+} 
+
+ .icon-button:hover {
+  filter: brightness(1.2);
+  text-decoration: none;
+} 
+
+ .icon-button svg { 
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px;
+}  
+
+/* Dropdown Menu */
+   .dropdown{
     position: absolute;
     top: 58px;
     width: 300px;
@@ -104,9 +104,9 @@ ul {
   .icon-right {
     margin-left: auto;
   } 
-  
-   /*CSSTransition classes */ 
-    .menu-primary-enter {
+   
+  /* CSSTransition classes */ 
+     .menu-primary-enter {
     position: absolute;
     transform: translateX(-110%);
   } 
@@ -133,6 +133,6 @@ ul {
   .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all var(--speed) ease;
-  }
+  } 
 
-  
+ 

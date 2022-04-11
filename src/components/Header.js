@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext} from 'react'
-import { useNavigate } from 'react-router-dom';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
@@ -11,27 +10,27 @@ import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 import Context from './Contexts';
 import './Header.css';
+import {useNavigate, Link} from "react-router-dom";
 
-function Header() {
-     //const [burgernav, setBurgernav] = useState(false);
+  function Header() {
+    //  const [burgernav, setBurgernav] = useState(false);
      const userContext = useContext(Context);
-     
-  return (
+ return (
     <Nav>
-      <LeftMenu>
+     <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-        </span>
-      </LeftMenu>
+        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+     </span>
+   </LeftMenu>
 
      
-      <Isme>
-      <Name>
-        <AdminsName>Stephen Nzubechukwu</AdminsName>
-        <ChurchAdmin>Church Admin</ChurchAdmin>
-      </Name>
+   <Isme>
+   <Name>
+     <AdminsName>Stephen Nzubechukwu</AdminsName>
+     <ChurchAdmin>Church Admin</ChurchAdmin>
+   </Name>
      
-        <UserImg src="./images/admin.jpg" />
+     <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
         </NavItem>
@@ -41,7 +40,7 @@ function Header() {
   );
 }
 
-function NavItem(props) {
+ function NavItem(props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -64,9 +63,9 @@ function DropdownMenu() {
     setMenuHeight(height);
   }
 
-  function DropdownItem(props) {
-    
-    return (
+   function DropdownItem(props) {
+   
+     return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className={props.active ? 'hi':"icon-button"}>{props.leftIcon}</span>
         {props.children}
@@ -91,16 +90,19 @@ function DropdownMenu() {
             goToMenu="settings">
             Settings
           </DropdownItem>
-           <DropdownItem
+          <Link to={'/'} >
+          <DropdownItem
               leftIcon={<ArrowIcon />}
               rightIcon={<ChevronIcon />}
-             goToMenu="Sign Out" onClick={() => { navigate('/') }}>
-             Sign Out
+             goToMenu="Sign Out">
+               Sign Out
+             
           </DropdownItem>
+          </Link>
          </div>
        </CSSTransition>    
     </div>
-  );
+ );
 }
 
 export default Header
@@ -157,7 +159,4 @@ const LeftMenu =styled.div`
     display: flex;
   }
 `
-
-
-
 const dropdownRef =styled.div``
