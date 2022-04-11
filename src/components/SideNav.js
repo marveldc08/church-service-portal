@@ -274,13 +274,13 @@ const NavFooter = styled.div`
                .name{
                     color: #ffffff;
                     font-size: 14px;
-                    font-weight: 500;
+                    font-weight: 400;
                     padding: 5px 0px;
                }
                .office{
                     color: #ffffff;
                     font-size: 10px;
-                    font-weight: 600;
+                    font-weight: 700;
                      
 
                }
