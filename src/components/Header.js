@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef, useContext} from 'react'
-import { useNavigate } from 'react-router-dom';
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
 import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
@@ -11,27 +10,27 @@ import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 import Context from './Contexts';
 import './Header.css';
+import {useNavigate, Link} from "react-router-dom";
 
-function Header() {
-     //const [burgernav, setBurgernav] = useState(false);
+  function Header() {
+    //  const [burgernav, setBurgernav] = useState(false);
      const userContext = useContext(Context);
-     
-  return (
+ return (
     <Nav>
-      <LeftMenu>
+     <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-        </span>
-      </LeftMenu>
+        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+     </span>
+   </LeftMenu>
 
      
-      <Isme>
-      <Name>
-        <AdminsName>Stephen Nzubechukwu</AdminsName>
-        <ChurchAdmin>Church Admin</ChurchAdmin>
-      </Name>
+   <Isme>
+   <Name>
+     <AdminsName>Stephen Nzubechukwu</AdminsName>
+     <ChurchAdmin>Church Admin</ChurchAdmin>
+   </Name>
      
-        <UserImg src="./images/admin.jpg" />
+     <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
         </NavItem>
@@ -41,7 +40,7 @@ function Header() {
   );
 }
 
-function NavItem(props) {
+ function NavItem(props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -64,9 +63,9 @@ function DropdownMenu() {
     setMenuHeight(height);
   }
 
-  function DropdownItem(props) {
-    
-    return (
+   function DropdownItem(props) {
+   
+     return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className={props.active ? 'hi':"icon-button"}>{props.leftIcon}</span>
         {props.children}
@@ -91,16 +90,19 @@ function DropdownMenu() {
             goToMenu="settings">
             Settings
           </DropdownItem>
-           <DropdownItem
+          <Link to={'/'} >
+          <DropdownItem
               leftIcon={<ArrowIcon />}
               rightIcon={<ChevronIcon />}
-             goToMenu="Sign Out" onClick={() => { navigate('/') }}>
-             Sign Out
+             goToMenu="Sign Out">
+               Sign Out
+             
           </DropdownItem>
+          </Link>
          </div>
        </CSSTransition>    
     </div>
-  );
+ );
 }
 
 export default Header
@@ -157,72 +159,4 @@ const LeftMenu =styled.div`
     display: flex;
   }
 `
-const BurgerNav = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: darkblue;
-  width: 300px;
-  z-index: 16;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  text-align: end;
-  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(-100%)")};
-  transition: transform 0.2s ease-in;
-
-  li {
-    padding: 15px 0;
-    padding-left: 3px;
-    border-bottom: 1px solid #ffffff;
-    cursor: pointer;
-
-    a {
-      span {
-        font-size: 13px;
-        letter-spacing: 1.42px;
-        position: relative;
-        color: #ffffff;
-        padding-left: 4px;
-      }
-      &:hover {
-        span:after {
-          transform: scaleX(1);
-          opacity: 1;
-        }
-      }
-      i.fa-home,
-      .fa-hands,
-      .fa-seedling,
-      .fa-phone-alt {
-        color: #ffffff;
-      }
-    }
-  }
-`;
-const Close = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  cursor: pointer;
-
-  span {
-    i.fa-times {
-      color: #ffffff;
-    }
-  }
-`;
-const Foot = styled.div`
-  position:absolute;
-  bottom: 35px;
-  display: flex;
-  justify-content: center;
-  padding-left: 12px;
-  flex-direction: column;
-  color: #ffffff;
-  font-size: 12px;
-`
-
-
 const dropdownRef =styled.div``

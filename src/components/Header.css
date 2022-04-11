@@ -1,103 +1,80 @@
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  } 
-  
-   a {
-    color: var(--text-color);
-    text-decoration: none;;
-  } 
-  
-  /* Top Navigation Bar */
-  
-  /* <nav> */
-    .navbar {
-    height: var(--nav-size);
-    background-color: var(--bg);
-    padding: 0 1rem;
-    border-bottom: var(--border);
-  }  
-  
-  /* <ul> */
-    .navbar-nav {
-    max-width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-end;
-  }  
-  
-  /* <li> */
-    .nav-item {
-    width: calc(var(--nav-size) * 0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }  
-  
-  .hi{
-    --button-size: calc(var(--nav-size) * 0.5);
-    width: var(--button-size);
-    height: var(--button-size);
-    background-color: green !important;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 7px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 300ms;
-  }
-  
-  /* Icon Button */
-   .icon-button {
-    --button-size: calc(var(--nav-size) * 0.5);
-    width: var(--button-size);
-    height: var(--button-size);
-    background-color: #E5F2FF;
-    border-radius: 50%;
-    padding: 5px;
-    margin: 2px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 300ms;
-  } 
-  
-   .icon-button:hover {
-    filter: brightness(1.2);
-    text-decoration: none;
-  } 
-  
-   .icon-button svg { 
-    fill: var(--text-color);
-    width: 20px;
-    height: 20px;
-  } 
+  ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+} 
 
-  /* Dropdown Menu */
-  .dropdown{
+ a {
+  color: var(--text-color);
+  text-decoration: none;;
+} 
+
+ /*<li> */
+   .nav-item {
+  width: calc(var(--nav-size) * 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}  
+
+.hi{
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: green !important;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+} 
+
+/*Icon Button */
+  .icon-button {
+  --button-size: calc(var(--nav-size) * 0.5);
+  width: var(--button-size);
+  height: var(--button-size);
+  background-color: #E5F2FF;
+  border-radius: 50%;
+  padding: 5px;
+  margin: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: filter 300ms;
+} 
+
+ .icon-button:hover {
+  filter: brightness(1.2);
+  text-decoration: none;
+} 
+
+ .icon-button svg { 
+  fill: var(--text-color);
+  width: 20px;
+  height: 20px;
+}  
+
+/* Dropdown Menu */
+   .dropdown{
     position: absolute;
-    top: 78px;
+    top: 58px;
     width: 300px;
-    transform: translateX(-38%);
+    transform: translateX(-45%);
+    background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
     padding: 1rem;
     overflow: hidden;
     transition: height var(--speed) ease;
     z-index: 100;
-    border-radius: 5px;
-    border: 1px solid #BFBFBF;
-  background-color: white;
-  box-shadow: 10px 10px 5px #aaaaaa;
   }
-
-  
 
   .menu {
     width: 100%;
   } 
-  
-    
   
    .menu-item {
     height: 50px;
@@ -107,6 +84,7 @@ ul {
     transition: background var(--speed);
     padding: 0.5rem;
     background: #ffffff;
+    box-shadow: 10px 10px 5px #aaaaaa;
   }  
   
    .menu-item .icon-button {
@@ -126,9 +104,9 @@ ul {
   .icon-right {
     margin-left: auto;
   } 
-  
-   /*CSSTransition classes */ 
-    .menu-primary-enter {
+   
+  /* CSSTransition classes */ 
+     .menu-primary-enter {
     position: absolute;
     transform: translateX(-110%);
   } 
@@ -144,7 +122,6 @@ ul {
     transition: all var(--speed) ease;
   } 
   
-  
    .menu-secondary-enter {
     transform: translateX(110%);
   }
@@ -156,6 +133,6 @@ ul {
   .menu-secondary-exit-active {
     transform: translateX(110%);
     transition: all var(--speed) ease;
-  }
+  } 
 
-  
+ 
