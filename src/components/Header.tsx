@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef, useContext} from 'react'
+import React, { useState, useContext} from 'react'
 import { ReactComponent as CaretIcon } from './icons/caret.svg';
-import { ReactComponent as BoltIcon } from './icons/bolt.svg';
 import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
 import { ReactComponent as CogIcon } from './icons/cog.svg';
 import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
@@ -32,7 +31,7 @@ import {useNavigate, Link} from "react-router-dom";
      
      <UserImg src="./images/admin.jpg" />
         <NavItem icon={<CaretIcon />}>
-          <DropdownMenu className="dropdown"></DropdownMenu>
+          <DropdownMenu ></DropdownMenu>
         </NavItem>
       </Isme>
     
@@ -54,7 +53,11 @@ import {useNavigate, Link} from "react-router-dom";
   );
 }
 
-function DropdownMenu() {
+interface Idrop{
+  className: string;
+}
+
+const DropdownMenu = () => {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(null);
 
@@ -107,6 +110,9 @@ function DropdownMenu() {
 
 export default Header
 
+interface Iprops{
+  className: string;
+}
 
 const Nav = styled.nav`
    height: 70px;
@@ -151,7 +157,7 @@ const Isme=styled.div`
   
 `
 
-const LeftMenu =styled.div`
+const LeftMenu =styled.div<Iprops>`
  align-items: center;
  cursor: pointer;
 
