@@ -6,8 +6,10 @@ const Context = createContext({
      collapseSideNav: () => {},
      isOpened: true,
 });
-
-export function AccessContexts(props){
+interface IContext{
+     children: JSX.Element;
+}
+export function AccessContexts(props: IContext){
      const [isOpenSideNav, setIsOpenSideNav] = useState(true);
      function closeSideNav(){
           setIsOpenSideNav(false)

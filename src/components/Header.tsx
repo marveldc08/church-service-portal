@@ -1,8 +1,11 @@
-import React, { useState, useContext} from 'react'
-import { ReactComponent as CaretIcon } from './icons/caret.svg';
-import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
-import { ReactComponent as CogIcon } from './icons/cog.svg';
-import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+import React, { useState, useEffect, useRef, useContext} from 'react'
+// import { ReactComponent as CaretIcon } from './icons/caret.svg';
+// import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
+// import { ReactComponent as CogIcon } from './icons/cog.svg';
+// import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+import { FaCaretDown } from 'react-icons/fa';
+import { FaCogs } from 'react-icons/fa';
+import { BiArrowToLeft } from 'react-icons/bi';
 import { CSSTransition } from "react-transition-group";
 import { AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
@@ -19,8 +22,8 @@ import {useNavigate, Link} from "react-router-dom";
      <LeftMenu>
         <span>
         {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-     </span>
-   </LeftMenu>
+        </span>
+     </LeftMenu>
 
      
    <Isme>
@@ -30,16 +33,19 @@ import {useNavigate, Link} from "react-router-dom";
    </Name>
      
      <UserImg src="./images/admin.jpg" />
-        <NavItem icon={<CaretIcon />}>
-          <DropdownMenu ></DropdownMenu>
+        <NavItem icon={<FaCaretDown />}>
+          <DropdownMenu className="dropdown"></DropdownMenu>
         </NavItem>
       </Isme>
     
     </Nav>
   );
 }
-
- function NavItem(props) {
+  interface Inav {
+    icon?: JSX.Element;
+    children: JSX.Element;
+  }
+ function NavItem(props: Inav) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,21 +58,25 @@ import {useNavigate, Link} from "react-router-dom";
     </li>
   );
 }
-
-interface Idrop{
+interface Idropmenu {
   className: string;
 }
-
-const DropdownMenu = () => {
+function DropdownMenu(props:Idropmenu) {
   const [activeMenu, setActiveMenu] = useState('main');
-  const [menuHeight, setMenuHeight] = useState(null);
+  const [menuHeight, setMenuHeight] = useState(300);
 
-  function calcHeight(el) {
+  function calcHeight(el: { offsetHeight: number; }) {
     const height = el.offsetHeight;
     setMenuHeight(height);
   }
-
-   function DropdownItem(props) {
+   interface Idrop{
+     active?: boolean;
+     leftIcon?: JSX.Element;
+     rightIcon?: JSX.Element;
+     children?: string;
+     goToMenu?: string;
+   }
+   function DropdownItem(props: Idrop) {
    
      return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
@@ -88,15 +98,13 @@ const DropdownMenu = () => {
         <div className="menu">
           <DropdownItem active >Hi Stephen</DropdownItem>
            <DropdownItem
-             leftIcon={<CogIcon />}
-            rightIcon={<ChevronIcon />}
+             leftIcon={<FaCogs />}
             goToMenu="settings">
             Settings
           </DropdownItem>
           <Link to={'/'} >
           <DropdownItem
-              leftIcon={<ArrowIcon />}
-              rightIcon={<ChevronIcon />}
+              leftIcon={<BiArrowToLeft />}
              goToMenu="Sign Out">
                Sign Out
              
