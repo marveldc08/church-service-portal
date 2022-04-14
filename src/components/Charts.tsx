@@ -62,7 +62,7 @@ function Charts() {
           <Wrap>
             <h5>Reports By Time</h5>
             <VictoryPie
-              className="border"
+              
               data={[
                 { x: "", y: 30, label: " " },
                 { x: "", y: 50, label: " " },

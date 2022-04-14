@@ -1,36 +1,39 @@
 import React, { useState, useEffect, useRef, useContext} from 'react'
-import { ReactComponent as CaretIcon } from './icons/caret.svg';
-import { ReactComponent as BoltIcon } from './icons/bolt.svg';
-import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
-import { ReactComponent as CogIcon } from './icons/cog.svg';
-import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+// import { ReactComponent as CaretIcon } from './icons/caret.svg';
+// import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
+// import { ReactComponent as CogIcon } from './icons/cog.svg';
+// import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+import { FaCaretDown } from 'react-icons/fa';
+import { FaCogs } from 'react-icons/fa';
+import { BiArrowToLeft } from 'react-icons/bi';
 import { CSSTransition } from "react-transition-group";
 import { AiOutlineBars } from "react-icons/ai";
 import { RiBarChartHorizontalLine } from "react-icons/ri";
 import styled from 'styled-components';
 import Context from './Contexts';
 import './Header.css';
+import {useNavigate, Link} from "react-router-dom";
 
-function Header() {
-     //const [burgernav, setBurgernav] = useState(false);
+  function Header() {
+    //  const [burgernav, setBurgernav] = useState(false);
      const userContext = useContext(Context);
-  return (
+ return (
     <Nav>
-      <LeftMenu>
+     <LeftMenu>
         <span>
-          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
         </span>
-      </LeftMenu>
+     </LeftMenu>
 
      
-      <Isme>
-      <Name>
-        <AdminsName>Stephen Nzubechukwu</AdminsName>
-        <ChurchAdmin>Church Admin</ChurchAdmin>
-      </Name>
+   <Isme>
+   <Name>
+     <AdminsName>Stephen Nzubechukwu</AdminsName>
+     <ChurchAdmin>Church Admin</ChurchAdmin>
+   </Name>
      
-        <UserImg src="./images/admin.jpg" />
-        <NavItem icon={<CaretIcon />}>
+     <UserImg src="./images/admin.jpg" />
+        <NavItem icon={<FaCaretDown />}>
           <DropdownMenu className="dropdown"></DropdownMenu>
         </NavItem>
       </Isme>
@@ -38,8 +41,11 @@ function Header() {
     </Nav>
   );
 }
-
-function NavItem(props) {
+  interface Inav {
+    icon?: JSX.Element;
+    children: JSX.Element;
+  }
+ function NavItem(props: Inav) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -52,18 +58,27 @@ function NavItem(props) {
     </li>
   );
 }
-
-function DropdownMenu() {
+interface Idropmenu {
+  className: string;
+}
+function DropdownMenu(props:Idropmenu) {
   const [activeMenu, setActiveMenu] = useState('main');
-  const [menuHeight, setMenuHeight] = useState(null);
+  const [menuHeight, setMenuHeight] = useState(300);
 
-  function calcHeight(el) {
+  function calcHeight(el: { offsetHeight: number; }) {
     const height = el.offsetHeight;
     setMenuHeight(height);
   }
-
-  function DropdownItem(props) {
-    return (
+   interface Idrop{
+     active?: boolean;
+     leftIcon?: JSX.Element;
+     rightIcon?: JSX.Element;
+     children?: string;
+     goToMenu?: string;
+   }
+   function DropdownItem(props: Idrop) {
+   
+     return (
       <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
         <span className={props.active ? 'hi':"icon-button"}>{props.leftIcon}</span>
         {props.children}
@@ -71,7 +86,7 @@ function DropdownMenu() {
       </a>
     );
   }
-
+  const navigate = useNavigate();
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
       <CSSTransition
@@ -83,21 +98,22 @@ function DropdownMenu() {
         <div className="menu">
           <DropdownItem active >Hi Stephen</DropdownItem>
            <DropdownItem
-             leftIcon={<CogIcon />}
-            rightIcon={<ChevronIcon />}
+             leftIcon={<FaCogs />}
             goToMenu="settings">
             Settings
           </DropdownItem>
-           <DropdownItem
-              leftIcon={<ArrowIcon />}
-              rightIcon={<ChevronIcon />}
+          <Link to={'/'} >
+          <DropdownItem
+              leftIcon={<BiArrowToLeft />}
              goToMenu="Sign Out">
-             Sign Out
+               Sign Out
+             
           </DropdownItem>
+          </Link>
          </div>
        </CSSTransition>    
     </div>
-  );
+ );
 }
 
 export default Header
@@ -154,72 +170,4 @@ const LeftMenu =styled.div`
     display: flex;
   }
 `
-const BurgerNav = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: darkblue;
-  width: 300px;
-  z-index: 16;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  text-align: end;
-  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(-100%)")};
-  transition: transform 0.2s ease-in;
-
-  li {
-    padding: 15px 0;
-    padding-left: 3px;
-    border-bottom: 1px solid #ffffff;
-    cursor: pointer;
-
-    a {
-      span {
-        font-size: 13px;
-        letter-spacing: 1.42px;
-        position: relative;
-        color: #ffffff;
-        padding-left: 4px;
-      }
-      &:hover {
-        span:after {
-          transform: scaleX(1);
-          opacity: 1;
-        }
-      }
-      i.fa-home,
-      .fa-hands,
-      .fa-seedling,
-      .fa-phone-alt {
-        color: #ffffff;
-      }
-    }
-  }
-`;
-const Close = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  cursor: pointer;
-
-  span {
-    i.fa-times {
-      color: #ffffff;
-    }
-  }
-`;
-const Foot = styled.div`
-  position:absolute;
-  bottom: 35px;
-  display: flex;
-  justify-content: center;
-  padding-left: 12px;
-  flex-direction: column;
-  color: #ffffff;
-  font-size: 12px;
-`
-
-
 const dropdownRef =styled.div``
