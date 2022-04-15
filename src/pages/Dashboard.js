@@ -6,6 +6,7 @@ import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
 // import Modal from '../components/Modal';
+import Tables from '../components/Tables';
 import './Dashboard.css';
 function Dashboard() {
   const userContext = useContext(Context);
@@ -19,6 +20,7 @@ function Dashboard() {
           <Stats />
           <Charts />
           {/* <Modal /> */}
+          {/* <Tables /> */}
         </Content>
       </Contain>
     </Container>
