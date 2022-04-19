@@ -5,9 +5,20 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
+import { useGet, usePost } from '../utilities/HttpConnection';
+import requests from '../utilities/requests';
 import './Dashboard.css';
 function Dashboard() {
   const userContext = useContext(Context);
+  //const results = useGet(requests.fetchActionMovies);
+  const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
+  // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
+   if (isLoading == true){
+      console.log('loading.....')
+   }else if(isLoading == false && !serverError){
+      console.log(apiData)
+   }
+   
   return (
     <Container>
       <SideNav />
