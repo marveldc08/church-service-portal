@@ -2,6 +2,7 @@ import React from "react";
 import './Login.css'
 import {useNavigate} from "react-router-dom";
 
+
 const Login = () => {
     const navigate = useNavigate();
     return (
@@ -18,9 +19,10 @@ const Login = () => {
                     <label>Email:</label>
                     <input type="email"></input>
                     <label>Password:</label>
-                    <input type="email"></input>
+                    <input type="password"></input>
                     <button onClick={() => {navigate("/dashboard")}}> Log In</button>
                 </form>
+                
             </div>
         </div>
     );

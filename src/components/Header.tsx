@@ -1,8 +1,4 @@
-import React, { useState, useEffect, useRef, useContext} from 'react'
-// import { ReactComponent as CaretIcon } from './icons/caret.svg';
-// import { ReactComponent as ChevronIcon } from './icons/chevron.svg';
-// import { ReactComponent as CogIcon } from './icons/cog.svg';
-// import { ReactComponent as ArrowIcon } from './icons/arrow.svg';
+import React, { useState, useContext} from 'react'
 import { FaCaretDown } from 'react-icons/fa';
 import { FaCogs } from 'react-icons/fa';
 import { BiArrowToLeft } from 'react-icons/bi';
@@ -24,8 +20,7 @@ import {useNavigate, Link} from "react-router-dom";
         {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
         </span>
      </LeftMenu>
-
-     
+ 
    <Isme>
    <Name>
      <AdminsName>Stephen Nzubechukwu</AdminsName>
@@ -165,7 +160,7 @@ const Isme=styled.div`
   
 `
 
-const LeftMenu =styled.div<Iprops>`
+const LeftMenu =styled.div`
  align-items: center;
  cursor: pointer;
 
