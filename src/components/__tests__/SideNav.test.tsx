@@ -4,7 +4,7 @@ test('to render SideNav component', ()=>{
     render(<SideNav/>);
     expect(true).toBe(true);
     const sideNavElement = screen.getByTestId('sidenav');
-    expect(sideNavElement).toBeInTheDocument;
+    expect(sideNavElement).toBeInTheDocument( );
     
 
 })
