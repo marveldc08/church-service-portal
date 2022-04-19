@@ -5,9 +5,23 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
+import Modal from '../components/Modal';
+import USEMODAL from '../components/USEMODAL';
+import Loader from '../components/Loader';
 import './Dashboard.css';
+import { StyledComponent } from '@emotion/styled';
 function Dashboard() {
   const userContext = useContext(Context);
+  // const {isShown, toggle } = USEMODAL();
+  // const content = <React.Fragment><h3>Hey, I'm a model.</h3>
+                  //     <form>
+                  //       <label>
+                  //         Attendance
+                  //       </label>
+                  //       <input type="select" />
+                        
+                  //     </form>
+                  // </React.Fragment>;
   return (
     <Container>
       <SideNav />
@@ -15,6 +29,9 @@ function Dashboard() {
         <Header />
         <Content>
           <h3>Welcome</h3>
+          {/* <button onClick={toggle}>Open modal</button> */}
+          {/* <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} /> */}
+          {/* <Loader /> */}
           <Stats />
           <Charts />
         </Content>
@@ -52,4 +69,8 @@ const Content = styled.div`
     color: rgba(24, 35, 89, 0.85) !important;
   }
 `
+
+function useModal(): { isShown: any; toggle: any; } {
+  throw new Error('Function not implemented.');
+}
 
