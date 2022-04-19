@@ -8,6 +8,8 @@ import Context from '../components/Contexts';
 import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
 import Loader from '../components/Loader';
+import { useGet, usePost } from '../utilities/HttpConnection';
+import requests from '../utilities/requests';
 import './Dashboard.css';
 import { StyledComponent } from '@emotion/styled';
 function Dashboard() {
@@ -22,6 +24,15 @@ function Dashboard() {
                         
                   //     </form>
                   // </React.Fragment>;
+  //const results = useGet(requests.fetchActionMovies);
+  const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
+  // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
+   if (isLoading == true){
+      console.log('loading.....')
+   }else if(isLoading == false && !serverError){
+      console.log(apiData)
+   }
+   
   return (
     <Container>
       <SideNav />
