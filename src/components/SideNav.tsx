@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { FC } from 'react';
 import { AiFillCaretDown, AiFillCaretRight, AiOutlineFileText, AiOutlineLineChart} from "react-icons/ai";
 import { BsFillCollectionFill , BsBroadcast } from "react-icons/bs";
 import { BiGridAlt, BiCollection, BiChurch, BiCopyright,BiLogOut } from "react-icons/bi";
@@ -7,7 +8,8 @@ import { MdAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
 import { FaHandHoldingUsd, FaRegListAlt } from "react-icons/fa";
 import { useContext } from 'react';
 import Context from './Contexts';
-function SideNav(props) {
+
+function SideNav(){
      const [toggleDropDown, setToogleDropDown] = useState(false);
      const userContext = useContext(Context);
 
@@ -17,6 +19,7 @@ function SideNav(props) {
   return (
      <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
           <LogoDiv>
+              
                <div className={userContext.isOpened? 'logoCont': 'hide'}>
                     <img src='/images/logo-light.png'/>
                </div>
@@ -37,7 +40,7 @@ function SideNav(props) {
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Service</span>
                          </a>
                     </li>
-                    <li className='items'>
+                    <li className='items'> 
                          <div className='icon-link'>
                               <a href='#'>
                                    <BiCollection className='icon' />
@@ -85,8 +88,11 @@ function SideNav(props) {
   )
 }
 
-export default SideNav
-const Nav = styled.div`
+export default SideNav;
+interface Iprops{
+     show: boolean;
+}
+const Nav = styled.div<Iprops>`
      position: fixed;
      top: 0;
      left: 0;
@@ -128,7 +134,7 @@ const LogoDiv = styled.div`
           
      }
 `
-const Navigations = styled.nav`
+export const Navigations = styled.nav<Iprops>`
      height: 70vh;
      overflow-Y: auto;
      padding: ${props => props.show ? '0px 15px':'0px 5px'};
@@ -274,13 +280,13 @@ const NavFooter = styled.div`
                .name{
                     color: #ffffff;
                     font-size: 14px;
-                    font-weight: 500;
+                    font-weight: 400;
                     padding: 5px 0px;
                }
                .office{
                     color: #ffffff;
                     font-size: 10px;
-                    font-weight: 600;
+                    font-weight: 700;
                      
 
                }
