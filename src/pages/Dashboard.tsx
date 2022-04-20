@@ -6,17 +6,19 @@ import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
 import './Dashboard.css';
+
+
 function Dashboard() {
   const userContext = useContext(Context);
   return (
     <Container>
       <SideNav />
-      <Contain show = {userContext.isOpened}>
+      <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-          <h3>Welcome</h3>
           <Stats />
           <Charts />
+         
         </Content>
       </Contain>
     </Container>

@@ -1,82 +1,14 @@
-.fa-check-circle{
-    font-size: small;
-    color: green;
-}
-.fa-times-circle{
-    font-size: small;
-    color: red;
-}
-.fa-ban{
-    font-size: small;
-    color: gray;
-}
-.modal-header{
-     background: #1072CE 
-}
-.modal-title{
-    text-align: center;
-   /*  justify-content: center;
-    align-items: center;
-    font-size: x-large; */
-}
 
-/*Rating Slide for dashboard01.html start*/
-.slidecontainer{
-    width: 100%;
+.table thead{
+    background: black;
+    color: #ffffff;
+ 
 }
-.slider{
-    appearance: none;
-    width: 100%;
-    height: 5px;
-    border-radius: 5px;
-    outline: none;
-    background: #F1F3F4;
-    transition: opacity .2s;
+.table thead tr{
+    background-color: #003366;
 }
-.slider:hover{
-    opacity: 1;
-}
-.slider::-webkit-slider-thumb{
-appearance: none;
-width: 15px;
-height: 15px;
-border-radius: 50%;
-cursor: pointer;
-background: #1072CE;
-}/*Rating Slide for dashboard01.html end*/
-
-
-.close{
-    font-size: 18px;
-    color: white;
-    margin: 10%;
-}
-.close:hover{
-    color: white;
-}
-.nameChurch{
-    vertical-align: middle;
-    text-align: left;
-    margin-right: 12px;
-}
-.nameChurch p {
-    margin-top: -9px;
-    /* vertical-align: middle; */
-}
-.particpantName{
-    font-size: 25px;
-}
-.checked{
-    color: orange;
-}
-.unchecked{
-    color: #1072CE;
-}
-.hide{
-    display: none;
-}
-#lniClose{
-    font-size:7px;
+.table thead tr th{
+    padding: 20px 10px;
 }
 
 /*pagination styles*/
