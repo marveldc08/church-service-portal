@@ -1,9 +1,25 @@
+import styled from 'styled-components';
 import React from 'react'
+import { BeatLoader } from "react-spinners";
 
-function loader() {
+function Loader() {
   return (
-    <div>loader</div>
+    <Container>
+     
+      
+      <BeatLoader size={52} color={'blue'} loading/>
+    </Container>
+
   )
 }
 
-export default loader
+export default Loader
+
+const Container= styled.div`
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ 
+`
+

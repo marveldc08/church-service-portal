@@ -5,29 +5,43 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
+import Modal from '../components/Modal';
+import USEMODAL from '../components/USEMODAL';
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
+
+
+
 function Dashboard() {
   const userContext = useContext(Context);
+        //MODAL
+  // const {isShown, toggle } = USEMODAL();
+  // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
+        //MODAL END
   //const results = useGet(requests.fetchActionMovies);
-  const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
-  // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
+  // const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
+  const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
    if (isLoading == true){
       console.log('loading.....')
    }else if(isLoading == false && !serverError){
-      console.log(apiData)
+      console.log(responsMessage)
    }
    
   return (
     <Container>
       <SideNav />
-      <Contain show = {userContext.isOpened}>
+      <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-          <h3>Welcome</h3>
+
+          {/* <button onClick={toggle}>Open modal</button> 
+           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
+          <Loader /> */}
+
           <Stats />
           <Charts />
+         
         </Content>
       </Contain>
     </Container>
@@ -35,7 +49,6 @@ function Dashboard() {
 }
 
 export default Dashboard
-
 interface Iprops{
   show: boolean;
 }
@@ -63,4 +76,8 @@ const Content = styled.div`
     color: rgba(24, 35, 89, 0.85) !important;
   }
 `
+
+function useModal(): { isShown: any; toggle: any; } {
+  throw new Error('Function not implemented.');
+}
 
