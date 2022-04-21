@@ -11,7 +11,9 @@ import Loader from '../components/Loader';
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
+
 import { StyledComponent } from '@emotion/styled';
+
 function Dashboard() {
   const userContext = useContext(Context);
         //MODAL
@@ -33,9 +35,11 @@ function Dashboard() {
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
+
           {/* <button onClick={toggle}>Open modal</button> 
            <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
           <Loader /> */}
+
           <Stats />
           <Charts />
          

@@ -12,6 +12,7 @@ const Login = () => {
             <img className="img-sub" src="./images/UIHere.jpeg" />
           </div>
         </nav>
+
         <div className="sub-main">
           <h3 className="login__h3">Welcome to CELZ4 Admin</h3>
           <h6 className="login__h6">Kindly input your credential.</h6>
