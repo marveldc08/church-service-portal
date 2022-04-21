@@ -8,6 +8,7 @@ import { Route, Routes, BrowserRouter} from 'react-router-dom';
 
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Error from './pages/Error';
 function App() {
   return (
     <AccessContexts>
@@ -26,6 +27,7 @@ function MyRoutes () {
           <Routes>
             <Route path='/' element={<Login />}/>
             <Route path='/dashboard' element={<Dashboard />}/>
+            <Route path='/error' element={<Error />}/>
           </Routes>
         </BrowserRouter>
       </div>

@@ -98,12 +98,12 @@ function DropdownMenu(props:Idropmenu) {
             Settings
           </DropdownItem>
           <Link to={'/'} >
-          <DropdownItem
-              leftIcon={<BiArrowToLeft />}
-             goToMenu="Sign Out">
-               Sign Out
-             
-          </DropdownItem>
+            <DropdownItem
+                leftIcon={<BiArrowToLeft />}
+              goToMenu="Sign Out">
+                Sign Out
+              
+            </DropdownItem>
           </Link>
          </div>
        </CSSTransition>    

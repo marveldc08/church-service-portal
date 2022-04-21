@@ -14,16 +14,10 @@ import './Dashboard.css';
 import { StyledComponent } from '@emotion/styled';
 function Dashboard() {
   const userContext = useContext(Context);
+        //MODAL
   // const {isShown, toggle } = USEMODAL();
-  // const content = <React.Fragment><h3>Hey, I'm a model.</h3>
-                  //     <form>
-                  //       <label>
-                  //         Attendance
-                  //       </label>
-                  //       <input type="select" />
-                        
-                  //     </form>
-                  // </React.Fragment>;
+  // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
+        //MODAL END
   //const results = useGet(requests.fetchActionMovies);
   const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
   // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
@@ -40,9 +34,9 @@ function Dashboard() {
         <Header />
         <Content>
           <h3>Welcome</h3>
-          {/* <button onClick={toggle}>Open modal</button> */}
-          {/* <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} /> */}
-          {/* <Loader /> */}
+          {/* <button onClick={toggle}>Open modal</button> 
+           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
+          <Loader /> */}
           <Stats />
           <Charts />
         </Content>

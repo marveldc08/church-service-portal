@@ -7,7 +7,7 @@ function Loader() {
     <Container>
      
       
-      <BeatLoader size={72} color={'blue'} loading/>
+      <BeatLoader size={52} color={'blue'} loading/>
     </Container>
 
   )

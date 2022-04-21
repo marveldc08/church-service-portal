@@ -43,7 +43,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
                     <input type="email"></input>
                     <label>Password:</label>
                     <input type="password"></input>
-                    <button onClick={() => {navigate("/dashboard")}}> Log In</button>
+                    <button onClick={() => {navigate("/Error")}}>Error</button>
             </form>
          
           </Content>
