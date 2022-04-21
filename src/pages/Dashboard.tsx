@@ -36,7 +36,6 @@ function Dashboard() {
         <Header />
         <Content>
 
-        
           {/* <button onClick={toggle}>Open modal</button> 
            <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
           <Loader /> */}
