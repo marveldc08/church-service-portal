@@ -5,7 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
-  <App />, document.getElementById('root')
+  <App />, 
+  document.getElementById('root')
 );
 console.log('Initially ' + (window.navigator.onLine ? 'on' : 'off') + 'line');
 // If you want to start measuring performance in your app, pass a function

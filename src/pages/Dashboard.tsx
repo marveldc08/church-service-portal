@@ -11,7 +11,9 @@ import Loader from '../components/Loader';
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
+
 import { StyledComponent } from '@emotion/styled';
+
 function Dashboard() {
   const userContext = useContext(Context);
         //MODAL
@@ -30,15 +32,18 @@ function Dashboard() {
   return (
     <Container>
       <SideNav />
-      <Contain show = {userContext.isOpened}>
+      <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-          <h3>Welcome</h3>
+
+        
           {/* <button onClick={toggle}>Open modal</button> 
            <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
           <Loader /> */}
+
           <Stats />
           <Charts />
+         
         </Content>
       </Contain>
     </Container>
@@ -46,7 +51,6 @@ function Dashboard() {
 }
 
 export default Dashboard
-
 interface Iprops{
   show: boolean;
 }
