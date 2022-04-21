@@ -30,15 +30,15 @@ function Dashboard() {
   return (
     <Container>
       <SideNav />
-      <Contain show = {userContext.isOpened}>
+      <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-          <h3>Welcome</h3>
           {/* <button onClick={toggle}>Open modal</button> 
            <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
           <Loader /> */}
           <Stats />
           <Charts />
+         
         </Content>
       </Contain>
     </Container>
@@ -46,7 +46,6 @@ function Dashboard() {
 }
 
 export default Dashboard
-
 interface Iprops{
   show: boolean;
 }

@@ -1,0 +1,31 @@
+
+.table thead{
+    background: black;
+    color: #ffffff;
+ 
+}
+.table thead tr{
+    background-color: #003366;
+}
+.table thead tr th{
+    padding: 20px 10px;
+}
+
+/*pagination styles*/
+.page-link {
+  border-color: #e1eaea; }
+
+.page-item{
+    background: #F1F3F4;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.page-item.active .page-link, .page-link:hover, .page-link:focus {
+  background-color: #0084ff;
+  border-color: #0084ff;
+  color: #fff; }
+
+.page-link:focus {
+  box-shadow: none;
+  background-color: #1072ce; }
