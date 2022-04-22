@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
+
+//const root = ReactDOM.createRoot( as HTMLElement);
 ReactDOM.render(
-  <App />, document.getElementById("root") 
+    <App />,
+    document.getElementById("root")
 );
 
-reportWebVitals(onPerfEntry)
+reportWebVitals(onPerfEntry);
 
-function onPerfEntry(onPerfEntry: any) {
-  throw new Error("Function not implemented.");
+function onPerfEntry(onPerfEntry : any){
+  throw new Error('Function not implemented.');
 }
