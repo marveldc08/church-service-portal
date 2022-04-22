@@ -1,7 +1,7 @@
 import React from "react";
 import './Login.css'
 import {useNavigate} from "react-router-dom";
-import Alerts from '../components/Alerts';
+// import Alerts from '../components/Alerts';
 
 
 const Login = () => {
@@ -13,7 +13,6 @@ const Login = () => {
                 <img className="img-sub" src="./images/UIHere.jpeg" />
             </div>
         </nav>
-        <Alerts />
             <div className="sub-main">
                 <h3>Welcome to CELZ4 Admin</h3>
                 <h6>Kindly input your credential.</h6>
