@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import Context from './Contexts';
 import './Header.css';
 import {useNavigate, Link} from "react-router-dom";
+import { useStorage, useGetStorage } from "../utilities/LocalStorage";
 
   function Header() {
     //  const [burgernav, setBurgernav] = useState(false);
@@ -82,6 +83,7 @@ function DropdownMenu(props:Idropmenu) {
     );
   }
   const navigate = useNavigate();
+   const getTheStore = useGetStorage();
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
       <CSSTransition
@@ -97,10 +99,10 @@ function DropdownMenu(props:Idropmenu) {
             goToMenu="settings">
             Settings
           </DropdownItem>
-          <Link to={'/'} >
+          <Link to={'/'} onClick={() => {getTheStore.getData()}}>
             <DropdownItem
                 leftIcon={<BiArrowToLeft />}
-              goToMenu="Sign Out">
+              goToMenu="Sign Out" >
                 Sign Out
               
             </DropdownItem>
