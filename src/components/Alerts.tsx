@@ -1,34 +1,52 @@
-// import React from "react";
-
+import React from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './Alerts.css'
 // import { Alert, AlertIcon, AlertTitle, AlertDescription, ChakraProvider, Box, CloseButton, VStack, Button} from '@chakra-ui/react';
 
 
-// function Alerts() {
-//     interface alertProp{
-//         children: JSX.Element,
-//         status: string
-//     }
+const CustomToast = () => {
+    return (
+        <div>
+            Oooops! Something went wrong
+        </div>
+    )
+}
 
-//     const[display, setDisplay] =React.useState('none')
 
-//     return (
-//         <ChakraProvider>
-//             <Box>
-//                 <VStack>
-//                     <Button onClick={() => setDisplay('')}>
-//                         Click the Button
-//                     </Button>
 
-//                     <Alert status='error'>
-//                         <AlertIcon />
-//                         <AlertTitle mr={2}>Your browser is outdated!</AlertTitle>
-//                         <AlertDescription>Your Chakra experience may be degraded.</AlertDescription>
-//                         <CloseButton position='absolute' right='8px' top='8px' />
-//                     </Alert>
-//                 </VStack>
-//             </Box>
-//         </ChakraProvider>
-//     )
-// }
 
-// export default Alerts;
+
+toast.configure()
+function Alerts() {
+    interface alertProp{
+        children: JSX.Element,
+        status: string
+    }
+
+        const customId = "custom-id-yes";
+        const notify = () => {
+            toast.warning('Sorry, Something happened', {position: toast.POSITION.TOP_LEFT,
+            autoClose: 5000,
+            toastId: customId
+            })
+             toast.success('Successfully Done', {position: toast.POSITION.TOP_RIGHT,
+             autoClose: 8000,
+             toastId: customId
+            })
+             toast.error(<CustomToast />, {position: toast.POSITION.BOTTOM_RIGHT,
+             autoClose: false,
+             toastId: customId
+             })
+             toast.info('Basic Notification', {position: toast.POSITION.BOTTOM_LEFT,
+             autoClose: false,
+             toastId: customId
+             })
+        }
+        return (
+            <div>
+                <button className="alert_button" onClick={notify}>Notify</button>
+            </div>
+        );
+ }
+export default Alerts;

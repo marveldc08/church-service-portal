@@ -5,6 +5,7 @@ import {
   VictoryPie,
   VictoryTheme,
   VictoryContainer,
+  VictoryVoronoiContainer,
 } from "victory"; 
 import styled from 'styled-components'
 function Charts() {
@@ -62,7 +63,6 @@ function Charts() {
           <Wrap>
             <h5>Reports By Time</h5>
             <VictoryPie
-              
               data={[
                 { x: "", y: 30, label: " " },
                 { x: "", y: 50, label: " " },
@@ -112,19 +112,25 @@ function Charts() {
 
       <LineChart>
         <h5>Financial Report</h5>
-        <VictoryChart theme={VictoryTheme.material} height={400} width={600}>
+        <VictoryChart
+          theme={VictoryTheme.material}
+          height={300}
+          width={500}
+          minDomain={{ y: 0 }}
+          maxDomain={{ y: 1000 }}
+        >
           <VictoryLine
             style={{
               data: { stroke: "#c43a31" },
               parent: { border: "1px solid #ccc" },
             }}
             data={[
-              { x: "Jan", y: 2.5 },
+              { x: "Jan", y: 25 },
               { x: "Feb", y: 39 },
               { x: "Mar", y: 40 },
               { x: "Apr", y: 100 },
               { x: "May", y: 90 },
-              { x: "June", y: 9.0 },
+              { x: "June", y: 19.0 },
               { x: "July", y: 230 },
               { x: "Aug", y: 80.99 },
               { x: "Sept", y: 95.3 },
@@ -133,7 +139,6 @@ function Charts() {
               { x: "Dec", y: 900 },
             ]}
             interpolation="natural"
-            padding={{ top: 200, bottom: 200 }}
           />
           <VictoryLine
             style={{
@@ -142,16 +147,16 @@ function Charts() {
             }}
             data={[
               { x: "Jan", y: 20.5 },
-              { x: "Feb", y: 3.6 },
+              { x: "Feb", y: 36 },
               { x: "Mar", y: 400 },
-              { x: "Apr", y: 10 },
+              { x: "Apr", y: 13 },
               { x: "May", y: 940 },
               { x: "June", y: 90.0 },
               { x: "July", y: 30 },
               { x: "Aug", y: 67 },
               { x: "Sept", y: 95.3 },
               { x: "Oct", y: 670 },
-              { x: "Nov", y: 8 },
+              { x: "Nov", y: 12 },
               { x: "Dec", y: 90 },
             ]}
             interpolation="natural"
@@ -180,6 +185,23 @@ function Charts() {
             padding={{ top: 200, bottom: 200 }}
           />
         </VictoryChart>
+        <ColorKey>
+          <h5>Color Key</h5>
+          <ColorGrid>
+            <DetailWrap>
+              <Key style={{ background: "#c43a31" }}></Key>
+              <span>Partnership</span>
+            </DetailWrap>
+            <DetailWrap>
+              <Key style={{ background: "#645200" }}></Key>
+              <span>Tithes</span>
+            </DetailWrap>
+            <DetailWrap>
+              <Key style={{ background: "#083e55" }}></Key>
+              <span>Offering</span>
+            </DetailWrap>
+          </ColorGrid>
+        </ColorKey>
       </LineChart>
     </Container>
   );
@@ -257,8 +279,8 @@ const LineChart = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 600px;
-  padding: 3em;
+  padding: 4em;
+  height: 900px;
   border-radius: 10px;
   background: #ffffff;
   margin-top: 1em;
