@@ -3,6 +3,9 @@ import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { useGet } from "../utilities/HttpConnection";
 import requests from "../utilities/requests";
+import Alerts from "../components/Alerts";
+
+
 const Login = () => {
     const navigate = useNavigate();
     const data = useGet(requests.fetchComedyMovies)
