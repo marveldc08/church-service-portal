@@ -1,10 +1,11 @@
 import React from "react";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
-
-
+import { useGet } from "../utilities/HttpConnection";
+import requests from "../utilities/requests";
 const Login = () => {
     const navigate = useNavigate();
+    const data = useGet(requests.fetchComedyMovies)
     return (
       <div className="login-block">
         <nav>
@@ -23,7 +24,7 @@ const Login = () => {
             <input type="password"></input>
             <button
               className="login__button"
-              onClick = {() => { navigate("/dashboard")}}
+              onClick = {() => { navigate("/dashboard"); data.refetch();}}
             >
               {" "}
               Log In

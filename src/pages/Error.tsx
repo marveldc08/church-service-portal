@@ -3,7 +3,8 @@
 import { Content } from '../components/modal.style';
 import './Error.css';
 
-function error() {
+function Error() {
+  
   return (
     <body>
       <div className="error-page">
@@ -23,7 +24,7 @@ function error() {
   )
 }
 
-export default error
+export default Error
 
 
 // const Container= styled.div`` 

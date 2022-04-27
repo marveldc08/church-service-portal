@@ -67,7 +67,8 @@ function DropdownMenu(props:Idropmenu) {
    interface Idrop{
      active?: boolean;
      leftIcon?: JSX.Element;
-     rightIcon?: JSX.Element;
+     rightIcon?: JSX.Element;  
+      
      children?: string;
      goToMenu?: string;
    }

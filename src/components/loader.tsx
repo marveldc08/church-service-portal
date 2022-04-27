@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 import React from 'react'
-import { BeatLoader } from "react-spinners";
+// import { BeatLoader } from "react-spinners";
 
 function Loader() {
   return (
     <Container>
      
       
-      <BeatLoader size={52} color={'blue'} loading/>
+      {/* <BeatLoader size={52} color={'blue'} loading/> */}
     </Container>
 
   )
