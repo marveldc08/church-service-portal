@@ -1,169 +1,101 @@
-import React from 'react'
+import React, { useMemo } from 'react';
+import { Column, useTable } from 'react-table';
 import styled from 'styled-components'
 import './Tables.css';
 
-function Tables() {
+
+
+//export const columns = useMemo : <React.DependencyList | undefined>(undefined);
+
+interface allServices {
+  id: string;
+  serviceType: string;
+  serviceDate: string;
+  startTime: string;
+  endTime: string;
+  action: JSX.Element
+}
+
+interface serviceReport {
+  id: string;
+  serviceType: string;
+  serviceDate: string;
+  serviceDuration: string;
+  sessions: string;
+  status: string;
+  action: string;
+}
+
+interface financialReport {
+  id: string;
+  serviceType: string;
+  cummulativeAmountInNaira: string;
+  cummulativeAmountInDollars: string;
+  status: string;
+}
+
+interface allChurches {
+  id: string;
+  churchName: string;
+  pastorName: string;
+  contact: string;
+  address: string;
+  group: string;
+  membershipStrength: string;
+  action: JSX.Element
+}
+
+interface allAdmin {
+  id: string;
+  firstName: string;
+  lastName: string;
+  role: string;
+  church: string;
+  group: string;
+  status: string;
+  action: JSX.Element
+}
+interface tableProps {
+  columns: readonly Column<{}>[] ; 
+  data: readonly {}[];
+}
+
+function renderCell () {
+  
+}
+
+
+function Tables ({columns, data}:tableProps) {
+  const{
+    getTableProps, getTableBodyProps, headerGroups, rows, prepareRow
+  } = useTable({columns,data})
+
   return (
     <Container>
-      <div>
-        <div className="bg-white">
-          <table className="table-responsive table mb-0">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Service Type</th>
-                <th>Service Date</th>
-                <th>Start Time</th>
-                <th>End Time</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="tr1">
-                <td className="title">1</td>
-                <td>Thanks Giving Service</td>
-                <td>April 25th</td>
-                <td>9:00am</td>
-                <td>12:00pm</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>First Fruit Service</td>
-                <td>Febuary 21st</td>
-                <td>9:00am</td>
-                <td> 11:30am</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Impactation Service</td>
-                <td>March 3rd</td>
-                <td>10:00am</td>
-                <td>12:33pm</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>4</td>
-                <td>Communion Service</td>
-                <td>April 3rd</td>
-                <td>9:00am</td>
-                <td>12:00pm</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>5</td>
-                <td>Mid-week Service</td>
-                <td>April 13th</td>
-                <td>6:00pm</td>
-                <td>8:00pm</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Partnership Service</td>
-                <td>June 24th</td>
-                <td>8:00am</td>
-                <td>11:10am</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Thanks Giving Sevice</td>
-                <td>December 14th</td>
-                <td>9:00am</td>
-                <td>12:09pm</td>
-                <td>
-                  <button
-                    className="btn btn-primary tableBtn"
-                    data-toggle="modal"
-                    data-target="#contentModal"
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <Pagination>
-            <ul>
-              <li className="page-item disabled">
-                <a className="page-link" href="javascript:void(0);">
-                  Prev
-                </a>
-              </li>
-              <li className="page-item active">
-                <a className="page-link" href="javascript:void(0);">
-                  1
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0);">
-                  2
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0);">
-                  3
-                </a>
-              </li>
-              <li className="page-item">
-                <a className="page-link" href="javascript:void(0);">
-                  Next
-                </a>
-              </li>
-            </ul>
-          </Pagination>
-        </div>
-      </div>
+      <table {...getTableProps()} >
+        <thead>
+                {headerGroups.map(headerGroup => (
+                  <tr {...headerGroup.getHeaderGroupProps()} >
+                    {headerGroup.headers.map(column => (
+                      <th {...column.getHeaderProps()}> {column.render('Header')} </th>
+                    ))}
+                  </tr>
+                ))}
+        </thead>
+        <tbody {...getTableBodyProps()} >
+            {rows.map((row, i) => {
+              prepareRow(row)
+              return (
+                <tr {...row.getRowProps()}>
+                  {row.cells.map((cell) => (
+                    <td>{cell.render("Cell")}</td>
+                  ))}
+                </tr>
+              );
+            })}
+        </tbody>
+
+      </table>
     </Container>
   );
 }

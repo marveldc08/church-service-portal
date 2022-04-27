@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect, useMemo} from 'react'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav';
 import Stats from '../components/Stats';
@@ -10,6 +10,8 @@ import USEMODAL from '../components/USEMODAL';
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
+import Tables from '../components/Tables';
+import axios from 'axios';
 
 
 
@@ -27,6 +29,60 @@ function Dashboard() {
    }else if(isLoading == false && !serverError){
       console.log(responsMessage)
    }
+
+   const [data , setData] = useState([]);
+
+   useEffect(() => {
+     axios("http://api.tvmaze.com/search/shows?q=girls")
+       .then((res) => {
+         setData(res.data);
+       })
+       .catch((err) => console.log(err));
+   }, []);
+   let value:string;
+   const columns = useMemo(() => [
+     {
+       Header: "TV Show",
+       columns: [
+         {
+           Header: "Name",
+           accessor: "show.name",
+         },
+         {
+           Header: "Type",
+           accessor: "show.type",
+         },
+         {
+           Header: "Language",
+           accessor: "show.language",
+         },
+         {
+           Header: "Official Site",
+           accessor: "show.officialSite",
+           Cell: ({ cell: { value } }) => (value ? { value } : "-"),
+         },
+         {
+           Header: "Rating",
+           accessor: "show.rating.average",
+           Cell:({ cell: { value } }) => value || "-",
+         },
+         {
+           Header: "Status",
+           accessor: "show.status",
+         },
+         {
+           Header: "Premiered",
+           accessor: "show.premiered",
+           Cell: ({ cell: { value } }) => value || "-",
+         },
+         {
+           Header: "Time",
+           accessor: "show.schedule.time",
+           Cell: ({ cell: { value } }) => value || "-",
+         },
+       ],
+     },
+   ], []);
    
   return (
     <Container>
@@ -43,6 +99,7 @@ function Dashboard() {
           <Charts />
          
         </Content>
+        <Tables columns={columns} data={data} />
       </Contain>
     </Container>
   );
