@@ -5,56 +5,7 @@ import './Tables.css';
 
 
 
-//export const columns = useMemo : <React.DependencyList | undefined>(undefined);
 
-interface allServices {
-  id: string;
-  serviceType: string;
-  serviceDate: string;
-  startTime: string;
-  endTime: string;
-  action: JSX.Element
-}
-
-interface serviceReport {
-  id: string;
-  serviceType: string;
-  serviceDate: string;
-  serviceDuration: string;
-  sessions: string;
-  status: string;
-  action: string;
-}
-
-interface financialReport {
-  id: string;
-  serviceType: string;
-  cummulativeAmountInNaira: string;
-  cummulativeAmountInDollars: string;
-  status: string;
-}
-
-interface allChurches {
-  id: string;
-  churchName: string;
-  pastorName: string;
-  contact: string;
-  address: string;
-  group: string;
-  membershipStrength: string;
-  action: JSX.Element
-}
-
-interface allAdmin {
-  id: string;
-  firstName: string;
-  lastName: string;
-  role: string;
-  church: string;
-  group: string;
-  status: string;
-  action: JSX.Element
-}
 interface tableProps {
   columns: readonly Column<{}>[] ; 
   data: readonly {}[];
@@ -65,7 +16,7 @@ function renderCell () {
 }
 
 
-function Tables ({columns, data}:tableProps) {
+function Tables ({columns, data}:tableProps) { 
   const{
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow
   } = useTable({columns,data})

@@ -59,12 +59,12 @@ function Dashboard() {
          {
            Header: "Official Site",
            accessor: "show.officialSite",
-           Cell: ({ cell: { value } }) => (value ? { value } : "-"),
+           //Cell: ({ cell: { value } }) => (value ? { value } : "-"),
          },
          {
            Header: "Rating",
            accessor: "show.rating.average",
-           Cell:({ cell: { value } }) => value || "-",
+           //Cell:({ cell: { value } }) => value || "-",
          },
          {
            Header: "Status",
@@ -73,12 +73,12 @@ function Dashboard() {
          {
            Header: "Premiered",
            accessor: "show.premiered",
-           Cell: ({ cell: { value } }) => value || "-",
+           //Cell: ({ cell: { value } }) => value || "-",
          },
          {
            Header: "Time",
            accessor: "show.schedule.time",
-           Cell: ({ cell: { value } }) => value || "-",
+           //Cell: ({ cell: { value } }) => value || "-",
          },
        ],
      },
