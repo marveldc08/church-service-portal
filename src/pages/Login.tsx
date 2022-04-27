@@ -31,7 +31,9 @@ const Login = () => {
             </button>
           </form>
         </div>
+        <Alerts />
       </div>
+
     );
 }
 
