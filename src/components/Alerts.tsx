@@ -1,5 +1,5 @@
 import React from "react";
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './Alerts.css'
 // import { Alert, AlertIcon, AlertTitle, AlertDescription, ChakraProvider, Box, CloseButton, VStack, Button} from '@chakra-ui/react';
