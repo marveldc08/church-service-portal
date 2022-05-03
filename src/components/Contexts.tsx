@@ -42,6 +42,7 @@ export function AccessContexts(props: IContext){
                 setData(res.data.slice(offset - 1 , offset - 1 + postsPerPage));
                  
                 setPageCount(Math.ceil(data.length / postsPerPage))
+                console.log(data.length)
               })
               .catch((err) => console.log(err));
           }, []);

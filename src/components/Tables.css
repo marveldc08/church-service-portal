@@ -2,6 +2,7 @@
 .table thead tr{
     background-color: #003366;
     color: #ffffff;
+    border: 1px solid gray;
 }
 .table thead tr th{
     padding: 20px 10px;
@@ -18,23 +19,47 @@
   border-radius: 8px;
   margin-left: 3px;
   margin-right: 3px;
+  border: 1px solid #003366;
 }
-
+.table__button:hover{
+  color: #003366;
+  background-color: gold;
+  border: 1px solid #003366;
+}
 /*pagination styles*/
-.page-link {
-  border-color: #e1eaea; }
 
-.page-item{
-    background: #F1F3F4;
-    padding: 5px;
-    border-radius: 10px;
-}
 
-.page-item.active .page-link, .page-link:hover, .page-link:focus {
-  background-color: #0084ff;
-  border-color: #0084ff;
-  color: #fff; }
+  .pagination {
+    margin-top: 36px;
+    margin-left: -40px;
+    display: flex;
+    list-style: none;
+    outline: none;
+   }
+    
+   .pagination>.active>a {
+    background-color: #ffffff;
+    color: #003366;
+   }
+   .pagination>.active>a:hover{
+    color: #003366;
+    background-color: gold;
+   }
+    
+   .pagination>li>a {
+    border: 1px solid #003366;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+   }
+    
+   .pagination>li>a, .pagination>li>span {
+    color: #ffffff;
+    background-color: #003366;
+   }
 
-.page-link:focus {
-  box-shadow: none;
-  background-color: #1072ce; }
+   .pagination>li>a:hover{
+    color: #003366;
+    background-color: gold;
+    text-decoration: none;
+   }

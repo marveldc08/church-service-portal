@@ -32,7 +32,9 @@ function Dashboard() {
    }
 
    
-   useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls")
+    useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls")
+  
+   
    
    const columns = useMemo(() => [
      {
@@ -53,9 +55,7 @@ function Dashboard() {
          {
            Header: "Official Site",
            accessor: "show.officialSite",
-           Cell: () => (<>
-           <button className='table__button'>Update</button>
-           </> ),
+           
          },
          {
            Header: "Rating",
@@ -76,6 +76,13 @@ function Dashboard() {
            accessor: "show.schedule.time",
            //Cell: ({ cell: { value } }) => value || "-",
          },
+         {
+          Header: "Action",
+          accessor: "",
+          Cell: () => (<>
+          <button className='table__button'>Update</button>
+          </> ),
+        },
        ],
      },
    ], []);
