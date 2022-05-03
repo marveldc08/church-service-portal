@@ -1,14 +1,23 @@
 
-.table thead{
-    background: black;
-    color: #ffffff;
- 
-}
 .table thead tr{
     background-color: #003366;
+    color: #ffffff;
 }
 .table thead tr th{
     padding: 20px 10px;
+  
+}
+
+
+/*button style*/
+.table__button{
+  border: none;
+  background-color: #003366;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 /*pagination styles*/

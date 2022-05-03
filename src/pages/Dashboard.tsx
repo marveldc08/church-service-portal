@@ -11,12 +11,13 @@ import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
 import Tables from '../components/Tables';
-import axios from 'axios';
+
 
 
 
 function Dashboard() {
   const userContext = useContext(Context);
+  const useApiCall = useContext(Context);
         //MODAL
   // const {isShown, toggle } = USEMODAL();
   // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
@@ -30,16 +31,9 @@ function Dashboard() {
       console.log(responsMessage)
    }
 
-   const [data , setData] = useState([]);
-
-   useEffect(() => {
-     axios("http://api.tvmaze.com/search/shows?q=girls")
-       .then((res) => {
-         setData(res.data);
-       })
-       .catch((err) => console.log(err));
-   }, []);
-   let value:string;
+   
+   useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls")
+   
    const columns = useMemo(() => [
      {
        Header: "TV Show",
@@ -59,7 +53,9 @@ function Dashboard() {
          {
            Header: "Official Site",
            accessor: "show.officialSite",
-           //Cell: ({ cell: { value } }) => (value ? { value } : "-"),
+           Cell: () => (<>
+           <button className='table__button'>Update</button>
+           </> ),
          },
          {
            Header: "Rating",
@@ -97,9 +93,8 @@ function Dashboard() {
 
           <Stats />
           <Charts />
-         
+          <Tables columns={columns} data={useApiCall.data} />
         </Content>
-        <Tables columns={columns} data={data} />
       </Contain>
     </Container>
   );

@@ -1,19 +1,23 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect, useContext } from 'react';
+
 import { Column, useTable } from 'react-table';
+import ReactPaginate from 'react-paginate';
 import styled from 'styled-components'
 import './Tables.css';
+import Context from './Contexts'
 
 
 
-
-interface tableProps {
+interface tableProps { 
   columns: readonly Column<{}>[] ; 
   data: readonly {}[];
 }
 
-function renderCell () {
-  
-}
+
+
+
+
+
 
 
 function Tables ({columns, data}:tableProps) { 
@@ -21,14 +25,16 @@ function Tables ({columns, data}:tableProps) {
     getTableProps, getTableBodyProps, headerGroups, rows, prepareRow
   } = useTable({columns,data})
 
+  const use = useContext(Context)
+ 
   return (
     <Container>
-      <table {...getTableProps()} >
-        <thead>
+      <table className='table' {...getTableProps()} >
+        <thead >
                 {headerGroups.map(headerGroup => (
-                  <tr {...headerGroup.getHeaderGroupProps()} >
+                  <tr  {...headerGroup.getHeaderGroupProps()} >
                     {headerGroup.headers.map(column => (
-                      <th {...column.getHeaderProps()}> {column.render('Header')} </th>
+                      <th  {...column.getHeaderProps()}> {column.render('Header')} </th>
                     ))}
                   </tr>
                 ))}
@@ -37,9 +43,9 @@ function Tables ({columns, data}:tableProps) {
             {rows.map((row, i) => {
               prepareRow(row)
               return (
-                <tr {...row.getRowProps()}>
+                <tr  {...row.getRowProps()}>
                   {row.cells.map((cell) => (
-                    <td>{cell.render("Cell")}</td>
+                    <td >{cell.render("Cell")}</td>
                   ))}
                 </tr>
               );
@@ -47,6 +53,24 @@ function Tables ({columns, data}:tableProps) {
         </tbody>
 
       </table>
+      <ReactPaginate
+
+       previousLabel={"< previous"}
+       nextLabel={"next >"}
+       breakLabel={"..."}
+       breakClassName={"break-me"}
+       pageCount={use.pageCount}
+       onPageChange={use.handlePageClick}
+       containerClassName={"pagination"}
+       //subContainerClassName={ "pages pagination" }
+       activeClassName={"active"}
+        pageRangeDisplayed={5}
+        previousLinkClassName={"previousButton"}
+        nextLinkClassName={"nextButton"}
+        disabledClassName={"navigationDisabled"}
+
+        //  renderOnZeroPageCount={()=>{} }
+      />
     </Container>
   );
 }
@@ -54,11 +78,12 @@ function Tables ({columns, data}:tableProps) {
 export default Tables
 
 const Container = styled.div`
-  display: flex;
+    display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
   border-radius: 10px;
+  background: #ffffff;
   margin: 2em 0;
   padding: 2em;
 `; 
