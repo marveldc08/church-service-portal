@@ -11,6 +11,7 @@ import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
 import Tables from '../components/Tables';
+import { TableColumn } from 'react-data-table-component';
 
 
 
@@ -36,7 +37,7 @@ function Dashboard() {
    
     
   
-/*    const columns = useMemo(() => [
+   const columns = useMemo(() => [
      {
        Header: "TV Show",
        columns: [
@@ -85,64 +86,74 @@ function Dashboard() {
         },
        ],
      },
-   ], []); */
+   ], []); 
    
-
-   const columns = [
+   /* interface DataRow {
+    show: {
+      name:string,
+      type: string,
+      language: string,
+      officialSite: string,
+      rating: {
+        average: number
+      },
+      status: string,
+      premiered: string,
+      schedule: {
+        time: string
+      }
+    };
+    title: string;
+    director: string;
+    year: string;
+}
+  
+   const columns:  TableColumn<DataRow>[] = [
     {
-        name: 'Title',
-        //selector: row => row.title,
-        sortable: true,
+      name: "Name",
+      selector: row => row.show.name,
+      sortable: true,
     },
     {
-        name: 'Year',
-        //selector: row => row.year,
-        sortable: true,
+      name: "Type",
+      selector: row => row.show.type,
     },
     {
-      Header: "Name",
-      accessor: "show.name",
+      name: "Language",
+      selector: row => row.show.language,
     },
     {
-      Header: "Type",
-      accessor: "show.type",
-    },
-    {
-      Header: "Language",
-      accessor: "show.language",
-    },
-    {
-      Header: "Official Site",
-      accessor: "show.officialSite",
+      name: "Official Site",
+      selector: row => row.show.officialSite,
       
     },
     {
-      Header: "Rating",
-      accessor: "show.rating.average",
+      name: "Rating",
+      selector: row => row.show.rating.average,
       //Cell:({ cell: { value } }) => value || "-",
     },
     {
-      Header: "Status",
-      accessor: "show.status",
+      name: "Status",
+      selector: row => row.show.status,
     },
     {
-      Header: "Premiered",
-      accessor: "show.premiered",
+      name: "Premiered",
+      selector: row => row.show.premiered,
       //Cell: ({ cell: { value } }) => value || "-",
     },
     {
-      Header: "Time",
-      accessor: "show.schedule.time",
+      name: "Time",
+      selector: row => row.show.schedule.time,
       //Cell: ({ cell: { value } }) => value || "-",
     },
     {
-     Header: "Action",
-     accessor: "",
-     Cell: () => (<>
+     name: "Action",
+    
+     cell: () => (<>
      <button className='table__button'>Update</button>
      </> ),
    },
-];
+]; */
   return (
     <Container>
       <SideNav />
