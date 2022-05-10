@@ -6,6 +6,11 @@ import styled from 'styled-components'
 import './Tables.css';
 import Context from './Contexts'
 
+import DataTable, { TableProps } from 'react-data-table-component';
+
+const selectProps = { indeterminate: (isIndeterminate: boolean) => isIndeterminate };
+
+
 
 
 interface tableProps { 
@@ -20,57 +25,24 @@ interface tableProps {
 
 
 
-function Tables ({columns, data}:tableProps) { 
-  const{
-    getTableProps, getTableBodyProps, headerGroups, rows, prepareRow
-  } = useTable({columns,data})
-
+function Tables <T>(props: TableProps<T>): JSX.Element { 
+  
   const use = useContext(Context)
  
   return (
     <Container>
-      <table className='table' {...getTableProps()} >
-        <thead >
-                {headerGroups.map(headerGroup => (
-                  <tr  {...headerGroup.getHeaderGroupProps()} >
-                    {headerGroup.headers.map(column => (
-                      <th  {...column.getHeaderProps()}> {column.render('Header')} </th>
-                    ))}
-                  </tr>
-                ))}
-        </thead>
-        <tbody {...getTableBodyProps()} >
-            {rows.map((row, i) => {
-              prepareRow(row)
-              return (
-                <tr  {...row.getRowProps()}>
-                  {row.cells.map((cell) => (
-                    <td >{cell.render("Cell")}</td>
-                  ))}
-                </tr>
-              );
-            })}
-        </tbody>
-
-      </table>
-      <ReactPaginate
-
-       previousLabel={"< previous"}
-       nextLabel={"next >"}
-       breakLabel={"..."}
-       breakClassName={"break-me"}
-       pageCount={use.pageCount}
-       onPageChange={use.handlePageClick}
-       containerClassName={"pagination"}
-       //subContainerClassName={ "pages pagination" }
-       activeClassName={"active"}
-        pageRangeDisplayed={5}
-        previousLinkClassName={"previousButton"}
-        nextLinkClassName={"nextButton"}
-        disabledClassName={"navigationDisabled"}
-
-        //  renderOnZeroPageCount={()=>{} }
-      />
+         <DataTable
+            className='table'
+            //direction="auto"
+            fixedHeaderScrollHeight="300px"
+            pagination
+            responsive
+            //subHeaderAlign="right"
+            subHeaderWrap
+            selectableRowsComponentProps={selectProps}
+            dense
+            {...props}
+        />
     </Container>
   );
 }

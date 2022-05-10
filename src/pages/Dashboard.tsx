@@ -33,10 +33,10 @@ function Dashboard() {
 
    
     useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls")
+   
+    
   
-   
-   
-   const columns = useMemo(() => [
+/*    const columns = useMemo(() => [
      {
        Header: "TV Show",
        columns: [
@@ -85,8 +85,64 @@ function Dashboard() {
         },
        ],
      },
-   ], []);
+   ], []); */
    
+
+   const columns = [
+    {
+        name: 'Title',
+        //selector: row => row.title,
+        sortable: true,
+    },
+    {
+        name: 'Year',
+        //selector: row => row.year,
+        sortable: true,
+    },
+    {
+      Header: "Name",
+      accessor: "show.name",
+    },
+    {
+      Header: "Type",
+      accessor: "show.type",
+    },
+    {
+      Header: "Language",
+      accessor: "show.language",
+    },
+    {
+      Header: "Official Site",
+      accessor: "show.officialSite",
+      
+    },
+    {
+      Header: "Rating",
+      accessor: "show.rating.average",
+      //Cell:({ cell: { value } }) => value || "-",
+    },
+    {
+      Header: "Status",
+      accessor: "show.status",
+    },
+    {
+      Header: "Premiered",
+      accessor: "show.premiered",
+      //Cell: ({ cell: { value } }) => value || "-",
+    },
+    {
+      Header: "Time",
+      accessor: "show.schedule.time",
+      //Cell: ({ cell: { value } }) => value || "-",
+    },
+    {
+     Header: "Action",
+     accessor: "",
+     Cell: () => (<>
+     <button className='table__button'>Update</button>
+     </> ),
+   },
+];
   return (
     <Container>
       <SideNav />
