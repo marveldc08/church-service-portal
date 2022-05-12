@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React from 'react'
-// import { BeatLoader } from "react-spinners";
+//import { BeatLoader } from "react-spinners";
 
 function Loader() {
   return (
