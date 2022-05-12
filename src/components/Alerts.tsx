@@ -17,7 +17,7 @@ const CustomToast = () => {
 
 
 
-toast.configure()
+//toast.configure()
 function Alerts() {
     interface alertProp{
         children: JSX.Element,
