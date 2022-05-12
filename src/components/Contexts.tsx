@@ -7,7 +7,7 @@ const Context = createContext({
      collapseSideNav: () => {},
      isOpened: true,
 
-     postsPerPage: 2,
+     postsPerPage: 10,
      offset: 1,
      pageCount: 0,
      data: [],
@@ -22,8 +22,8 @@ interface IContext{
 export function AccessContexts(props: IContext){
      const [isOpenSideNav, setIsOpenSideNav] = useState(true);
 
-     const [postsPerPage] = useState(5);
-     const [offset, setOffset] = useState(1);
+     const [postsPerPage] = useState(10);
+     const [offset, setOffset] = useState(5);
      const [pageCount, setPageCount] = useState(0)
      const [data , setData] = useState([]);
 

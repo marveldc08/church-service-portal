@@ -37,29 +37,34 @@
     outline: none;
    }
     
-   .pagination>.active>a {
+   .pagination:active a {
     background-color: #ffffff;
     color: #003366;
    }
-   .pagination>.active>a:hover{
+   .pagination:active a:hover{
     color: #003366;
     background-color: gold;
    }
     
-   .pagination>li>a {
+   .pagination li a {
     border: 1px solid #003366;
     padding: 5px 10px;
     outline: none;
     cursor: pointer;
    }
     
-   .pagination>li>a, .pagination>li>span {
+   .pagination li a, .pagination>li>span {
     color: #ffffff;
     background-color: #003366;
    }
 
-   .pagination>li>a:hover{
+   .pagination li a:hover{
     color: #003366;
     background-color: gold;
     text-decoration: none;
+   }
+
+   .paginate_select{
+     margin-left: 5px;
+     height: 7px;
    }

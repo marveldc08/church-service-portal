@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect, useContext } from 'react';
 
 import { Column, usePagination, useTable, useFilters, useGlobalFilter } from 'react-table';
-import { GlobalFilter} from "./Filter";
+import { GlobalFilter, DefaultFilterForColumn} from "./Filter";
 import ReactPaginate from 'react-paginate';
 import styled from 'styled-components'
 import './Tables.css';
@@ -86,7 +86,7 @@ function Tables<T extends {id: string}> ({columns, data}: TableProps<T>): React.
   
   const use = useContext(Context)
   const {
-    setGlobalFilter,
+    
     getTableProps,
     getTableBodyProps,
     headerGroups,
@@ -94,23 +94,38 @@ function Tables<T extends {id: string}> ({columns, data}: TableProps<T>): React.
     state,
     visibleColumns,
     prepareRow,
-    
+    setGlobalFilter,
    preGlobalFilteredRows,
+
+   canPreviousPage,
+    canNextPage,
+    pageOptions,
+    pageCount,
+    gotoPage,
+    nextPage,
+    previousPage,
+    setPageSize,
+    state: { pageIndex, pageSize },
+
   }  = useTable<T>({
   columns,
   data,
+  defaultColumn: { Filter: DefaultFilterForColumn },
+  initialState: { pageIndex: 2, pageSize: 5 },
   updateMyData: function (rowIndex: number, columnId: string, value: any): void {
     throw new Error('Function not implemented.');
+    
   }
 },
  
   useFilters,
   useGlobalFilter,
-  usePagination
+  usePagination,
   )
+  
   return (
     <Container>
-     
+       
         <table className='table' {...getTableProps()} >
         <thead >
             <tr>
@@ -131,7 +146,13 @@ function Tables<T extends {id: string}> ({columns, data}: TableProps<T>): React.
             {headerGroups.map(headerGroup => (
               <tr  {...headerGroup.getHeaderGroupProps()} >
                 {headerGroup.headers.map(column => (
-                  <th  {...column.getHeaderProps()}> {column.render('Header')} </th>
+                  <th  {...column.getHeaderProps()}> 
+                    {column.render('Header')} 
+                     {/* Rendering Default Column Filter */}
+                      {/* <div>
+                        {column.canFilter ? column.render("Filter") :null}
+                      </div> */}
+                  </th>
                 ))}
               </tr>
             ))}
@@ -150,7 +171,7 @@ function Tables<T extends {id: string}> ({columns, data}: TableProps<T>): React.
         </tbody>
 
       </table>
-      <ReactPaginate
+      {/* <ReactPaginate
         className='pagination'
        previousLabel={"< previous"}
        nextLabel={"next >"}
@@ -159,7 +180,41 @@ function Tables<T extends {id: string}> ({columns, data}: TableProps<T>): React.
        pageCount={use.pageCount}
        onPageChange={use.handlePageClick}
        onClick={use.handlePageClick}
-        />
+        /> */}
+
+    <ul className="pagination">
+        <li className="page-item" onClick={() => previousPage()} >
+            <a className="page-link"> {'< Previous'}</a>
+        </li>
+        
+        <li className="page-item" onClick={() => nextPage()} >
+            <a className="page-link">{'Next >'} </a>
+        </li>
+        <li>
+            <a className="page-link">
+                Page{' '}
+                <strong>
+                    {pageIndex + 1} of {pageOptions.length}
+                </strong>{' '}
+            </a>
+        </li>
+       {' '}
+        <select
+            className="form-control paginate_select"
+            value={pageSize}
+            onChange={e => {
+                setPageSize(Number(e.target.value))
+            }}
+            style={{ width: '120px', height: '38px' }}
+        >
+            {[5, 10, 20, 30, 40, 50].map(pageSize => (
+                <option key={pageSize} value={pageSize}>
+                    Show {pageSize}
+                </option>
+            ))}
+        </select>
+     </ul>
+
     </Container>
   );
 }

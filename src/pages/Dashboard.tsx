@@ -11,7 +11,8 @@ import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
 import Tables from '../components/Tables';
-import { TableColumn } from 'react-data-table-component';
+//import { TableColumn } from 'react-data-table-component';
+import { SelectColumnFilter } from '../components/Filter';
 
 
 
@@ -52,6 +53,8 @@ function Dashboard() {
          {
            Header: "Language",
            accessor: "show.language",
+           Filter: SelectColumnFilter,
+          filter: "includes",
          },
          {
            Header: "Official Site",
