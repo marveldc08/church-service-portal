@@ -21,8 +21,26 @@ export const useGet = (endPoint:string) =>  {
           }
           
           fetchData();
-     }, [endPoint])
-     return { isLoading, apiData, serverError };
+     }, [endPoint]);
+     const refetch = () => {
+          setIsLoading(true);
+          const fetchData = async () =>{
+              try{
+                    fetch(`${BASE_URL}${endPoint}`).then(response =>{return response.json()}).then((data) => {
+                         setApiData(data.results);
+                         console.log(data.results);
+                    })
+                    setIsLoading(false);
+              } 
+              catch(error:any){
+                    setServerError(error);
+                    setIsLoading(false);
+              }
+          }
+          
+          fetchData();
+     }
+     return { isLoading, apiData, serverError, refetch };
 }
 interface createService{
      serviceType: string;
@@ -99,5 +117,29 @@ export const usePost = (props: createService | updateService | financialReport |
        postData();
       
      }, [])
-     return {isLoading, responsMessage, serverError};
+     const repost = () =>{
+          const postData = async () => {
+               setIsLoading(true)
+               try{
+                       fetch('https://disney-clone-99f2f-default-rtdb.firebaseio.com/Users.json',{
+                            method : 'post',
+                            body : JSON.stringify(props),
+                            headers: {
+                                 'content-Type': 'application/json'
+                            }
+                       }).then(()=>{
+                            setResponsMessage('Successful.');
+                            setIsLoading(false);
+                            
+                       })
+               }
+               catch(error: any){
+                  setServerError(error);
+                  setIsLoading(false);
+               }
+          }
+   
+          postData();
+     }
+     return {isLoading, responsMessage, serverError, repost};
 } 

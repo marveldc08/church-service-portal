@@ -2,6 +2,9 @@ import React, {useRef,useState, useEffect, FC} from "react";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
 import { useStorage } from "../utilities/LocalStorage";
+import { useGet } from "../utilities/HttpConnection";
+import requests from "../utilities/requests";
+import Alerts from "../components/Alerts";
 
 
 const Login: FC = () => {
@@ -24,6 +27,7 @@ const Login: FC = () => {
     }
      const handleStore = useStorage( encoded );
     
+    const data = useGet(requests.fetchComedyMovies)
     return (
       <div className="login-block">
         <nav>
@@ -46,7 +50,9 @@ const Login: FC = () => {
             </button>
           </form>
         </div>
+        <Alerts />
       </div>
+
     );
 }
 

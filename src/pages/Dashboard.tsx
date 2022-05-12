@@ -24,13 +24,12 @@ function Dashboard() {
   // const {isShown, toggle } = USEMODAL();
   // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
         //MODAL END
-  //const results = useGet(requests.fetchActionMovies);
-  // const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
-  const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
+  const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
+  // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
    if (isLoading == true){
       console.log('loading.....')
    }else if(isLoading == false && !serverError){
-      console.log(responsMessage)
+      console.log(apiData)
    }
 
    
@@ -178,6 +177,7 @@ function Dashboard() {
 }
 
 export default Dashboard
+
 interface Iprops{
   show: boolean;
 }
