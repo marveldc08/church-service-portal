@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import './Alerts.css'
@@ -17,7 +17,7 @@ const CustomToast = () => {
 
 
 
-toast.configure()
+//toast.configure()
 function Alerts() {
     interface alertProp{
         children: JSX.Element,
