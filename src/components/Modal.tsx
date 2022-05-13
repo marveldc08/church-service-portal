@@ -26,26 +26,22 @@ export const Modal: FunctionComponent<ModalProps> = ({
     headerText,
   }) =>
  {
-    const navigate = useNavigate();
+    
   const modal = (
           <React.Fragment>
       <Backdrop />
       <Wrapper>
         <StyledModal>
-        <Close onClick={hide}>X</Close>
+        
           <Header>
-            <HeaderText>{headerText}</HeaderText>  
+            <HeaderText>
+              {headerText}
+              
+            </HeaderText>  
+            <Close onClick={hide}>X</Close>
           </Header>
           <Content>
             {modalContent}
-            <form>
-                    <label>Email:</label>
-                    <input type="email"></input>
-                    <label>Password:</label>
-                    <input type="password"></input>
-                    <button onClick={() => {navigate("/Error")}}>Error</button>
-            </form>
-         
           </Content>
          
         </StyledModal>
