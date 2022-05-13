@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useState, useEffect, useMemo} from 'react'
 import Header from '../components/Header'
 import SideNav from '../components/SideNav';
 import Stats from '../components/Stats';
@@ -7,17 +7,18 @@ import styled from "styled-components";
 import Context from '../components/Contexts';
 import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
-import Loader from '../components/Loader';
+// import Loader from '../components/Loader';
 // import {useNavigate} from "react-router-dom";
 
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
 
-import { StyledComponent } from '@emotion/styled';
+
 
 function Dashboard() {
   const userContext = useContext(Context);
+  const useApiCall = useContext(Context);
         //MODAL
   //       const navigate = useNavigate();
   // const {isShown, toggle } = USEMODAL();
@@ -33,6 +34,8 @@ function Dashboard() {
   //                 </React.Fragment>;
         // MODAL END
   //const results = useGet(requests.fetchActionMovies);
+  // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
+        //MODAL END
   const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
   // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
    if (isLoading == true){
@@ -40,6 +43,7 @@ function Dashboard() {
    }else if(isLoading == false && !serverError){
       console.log(apiData)
    }
+
    
   return (
     <Container>
@@ -54,7 +58,6 @@ function Dashboard() {
 
           <Stats />
           <Charts />
-         
         </Content>
       </Contain>
     </Container>
@@ -62,6 +65,7 @@ function Dashboard() {
 }
 
 export default Dashboard
+
 interface Iprops{
   show: boolean;
 }

@@ -187,20 +187,27 @@ function Charts() {
         </VictoryChart>
         <ColorKey>
           <h5>Color Key</h5>
-          <ColorGrid>
+          <LinearColorGrid>
             <DetailWrap>
-              <Key style={{ background: "#c43a31" }}></Key>
-              <span>Partnership</span>
+              <ColorWrap>
+                  <Key style={{ background: "#c43a31" }}></Key>
+                  <span>Partnership</span>
+              </ColorWrap>
+             
             </DetailWrap>
             <DetailWrap>
-              <Key style={{ background: "#645200" }}></Key>
-              <span>Tithes</span>
+              <ColorWrap>
+                <Key style={{ background: "#645200" }}></Key>
+                <span>Tithes</span>
+              </ColorWrap>
             </DetailWrap>
             <DetailWrap>
-              <Key style={{ background: "#083e55" }}></Key>
-              <span>Offering</span>
+              <ColorWrap>
+                  <Key style={{ background: "#083e55" }}></Key>
+                  <span>Offering</span>
+              </ColorWrap>
             </DetailWrap>
-          </ColorGrid>
+          </LinearColorGrid>
         </ColorKey>
       </LineChart>
     </Container>
@@ -255,6 +262,12 @@ const ColorGrid = styled.div`
   justify-content: start;
   align-items: start;
 `;
+const LinearColorGrid = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: start;
+`
 const DetailWrap = styled.div`
   display: flex;
   justify-content: start;
@@ -268,6 +281,10 @@ const DetailWrap = styled.div`
     text-transform: capitalize;
   }
 `;
+const ColorWrap =styled.div`
+  display : flex;
+  flex-direction: column;
+`
 const Key = styled.div`
   width: 70px;
   height: 12px;

@@ -1,10 +1,33 @@
-import React from "react";
+import React, {useRef,useState, useEffect, FC} from "react";
 import './Login.css'
 import { useNavigate } from "react-router-dom";
+import { useStorage } from "../utilities/LocalStorage";
+import { useGet } from "../utilities/HttpConnection";
+import requests from "../utilities/requests";
+import Alerts from "../components/Alerts";
 
 
-const Login = () => {
+const Login: FC = () => {
+  const emailRef = useRef<null | HTMLInputElement >(null);
+  const passwordRef = useRef<null | HTMLInputElement>(null);
+  const [encoded, setEncoded] = useState<string>('')
     const navigate = useNavigate();
+   
+     
+    const handleLogin= (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+     const password = passwordRef.current?.value;
+     console.log(password);
+    
+      if(typeof password == 'string'){
+          setEncoded(password);  
+      }
+      navigate("/dashboard");
+          
+    }
+     const handleStore = useStorage( encoded );
+    
+    const data = useGet(requests.fetchComedyMovies)
     return (
       <div className="login-block">
         <nav>
@@ -16,21 +39,20 @@ const Login = () => {
         <div className="sub-main">
           <h3 className="login__h3">Welcome to CELZ4 Admin</h3>
           <h6 className="login__h6">Kindly input your credential.</h6>
-          <form>
+          <form onSubmit={handleLogin}>
             <label>Email:</label>
-            <input type="email"></input>
+            <input ref={emailRef} type="email"></input>
             <label>Password:</label>
-            <input type="password"></input>
-            <button
-              className="login__button"
-              onClick = {() => { navigate("/dashboard")}}
-            >
+            <input ref={passwordRef} type="password"></input>
+            <button className="login__button" onClick={ () => { handleStore.storeData();}}>
               {" "}
               Log In
             </button>
           </form>
         </div>
+        <Alerts />
       </div>
+
     );
 }
 
