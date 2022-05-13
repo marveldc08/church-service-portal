@@ -8,7 +8,7 @@
     color: #000;
     margin: 10px;
 }
-.input__wrapper{
+.input-wrapper{
     position: relative;
     display: flex;
     justify-content: space-between;

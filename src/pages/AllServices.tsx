@@ -22,7 +22,7 @@ function AllServices() {
     const [headerText, setHeaderText] = useState("");
 
         function openCreateModal() {
-            setHeaderText("Create Modal")
+            setHeaderText("Create Service")
                 setContent(
                     <React.Fragment>
                         <form>
@@ -42,6 +42,42 @@ function AllServices() {
                                 <label className='flabel'>End Time</label>
                                 <input type="text" className="finput" />
                             </div>
+                            <Buttons>
+                                <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
+                                <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+                            </Buttons>
+                        </form>
+                    </React.Fragment>
+                )
+        };
+
+
+
+        function openUpdateModal() {
+            setHeaderText("Update Service")
+                setContent(
+                    <React.Fragment>
+                        <form>
+                            <div className='input-wrapper'>
+                                <label className='flabel'>Service Type</label>
+                                <input type="text" className="finput" />
+                            </div>
+                            <div className='input-wrapper'>
+                                <label className='flabel'>Service Date</label>
+                                <input type="text" className="finput" />
+                            </div>
+                            <div className='input-wrapper'>
+                                <label className='flabel'>Start Time</label>
+                                <input type="text" className="finput" />
+                            </div>
+                            <div className='input-wrapper'>
+                                <label className='flabel'>End Time</label>
+                                <input type="text" className="finput" />
+                            </div>
+                            <Buttons>
+                                <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
+                                <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+                            </Buttons>
                         </form>
                     </React.Fragment>
                 )
@@ -84,7 +120,7 @@ function AllServices() {
              Header: "Action",
              accessor: "",
              Cell: () => (<>
-             <button className='table__button' onClick={() => {toggle(), openCreateModal()}}>Update</button>
+             <button className='table__button' onClick={() => {toggle(), openUpdateModal()}}>Update</button>
              </> ),
            },
           ],
@@ -98,7 +134,9 @@ function AllServices() {
           <Contain show={userContext.isOpened}>
             <Header />
             <Content>
-                <button onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span>Create</button>
+                <Wrapper>
+                   <button onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span>Create</button>
+                </Wrapper>
                 <Tables columns={columns} data={useApiCall.data} /> 
                 <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
             </Content>
@@ -124,12 +162,18 @@ interface Iprops{
     margin-left: ${props => props.show ? '300px':'78px'};
     height: 100vh;
     overflow: auto;
-    background-color: #f1f2f3;
     transition: all 0.35s ease; 
     &::-webkit-scrollbar{
         display: none;
     }
     `
+    const Wrapper = styled.div`
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+            align-items: flex-end;
+            padding: 10px 25px;
+    `;
     const Content = styled.div` 
       button {
         width: 8rem;
@@ -156,6 +200,14 @@ interface Iprops{
             background: white;
             color: rgba(24, 35, 89, 0.85);
         }
+    `;
+
+    const Buttons = styled.div`
+        display: flex;
+        justify-content: flex-end;
+        padding: 10px;
+        font-size: 15px;
+        font-weight: 400;
     `;
    
  
