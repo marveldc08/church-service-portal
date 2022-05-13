@@ -14,11 +14,12 @@ import styled from "styled-components";
 function ManageChurches() {
    const userContext = useContext(Context)
    const useApiCall = useContext(Context);
+  useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls");
 
    const columns = useMemo(
      () => [
        {
-         Header: "All Churches",
+         Header: "TV Show",
          columns: [
            {
              Header: "ID",
@@ -30,27 +31,28 @@ function ManageChurches() {
            },
            {
              Header: "Pastors Name",
-             accessor: "show.name",
-           },
-           {
-             Header: "Contact",
-             accessor: "",
-             Cell: "08099234156",
+             accessor: "show.language",
              Filter: SelectColumnFilter,
              filter: "includes",
            },
            {
-             Header: "Address",
+             Header: "Contact",
              accessor: "show.officialSite",
+             Cell: "09022356748",
            },
            {
-             Header: "Group",
+             Header: "Address",
              accessor: "show.rating.average",
              //Cell:({ cell: { value } }) => value || "-",
            },
            {
-             Header: "Membership Strenght",
+             Header: "Group",
              accessor: "show.status",
+           },
+           {
+             Header: "Membership Strength",
+             accessor: "show.premiered",
+             //Cell: ({ cell: { value } }) => value || "-",
            },
            {
              Header: "Action",
@@ -63,19 +65,24 @@ function ManageChurches() {
            },
          ],
        },
-     ],[]);
+     ],
+     []
+   );
 
-   useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls");
-
+   
   return (
     <Container>
       <SideNav />
       <Contain show={userContext.isOpened}>
         <Header />
-       <Content>
-           Hiii
-       </Content>
-       
+        <Content>
+          <Wrap>
+            <button className="">
+              Add Church
+            </button>
+          </Wrap>
+          <Tables columns={columns} data={useApiCall.data} />
+        </Content>
       </Contain>
     </Container>
   );
@@ -112,4 +119,10 @@ const Content = styled.div`
     margin-bottom: 1em;
     color: rgba(24, 35, 89, 0.85) !important;
   }
-`;
+`
+const Wrap = styled.div`
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  padding-left: 12rem;
+`
