@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter} from 'react-router-dom';
 
 
 import Dashboard from './pages/Dashboard';
+import AllServices from './pages/AllServices';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
@@ -27,6 +28,7 @@ function MyRoutes() {
               <Route path='/' element={<Login />}/>
               <Route path='/dashboard' element={<Dashboard />}/>
               <Route path='/error' element={<Error />}/>
+              <Route path='/all-services' element={<AllServices />}/>
               <Route path='/ManageAdmin' element={<ManageAdmin />}/>
             </Routes>
         </BrowserRouter>
