@@ -7,9 +7,6 @@ import styled from "styled-components";
 import Context from '../components/Contexts';
 import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
-// import Loader from '../components/Loader';
-// import {useNavigate} from "react-router-dom";
-
 import { useGet, usePost } from '../utilities/HttpConnection';
 import requests from '../utilities/requests';
 import './Dashboard.css';
@@ -34,8 +31,6 @@ function Dashboard() {
   //                 </React.Fragment>;
         // MODAL END
   //const results = useGet(requests.fetchActionMovies);
-  // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
-        //MODAL END
   const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
   // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
    if (isLoading == true){
