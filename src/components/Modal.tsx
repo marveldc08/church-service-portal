@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import ReactDOM from 'react-dom';
+import 'animate.css';
 import {useNavigate} from "react-router-dom";
+import { BiXCircle } from 'react-icons/bi';
 
 import {
   Wrapper,
@@ -11,6 +13,7 @@ import {
   Content,
   Backdrop,
 } from './modal.style';
+
 
 export interface ModalProps {
   isShown: boolean;
@@ -28,9 +31,9 @@ export const Modal: FunctionComponent<ModalProps> = ({
  {
     
   const modal = (
-          <React.Fragment>
+    <React.Fragment>
       <Backdrop />
-      <Wrapper>
+      <Wrapper className='animate__animated animate__fadeIn'>
         <StyledModal>
         
           <Header>
@@ -38,7 +41,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
               {headerText}
               
             </HeaderText>  
-            <Close onClick={hide}>X</Close>
+            <Close onClick={hide}><BiXCircle/></Close>
           </Header>
           <Content>
             {modalContent}
