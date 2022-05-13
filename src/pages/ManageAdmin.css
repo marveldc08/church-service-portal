@@ -40,3 +40,29 @@
     /* border: 1px solid red; */
     padding: 5px;
 }
+
+.viewdetails__wrapper{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px 105px;
+}
+
+.viewinput{
+    padding: 14px 25px;
+    /* border: 1px solid #003366; */
+    height: 50px;
+    font-weight: 200;
+    flex: 80%;
+    
+}
+
+.viewlabel{
+    flex: 20%;
+    color: #000;
+    /* margin: 10px; */
+    font-weight: 400;
+}

@@ -57,8 +57,8 @@ function ManageAdmin() {
                   <input type="text" className='finput' />
                 </div>
                 <Buttons>
-                    <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
-                    <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+                    <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>   
+                    <button className='invite__button' onClick={toggle}>Close</button>                
                </Buttons>
               </form>
             </React.Fragment>
@@ -66,15 +66,45 @@ function ManageAdmin() {
         }
 
        
-
+        function closeModal () {
+          
+        }
+        
         function openViewModal() {
           setHeaderText("Admin Details")
           setContent(
             <React.Fragment>
-            
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>First Name</p>
+                  <p className='viewinput'>Emeka </p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Last Name</p>
+                  <p className='viewinput'>Chinye</p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Email</p>
+                  <p className='viewinput'>emekachinye09bleryui@gmail.com</p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Role</p>
+                  <p className='viewinput'>Emeka chinye</p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Church</p>
+                  <p className='viewinput'>Ce Ait</p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Group</p>
+                  <p className='viewinput'>Central Group</p>
+              </div>
+              <div className='viewdetails__wrapper'>
+                  <p className='viewlabel'>Status</p>
+                  <p className='viewinput'>Emeka chinye</p>
+              </div>
           
             
-            <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+            
             
           </React.Fragment>
           )
@@ -87,7 +117,7 @@ function ManageAdmin() {
           <React.Fragment>
           
           <form>
-          <div className='input__wrapper'>
+               <div className='input__wrapper'>
                   <label className='flabel'>First Name</label>
                   <input type="text" className='finput' />
                 </div>
@@ -113,7 +143,6 @@ function ManageAdmin() {
                 </div>
           <Buttons>
               <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
-              <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
           </Buttons>
           </form>
         </React.Fragment>

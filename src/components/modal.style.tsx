@@ -74,3 +74,25 @@ export const Content = styled.div`
   overflow-y: auto;
   
 `;
+
+export const Closebutton = styled.div`
+  background-color: #003366;
+  color: #ffffff;
+  padding: 12px 25px;
+  margin: 0px 15px;
+  width: 180px;
+  border-radius: 8px;
+  border: 1px solid #003366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    color: #003366;
+    background-color: gold;
+    border: 1px solid #003366;
+    transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+    cursor: pointer;
+  }
+`
