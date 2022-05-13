@@ -34,7 +34,7 @@ export const Header = styled.div`
   justify-content: space-between;
   padding: 0.2rem;
   align-items: center;
-  background-color: blue; 
+  background-color: #003366; 
 
 `;
 
@@ -57,7 +57,7 @@ export const Close = styled.div`
   position:relative;
   padding: 10px;
   top: 2px;
-  right: 0px;
+  right: 15px;
   border-radius: 3px;
   /* margin-left: 0.5rem; */
   background: none;
