@@ -84,7 +84,7 @@ function SideNav(){
                 <span>
                   <AiOutlineLineChart className="small-icon" />
                 </span>
-                <a href="#">Finan cial Report</a>
+                <a href="#">Financial Report</a>
               </li>
               <li>
                 <span>
@@ -246,6 +246,9 @@ export const Navigations = styled.nav<Iprops>`
                .icon:hover{
                     color: gold;
 
+               }
+               .icon:active{
+                 color: gold;
                }
                .link-name{
                     color: #ffffff;

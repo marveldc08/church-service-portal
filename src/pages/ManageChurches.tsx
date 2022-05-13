@@ -6,6 +6,9 @@ import Modal from "../components/Modal";
 import USEMODAL from "../components/USEMODAL";
 import Tables from "../components/Tables";
 import { SelectColumnFilter } from "../components/Filter";
+import { useNavigate } from "react-router";
+import { BiPlusMedical } from "react-icons/bi";
+import { HeaderText } from "../components/modal.style";
 import styled from "styled-components";
 
 
@@ -14,12 +17,17 @@ import styled from "styled-components";
 function ManageChurches() {
    const userContext = useContext(Context)
    const useApiCall = useContext(Context);
+   const navigate = useNavigate();
+
+   const [content, setContent] = useState(<></>);
+   const [headerText, setHeaderText] = useState("");
+   const { isShown, toggle } = USEMODAL();
   useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls");
 
    const columns = useMemo(
      () => [
        {
-         Header: "TV Show",
+         Header: "All Churches",
          columns: [
            {
              Header: "ID",
@@ -59,7 +67,7 @@ function ManageChurches() {
              accessor: "",
              Cell: () => (
                <>
-                 <button className="table__button">Update</button>
+                 <button className="table__button" onClick={() => {toggle(), openUpdateModal();}}>Update</button>
                </>
              ),
            },
@@ -69,7 +77,85 @@ function ManageChurches() {
      []
    );
 
-   
+    function openAddModal() {
+          setHeaderText("Add Church")
+       
+        setContent(
+          <React.Fragment>
+          
+          <form>
+          <div className='input__wrapper'>
+                  <label className='flabel'>Church Name</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Group</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Address</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Pastor's Name</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Contact</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Membership Strength</label>
+                  <input type="text" className='finput' />
+                </div>
+          <Buttons>
+              <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
+              <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+          </Buttons>
+          </form>
+        </React.Fragment>
+        )
+    }
+    
+    function openUpdateModal() {
+          setHeaderText("Update Church")
+       
+        setContent(
+          <React.Fragment>
+          
+          <form>
+          <div className='input__wrapper'>
+                  <label className='flabel'>Church Name</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Group</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Address</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Pastor's Name</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Contact</label>
+                  <input type="text" className='finput' />
+                </div>
+                <div className='input__wrapper'>
+                  <label className='flabel'>Membership Strength</label>
+                  <input type="text" className='finput' />
+                </div>
+          <Buttons>
+              <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
+              <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+          </Buttons>
+          </form>
+        </React.Fragment>
+        )
+    }
   return (
     <Container>
       <SideNav />
@@ -77,11 +163,10 @@ function ManageChurches() {
         <Header />
         <Content>
           <Wrap>
-            <button className="">
-              Add Church
-            </button>
+            <button className='invite__button' onClick={()=> {toggle(), openAddModal();}}> <span ><BiPlusMedical /></span> Invite</button>
           </Wrap>
           <Tables columns={columns} data={useApiCall.data} />
+          <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
         </Content>
       </Contain>
     </Container>
@@ -125,4 +210,23 @@ const Wrap = styled.div`
   justify-content: end;
   align-items: flex-end;
   padding-left: 12rem;
-`
+
+  button {
+    span {
+      padding: 0px 8px;
+    }
+  }
+`;
+const Buttons = styled.div`
+   display: flex;
+   justify-content: flex-end;
+   padding: 10px;
+`;
+
+function setheaderText() {
+  throw new Error("Function not implemented.");
+}
+
+function setheader(arg0: JSX.Element) {
+  throw new Error("Function not implemented.");
+}
