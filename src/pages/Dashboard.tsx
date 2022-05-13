@@ -17,9 +17,20 @@ function Dashboard() {
   const userContext = useContext(Context);
   const useApiCall = useContext(Context);
         //MODAL
+  //       const navigate = useNavigate();
   // const {isShown, toggle } = USEMODAL();
-  // const content = <React.Fragment><h3>Hey, I'm a model.</h3></React.Fragment>;
-        //MODAL END
+  // const content = <React.Fragment>
+  //                   <h3>Hey, I'm a model.</h3>
+  //                   <form>
+  //                   <label>Email:</label>
+  //                   <input type="email"></input>
+  //                   <label>Password:</label>
+  //                   <input type="password"></input>
+  //                   <button onClick={() => {navigate("/Error")}}>Error</button>
+  //                   </form>
+  //                 </React.Fragment>;
+        // MODAL END
+  //const results = useGet(requests.fetchActionMovies);
   const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
   // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
    if (isLoading == true){
@@ -36,9 +47,9 @@ function Dashboard() {
         <Header />
         <Content>
 
-          {/* <button onClick={toggle}>Open modal</button> 
-           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} />
-          <Loader /> */}
+        {/* <button onClick={toggle}>Open modal</button> 
+           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} /> */}
+          {/* <Loader /> */}
 
           <Stats />
           <Charts />
@@ -78,7 +89,4 @@ const Content = styled.div`
   }
 `
 
-function useModal(): { isShown: any; toggle: any; } {
-  throw new Error('Function not implemented.');
-}
 

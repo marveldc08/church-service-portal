@@ -8,10 +8,12 @@ import { MdAdminPanelSettings, MdHomeRepairService } from "react-icons/md";
 import { FaHandHoldingUsd, FaRegListAlt } from "react-icons/fa";
 import { useContext } from 'react';
 import Context from './Contexts';
+import { useNavigate } from 'react-router';
 
 function SideNav(){
      const [toggleDropDown, setToogleDropDown] = useState(false);
      const userContext = useContext(Context);
+     const navigate = useNavigate();
 
      if(userContext.isOpened == false && toggleDropDown == true){
           setToogleDropDown(false);
@@ -66,7 +68,7 @@ function SideNav(){
                     <li className='items'>
                          <a href='#'>
                               <MdAdminPanelSettings className='icon' />
-                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Admin</span>
+                              <span className={userContext.isOpened? 'link-name': 'hide'} onClick={() => {navigate("/ManageAdmin")}}>Manage Admin</span>
                          </a>
                     </li>
                </ul>

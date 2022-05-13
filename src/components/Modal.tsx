@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import ReactDOM from 'react-dom';
+import 'animate.css';
 import {useNavigate} from "react-router-dom";
+import { BiXCircle } from 'react-icons/bi';
 
 import {
   Wrapper,
@@ -11,6 +13,7 @@ import {
   Content,
   Backdrop,
 } from './modal.style';
+
 
 export interface ModalProps {
   isShown: boolean;
@@ -26,26 +29,22 @@ export const Modal: FunctionComponent<ModalProps> = ({
     headerText,
   }) =>
  {
-    const navigate = useNavigate();
+    
   const modal = (
-          <React.Fragment>
+    <React.Fragment>
       <Backdrop />
-      <Wrapper>
+      <Wrapper className='animate__animated animate__fadeIn'>
         <StyledModal>
-        <Close onClick={hide}>X</Close>
+        
           <Header>
-            <HeaderText>{headerText}</HeaderText>  
+            <HeaderText>
+              {headerText}
+              
+            </HeaderText>  
+            <Close onClick={hide}><BiXCircle/></Close>
           </Header>
           <Content>
             {modalContent}
-            <form>
-                    <label>Email:</label>
-                    <input type="email"></input>
-                    <label>Password:</label>
-                    <input type="password"></input>
-                    <button onClick={() => {navigate("/Error")}}>Error</button>
-            </form>
-         
           </Content>
          
         </StyledModal>

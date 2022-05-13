@@ -73,3 +73,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 // THIRD PARTY PACKAGES
      (1)react-toastify (npm install react-toastify)
+
+     (2) animate.css (npm install animate.css --save)  // for really cool css animations ---- visit https://animate.style/

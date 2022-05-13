@@ -22,7 +22,7 @@ export const Backdrop = styled.div`
 
 export const StyledModal = styled.div`
   z-index: 100;
-  background-color: #003366; 
+  background-color: #f1f1f1; 
   position: relative;
   margin: auto;
   border-radius: 8px;
@@ -32,14 +32,19 @@ export const Header = styled.div`
   border-radius: 8px 8px 0 0;
   display: flex;
   justify-content: space-between;
-  padding: 0.3rem;
+  padding: 0.2rem;
   align-items: center;
+  background-color: #003366; 
+
 `;
 
 export const HeaderText = styled.div`
   color: #fff;
   align-self: center;
   color: lightgray;
+  font-size: 1.8rem;
+  font-weight: 200;
+  padding: 10px;
 `;
 
 export const Close = styled.div`
@@ -50,9 +55,9 @@ export const Close = styled.div`
   justify-content: end;
   align-items: center;
   position:relative;
-  padding: 20px;
+  padding: 10px;
   top: 2px;
-  right: 0px;
+  right: 15px;
   border-radius: 3px;
   /* margin-left: 0.5rem; */
   background: none;
