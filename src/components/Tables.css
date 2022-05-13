@@ -26,6 +26,13 @@
   background-color: gold;
   border: 1px solid #003366;
 }
+
+.table__buttonWrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 1p solid red;
+}
 /*pagination styles*/
 
 
