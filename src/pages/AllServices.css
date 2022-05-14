@@ -1,0 +1,19 @@
+.finput{
+    padding: 14px 25px;
+    border: 1px solid #003366;
+    height: 50px;
+}
+.flabel{
+    flex: 20%;
+    color: #000;
+    margin: 10px;
+}
+.input-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px;
+}

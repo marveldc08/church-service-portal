@@ -6,6 +6,7 @@ import { Route, Routes, BrowserRouter} from 'react-router-dom';
 
 
 import Dashboard from './pages/Dashboard';
+import AllServices from './pages/AllServices';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
@@ -22,6 +23,7 @@ export default App;
 function MyRoutes() {
   
      return (
+
        <div className="App">
          <BrowserRouter>
            <Routes>
@@ -30,10 +32,12 @@ function MyRoutes() {
              <Route path="/error" element={<Error />} />
              <Route path="/ManageAdmin" element={<ManageAdmin />} />
              <Route path="/manage-churches" element={<ManageChurches />} />
+             <Route path='/all-services' element={<AllServices />}/>
            </Routes>
          </BrowserRouter>
        </div>
      );
+
 }
 
 

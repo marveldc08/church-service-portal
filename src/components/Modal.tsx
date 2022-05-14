@@ -12,6 +12,7 @@ import {
   Close,
   Content,
   Backdrop,
+  Closebutton,
 } from './modal.style';
 
 
@@ -45,6 +46,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
           </Header>
           <Content>
             {modalContent}
+            
           </Content>
          
         </StyledModal>
@@ -52,7 +54,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
     </React.Fragment>
   );
 
-  return isShown ? ReactDOM.createPortal(modal, document.body) : null;
+  return isShown ? ReactDOM.createPortal(modal, document.body) : null; 
 };
 
 export default Modal
