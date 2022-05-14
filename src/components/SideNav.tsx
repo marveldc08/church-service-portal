@@ -19,75 +19,137 @@ function SideNav(){
           setToogleDropDown(false);
      }
   return (
-     <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
-          <LogoDiv>
-              
-               <div className={userContext.isOpened? 'logoCont': 'hide'}>
-                    <img src='/images/logo-light.png'/>
-               </div>
-               <div className='logoText'>CELZ4</div>
-          </LogoDiv>
-          <Navigations show = {userContext.isOpened}>
-               <ul className='menu'>
-                    <li className='items'>
-                         <a href='#'>
-                              <BiGridAlt className='icon' />
-                              <span className={userContext.isOpened? 'link-name': 'hide'}>Dashboard</span>
-                         </a>
-                         
-                    </li>
-                    <li className='items'>
-                         <a href='#'>
-                              <BsBroadcast className='icon' />
-                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Service</span>
-                         </a>
-                    </li>
-                    <li className='items'> 
-                         <div className='icon-link'>
-                              <a href='#'>
-                                   <BiCollection className='icon' />
-                                   <span className={userContext.isOpened? 'link-name': 'hide'} onClick={()=>{setToogleDropDown(!toggleDropDown)} }>Manage Report</span>
-                              </a>
-                              { toggleDropDown ? <AiFillCaretDown className='icon-toggle-down' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/> :  <AiFillCaretRight className='icon-toggle-right' onClick={()=>{setToogleDropDown(!toggleDropDown)} }/>}
-                         </div>
-                         <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
-                              <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
-                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Finan cial Report</a></li>
-                              <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
-                              <li><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
-                              <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
-                              
-                         </ul>
-                    </li>
-                    <li className='items'>
-                         <a href='#'>
-                              <BiChurch className='icon' />
-                              <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
-                         </a>
-                    </li>
-                    <li className='items'>
-                         <a href='#'>
-                              <MdAdminPanelSettings className='icon' />
-                              <span className={userContext.isOpened? 'link-name': 'hide'} onClick={() => {navigate("/ManageAdmin")}}>Manage Admin</span>
-                         </a>
-                    </li>
-               </ul>
-          </Navigations>
-          <NavFooter>
-               <div className='admin-shortcuts'>
-                    {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
-                    <p className={userContext.isOpened? 'admin-details': 'hide'}> 
-                         <span className='name'>Stephen Nzubechukwu</span>
-                         <span className='office'>Church Admin</span>
-                    </p>
-                    <a href=''>
-                         <BiLogOut className ='logout-icon' />
-                    </a>
-               </div>
-               <p className={userContext.isOpened? '': 'hide'}>Christ Embasssy Lagos Zone 4 <span><BiCopyright/></span> 2022</p>
-          </NavFooter>
-     </Nav>
-  )
+    <Nav show={userContext.isOpened} data-testid="sidenav">
+      <LogoDiv>
+        <div className={userContext.isOpened ? "logoCont" : "hide"}>
+          <img src="/images/logo-light.png" />
+        </div>
+        <div className="logoText">CELZ4</div>
+      </LogoDiv>
+      <Navigations show={userContext.isOpened}>
+        <ul className="menu">
+          <li className="items" onClick={() => {navigate("/dashboard")}}>
+            <a >
+              <BiGridAlt className="icon" />
+              <span className={userContext.isOpened ? "link-name" : "hide"}>
+                Dashboard
+              </span>
+            </a>
+          </li>
+          <li className="items">
+            <a href="#">
+              <BsBroadcast className="icon" />
+              <span className={userContext.isOpened ? "link-name" : "hide"}>
+                Manage Service
+              </span>
+            </a>
+          </li>
+          <li className="items">
+            <div className="icon-link">
+              <a href="#">
+                <BiCollection className="icon" />
+                <span
+                  className={userContext.isOpened ? "link-name" : "hide"}
+                  onClick={() => {
+                    setToogleDropDown(!toggleDropDown);
+                  }}
+                >
+                  Manage Report
+                </span>
+              </a>
+              {toggleDropDown ? (
+                <AiFillCaretDown
+                  className="icon-toggle-down"
+                  onClick={() => {
+                    setToogleDropDown(!toggleDropDown);
+                  }}
+                />
+              ) : (
+                <AiFillCaretRight
+                  className="icon-toggle-right"
+                  onClick={() => {
+                    setToogleDropDown(!toggleDropDown);
+                  }}
+                />
+              )}
+            </div>
+            <ul className={toggleDropDown ? "sub-menu show" : "hide"}>
+              <li>
+                <span>
+                  <AiOutlineFileText className="small-icon" />
+                </span>
+                <a href="#">Service Report</a>
+              </li>
+              <li>
+                <span>
+                  <AiOutlineLineChart className="small-icon" />
+                </span>
+                <a href="#">Financial Report</a>
+              </li>
+              <li>
+                <span>
+                  <FaHandHoldingUsd className="small-icon" />
+                </span>
+                <a href="#">Partnership Report</a>
+              </li>
+              <li>
+                <span>
+                  <FaRegListAlt className="small-icon" />
+                </span>
+                <a href="#">Attendance Report</a>
+              </li>
+              <li>
+                <span>
+                  <AiOutlineFileText className="small-icon" />
+                </span>
+                <a href="#">Cell Report</a>
+              </li>
+            </ul>
+          </li>
+          <li className="items" onClick={() => {navigate("/manage-churches")}}>
+            <a>
+              <BiChurch className="icon" />
+              <span className={userContext.isOpened ? "link-name" : "hide"}>
+                Manage Church
+              </span>
+            </a>
+          </li>
+          <li className="items">
+            <a href="#">
+              <MdAdminPanelSettings className="icon" />
+              <span
+                className={userContext.isOpened ? "link-name" : "hide"}
+                onClick={() => {
+                  navigate("/ManageAdmin");
+                }}
+              >
+                Manage Admin
+              </span>
+            </a>
+          </li>
+        </ul>
+      </Navigations>
+      <NavFooter>
+        <div className="admin-shortcuts">
+          {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
+          <p className={userContext.isOpened ? "admin-details" : "hide"}>
+            <span className="name">Stephen Nzubechukwu</span>
+            <span className="office">Church Admin</span>
+          </p>
+          <a href="">
+            <BiLogOut className="logout-icon" />
+          </a>
+        </div>
+        <p className={userContext.isOpened ? "" : "hide"}>
+          Christ Embasssy Lagos Zone 4{" "}
+          <span>
+            <BiCopyright />
+          </span>{" "}
+          2022
+        </p>
+      </NavFooter>
+    </Nav>
+  );
 }
 
 export default SideNav;
@@ -184,6 +246,9 @@ export const Navigations = styled.nav<Iprops>`
                .icon:hover{
                     color: gold;
 
+               }
+               .icon:active{
+                 color: gold;
                }
                .link-name{
                     color: #ffffff;

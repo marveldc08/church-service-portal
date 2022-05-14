@@ -10,6 +10,7 @@ import AllServices from './pages/AllServices';
 import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
+import ManageChurches from './pages/ManageChurches';
 function App(){
   return (
     <AccessContexts>
@@ -22,18 +23,21 @@ export default App;
 function MyRoutes() {
   
      return (
-      <div className="App">
-        <BrowserRouter>
-            <Routes>
-              <Route path='/' element={<Login />}/>
-              <Route path='/dashboard' element={<Dashboard />}/>
-              <Route path='/error' element={<Error />}/>
-              <Route path='/all-services' element={<AllServices />}/>
-              <Route path='/ManageAdmin' element={<ManageAdmin />}/>
-            </Routes>
-        </BrowserRouter>
-      </div>
-     )
+
+       <div className="App">
+         <BrowserRouter>
+           <Routes>
+             <Route path="/" element={<Login />} />
+             <Route path="/dashboard" element={<Dashboard />} />
+             <Route path="/error" element={<Error />} />
+             <Route path="/ManageAdmin" element={<ManageAdmin />} />
+             <Route path="/manage-churches" element={<ManageChurches />} />
+             <Route path='/all-services' element={<AllServices />}/>
+           </Routes>
+         </BrowserRouter>
+       </div>
+     );
+
 }
 
 

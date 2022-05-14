@@ -111,7 +111,7 @@ function Charts() {
       </PieChart>
 
       <LineChart>
-        <h5>Financial Report</h5>
+        <Title>Financial Report</Title>
         <VictoryChart
           theme={VictoryTheme.material}
           height={300}
@@ -216,7 +216,7 @@ function Charts() {
 
 export default Charts
 
-const Container =styled.div`
+const Container =styled.div` 
 
 `
 const PieChart = styled.div`
@@ -302,4 +302,10 @@ const LineChart = styled.div`
   background: #ffffff;
   margin-top: 1em;
   //margin-bottom: 3em;
-`;
+
+
+` 
+const Title = styled.h5`
+  margin-top: 4rem;
+   margin-bottom: -6rem;
+`
