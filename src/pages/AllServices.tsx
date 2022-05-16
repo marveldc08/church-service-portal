@@ -120,7 +120,7 @@ function AllServices() {
              Header: "Action",
              accessor: "",
              Cell: () => (<>
-             <button className='table__button' onClick={() => {toggle(), openUpdateModal()}}>Update</button>
+             <button className='table__button' onClick={()=> {toggle(),  openUpdateModal()} }>Update</button>
              </> ),
            },
           ],
@@ -135,7 +135,7 @@ function AllServices() {
             <Header />
             <Content>
                 <Wrapper>
-                   <button onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span>Create</button>
+                   <button className='invite__button' onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span> Create</button>
                 </Wrapper>
                 <Tables columns={columns} data={useApiCall.data} /> 
                 <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
@@ -175,25 +175,8 @@ interface Iprops{
             padding: 10px 25px;
     `;
     const Content = styled.div` 
-      button {
-        width: 8rem;
-        height: 3rem;
-        outline: none;
-        display: flex;
-        text-decoration: none;
-        background-color: #003366;
-        border: none;
-        border-radius: 4px;
-        color: white;
-        font-size: 20px;
-        padding: 5px 15px;
-        justify-content: center;
-        align-items: center;
-        margin: 10px;
-        cursor: pointer;
-        span{
-            padding: 0px 8px;
-        }
+     span{
+        padding: 0px 8px;
       }
 
       &:hover {

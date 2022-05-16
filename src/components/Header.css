@@ -58,33 +58,41 @@
 }  
 
 /* Dropdown Menu */
-   .dropdown{
+    .dropdown{
     position: absolute;
-    top: 58px;
-    width: 300px;
+    top: 78px;
+    width: 30 0px;
     transform: translateX(-45%);
-    background-color: var(--bg);
-    border: var(--border);
-    border-radius: var(--border-radius);
-    padding: 1rem;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    border-radius: 8px;
+    z-index: 1;
+    background-color: #ffffff;
     overflow: hidden;
     transition: height var(--speed) ease;
-    z-index: 100;
-  }
+    /*background-color: var(--bg);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    
+    
+    
+    
+    */
+  } 
 
   .menu {
     width: 100%;
+    /* padding: 1rem 0rem; */
   } 
   
    .menu-item {
     height: 50px;
     display: flex;
     align-items: center;
-    border-radius: var(--border-radius);
+    /* border-radius: var(--border-radius); */
     transition: background var(--speed);
     padding: 0.5rem;
     background: #ffffff;
-    box-shadow: 10px 10px 5px #aaaaaa;
+    /* border-radius: 8px 8px 0px 0px; */
   }  
   
    .menu-item .icon-button {
@@ -97,7 +105,8 @@
   }
   
    .menu-item:hover {
-    background-color: #f1f2f5;
+    background-color: #003366;
+    color: #ffffff;
     text-decoration: none;
   }
   
@@ -106,7 +115,7 @@
   } 
    
   /* CSSTransition classes */ 
-     .menu-primary-enter {
+      .menu-primary-enter {
     position: absolute;
     transform: translateX(-110%);
   } 
@@ -122,17 +131,5 @@
     transition: all var(--speed) ease;
   } 
   
-   .menu-secondary-enter {
-    transform: translateX(110%);
-  }
-  .menu-secondary-enter-active {
-    transform: translateX(0%);
-    transition: all var(--speed) ease;
-  }
-  
-  .menu-secondary-exit-active {
-    transform: translateX(110%);
-    transition: all var(--speed) ease;
-  } 
-
+   
  

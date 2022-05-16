@@ -60,7 +60,7 @@ interface Idropmenu {
 }
 function DropdownMenu(props:Idropmenu) {
   const [activeMenu, setActiveMenu] = useState('main');
-  const [menuHeight, setMenuHeight] = useState(300);
+  const [menuHeight, setMenuHeight] = useState(150);
 
   function calcHeight(el: { offsetHeight: number; }) {
     const height = el.offsetHeight;
@@ -95,22 +95,22 @@ function DropdownMenu(props:Idropmenu) {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-          <DropdownItem active >Hi Stephen</DropdownItem>
-           <DropdownItem
-             leftIcon={<FaCogs />}
-            goToMenu="settings">
-            Settings
-          </DropdownItem>
-          <Link to={'/'} onClick={() => {getTheStore.getData()}}>
+            <DropdownItem active >Hi Stephen</DropdownItem>
             <DropdownItem
-                leftIcon={<BiArrowToLeft />}
-              goToMenu="Sign Out" >
-                Sign Out
-              
+              leftIcon={<FaCogs />}
+              goToMenu="settings">
+              Settings
             </DropdownItem>
-          </Link>
-         </div>
-       </CSSTransition>    
+            <div onClick={() => {getTheStore.getData(), navigate("/")} }>
+              <DropdownItem
+                  leftIcon={<BiArrowToLeft />}
+                goToMenu="Sign Out" >
+                  Sign Out
+                
+              </DropdownItem>
+            </div>
+        </div>
+      </CSSTransition>    
     </div>
  );
 }
@@ -173,3 +173,4 @@ const LeftMenu =styled.div`
   }
 `
 const dropdownRef =styled.div``
+
