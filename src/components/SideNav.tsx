@@ -19,7 +19,6 @@ function SideNav(){
           setToogleDropDown(false);
      }
   return (
-
      <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
           <LogoDiv>
               
@@ -60,7 +59,7 @@ function SideNav(){
                               
                          </ul>
                     </li>
-                    <li className='items'>
+                    <li className='items' onClick={() => {navigate("/ManageChurch")}}>
                          <a href='#'>
                               <BiChurch className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
@@ -89,7 +88,6 @@ function SideNav(){
           </NavFooter>
      </Nav>
   )
-
 }
 
 export default SideNav;
