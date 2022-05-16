@@ -59,7 +59,7 @@ function SideNav(){
                               
                          </ul>
                     </li>
-                    <li className='items'>
+                    <li className='items' onClick={() => {navigate("/ManageChurch")}}>
                          <a href='#'>
                               <BiChurch className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
@@ -184,6 +184,9 @@ export const Navigations = styled.nav<Iprops>`
                .icon:hover{
                     color: gold;
 
+               }
+               .icon:active{
+                 color: gold;
                }
                .link-name{
                     color: #ffffff;
