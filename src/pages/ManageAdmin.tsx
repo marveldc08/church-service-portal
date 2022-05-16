@@ -200,9 +200,9 @@ function ManageAdmin() {
          accessor: "",
          Cell: () => (<>
          <div>
-         <button className='table__button' onClick={()=> {toggle(),  openUpdateModal()} }>Update</button>
+         <button className='table__button' onClick={()=> {toggle();  openUpdateModal();} }>Update</button>
          {" "}
-         <button className='table__button' onClick={()=> {toggle(),  openViewModal()}}>View</button>
+         <button className='table__button' onClick={()=> {toggle();  openViewModal();}}>View</button>
          </div>
          </> ),
        },
@@ -219,7 +219,7 @@ function ManageAdmin() {
         <Header />
         <Content>
           <Actions>
-            <button className='invite__button' onClick={()=> {toggle(),  openInviteModal()}}> <span ><BiPlusMedical /></span> Invite</button>
+            <button className='invite__button' onClick={()=> {toggle();  openInviteModal();}}> <span ><BiPlusMedical /></span> Invite</button>
           </Actions>
         <Tables columns={columns} data={useApiCall.data} />
         <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />

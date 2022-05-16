@@ -120,7 +120,7 @@ function AllServices() {
              Header: "Action",
              accessor: "",
              Cell: () => (<>
-             <button className='table__button' onClick={()=> {toggle(),  openUpdateModal()} }>Update</button>
+             <button className='table__button' onClick={()=> {toggle();  openUpdateModal();} }>Update</button>
              </> ),
            },
           ],
@@ -135,7 +135,7 @@ function AllServices() {
             <Header />
             <Content>
                 <Wrapper>
-                   <button className='invite__button' onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span> Create</button>
+                   <button className='invite__button' onClick={() => {toggle(); openCreateModal();}}><span><BiPlusMedical /></span> Create</button>
                 </Wrapper>
                 <Tables columns={columns} data={useApiCall.data} /> 
                 <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />

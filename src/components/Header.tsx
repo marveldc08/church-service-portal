@@ -101,7 +101,7 @@ function DropdownMenu(props:Idropmenu) {
               goToMenu="settings">
               Settings
             </DropdownItem>
-            <div onClick={() => {getTheStore.getData(), navigate("/")} }>
+            <div onClick={() => {getTheStore.getData();  navigate("/");} }>
               <DropdownItem
                   leftIcon={<BiArrowToLeft />}
                 goToMenu="Sign Out" >

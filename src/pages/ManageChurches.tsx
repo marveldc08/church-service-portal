@@ -67,7 +67,7 @@ function ManageChurches() {
              accessor: "",
              Cell: () => (
                <>
-                 <button className="table__button" onClick={() => {toggle(), openUpdateModal();}}>Update</button>
+                 <button className="table__button" onClick={() => {toggle(); openUpdateModal();}}>Update</button>
                </>
              ),
            },
@@ -163,7 +163,7 @@ function ManageChurches() {
         <Header />
         <Content>
           <Wrap>
-            <button className='invite__button' onClick={()=> {toggle(), openAddModal();}}> <span ><BiPlusMedical /></span> Invite</button>
+            <button className='invite__button' onClick={()=> {toggle(); openAddModal();}}> <span ><BiPlusMedical /></span> Invite</button>
           </Wrap>
           <Tables columns={columns} data={useApiCall.data} />
           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
