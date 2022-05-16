@@ -19,6 +19,7 @@ function SideNav(){
           setToogleDropDown(false);
      }
   return (
+
      <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
           <LogoDiv>
               
@@ -88,6 +89,7 @@ function SideNav(){
           </NavFooter>
      </Nav>
   )
+
 }
 
 export default SideNav;
@@ -184,6 +186,9 @@ export const Navigations = styled.nav<Iprops>`
                .icon:hover{
                     color: gold;
 
+               }
+               .icon:active{
+                 color: gold;
                }
                .link-name{
                     color: #ffffff;
