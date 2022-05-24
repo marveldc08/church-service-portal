@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
+import Redirect from './pages/Redirect';
 function App(){
   return (
     <AccessContexts>
@@ -33,6 +34,7 @@ function MyRoutes() {
              <Route path="/ManageAdmin" element={<ManageAdmin />} />
              <Route path="/manage-churches" element={<ManageChurches />} />
              <Route path='/all-services' element={<AllServices />}/>
+             <Route path='/sucessful' element={<Redirect />}/>
            </Routes>
          </BrowserRouter>
        </div>
