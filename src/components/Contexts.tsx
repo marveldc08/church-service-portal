@@ -1,19 +1,19 @@
-import React, { createContext, useState, useEffect }from "react";
+import React, { createContext, useState, useEffect, useMemo }from "react";
 import axios from 'axios'
-
-
+import { response } from "express";
+import { useGet } from "../utilities/HttpConnection";
+const BASE_URL: string  = 'https://celz4-api.herokuapp.com';
 const Context = createContext({
      openSideNav: () => {},
      collapseSideNav: () => {},
      isOpened: true,
 
-     postsPerPage: 10,
-     offset: 1,
-     pageCount: 0,
-     data: [],
-     ApiCall : (endpointURL: string) => {},
-     handlePageClick: (event: any) => {}
+     adminTableData: [],
+    
 
+     signIn: () => {},
+     signOut: () => {},
+     result: true,
 
 });
 interface IContext{
@@ -21,12 +21,15 @@ interface IContext{
 }
 export function AccessContexts(props: IContext){
      const [isOpenSideNav, setIsOpenSideNav] = useState(true);
-
-     const [postsPerPage] = useState(10);
-     const [offset, setOffset] = useState(5);
-     const [pageCount, setPageCount] = useState(0)
-     const [data , setData] = useState([]);
-
+     const [tableData, setTableData] = useState([])
+     const [userActiveStatus, setUserActiveStatus] = useState(false);
+     // const admins = useGet("/v2/admin");
+     useEffect(() => {
+          fetch(`${BASE_URL}/v2/admin`).then(response =>{return response.json()}).then((data) => {
+               setTableData(data)
+          })
+     }, [])
+     
      function closeSideNav(){
           setIsOpenSideNav(false)
      }
@@ -34,36 +37,28 @@ export function AccessContexts(props: IContext){
           setIsOpenSideNav(true);
      }
 
-     function ApiCall (endpointURL: string) {
-  
-          useEffect(() => {
-            axios(endpointURL)
-              .then((res) => {
-                setData(res.data.slice(offset - 1 , offset - 1 + postsPerPage));
-                 
-                setPageCount(Math.ceil(data.length / postsPerPage))
-                console.log(data.length)
-              })
-              .catch((err) => console.log(err));
-          }, []);
+     function signedIn(){
+          setUserActiveStatus(true);
+     } 
+     function signedOut(){
+          setUserActiveStatus(false);
      }
-     function handlePageClick (event: { selected: any; }) {
-          const selectedPage = event.selected;
-          setOffset(selectedPage + 1)
-     }
+
+
 
      const value = {
           openSideNav: openSideNav,
           collapseSideNav: closeSideNav,
           isOpened: isOpenSideNav,
- 
-          postsPerPage: postsPerPage,
-          offset: offset,
-          pageCount: pageCount,
-          data: data,
-          ApiCall: ApiCall,
-          handlePageClick: handlePageClick
+
+          adminTableData: tableData,
+     
+
+          result : userActiveStatus,
+          signIn: signedIn,
+          signOut: signedOut,
      }
+
 
      return <Context.Provider value={value}>
           {props.children}
