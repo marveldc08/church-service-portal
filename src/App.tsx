@@ -13,6 +13,7 @@ import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
 import Redirect from './pages/Redirect';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
+import SubmitCellReport from './pages/SubmitCellReport';
 function App(){
   return (
     <AccessContexts>
@@ -36,6 +37,7 @@ function MyRoutes() {
              <Route path="/all-services" element={<AllServices />} />
              <Route path="/sucessful" element={<Redirect />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
+              <Route path="/submit-cell-report" element={<SubmitCellReport />} />
            </Routes>
          </BrowserRouter>
        </div>
