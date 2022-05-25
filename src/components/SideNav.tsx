@@ -54,7 +54,7 @@ function SideNav(){
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
                               <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Finan cial Report</a></li>
                               <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
-                              <li><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
+                              <li onClick={() => {navigate("/submit-attendance-report")}} ><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
                               
                          </ul>
