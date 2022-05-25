@@ -1,14 +1,55 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components';
 import './CreateAdmin.css';
+import { usePost } from '../utilities/HttpConnection';
+import { setAccount } from '../utilities/HttpConnection';
 function CreateAdmin() {
-document.addEventListener('DOMContentLoaded', function(){
-     let queryString = window.location.search;
-     let params = new URLSearchParams(queryString);
-     let firstname = params.get('firstname')
-     console.log(`${params}`)
-     console.log(firstname)
-})
+     const [firstName, setFirstName] = useState<string | null>()
+     const [lastName, setLastName] = useState<string | null>()
+     const [email, setEmail] = useState<string | null>()
+     const [role, setRole] = useState<string | null>()
+     const [church, setChurch] = useState<string | null>()
+     const [groupChurch, setGroupChurch] = useState<string | null>()
+     const passwordRef = useRef<HTMLInputElement>()
+     const confirmPasswordRef = useRef<HTMLInputElement>()
+     useEffect(() => {
+          let queryString = window.location.search;
+          let params = new URLSearchParams(queryString); 
+          setFirstName(params.get('firstname'));
+          setLastName(params.get('lastname'));
+          setRole(params.get('role'));
+          setEmail(params.get('email'));
+          setChurch(params.get('church'));
+          setGroupChurch(params.get('groupchurch'));
+     }, []);
+
+     
+     let post = usePost()
+     function createAdmin(){
+          const admin: setAccount = {
+               firstName: firstName,
+               lastName: lastName,
+               email: email,
+               role: role,
+               church: church,
+               groupChurch: groupChurch,
+               password: passwordRef.current?.value,
+          }
+          post.makePost(admin,'http://localhost:8000/v2/admin/create'); // posts the data
+         if(post.responsMessage === "Successful"){
+              alert('Successfully created an admin')
+         }else{
+              alert(post.serverError)
+         }
+     }
+     function clearForm(){
+          setFirstName('');
+          setLastName('');
+          setRole('');
+          setEmail('');
+          setChurch('');
+          setGroupChurch('');
+     }
   return (
     <Container>
          <ImageDiv>
@@ -20,40 +61,40 @@ document.addEventListener('DOMContentLoaded', function(){
                <form>
                     <div className='input__wrapper'>
                          <label className='flabel'>First Name</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' id='fname' readOnly value={firstName} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Last Name</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' readOnly value ={lastName} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Email</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' readOnly value ={email} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Role</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' readOnly value ={role} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Church</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' readOnly value ={church} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Group</label>
-                         <input type="text" className='finput' readOnly />
+                         <input type="text" className='finput' readOnly value ={groupChurch} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Password</label>
-                         <input type="email" className='finput' placeholder='Create Email' />
+                         <input type="password" className='finput' placeholder='Create Password' ref={passwordRef} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Confirm Password</label>
-                         <input type="email" className='finput' placeholder='Confirm Email' />
+                         <input type="password" className='finput' placeholder='Confirm Password' ref={confirmPasswordRef} />
                     </div>
-                    <Buttons>
-                         <button className='invite__button'>Submit</button>
-                    </Buttons>
                </form>
+               <Buttons>
+                    <button className='invite__button' onClick={() => {createAdmin()}}>Submit</button>
+               </Buttons>
          </FormDiv>
     </Container>
   )

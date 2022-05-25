@@ -2,34 +2,31 @@ import React, {useState, useRef, useEffect} from 'react'
 
 
 
-export const useStorage = (encodedToken: string) => {
+export const useStorage = () => {
      const [token, setToken] = useState<string>('');
     
-    useEffect(() => {
-        const store = () => {
-             setToken(encodedToken);
-             console.log(token);
-            const rawData = JSON.stringify(token);
-            localStorage.setItem("token", rawData);
-            console.log(localStorage.length);
-            console.log(localStorage);
-        }
-         store();
-    }, [token]);
+    // useEffect(() => {
+    //     const store = () => {
+    //          setToken(encodedToken);
+    //          console.log(token);
+    //         const rawData = JSON.stringify(token);
+    //         localStorage.setItem("token", rawData);
+    //         console.log(localStorage.length);
+    //         console.log(localStorage);
+    //     }
+    //      store();
+    // }, [token]);
 
-    const storeData= () => {
+    const storeData= (encodedToken: string) => {
          const store = () => {
-           setToken(encodedToken);
-            console.log(token);
-           const rawData = JSON.stringify(token);
-           localStorage.setItem("token", rawData);
-           console.log(localStorage.length);
-           console.log(localStorage);
+           localStorage.setItem("token", encodedToken);
+          //  console.log(localStorage.length);
+          //  console.log(localStorage);
          };
          store();
     }
      return { storeData}
-
+ 
 };
 
 export function useGetStorage() {

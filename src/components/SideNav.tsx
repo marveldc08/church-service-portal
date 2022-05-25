@@ -29,7 +29,7 @@ function SideNav(){
           </LogoDiv>
           <Navigations show = {userContext.isOpened}>
                <ul className='menu'>
-                    <li className='items' onClick={() => {navigate("/Dashboard")}}>
+                    <li className='items' onClick={() => {navigate("/dashboard")}}>
                          <a href='#'>
                               <BiGridAlt className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Dashboard</span>
@@ -59,13 +59,13 @@ function SideNav(){
                               
                          </ul>
                     </li>
-                    <li className='items' onClick={() => {navigate("/ManageChurch")}}>
+                    <li className='items' onClick={() => {navigate("/manage-churches")}}>
                          <a href='#'>
                               <BiChurch className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
                          </a>
                     </li>
-                    <li className='items'onClick={() => {navigate("/ManageAdmin")}} >
+                    <li className='items'onClick={() => {navigate("/manage-admin")}} >
                          <a href='#'>
                               <MdAdminPanelSettings className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'} >Manage Admin</span>

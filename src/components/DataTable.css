@@ -1,0 +1,101 @@
+.table__container{
+     padding: 40px 20px;
+     overflow-x: auto;
+     width: auto;
+     background-color: white;
+     border-radius: 20px;
+
+}
+
+.table{
+     padding: 10px;
+}
+.sortable__table th{
+     cursor: pointer;
+}
+.table__titile{
+     color: #003366;
+     font-size: 25px;
+     font-weight: 700;
+     text-align: center;
+     padding: 20px 0px;
+}
+.sortable__table .th-sort-asc::after{
+     content: "\25b4";
+}
+.sortable__table .th-sort-desc::after{
+     content: "\25be";
+}
+.sortable__table .th-sort-asc::after,.sortable__table .th-sort-desc::after{
+     margin-left: 5px;
+}
+.sortable__table .th-sort-asc, .sortable__table .th-sort-desc{
+     background: 
+     rgba(0, 0, 0, 0.1);
+}
+
+.table__row{
+     padding: 20px 15px;
+     border-bottom: 1px solid #f9f9f9;
+}
+.table__column{
+     padding: 20px 15px;
+     font-size: 12px;
+     font-weight: 600;
+}
+.table__thead{
+     background-color: #003366;
+}
+.table__header{
+     font-size: 14px;
+     color: white;
+     padding-left: 0px auto;
+     text-align: center;
+}
+
+
+.table__button{
+     background-color: #003366;
+     color: #ffffff;
+     padding: 12px 25px;
+     margin: 0px 15px;
+     width: 80px;
+     border-radius: 4px;
+     border: 1px solid #003366;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+   
+   }
+   
+   .table__button:hover {
+     color: #003366;
+     background-color: gold;
+     transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+   }
+
+   .button__group{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+   }
+
+   /* Datatable.js custom styles */
+   label{
+        color: #003366 !important;
+        font-size: 16px;
+        font-weight: 700;
+   }
+   .dataTables_length select{
+        padding: 10px 20px;
+   }
+   .dataTables_length select:focus,.dataTables_filter input:focus{
+        outline: none;
+   }
+   .dataTables_filter input{
+          margin-bottom: 10px !important;
+   }
+   .my_class::before,.my_class::after{
+        color: white !important;
+        opacity: 1 !important;
+   }

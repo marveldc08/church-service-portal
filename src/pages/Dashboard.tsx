@@ -1,14 +1,11 @@
-import React, {useContext, useState, useEffect, useMemo} from 'react'
+import React, {useContext, useState, useEffect, useMemo} from 'react';
+import { useNavigate } from 'react-router';
 import Header from '../components/Header'
 import SideNav from '../components/SideNav';
 import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
-import Modal from '../components/Modal';
-import USEMODAL from '../components/USEMODAL';
-import { useGet, usePost } from '../utilities/HttpConnection';
-import requests from '../utilities/requests';
 import './Dashboard.css';
 
 
@@ -16,28 +13,7 @@ import './Dashboard.css';
 function Dashboard() {
   const userContext = useContext(Context);
   const useApiCall = useContext(Context);
-        //MODAL
-  //       const navigate = useNavigate();
-  // const {isShown, toggle } = USEMODAL();
-  // const content = <React.Fragment>
-  //                   <h3>Hey, I'm a model.</h3>
-  //                   <form>
-  //                   <label>Email:</label>
-  //                   <input type="email"></input>
-  //                   <label>Password:</label>
-  //                   <input type="password"></input>
-  //                   <button onClick={() => {navigate("/Error")}}>Error</button>
-  //                   </form>
-  //                 </React.Fragment>;
-        // MODAL END
-  //const results = useGet(requests.fetchActionMovies);
-  const { isLoading, serverError, apiData } = useGet(requests.fetchActionMovies);
-  // const {isLoading, serverError, responsMessage } = usePost({email: 'mikecodes@gmail.com', password:'mikecodes12344'})
-   if (isLoading == true){
-      console.log('loading.....')
-   }else if(isLoading == false && !serverError){
-      console.log(apiData)
-   }
+  const navigate = useNavigate()
 
    
   return (
@@ -46,11 +22,6 @@ function Dashboard() {
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-
-        {/* <button onClick={toggle}>Open modal</button> 
-           <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={''} /> */}
-          {/* <Loader /> */}
-
           <Stats />
           <Charts />
         </Content>
