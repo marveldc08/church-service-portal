@@ -12,6 +12,8 @@ import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
 import CreateAdmin from './pages/CreateAdmin';
+import Redirect from './pages/Redirect';
+import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
 function App(){
   return (
     <div className="App">
@@ -45,6 +47,8 @@ function MyRoutes() {
              {isLoggedIn && <Route path="/manage-churches" element={<ManageChurches />} />}
              {isLoggedIn && <Route path='/all-services' element={<AllServices />}/>}
              <Route path='/create-account' element ={<CreateAdmin/>} />
+             <Route path="/sucessful" element={<Redirect />} />
+             <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
              < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
            </Routes>
          </BrowserRouter>
