@@ -1,12 +1,10 @@
-import React, {useContext, useMemo, useState} from 'react';
+import React, {useContext,  useState} from 'react';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
 import { BiPlusMedical } from 'react-icons/bi';
 import Context from '../components/Contexts';
-import Tables from '../components/Tables';
 import { useNavigate } from 'react-router';
 import USEMODAL from '../components/USEMODAL';
-import { SelectColumnFilter } from '../components/Filter';
 import styled from 'styled-components';
 import Modal from '../components/Modal';
 import "./AllServices.css";
@@ -84,49 +82,6 @@ function AllServices() {
         };
 
     const userContext  = useContext(Context)
-    const useApiCall  = useContext(Context)
-
-    useApiCall.ApiCall("http://api.tvmaze.com/search/shows?q=girls")
-
-    const columns = useMemo(() => [
-        {
-          Header: "All Services",
-          columns: [
-            {
-              Header: "ID",
-              accessor: "show.id",
-            },
-            {
-              Header: "Service Type",
-              accessor: "show.type",
-            },
-            {
-              Header: "Service Date",
-              accessor: "show.language",
-              Filter: SelectColumnFilter,
-             filter: "includes",
-            },
-            {
-              Header: "Start Time",
-              accessor: "show.officialSite",
-              
-            },
-            {
-              Header: "End Time",
-              accessor: "show.rating.average",
-              //Cell:({ cell: { value } }) => value || "-",
-            },
-            {
-             Header: "Action",
-             accessor: "",
-             Cell: () => (<>
-             <button className='table__button' onClick={()=> {toggle(),  openUpdateModal()} }>Update</button>
-             </> ),
-           },
-          ],
-        },
-      ], []);
-   
 
   return (
       <Container>
@@ -135,9 +90,8 @@ function AllServices() {
             <Header />
             <Content>
                 <Wrapper>
-                   <button className='invite__button' onClick={() => {toggle(), openCreateModal()}}><span><BiPlusMedical /></span> Create</button>
+                   <button className='invite__button' onClick={() => {toggle(); openCreateModal();}}><span><BiPlusMedical /></span> Create</button>
                 </Wrapper>
-                <Tables columns={columns} data={useApiCall.data} /> 
                 <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
             </Content>
           </Contain>

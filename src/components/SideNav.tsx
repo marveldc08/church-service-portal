@@ -29,7 +29,7 @@ function SideNav(){
           </LogoDiv>
           <Navigations show = {userContext.isOpened}>
                <ul className='menu'>
-                    <li className='items' onClick={() => {navigate("/Dashboard")}}>
+                    <li className='items' onClick={() => {navigate("/dashboard")}}>
                          <a href='#'>
                               <BiGridAlt className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Dashboard</span>
@@ -54,8 +54,8 @@ function SideNav(){
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
                               <li onClick={() => {navigate("/financial-reports")}}><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
                               <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
-                              <li><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
-                              <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
+                              <li onClick={() => {navigate("/submit-attendance-report")}} ><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
+                              <li onClick={() => {navigate("/submit-cell-report");}}><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
                               
                          </ul>
                     </li>

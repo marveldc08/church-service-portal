@@ -61,7 +61,20 @@ interface Idropmenu {
 function DropdownMenu(props:Idropmenu) {
   const [activeMenu, setActiveMenu] = useState('main');
   const [menuHeight, setMenuHeight] = useState(150);
+  const userContext = useContext(Context);
 
+  function handleSignout(){
+    const token = localStorage.getItem('token');
+    if(token){
+      localStorage.removeItem('token')
+      console.log(localStorage.length)
+      console.log(localStorage)
+      navigate('/')
+    }
+    else{
+      console.log('no token')
+    }
+  }
   function calcHeight(el: { offsetHeight: number; }) {
     const height = el.offsetHeight;
     setMenuHeight(height);
@@ -85,7 +98,6 @@ function DropdownMenu(props:Idropmenu) {
     );
   }
   const navigate = useNavigate();
-   const getTheStore = useGetStorage();
   return (
     <div className="dropdown" style={{ height: menuHeight }} ref={dropdownRef}>
       <CSSTransition
@@ -101,7 +113,7 @@ function DropdownMenu(props:Idropmenu) {
               goToMenu="settings">
               Settings
             </DropdownItem>
-            <div onClick={() => {getTheStore.getData(); navigate("/");} }>
+            <div onClick={() => { handleSignout(); userContext.signOut();} }>
               <DropdownItem
                   leftIcon={<BiArrowToLeft />}
                 goToMenu="Sign Out" >

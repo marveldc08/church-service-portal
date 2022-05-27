@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import { FC } from 'react';
-const BASE_URL: string  = 'https://api.themoviedb.org/3';
+const BASE_URL: string  = 'https://celz4-api.herokuapp.com';
 export const useGet = (endPoint:string) =>  {
      const [isLoading, setIsLoading] = useState(false);
-     const [apiData, setApiData] = useState(null);
+     const [apiData, setApiData] = useState([]);
      const [serverError, setServerError] = useState(null);
      useEffect(() => {
           setIsLoading(true);
           const fetchData = async () =>{
               try{
                     fetch(`${BASE_URL}${endPoint}`).then(response =>{return response.json()}).then((data) => {
-                         setApiData(data.results);
+                         setApiData(data);
                     })
                     setIsLoading(false);
               } 
@@ -21,7 +21,7 @@ export const useGet = (endPoint:string) =>  {
           }
           
           fetchData();
-     }, [endPoint]);
+     }, []);
      const refetch = () => {
           setIsLoading(true);
           const fetchData = async () =>{
@@ -42,19 +42,19 @@ export const useGet = (endPoint:string) =>  {
      }
      return { isLoading, apiData, serverError, refetch };
 }
-interface createService{
+export interface createService{
      serviceType: string;
      serviceDate: string;
      startTime: string;
      endTime:string;
 }
-interface updateService extends createService{
+export interface updateService extends createService{
      facilitator: string;
      designation: string;
      description: string;
      summary: string;
 }
-interface financialReport{
+export interface financialReport{
      serviceType: string;
      totalAmountInCash: number;
      totalAmountInCheque: number;
@@ -62,7 +62,7 @@ interface financialReport{
      totalAmountByOtherMeans: number;
      summary: string;
 }
-interface manageChurch{
+export interface manageChurch{
      churchName: string;
      groupName: string;
      churchAddress: string;
@@ -70,33 +70,34 @@ interface manageChurch{
      phoneNumber: string;
      membershipStrenght: number;
 }
-interface inviteAdmin {
-     firstName: string;
-     lastName: string;
-     email: string;
-     role: string;
-     church: string;
-     group: string;
+export interface inviteAdmin {
+     firstName: string| null | undefined ;
+     lastName: string | null | undefined;
+     email: string | null | undefined;
+     role: string | null | undefined;
+     church: string | null | undefined;
+     groupChurch: string | null | undefined;
 
 }
-interface setAccount extends inviteAdmin{
-     password: string;
-     confirmPassword: string;
+export interface setAccount extends inviteAdmin{
+     password: string | undefined;
 }
-interface logaInAdmin{
+export interface logaInAdmin{
      email: string;
      password: string;
 }
-export const usePost = (props: createService | updateService | financialReport | manageChurch |inviteAdmin | setAccount |logaInAdmin) => {
+export const usePost = () => {
      const [isLoading, setIsLoading] = useState(false);
      const [responsMessage, setResponsMessage] = useState('');
      const [serverError, setServerError] = useState(null);
 
-     useEffect(() => {
+     //props: createService | updateService | financialReport | manageChurch |inviteAdmin | setAccount |logaInAdmin, endpoint:string
+
+     /* useEffect(() => {
        const postData = async () => {
             setIsLoading(true)
             try{
-                    fetch('https://disney-clone-99f2f-default-rtdb.firebaseio.com/Users.json',{
+                    fetch(endpoint,{
                          method : 'post',
                          body : JSON.stringify(props),
                          headers: {
@@ -114,21 +115,21 @@ export const usePost = (props: createService | updateService | financialReport |
             }
        }
 
-       postData();
+       //postData(); I disabled the "postData()" so as to prevent the usePost from making a post immideately when it is invoked e.g  let post = usePost({}, ''); the postData will be fired immediately
       
-     }, [])
-     const repost = () =>{
+     }, []) */
+     const makePost = (props: createService | updateService | financialReport | manageChurch |inviteAdmin | setAccount |logaInAdmin, endpoint:string) =>{
           const postData = async () => {
                setIsLoading(true)
                try{
-                       fetch('https://disney-clone-99f2f-default-rtdb.firebaseio.com/Users.json',{
+                       fetch(endpoint,{
                             method : 'post',
                             body : JSON.stringify(props),
                             headers: {
                                  'content-Type': 'application/json'
                             }
                        }).then(()=>{
-                            setResponsMessage('Successful.');
+                            setResponsMessage('Successful');
                             setIsLoading(false);
                             
                        })
@@ -141,5 +142,5 @@ export const usePost = (props: createService | updateService | financialReport |
    
           postData();
      }
-     return {isLoading, responsMessage, serverError, repost};
+     return {isLoading, responsMessage, serverError, makePost};
 } 
