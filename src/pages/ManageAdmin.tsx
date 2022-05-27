@@ -14,7 +14,7 @@ import { BiPlusMedical } from "react-icons/bi";
 
 function ManageAdmin() {
   const userContext = useContext(Context);
-  const useApiCall = useContext(Context)
+  const useApiCall = useContext(Context);
       //modal
   const navigate = useNavigate();
   const {isShown, toggle } = USEMODAL();

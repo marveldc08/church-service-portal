@@ -52,7 +52,7 @@ function SideNav(){
                          </div>
                          <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
-                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Finan cial Report</a></li>
+                              <li onClick={() => {navigate("/financial-reports")}}><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
                               <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
                               <li><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
@@ -65,7 +65,7 @@ function SideNav(){
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
                          </a>
                     </li>
-                    <li className='items'onClick={() => {navigate("/ManageAdmin")}} >
+                    <li className='items'onClick={() => {navigate("/manage-admin")}} >
                          <a href='#'>
                               <MdAdminPanelSettings className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'} >Manage Admin</span>
