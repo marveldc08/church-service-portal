@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
+import FinancialReport from './pages/FinancialReport';
+import SubmitFinancialReport from './pages/SubmitFinancialReport';
 function App(){
   return (
     <AccessContexts>
@@ -30,9 +32,11 @@ function MyRoutes() {
              <Route path="/" element={<Login />} />
              <Route path="/dashboard" element={<Dashboard />} />
              <Route path="/error" element={<Error />} />
-             <Route path="/ManageAdmin" element={<ManageAdmin />} />
+             <Route path="/manage-admin" element={<ManageAdmin />} />
              <Route path="/manage-churches" element={<ManageChurches />} />
              <Route path='/all-services' element={<AllServices />}/>
+             <Route path='/financial-reports' element={<FinancialReport/>} />
+             <Route path='/submit-report' element={<SubmitFinancialReport/>} />
            </Routes>
          </BrowserRouter>
        </div>

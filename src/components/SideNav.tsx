@@ -59,7 +59,7 @@ function SideNav(){
                               
                          </ul>
                     </li>
-                    <li className='items' onClick={() => {navigate("/ManageChurch")}}>
+                    <li className='items' onClick={() => {navigate("/manage-churches")}}>
                          <a href='#'>
                               <BiChurch className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>

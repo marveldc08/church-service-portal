@@ -10,7 +10,6 @@ import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
 import { useNavigate } from 'react-router';
 import { BiPlusMedical } from "react-icons/bi";
-import { HeaderText } from '../components/modal.style';
 
 
 function ManageAdmin() {
@@ -22,6 +21,12 @@ function ManageAdmin() {
 
    const [content, setContent] = useState(<></>)
    const [headerText, setHeaderText] = useState("")
+
+
+        function handleUpdateSubitForm(event?: { preventDefault: () => void; } | undefined) {
+            event?.preventDefault()
+            console.log("");
+        }
            
         function openUpdateModal() {
           setHeaderText("Update Admin")
@@ -52,14 +57,10 @@ function ManageAdmin() {
                   <label className='flabel'>Group</label>
                   <input type="text" className='finput' />
                 </div>
-                <div className='input__wrapper'>
-                  <label className='flabel'>Status</label>
-                  <input type="text" className='finput' />
-                </div>
                 <Buttons>
-                    <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>   
+                    <button className='invite__button' onClick={() => {handleUpdateSubitForm();}}>Submit</button>   
                     <button className='invite__button' onClick={toggle}>Close</button>                
-               </Buttons>
+               </Buttons>   
               </form>
             </React.Fragment>
             )
@@ -143,6 +144,7 @@ function ManageAdmin() {
                 </div>
           <Buttons>
               <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
+              <button className='invite__button' onClick={toggle}>Close</button>  
           </Buttons>
           </form>
         </React.Fragment>
@@ -200,9 +202,9 @@ function ManageAdmin() {
          accessor: "",
          Cell: () => (<>
          <div>
-         <button className='table__button' onClick={()=> {toggle(),  openUpdateModal()} }>Update</button>
+         <button className='table__button' onClick={()=> {toggle();  openUpdateModal()} }>Update</button>
          {" "}
-         <button className='table__button' onClick={()=> {toggle(),  openViewModal()}}>View</button>
+         <button className='table__button' onClick={()=> {toggle();  openViewModal()}}>View</button>
          </div>
          </> ),
        },
@@ -219,7 +221,7 @@ function ManageAdmin() {
         <Header />
         <Content>
           <Actions>
-            <button className='invite__button' onClick={()=> {toggle(),  openInviteModal()}}> <span ><BiPlusMedical /></span> Invite</button>
+            <button className='invite__button' onClick={()=> {toggle();  openInviteModal()}}> <span ><BiPlusMedical /></span> Invite</button>
           </Actions>
         <Tables columns={columns} data={useApiCall.data} />
         <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
@@ -272,11 +274,5 @@ const Buttons =Styled.div`
 `
 
 
-function setheaderText() {
-  throw new Error('Function not implemented.');
-}
 
-function setheader(arg0: JSX.Element) {
-  throw new Error('Function not implemented.');
-}
 

@@ -1,9 +1,9 @@
 .invite__button{
   background-color: #003366;
-  color: #ffffff;
+  color: hsl(0, 0%, 100%);
   padding: 12px 25px;
   margin: 0px 15px;
-  width: 180px;
+  width: 150px;
   border-radius: 8px;
   border: 1px solid #003366;
   display: flex;
