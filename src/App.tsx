@@ -14,6 +14,7 @@ import ManageChurches from './pages/ManageChurches';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
+import SubmitCellReport from './pages/SubmitCellReport';
 function App(){
   return (
     <div className="App">
@@ -49,6 +50,7 @@ function MyRoutes() {
              <Route path='/create-account' element ={<CreateAdmin/>} />
              <Route path="/sucessful" element={<Redirect />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
+              <Route path="/submit-cell-report" element={<SubmitCellReport />} />
              < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
            </Routes>
          </BrowserRouter>
