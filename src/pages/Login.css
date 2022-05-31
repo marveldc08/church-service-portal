@@ -63,15 +63,15 @@ input {
     margin-bottom: 10px;
     outline: none;
     text-decoration: none;
+    padding: 5px;
     border: none;
     border-radius: 4px;
     margin: 0px auto;
     /* color: aliceblue; */
 }
 
-label {
+.login__lable{
     color: white !important;
-    margin: 0;
 }
 
 .login__button {
@@ -96,4 +96,9 @@ label {
 .login__button:active {
     border: none;
 }
-
+.hide{
+    display: none;
+}
+.display{
+    display: block;
+}

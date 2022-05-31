@@ -6,14 +6,9 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
-import './Dashboard.css';
-
-
 
 function Dashboard() {
   const userContext = useContext(Context);
-  const useApiCall = useContext(Context);
-  const navigate = useNavigate()
 
    
   return (
@@ -43,14 +38,14 @@ const Contain =styled.div<Iprops>`
     margin-left: ${props => props.show ? '300px':'78px'};
     height: 100vh;
     overflow: auto;
-    background-color: #f1f2f3;
+    background-color: aliceblue;
     transition: all 0.35s ease; 
     &::-webkit-scrollbar{
           display: none;
     }
 `
 const Content = styled.div`
-  background: #f1f2f3;
+  background: background-color: aliceblue;;
   height: calc(100vh - 70px);
   padding: 1rem;
 

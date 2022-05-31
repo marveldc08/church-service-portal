@@ -61,7 +61,7 @@
     .dropdown{
     position: absolute;
     top: 78px;
-    width: 30 0px;
+    width: 300px;
     transform: translateX(-45%);
     box-shadow: 10px 10px 5px #aaaaaa;
     border-radius: 8px;

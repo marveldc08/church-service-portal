@@ -1,7 +1,9 @@
-import React, {useContext,  useState} from 'react';
+import React, {useContext,  useState, useRef} from 'react';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
+import DataTable from '../components/DataTable';
 import { BiPlusMedical } from 'react-icons/bi';
+import {FiRefreshCw} from 'react-icons/fi';
 import Context from '../components/Contexts';
 import { useNavigate } from 'react-router';
 import USEMODAL from '../components/USEMODAL';
@@ -18,6 +20,20 @@ function AllServices() {
 
     const [content, setContent] = useState(<></>);
     const [headerText, setHeaderText] = useState("");
+    const userContext  = useContext(Context)
+
+    // State for updating the admin
+   const [id, setId] = useState('')
+   const [updateServiceType, setUpdateServiceType] = useState('')
+   const [updateServiceDate, setUpdateServiceDate] = useState('')
+   const [updateStartTime, setUpdateStartTime] = useState('')
+   const [updateEndTime, setUpdateEndTime] = useState('')
+
+   const serviceTypeRef = useRef<HTMLInputElement>();
+   const serviceDateRef = useRef<HTMLInputElement >();
+   const startTimeRef = useRef<HTMLInputElement >();
+   const endTimeRef = useRef<HTMLInputElement >();
+ 
 
         function openCreateModal() {
             setHeaderText("Create Service")
@@ -26,25 +42,27 @@ function AllServices() {
                         <form>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Service Type</label>
-                                <input type="text" className="finput" />
+                                <input type="text" className="finput" ref={serviceTypeRef} />
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Service Date</label>
-                                <input type="text" className="finput" />
+                                <input type="date"  className="finput" ref={serviceDateRef} />
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Start Time</label>
-                                <input type="text" className="finput" />
+                                <input type="time" className="finput" ref={startTimeRef} />
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>End Time</label>
-                                <input type="text" className="finput" />
+                                <input type="time" className="finput" ref={endTimeRef} />
                             </div>
-                            <Buttons>
-                                <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
-                                <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
-                            </Buttons>
+                            
                         </form>
+
+                        <Buttons>
+                            <button className='invite__button' onClick={() => {createService();}}>Submit</button>
+                            <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
+                        </Buttons>
                     </React.Fragment>
                 )
         };
@@ -58,30 +76,93 @@ function AllServices() {
                         <form>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Service Type</label>
-                                <input type="text" className="finput" />
+                                <input type="text" defaultValue={updateServiceType} ref={serviceTypeRef} className="finput" />
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Service Date</label>
-                                <input type="text" className="finput" />
+                                <input type="date" defaultValue={updateServiceDate} ref={serviceDateRef} className="finput" placeholder='yyyy-mm-dd' />
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Start Time</label>
-                                <input type="text" className="finput" />
+                                <input type="text" defaultValue={updateStartTime} ref={startTimeRef} className="finput" placeholder= 'e.g 7:30 AM' id='startTime'/>
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>End Time</label>
-                                <input type="text" className="finput" />
+                                <input type="text" defaultValue={updateEndTime} ref={endTimeRef} className="finput"  placeholder= 'e.g 10:30 AM' id='endTime' />
                             </div>
-                            <Buttons>
-                                <button className='invite__button' onClick={() => {navigate("")}}>Submit</button>
-                                <button className='invite__button' onClick={() => {navigate("")}}>Close</button>
-                            </Buttons>
+                            
                         </form>
+                        <Buttons>
+                            <button className='invite__button' onClick={() => {updateService();}}>Submit</button>
+                            <button className='invite__button' onClick={() => {navigate("/all-services")}}>Close</button>
+                        </Buttons>
                     </React.Fragment>
                 )
         };
 
-    const userContext  = useContext(Context)
+        
+        
+        function createService(e?: { preventDefault: () => void;}){
+            e?.preventDefault()
+            const service = {
+                serviceType: serviceTypeRef.current?.value,
+                serviceDate: serviceDateRef.current?.value,
+                startTime: startTimeRef.current?.value,
+                endTime: endTimeRef.current?.value
+            }
+            fetch(`https://celz4-api.herokuapp.com/v2/service/create`,{
+                method : 'POST',
+                body : JSON.stringify(service),
+                headers: {
+                    'content-Type': 'application/json'
+                }
+              }).then(response =>{return response.json()}).then((data) => {
+                alert('Service created successfully');
+                console.log(data);
+                console.log(startTimeRef.current?.value)
+              })
+        }
+        function updateService(e?: { preventDefault: () => void; }){
+            const service = {
+                serviceType: serviceTypeRef.current?.value,
+                serviceDate: serviceDateRef.current?.value,
+                startTime: startTimeRef.current?.value,
+                endTime: endTimeRef.current?.value
+            }
+              e?.preventDefault()
+              fetch(`https://celz4-api.herokuapp.com/v2/service/update/${id}`,{
+                method : 'PUT',
+                body : JSON.stringify(service),
+                headers: {
+                    'content-Type': 'application/json'
+                }
+              }).then(response =>{return response.json()}).then((data) => {
+                alert('admin updated successfully');
+                console.log(data);
+              })
+        }
+        document.querySelectorAll(".table__update__button")!.forEach(element => {
+            element.addEventListener("click", handleUpdateAdmin);
+        });
+        function handleUpdateAdmin(this: any) {
+            let tableRow = this.parentNode.parentNode;
+            setId(tableRow.cells[0].innerHTML);
+            setUpdateServiceType(tableRow.cells[1].innerHTML);
+            setUpdateServiceDate(tableRow.cells[2].innerHTML);
+            setUpdateStartTime(tableRow.cells[3].innerHTML);
+            setUpdateEndTime(tableRow.cells[4].innerHTML);
+      
+        }
+
+        const headers = ['ID','Service Type', 'Service Date', 'Start Time', 'End Time',  'Action']
+        const serviceArray = userContext.serviceTableData.map(({id, serviceType, serviceDate, startTime, endTime, }) => {
+            return {id, serviceType, serviceDate, startTime, endTime}
+        })
+        const actions = <React.Fragment >
+            <button className='table__button table__update__button' onClick={() => { toggle(); openUpdateModal();}}> <span><FiRefreshCw className='table-button-icon' /></span>Update</button>
+        </React.Fragment>
+      
+
 
   return (
       <Container>
@@ -92,6 +173,7 @@ function AllServices() {
                 <Wrapper>
                    <button className='invite__button' onClick={() => {toggle(); openCreateModal();}}><span><BiPlusMedical /></span> Create</button>
                 </Wrapper>
+                <DataTable data={serviceArray} headers = {headers} actions = {actions} tableTitle = 'All Services' />
                 <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
             </Content>
           </Contain>
@@ -129,20 +211,18 @@ interface Iprops{
             padding: 10px 25px;
     `;
     const Content = styled.div` 
+    background-color: #f1f2f3;
+    padding: 1rem;
      span{
         padding: 0px 8px;
       }
 
-      &:hover {
-            background: white;
-            color: rgba(24, 35, 89, 0.85);
-        }
     `;
 
     const Buttons = styled.div`
         display: flex;
         justify-content: flex-end;
-        padding: 10px;
+        padding: 10px 50px;
         font-size: 15px;
         font-weight: 400;
     `;

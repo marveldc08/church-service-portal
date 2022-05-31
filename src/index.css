@@ -10,7 +10,7 @@ body {
   font-size: .875rem;
   letter-spacing: 0;
   line-height: 1.8;
-  background-color: #f2f6f8;
+  background-color: aliceblue;
   font-weight: 400;
  
   -ms-text-size-adjust: 100%;
@@ -139,4 +139,7 @@ code {
   width: 50%;
   height: 100%;
   color: #ffffff;
+}
+.active__nav{
+  color: gold !important;
 }

@@ -15,9 +15,33 @@ function SideNav(){
      const userContext = useContext(Context);
      const navigate = useNavigate();
 
-     if(userContext.isOpened == false && toggleDropDown == true){
+     if(userContext.isOpened == false && toggleDropDown == 
+          true){
           setToogleDropDown(false);
      }
+     // function toggleActive(this: any){
+     //      console.log(this.firstChild);
+     //      let children = this.firstChild;
+     //      children.classList.add('active__nav')
+     // }
+     // document.querySelectorAll('.items').forEach(item => {
+     //      item.addEventListener('click', toggleActive)
+     // })
+    let navLinks = document.querySelectorAll('.items');
+    for(let i = 0; i < navLinks.length; i++){
+         navLinks[i].addEventListener('click', function(this: any){
+               let current = document.getElementsByClassName("active__nav");
+               // If there's no active class
+               if (current.length > 0) {
+                    // current[0].className = current[0].className.replace("active__nav", "");
+               }
+          
+               // Add the active class to the current/clicked button
+               
+               this.children[0].children[0].classList.add('active__nav');
+               this.children[0].children[1].classList.add('active__nav');
+         })
+    }
   return (
      <Nav show = {userContext.isOpened} data-testid = 'sidenav'>
           <LogoDiv>
@@ -52,7 +76,7 @@ function SideNav(){
                          </div>
                          <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
-                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Finan cial Report</a></li>
+                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
                               <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
                               <li onClick={() => {navigate("/submit-attendance-report")}} ><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
@@ -77,8 +101,8 @@ function SideNav(){
                <div className='admin-shortcuts'>
                     {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
                     <p className={userContext.isOpened? 'admin-details': 'hide'}> 
-                         <span className='name'>Stephen Nzubechukwu</span>
-                         <span className='office'>Church Admin</span>
+                         <span className='name'>{userContext.adminFirstName}{userContext.adminLastName}</span>
+                         <span className='office'>{userContext.adminChurch} Church Admin</span>
                     </p>
                     <a href=''>
                          <BiLogOut className ='logout-icon' />
@@ -101,7 +125,7 @@ const Nav = styled.div<Iprops>`
      bottom: 0;
      width: ${props => props.show ? '300px':'78px'};
      height: 100vh;
-     background-color: #003366; 
+     background-color: #01162c; 
      transition: all 0.35s ease; 
 `
 const LogoDiv = styled.div`
@@ -112,7 +136,7 @@ const LogoDiv = styled.div`
      justify-content: center;
      align-items: center;
      border-bottom: 1px solid #c4c4c4;
-     background-color: #002D62 !important;
+     background-color: #021e3f !important;
 
      .logoCont{
           flex: 60%;
@@ -152,6 +176,7 @@ export const Navigations = styled.nav<Iprops>`
           position: relative;
           margin: 15px 0px ;
           padding: 5px;
+          /* border: 1px solid green; */
           transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{
                display: flex;
@@ -172,6 +197,7 @@ export const Navigations = styled.nav<Iprops>`
                display: flex;
                align-items: center;
                text-decoration: none;
+               /* border: 1px solid red; */
                .icon{
                     min-width: 50px;
                     height: 40px;
@@ -200,7 +226,7 @@ export const Navigations = styled.nav<Iprops>`
           }
           .sub-menu{
                padding: 6px 6px 14px 70px;
-               background-color: #003366;
+               background-color: #01162c;
                li{
                     list-style-type: none;
                     cursor: pointer;
@@ -249,7 +275,7 @@ export const Navigations = styled.nav<Iprops>`
           padding: 5px;
           justify-content: center;
           align-items: center;
-          background-color: #003366 !important;
+          background-color: #01162c !important;
           
      }
 
@@ -260,7 +286,7 @@ const NavFooter = styled.div`
      justify-content: center;
      align-items: center;
      height: calc(100vh - (70vh + 70px));
-     background-color: #002D62;
+     background-color: #01162c;
      border-top: 1px solid #f1f2f3;
      .admin-shortcuts{
           display: flex;

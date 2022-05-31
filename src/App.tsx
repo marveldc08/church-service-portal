@@ -41,7 +41,7 @@ function MyRoutes() {
      return (
          <BrowserRouter>
            <Routes>
-            {(!isLoggedIn ) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
+            {(!isLoggedIn) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
              <Route path="/error" element={<Error />} />
              {isLoggedIn && <Route path="/manage-admin" element={<ManageAdmin />} />}
              {isLoggedIn && <Route path="/manage-churches" element={<ManageChurches />} />}

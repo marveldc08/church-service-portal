@@ -5,11 +5,11 @@ import { Slice } from 'victory';
 import './DataTable.css';
 interface IProps{
      data: {}[];
-     columns: string[];
+     headers: string[];
      actions: JSX.Element, 
      tableTitle: string,
 }
-function DataTable({data, columns, actions, tableTitle}: IProps) {
+function DataTable({data, headers, actions, tableTitle}: IProps) {
      const [postPerPage, setPostPerPage] = useState(10)
      const [numberOfPage, setNumberOfPage] = useState(0)
      const [currentTableData, setCurrentTableData] = useState<{}[]>([])
@@ -76,11 +76,11 @@ function DataTable({data, columns, actions, tableTitle}: IProps) {
 
   return (
     <div className='table__container'>
-         <h2 className='table__titile'><i>{tableTitle}</i></h2>
+         <h2 className='table__titile'>{tableTitle}</h2>
          <table className='table sortable__table stripe' id='myTable' >
                <thead className='table__thead'>
                     <tr className='table__row'>
-                         {columns.map((element) => (
+                         {headers.map((element) => (
                               <th className='table__header'>{element}</th>
                          ))}
                     </tr>  

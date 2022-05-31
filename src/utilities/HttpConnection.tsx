@@ -1,28 +1,28 @@
 import React, {useState, useEffect} from 'react';
 import { FC } from 'react';
 const BASE_URL: string  = 'https://celz4-api.herokuapp.com';
-export const useGet = (endPoint:string) =>  {
+export const useGet = () =>  {
      const [isLoading, setIsLoading] = useState(false);
      const [apiData, setApiData] = useState([]);
      const [serverError, setServerError] = useState(null);
-     useEffect(() => {
-          setIsLoading(true);
-          const fetchData = async () =>{
-              try{
-                    fetch(`${BASE_URL}${endPoint}`).then(response =>{return response.json()}).then((data) => {
-                         setApiData(data);
-                    })
-                    setIsLoading(false);
-              } 
-              catch(error:any){
-                    setServerError(error);
-                    setIsLoading(false);
-              }
-          }
+     // useEffect(() => {
+     //      setIsLoading(true);
+     //      const fetchData = async () =>{
+     //          try{
+     //                fetch(`${BASE_URL}${endPoint}`).then(response =>{return response.json()}).then((data) => {
+     //                     setApiData(data);
+     //                })
+     //                setIsLoading(false);
+     //          } 
+     //          catch(error:any){
+     //                setServerError(error);
+     //                setIsLoading(false);
+     //          }
+     //      }
           
-          fetchData();
-     }, []);
-     const refetch = () => {
+     //      fetchData();
+     // }, []);
+     const refetch = (endPoint:string) => {
           setIsLoading(true);
           const fetchData = async () =>{
               try{
