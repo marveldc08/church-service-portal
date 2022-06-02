@@ -1,22 +1,20 @@
 import React from 'react'
-import styled from 'styled-components'
-import {Link} from 'react-router-dom'
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
+import {BsCheck2Circle} from 'react-icons/bs';
 
 function Redirect() {
   return (
     <Container>
       <Content>
         <div>
+          <BsCheck2Circle className = 'icon' />
           <h1>Congratulations!! </h1>
 
           <p>
             <b>
               <i>Your account has been successfuly created</i>
             </b>
-          </p>
-          <p>
-            Kindly follow the link below to login to your account with your
-            email and password to begin your administrative work.
           </p>
           <p>
             Click <Link to="/">here</Link> to continue to login.
@@ -27,7 +25,7 @@ function Redirect() {
   );
 }
 
-export default Redirect
+export default Redirect;
 
 
 const Container = styled.div` 
@@ -36,17 +34,19 @@ const Container = styled.div`
     align-items: center;
     width: 100%;
     height: 100vh;
+    background-color: #f1f2f3;
 `
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 950px;
-  height: 50vh;
-  background-color: #f9f9f9;
+  width: 650px;
+  height: 60;
+  background-color: white;
   div {
-    padding: 0px 30px;
+    padding: 10px 30px;
+    text-align: center;
 
     h1 {
       color: #008000;
@@ -55,12 +55,17 @@ const Content = styled.div`
       margin-bottom: 15px;
     }
     p {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 500;
       margin-bottom: 15px;
       a{
-          text-decoration: underline;
+        text-decoration: underline;
       }
+    }
+    .icon{
+      color: #008000;
+      font-size: 200px;
+      margin: 0px auto;
     }
   }
 `;
