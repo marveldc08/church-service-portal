@@ -1,0 +1,173 @@
+.partnershipReport__button{
+  background-color: #003366;
+  color: #ffffff;
+  padding: 12px 25px;
+  margin: 0px 15px;
+  width: 180px;
+  border-radius: 8px;
+  border: 1px solid #003366;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.partnershipReport__button:hover{
+  color: #ffffff;
+  background-color: #08539e;
+  border: 1px solid #003366;
+  transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
+}
+.partnershipReport__label{
+    
+    font-weight: 600;
+    margin: 10px;
+    color: #003366;
+}
+.partnershipReport__input{
+    padding: 0 30px;
+    border: 1px solid #003366;
+    border-radius: 10px;
+    height: 40px;
+    width: 389px;
+    outline: none;
+}
+.multi__input{
+    padding: 0 30px;
+    border: 1px solid #003366;
+    border-radius: 10px;
+    height: 40px;
+    width: 200px;
+}
+.input-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 1px solid #e7e6e6;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 8px 8px 4px #aaaaaa;
+  padding:7px 1em; 
+  margin-bottom: 1em;
+}
+
+.cardTop{
+     display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+  border-bottom: 1px solid #e7e6e6;
+  width: 100%;
+   padding: 10px;
+}
+.newButtonWrap{
+     display: flex;
+    justify-content: center;
+}
+.span{
+        margin-right: 3px;
+        margin-bottom: 4px;
+}
+.newCard{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: -3px;
+    font-size: 20px;
+    font-weight: 600;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  background-color: #e7e6e6;
+  cursor: pointer;
+}
+.cardBody{
+    padding: 3px;
+}
+.inputsContainer{
+     display: flex;
+     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.wrapper{
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputs{
+     margin-top: 5px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 0 15px;
+}
+.imgs{
+  width: 12px;
+  height: 13.5px;
+}
+.cardFoot{
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+.deleteCard{
+     /* display: flex;
+    justify-self: center;
+    align-items: center; */
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+}
+.hide{
+  display: none;
+}
+.controls{
+  display: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.inputsContainer{
+  display: column;
+  flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.removeInputRow{
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: -3px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #ff5e5e;
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  margin-top: 5px;
+  background-color: #f8e6e6; 
+  cursor: pointer;
+}
