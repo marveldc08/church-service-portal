@@ -1,332 +1,385 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 import Header from "../components/Header";
 import SideNav from "../components/SideNav";
 import Context from "../components/Contexts";
 import { AiOutlineSend } from "react-icons/ai";
 import { BsDownload, BsCloudUpload } from "react-icons/bs";
+import { FaRegEye } from "react-icons/fa";
 import "./PartnershipReport.css";
 import "animate.css";
 
 function SubmitPartnershipReport() {
-    const userContext = useContext(Context);
-const [count, setCount] = useState<number>(0)
+  const navigate = useNavigate();
+  const userContext = useContext(Context);
+  const [count, setCount] = useState<number>(0)
+  const serviceTypeRef = useRef();
+  const serviceDateRef = useRef<HTMLInputElement>();
+  const partnershipTypeRef = useRef();
+  const cummulativeAmountNairaRef = useRef();
+  const cummulativeAmountDollarRef = useRef();
     
       
-    const createCard = () => {
+    // const createCard = () => {
      
       
-      const cardContainer = document.querySelector(".cardContainer");
-      const selectvalue = document.querySelector("#selectPartnership") as HTMLSelectElement ;
-      const card = document.createElement("div");
-      card.classList.add("card");
-      card.classList.add("animate__animated");
-      card.classList.add("animate__slideInDown");
-      const cardTop = document.createElement("div");
-      cardTop.classList.add("cardTop");
-      const h6 = document.createElement("h6");
-      h6.textContent = "Partnerships ";
-      const newButtonWrap = document.createElement("div");
-      newButtonWrap.classList.add("newButtonWrap");
-      const span = document.createElement("span");
-      span.classList.add("span");
-      span.textContent = "New Card";
-      const newCard1 = document.createElement("div");
-      newCard1.classList.add("newCard");
-      newCard1.addEventListener("click", createCard);
-      newCard1.textContent = "+";
+    //   const cardContainer = document.querySelector(".cardContainer");
+    //   const selectvalue = document.querySelector("#selectPartnership") as HTMLSelectElement ;
+    //   const card = document.createElement("div");
+    //   card.classList.add("card");
+    //   card.classList.add("animate__animated");
+    //   card.classList.add("animate__slideInDown");
+    //   const cardTop = document.createElement("div");
+    //   cardTop.classList.add("cardTop");
+    //   const h6 = document.createElement("h6");
+    //   h6.textContent = "Partnerships ";
+    //   const newButtonWrap = document.createElement("div");
+    //   newButtonWrap.classList.add("newButtonWrap");
+    //   const span = document.createElement("span");
+    //   span.classList.add("span");
+    //   span.textContent = "New Card";
+    //   const newCard1 = document.createElement("div");
+    //   newCard1.classList.add("newCard");
+    //   newCard1.addEventListener("click", createCard);
+    //   newCard1.textContent = "+";
 
-      const cardBody = document.createElement("div");
-      cardBody.classList.add("cardBody");
-      const inputWrapper1 = document.createElement("div");
-      inputWrapper1.classList.add("input-wrapper");
-      const selectPartnershipLabel = document.createElement("label");
-      selectPartnershipLabel.classList.add("submitAttendance__label");
-      selectPartnershipLabel.textContent = " Partnership Type";
-      const selectPartnership = document.createElement("select");
-      selectPartnership.classList.add("submitAttendance__input");
-      selectPartnership.setAttribute("id", "selectPartnership");
-      const partnershipOption1 = document.createElement("option");
-      partnershipOption1.setAttribute("value", "");
-      partnershipOption1.textContent = "select partnership type";
-      const partnershipOption2 = document.createElement("option");
-      partnershipOption2.setAttribute("value", "Bible Sponsorship");
-      partnershipOption2.textContent = "Bible Sponsorship";
-      const partnershipOption3 = document.createElement("option");
-      partnershipOption3.setAttribute("value", "Loveworld Plus");
-      partnershipOption3.textContent = "Loveworld Plus";
-      const partnershipOption4 = document.createElement("option");
-      partnershipOption4.setAttribute("value", "Loveworld Sat");
-      partnershipOption4.textContent = "Loveworld Sat";
-      const partnershipOption5 = document.createElement("option");
-      partnershipOption5.setAttribute("value", "Loveworld TV Ministry");
-      partnershipOption5.textContent = "Loveworld TV Ministry";
-      const partnershipOption6 = document.createElement("option");
-      partnershipOption6.setAttribute("value", "Rhapsody");
-      partnershipOption6.textContent = "Rhapsody";
-      const partnershipOption7 = document.createElement("option");
-      partnershipOption7.setAttribute("value", "Healing School");
-      partnershipOption7.textContent = "Healing School";
-      const partnershipOption8 = document.createElement("option");
-      partnershipOption8.setAttribute("value", "PCDL");
-      partnershipOption8.textContent = "PCDL";
-      const partnershipOption9 = document.createElement("option");
-      partnershipOption9.setAttribute("value", "Innercity Misson");
-      partnershipOption9.textContent = "Innercity Mission";
-      const partnershipOption10 = document.createElement("option");
-      partnershipOption10.setAttribute("value", "Teens Advance Partnership");
-      partnershipOption10.textContent = "Teens Advance Partnership";
+    //   const cardBody = document.createElement("div");
+    //   cardBody.classList.add("cardBody");
 
-      const inputsContainer = document.createElement("div");
-      inputsContainer.classList.add("inputsContainer");
-       const wrapper = document.createElement("div");
-       wrapper.classList.add("wrapper");
-      const inputs = document.createElement("div");
-      inputs.classList.add("inputs");
-      const inputWrapper2 = document.createElement("div");
-      inputWrapper2.classList.add("input-wrapper");
-      const inputGroup1 = document.createElement("div");
-      inputGroup1.classList.add("input-group");
-      const paymentMethodLabel = document.createElement("label");
-      paymentMethodLabel.classList.add("partnershipReport__label");
-      paymentMethodLabel.textContent = "Payment Method";
-      const selectPaymentMethod = document.createElement("select");
-      selectPaymentMethod.classList.add("multi__input");
-      const paymentMethodOption1 = document.createElement("option");
-      paymentMethodOption1.setAttribute("value", "");
-      paymentMethodOption1.textContent = "select method";
-      const paymentMethodOption2 = document.createElement("option");
-      paymentMethodOption2.setAttribute("value", "Cash");
-      paymentMethodOption2.textContent = "Cash";
-      const paymentMethodOption3 = document.createElement("option");
-      paymentMethodOption3.setAttribute("value", "Cheque");
-      paymentMethodOption3.textContent = "Cheque";
-      const paymentMethodOption4 = document.createElement("option");
-      paymentMethodOption4.setAttribute("value", "POS");
-      paymentMethodOption4.textContent = "POS";
-      const paymentMethodOption5 = document.createElement("option");
-      paymentMethodOption5.setAttribute("value", "Transfer");
-      paymentMethodOption5.textContent = "Transfer";
-      const inputWrapper3 = document.createElement("div");
-      inputWrapper3.classList.add("input-wrapper");
-      const inputGroup2 = document.createElement("div");
-      inputGroup2.classList.add("input-group");
-      const nairaAmountLabel = document.createElement("label");
-      nairaAmountLabel.classList.add("partnershipReport__label");
-      nairaAmountLabel.innerHTML = `Amount 	&#x20A6`;
-      const inputIcon1 = document.createElement("div");
-      // const nairaImg = document.createElement("img");
-      // nairaImg.classList.add("imgs");
-      // nairaImg.setAttribute("src", "/images/naira-icon.png");
+    //   const inputWrapper = document.createElement("div");
+    //   inputWrapper.classList.add("input-wrapper");
+    //   const selectServiceLabel = document.createElement("label");
+    //   selectServiceLabel.classList.add("submitAttendance__label");
+    //   selectServiceLabel.textContent = " Service Type";
+    //   const selectService = document.createElement("select");
+    //   selectService.classList.add("submitAttendance__input");
+    //   selectService.setAttribute("id", "selectService");
+    //    const serviceOption1 = document.createElement("option");
+    //    serviceOption1.setAttribute("value", "");
+    //    serviceOption1.textContent = "select service type";
+    //    const serviceOption2 = document.createElement("option");
+    //    serviceOption2.setAttribute("value", "Sunday Service");
+    //    serviceOption2.textContent = "Sunday Service";
+    //    const serviceOption3 = document.createElement("option");
+    //    serviceOption3.setAttribute("value", "Mid-Week Service");
+    //    serviceOption3.textContent = "Mid-Week Service";
+    //    const serviceOption4 = document.createElement("option");
+    //    serviceOption4.setAttribute("value", "All-Night Service");
+    //    serviceOption4.textContent = "All-Night Service";
+    //    const serviceOption5 = document.createElement("option");
+    //    serviceOption5.setAttribute("value", "Others");
+    //    serviceOption5.textContent = "Others";
 
-      const nairaAmountInput = document.createElement("input");
-      nairaAmountInput.classList.add("multi__input");
-      nairaAmountInput.setAttribute("type", "number");
-      nairaAmountInput.setAttribute("placeholder", "enter amount");
-      nairaAmountInput.setAttribute("min", "0");
+    //   const inputWrapper0 = document.createElement("div");
+    //   inputWrapper0.classList.add("input-wrapper");
+    //   const serviceDateLabel = document.createElement("label");
+    //   serviceDateLabel.classList.add("submitAttendance__label");
+    //   serviceDateLabel.textContent = " Service Date";
+    //   const serviceDateInput = document.createElement("input");
+    //   serviceDateInput.classList.add("submitAttendance__input");
+    //   serviceDateInput.setAttribute('type', 'date');
 
-      const inputWrapper4 = document.createElement("div");
-      inputWrapper4.classList.add("input-wrapper");
-      const inputGroup3 = document.createElement("div");
-      inputGroup3.classList.add("input-group");
-      const dollarAmountLabel = document.createElement("label");
-      dollarAmountLabel.classList.add("partnershipReport__label");
-      dollarAmountLabel.innerHTML = "Amount &#x0024";
+    //   const inputWrapper1 = document.createElement("div");
+    //   inputWrapper1.classList.add("input-wrapper");
+    //   const selectPartnershipLabel = document.createElement("label");
+    //   selectPartnershipLabel.classList.add("submitAttendance__label");
+    //   selectPartnershipLabel.textContent = " Partnership Type";
+    //   const selectPartnership = document.createElement("select");
+    //   selectPartnership.classList.add("submitAttendance__input");
+    //   selectPartnership.setAttribute("id", "selectPartnership");
+    //   const partnershipOption1 = document.createElement("option");
+    //   partnershipOption1.setAttribute("value", "");
+    //   partnershipOption1.textContent = "select partnership type";
+    //   const partnershipOption2 = document.createElement("option");
+    //   partnershipOption2.setAttribute("value", "Bible Sponsorship");
+    //   partnershipOption2.textContent = "Bible Sponsorship";
+    //   const partnershipOption3 = document.createElement("option");
+    //   partnershipOption3.setAttribute("value", "Loveworld Plus");
+    //   partnershipOption3.textContent = "Loveworld Plus";
+    //   const partnershipOption4 = document.createElement("option");
+    //   partnershipOption4.setAttribute("value", "Loveworld Sat");
+    //   partnershipOption4.textContent = "Loveworld Sat";
+    //   const partnershipOption5 = document.createElement("option");
+    //   partnershipOption5.setAttribute("value", "Loveworld TV Ministry");
+    //   partnershipOption5.textContent = "Loveworld TV Ministry";
+    //   const partnershipOption6 = document.createElement("option");
+    //   partnershipOption6.setAttribute("value", "Rhapsody");
+    //   partnershipOption6.textContent = "Rhapsody";
+    //   const partnershipOption7 = document.createElement("option");
+    //   partnershipOption7.setAttribute("value", "Healing School");
+    //   partnershipOption7.textContent = "Healing School";
+    //   const partnershipOption8 = document.createElement("option");
+    //   partnershipOption8.setAttribute("value", "PCDL");
+    //   partnershipOption8.textContent = "PCDL";
+    //   const partnershipOption9 = document.createElement("option");
+    //   partnershipOption9.setAttribute("value", "Innercity Misson");
+    //   partnershipOption9.textContent = "Innercity Mission";
+    //   const partnershipOption10 = document.createElement("option");
+    //   partnershipOption10.setAttribute("value", "Teens Advance Partnership");
+    //   partnershipOption10.textContent = "Teens Advance Partnership";
 
-      const inputIcon2 = document.createElement("div");
-      // const dollarImg = document.createElement("img");
-      // dollarImg.classList.add("imgs");
-      // dollarImg.setAttribute("src", "/images/dollar-icon.png");
-      const dollarAmountInput = document.createElement("input");
-      dollarAmountInput.classList.add("multi__input");
-      dollarAmountInput.setAttribute("type", "number");
-      dollarAmountInput.setAttribute("placeholder", "enter amount");
-      dollarAmountInput.setAttribute("min", "0");
+    //   const inputsContainer = document.createElement("div");
+    //   inputsContainer.classList.add("inputsContainer");
+    //    const wrapper = document.createElement("div");
+    //    wrapper.classList.add("wrapper");
+    //   const inputs = document.createElement("div");
+    //   inputs.classList.add("inputs");
+    //   const inputWrapper2 = document.createElement("div");
+    //   inputWrapper2.classList.add("input-wrapper");
+    //   const inputGroup1 = document.createElement("div");
+    //   inputGroup1.classList.add("input-group");
+    //   const paymentMethodLabel = document.createElement("label");
+    //   paymentMethodLabel.classList.add("partnershipReport__label");
+    //   paymentMethodLabel.textContent = "Payment Method";
+    //   const selectPaymentMethod = document.createElement("select");
+    //   selectPaymentMethod.classList.add("multi__select");
+    //   const paymentMethodOption1 = document.createElement("option");
+    //   paymentMethodOption1.setAttribute("value", "");
+    //   paymentMethodOption1.textContent = "select method";
+    //   const paymentMethodOption2 = document.createElement("option");
+    //   paymentMethodOption2.setAttribute("value", "Cash");
+    //   paymentMethodOption2.textContent = "Cash";
+    //   const paymentMethodOption3 = document.createElement("option");
+    //   paymentMethodOption3.setAttribute("value", "Cheque");
+    //   paymentMethodOption3.textContent = "Cheque";
+    //   const paymentMethodOption4 = document.createElement("option");
+    //   paymentMethodOption4.setAttribute("value", "POS");
+    //   paymentMethodOption4.textContent = "POS";
+    //   const paymentMethodOption5 = document.createElement("option");
+    //   paymentMethodOption5.setAttribute("value", "Transfer");
+    //   paymentMethodOption5.textContent = "Transfer";
+    //   const inputWrapper3 = document.createElement("div");
+    //   inputWrapper3.classList.add("input-wrapper");
+    //   const inputGroup2 = document.createElement("div");
+    //   inputGroup2.classList.add("input-group");
+    //   const nairaAmountLabel = document.createElement("label");
+    //   nairaAmountLabel.classList.add("partnershipReport__label");
+    //   nairaAmountLabel.innerHTML = `Amount 	&#x20A6`;
+    //   const inputIcon1 = document.createElement("div");
+    //   // const nairaImg = document.createElement("img");
+    //   // nairaImg.classList.add("imgs");
+    //   // nairaImg.setAttribute("src", "/images/naira-icon.png");
 
-       const controlsWrap = document.createElement("div");
-       controlsWrap.classList.add("controls");
-      const newCard2 = document.createElement("div");
-      newCard2.classList.add("newCard");
-      newCard2.addEventListener("click", createInputRow);
-      newCard2.textContent = "+";
+    //   const nairaAmountInput = document.createElement("input");
+    //   nairaAmountInput.classList.add("multi__inputNaira");
+    //   nairaAmountInput.setAttribute("type", "number");
+    //   nairaAmountInput.setAttribute("placeholder", "enter amount");
+    //   nairaAmountInput.setAttribute("min", "0");
 
-       const removeInputRow = document.createElement("div");
-       removeInputRow.classList.add("removeInputRow");
-       removeInputRow.addEventListener("click", removeRow);
-       removeInputRow.textContent = "-";
+    //   const inputWrapper4 = document.createElement("div");
+    //   inputWrapper4.classList.add("input-wrapper");
+    //   const inputGroup3 = document.createElement("div");
+    //   inputGroup3.classList.add("input-group");
+    //   const dollarAmountLabel = document.createElement("label");
+    //   dollarAmountLabel.classList.add("partnershipReport__label");
+    //   dollarAmountLabel.innerHTML = "Amount &#x0024";
 
-      const cardFoot = document.createElement("div");
-      cardFoot.classList.add("cardFoot");
+    //   const inputIcon2 = document.createElement("div");
+    //   // const dollarImg = document.createElement("img");
+    //   // dollarImg.classList.add("imgs");
+    //   // dollarImg.setAttribute("src", "/images/dollar-icon.png");
+    //   const dollarAmountInput = document.createElement("input");
+    //   dollarAmountInput.classList.add("multi__inputDollar");
+    //   dollarAmountInput.setAttribute("type", "number");
+    //   dollarAmountInput.setAttribute("placeholder", "enter amount");
+    //   dollarAmountInput.setAttribute("min", "0");
+
+    //    const controlsWrap = document.createElement("div");
+    //    controlsWrap.classList.add("controls");
+    //   const newCard2 = document.createElement("div");
+    //   newCard2.classList.add("newCard");
+    //   newCard2.addEventListener("click", createInputRow);
+    //   newCard2.textContent = "+";
+
+    //    const removeInputRow = document.createElement("div");
+    //    removeInputRow.classList.add("removeInputRow");
+    //    removeInputRow.addEventListener("click", removeRow);
+    //    removeInputRow.textContent = "-";
+
+    //   const cardFoot = document.createElement("div");
+    //   cardFoot.classList.add("cardFoot");
     
-      const deleteCard = document.createElement("img");
-      deleteCard.classList.add("deleteCard");
-      deleteCard.addEventListener("click", deleteCardFunc);
-      deleteCard.setAttribute("src", "/images/trash.png");
+    //   const deleteCard = document.createElement("img");
+    //   deleteCard.classList.add("deleteCard");
+    //   deleteCard.addEventListener("click", deleteCardFunc);
+    //   deleteCard.setAttribute("src", "/images/trash.png");
 
-      newButtonWrap.append(span);
-      newButtonWrap.append(newCard1);
-      cardTop.append(h6, newButtonWrap); //cardTop
+    //   newButtonWrap.append(span);
+    //   newButtonWrap.append(newCard1);
+    //   cardTop.append(h6, newButtonWrap); //cardTop
 
-      selectPartnership.append(
-        partnershipOption1,
-        partnershipOption2,
-        partnershipOption3,
-        partnershipOption4,
-        partnershipOption5,
-        partnershipOption6,
-        partnershipOption7,
-        partnershipOption8,
-        partnershipOption9,
-        partnershipOption10
-      );
-      inputWrapper1.append(selectPartnershipLabel, selectPartnership);
+    //   selectService.append(
+    //     serviceOption1,
+    //     serviceOption2,
+    //     serviceOption3,
+    //     serviceOption4,
+    //     serviceOption5
+    //   );
+    //   inputWrapper.append(selectServiceLabel, selectService);
 
-      selectPaymentMethod.append(
-        paymentMethodOption1,
-        paymentMethodOption2,
-        paymentMethodOption3,
-        paymentMethodOption4,
-        paymentMethodOption5
-      );
+    //   inputWrapper0.append(serviceDateLabel, serviceDateInput)
 
-      inputGroup1.append(paymentMethodLabel, selectPaymentMethod);
-      inputWrapper2.append(inputGroup1);
+    //   selectPartnership.append(
+    //     partnershipOption1,
+    //     partnershipOption2,
+    //     partnershipOption3,
+    //     partnershipOption4,
+    //     partnershipOption5,
+    //     partnershipOption6,
+    //     partnershipOption7,
+    //     partnershipOption8,
+    //     partnershipOption9,
+    //     partnershipOption10
+    //   );
+    //   inputWrapper1.append(selectPartnershipLabel, selectPartnership);
 
-      inputIcon1.append(nairaAmountInput);
+    //   selectPaymentMethod.append(
+    //     paymentMethodOption1,
+    //     paymentMethodOption2,
+    //     paymentMethodOption3,
+    //     paymentMethodOption4,
+    //     paymentMethodOption5
+    //   );
+
+    //   inputGroup1.append(paymentMethodLabel, selectPaymentMethod);
+    //   inputWrapper2.append(inputGroup1);
+
+    //   inputIcon1.append(nairaAmountInput);
      
-      inputGroup2.append(nairaAmountLabel, inputIcon1);
+    //   inputGroup2.append(nairaAmountLabel, inputIcon1);
 
-      inputWrapper3.append(inputGroup2);
+    //   inputWrapper3.append(inputGroup2);
 
-      inputIcon2.append( dollarAmountInput);
+    //   inputIcon2.append( dollarAmountInput);
     
-      inputGroup3.append(dollarAmountLabel, inputIcon2);
+    //   inputGroup3.append(dollarAmountLabel, inputIcon2);
 
-      inputWrapper4.append(inputGroup3);
+    //   inputWrapper4.append(inputGroup3);
 
-      inputs.append(inputWrapper2, inputWrapper3, inputWrapper4);
-      wrapper.append(inputs, newCard2);
-      inputsContainer.append(wrapper);
+    //   inputs.append(inputWrapper2, inputWrapper3, inputWrapper4);
+    //   wrapper.append(inputs, newCard2);
+    //   inputsContainer.append(wrapper);
 
-      cardBody.append(inputWrapper1, inputsContainer); //card body
+    //   cardBody.append(inputWrapper,inputWrapper0, inputWrapper1, inputsContainer); //card body
 
-      cardFoot.append(deleteCard);
+    //   cardFoot.append(deleteCard);
 
-      card.append(cardTop, cardBody, cardFoot);
+    //   card.append(cardTop, cardBody, cardFoot);
 
-      cardContainer?.append(card);
+    //   cardContainer?.append(card);
 
      
-    }
+    // }
 
-    function deleteCardFunc (this: any) {
-      const card = this.parentElement.parentElement;
-       card.classList.remove("animate__slideInDown");
-      card.classList.add("animate__slideInUp");
-      card.classList.add("hide");
-    }
+    // function deleteCardFunc (this: any) {
+    //   const card = this.parentElement.parentElement;
+    //    card.classList.remove("animate__slideInDown");
+    //   card.classList.add("animate__slideInUp");
+    //   card.classList.add("hide");
+    // }
 
-    function createInputRow(this: any) {
+    // function createInputRow(this: any) {
       
-              const inputsContainer = this.parentElement.parentElement;
-              //inputsContainer.classList.add("inputsContainer");
-              const wrapper = document.createElement("div");
-              wrapper.classList.add("wrapper");
-               wrapper.classList.add("animate__animated");
-               wrapper.classList.add("animate__fadeIn");
-              const inputs = document.createElement("div");
-              inputs.classList.add("inputs");
+    //           const inputsContainer = this.parentElement.parentElement;
+    //           //inputsContainer.classList.add("inputsContainer");
+    //           const wrapper = document.createElement("div");
+    //           wrapper.classList.add("wrapper");
+    //            wrapper.classList.add("animate__animated");
+    //            wrapper.classList.add("animate__fadeIn");
+    //           const inputs = document.createElement("div");
+    //           inputs.classList.add("inputs");
 
-              const inputWrapper2 = document.createElement("div");
-              inputWrapper2.classList.add("input-wrapper");
-              const inputGroup1 = document.createElement("div");
-              inputGroup1.classList.add("input-group");
-              const selectPaymentMethod = document.createElement("select");
-              selectPaymentMethod.classList.add("multi__input");
-              const paymentMethodOption1 = document.createElement("option");
-              paymentMethodOption1.setAttribute("value", "");
-              paymentMethodOption1.textContent = "select method";
-              const paymentMethodOption2 = document.createElement("option");
-              paymentMethodOption2.setAttribute("value", "Cash");
-              paymentMethodOption2.textContent = "Cash";
-              const paymentMethodOption3 = document.createElement("option");
-              paymentMethodOption3.setAttribute("value", "Cheque");
-              paymentMethodOption3.textContent = "Cheque";
-              const paymentMethodOption4 = document.createElement("option");
-              paymentMethodOption4.setAttribute("value", "POS");
-              paymentMethodOption4.textContent = "POS";
-              const paymentMethodOption5 = document.createElement("option");
-              paymentMethodOption5.setAttribute("value", "Transfer");
-              paymentMethodOption5.textContent = "Transfer";
+    //           const inputWrapper2 = document.createElement("div");
+    //           inputWrapper2.classList.add("input-wrapper");
+    //           const inputGroup1 = document.createElement("div");
+    //           inputGroup1.classList.add("input-group");
+    //           const selectPaymentMethod = document.createElement("select");
+    //           selectPaymentMethod.classList.add("multi__select");
+    //           const paymentMethodOption1 = document.createElement("option");
+    //           paymentMethodOption1.setAttribute("value", "");
+    //           paymentMethodOption1.textContent = "select method";
+    //           const paymentMethodOption2 = document.createElement("option");
+    //           paymentMethodOption2.setAttribute("value", "Cash");
+    //           paymentMethodOption2.textContent = "Cash";
+    //           const paymentMethodOption3 = document.createElement("option");
+    //           paymentMethodOption3.setAttribute("value", "Cheque");
+    //           paymentMethodOption3.textContent = "Cheque";
+    //           const paymentMethodOption4 = document.createElement("option");
+    //           paymentMethodOption4.setAttribute("value", "POS");
+    //           paymentMethodOption4.textContent = "POS";
+    //           const paymentMethodOption5 = document.createElement("option");
+    //           paymentMethodOption5.setAttribute("value", "Transfer");
+    //           paymentMethodOption5.textContent = "Transfer";
 
-              const inputWrapper3 = document.createElement("div");
-              inputWrapper3.classList.add("input-wrapper");
-              const inputGroup2 = document.createElement("div");
-              inputGroup2.classList.add("input-group");
-              const inputIcon1 = document.createElement("div");
-              // const nairaImg = document.createElement("img");
-              // nairaImg.classList.add("imgs");
-              // nairaImg.setAttribute("src", "/images/naira-icon.png");
-              const nairaAmountInput = document.createElement("input");
-              nairaAmountInput.classList.add("multi__input");
-              nairaAmountInput.setAttribute("type", "number");
-              nairaAmountInput.setAttribute("placeholder", "enter amount");
-              nairaAmountInput.setAttribute("min", "0");
+    //           const inputWrapper3 = document.createElement("div");
+    //           inputWrapper3.classList.add("input-wrapper");
+    //           const inputGroup2 = document.createElement("div");
+    //           inputGroup2.classList.add("input-group");
+    //           const inputIcon1 = document.createElement("div");
+    //           // const nairaImg = document.createElement("img");
+    //           // nairaImg.classList.add("imgs");
+    //           // nairaImg.setAttribute("src", "/images/naira-icon.png");
+    //           const nairaAmountInput = document.createElement("input");
+    //           nairaAmountInput.classList.add("multi__inputNaira");
+    //           nairaAmountInput.setAttribute("type", "number");
+    //           nairaAmountInput.setAttribute("placeholder", "enter amount");
+    //           nairaAmountInput.setAttribute("min", "0");
 
-              const inputWrapper4 = document.createElement("div");
-              inputWrapper4.classList.add("input-wrapper");
-              const inputGroup3 = document.createElement("div");
-              inputGroup3.classList.add("input-group");
-              const inputIcon2 = document.createElement("div");
-              // const dollarImg = document.createElement("img");
-              // dollarImg.classList.add("imgs");
-              // dollarImg.setAttribute("src", "/images/dollar-icon.png");
-              const dollarAmountInput = document.createElement("input");
-              dollarAmountInput.classList.add("multi__input");
-              dollarAmountInput.setAttribute("type", "number");
-              dollarAmountInput.setAttribute("placeholder", "enter amount");
-              dollarAmountInput.setAttribute("min", "0");
+    //           const inputWrapper4 = document.createElement("div");
+    //           inputWrapper4.classList.add("input-wrapper");
+    //           const inputGroup3 = document.createElement("div");
+    //           inputGroup3.classList.add("input-group");
+    //           const inputIcon2 = document.createElement("div");
+    //           // const dollarImg = document.createElement("img");
+    //           // dollarImg.classList.add("imgs");
+    //           // dollarImg.setAttribute("src", "/images/dollar-icon.png");
+    //           const dollarAmountInput = document.createElement("input");
+    //           dollarAmountInput.classList.add("multi__inputDollar");
+    //           dollarAmountInput.setAttribute("type", "number");
+    //           dollarAmountInput.setAttribute("placeholder", "enter amount");
+    //           dollarAmountInput.setAttribute("min", "0");
 
-              const controlsWrap = document.createElement("div");
-              controlsWrap.classList.add("controls");
-              // const addInputRow = document.createElement("div");
-              // addInputRow.classList.add("newCard");
-              // addInputRow.addEventListener("click", createInputRow);
-              // addInputRow.textContent = "+";
+    //           const controlsWrap = document.createElement("div");
+    //           controlsWrap.classList.add("controls");
+    //           // const addInputRow = document.createElement("div");
+    //           // addInputRow.classList.add("newCard");
+    //           // addInputRow.addEventListener("click", createInputRow);
+    //           // addInputRow.textContent = "+";
 
-              const removeInputRow = document.createElement("div");
-              removeInputRow.classList.add("removeInputRow");
-              removeInputRow.addEventListener("click", removeRow);
-              removeInputRow.textContent = "-";
+    //           const removeInputRow = document.createElement("div");
+    //           removeInputRow.classList.add("removeInputRow");
+    //           removeInputRow.addEventListener("click", removeRow);
+    //           removeInputRow.textContent = "-";
 
-              selectPaymentMethod.append(
-                paymentMethodOption1,
-                paymentMethodOption2,
-                paymentMethodOption3,
-                paymentMethodOption4,
-                paymentMethodOption5
-              );
+    //           selectPaymentMethod.append(
+    //             paymentMethodOption1,
+    //             paymentMethodOption2,
+    //             paymentMethodOption3,
+    //             paymentMethodOption4,
+    //             paymentMethodOption5
+    //           );
 
-              inputGroup1.append(selectPaymentMethod);
-              inputWrapper2.append(inputGroup1);
+    //           inputGroup1.append(selectPaymentMethod);
+    //           inputWrapper2.append(inputGroup1);
 
-              inputIcon1.append(nairaAmountInput);
-              inputGroup2.append(inputIcon1);
-              inputWrapper3.append(inputGroup2);
+    //           inputIcon1.append(nairaAmountInput);
+    //           inputGroup2.append(inputIcon1);
+    //           inputWrapper3.append(inputGroup2);
 
-              inputIcon2.append(dollarAmountInput);
+    //           inputIcon2.append(dollarAmountInput);
 
-              inputGroup3.append(inputIcon2);
+    //           inputGroup3.append(inputIcon2);
 
-              inputWrapper4.append(inputGroup3);
+    //           inputWrapper4.append(inputGroup3);
 
-              inputs.append(inputWrapper2, inputWrapper3, inputWrapper4);
-              controlsWrap.append(removeInputRow);
-              wrapper.append(inputs, controlsWrap);
+    //           inputs.append(inputWrapper2, inputWrapper3, inputWrapper4);
+    //           controlsWrap.append(removeInputRow);
+    //           wrapper.append(inputs, controlsWrap);
 
-              inputsContainer.append(wrapper);
+    //           inputsContainer.append(wrapper);
 
-    }
+    // }
 
      const createInputRow2 = () => {
        const inputsContainer = document.querySelector('.inputsContainer');
@@ -343,7 +396,7 @@ const [count, setCount] = useState<number>(0)
        const inputGroup1 = document.createElement("div");
        inputGroup1.classList.add("input-group");
        const selectPaymentMethod = document.createElement("select");
-       selectPaymentMethod.classList.add("multi__input");
+       selectPaymentMethod.classList.add("multi__select");
        const paymentMethodOption1 = document.createElement("option");
        paymentMethodOption1.setAttribute("value", "");
        paymentMethodOption1.textContent = "select method";
@@ -369,7 +422,7 @@ const [count, setCount] = useState<number>(0)
       //  nairaImg.classList.add("imgs");
       //  nairaImg.setAttribute("src", "/images/naira-icon.png");
        const nairaAmountInput = document.createElement("input");
-       nairaAmountInput.classList.add("multi__input");
+       nairaAmountInput.classList.add("multi__inputNaira");
        nairaAmountInput.setAttribute("type", "number");
        nairaAmountInput.setAttribute("placeholder", "enter amount");
        nairaAmountInput.setAttribute("min", "0");
@@ -383,7 +436,7 @@ const [count, setCount] = useState<number>(0)
       //  dollarImg.classList.add("imgs");
       //  dollarImg.setAttribute("src", "/images/dollar-icon.png");
        const dollarAmountInput = document.createElement("input");
-       dollarAmountInput.classList.add("multi__input");
+       dollarAmountInput.classList.add("multi__inputDollar");
        dollarAmountInput.setAttribute("type", "number");
        dollarAmountInput.setAttribute("placeholder", "enter amount");
        dollarAmountInput.setAttribute("min", "0");
@@ -434,7 +487,66 @@ const [count, setCount] = useState<number>(0)
       row.classList.add("animate__fadeOut");
       row.classList.add("hide");
     }
-   
+    let totalNairaAmount: number = 0;
+  //  function cummulativeNairaAmount() {
+
+  //    const nairas = document.querySelectorAll(".multi__inputNaira") as NodeListOf<HTMLInputElement>;
+  //    nairas.forEach(element => {
+  //     const naira = parseInt(element.value);
+  //     totalNairaAmount = totalNairaAmount + naira;
+  //     console.log(naira);
+  //    })
+  //    console.log(totalNairaAmount);
+     
+  //   }
+     let totalDollarAmount: number = 0;
+  //  function cummulativeDollarAmount() {
+
+  //    const dollars = document.querySelectorAll(".multi__inputNaira") as NodeListOf<HTMLInputElement>;
+  //    dollars.forEach(element => {
+  //     const dollar = parseInt(element.value);
+  //     totalDollarAmount = totalDollarAmount + dollar;
+  //     console.log(dollar);
+  //    })
+  //    console.log(totalDollarAmount);
+     
+  //   }
+    const handleSubmitPartnership = (e?: {preventDefault: () => void;}) => {
+        e?.preventDefault();
+
+         const nairas = document.querySelectorAll(".multi__inputNaira") as NodeListOf<HTMLInputElement>;
+          nairas.forEach(element => {
+            const naira = parseInt(element.value);
+            totalNairaAmount = totalNairaAmount + naira;
+            console.log(naira);
+          })
+
+        const dollars = document.querySelectorAll(".multi__inputNaira") as NodeListOf<HTMLInputElement>;
+          dollars.forEach(element => {
+            const dollar = parseInt(element.value);
+            totalDollarAmount = totalDollarAmount + dollar;
+            console.log(dollar);
+         })
+        let serviceType = document.getElementById('serviceSelect') as HTMLSelectElement;
+        let partnershipType = document.getElementById('selectPartnership') as HTMLSelectElement;
+        
+      const partnership = {
+        serviceType: serviceType.value,
+        serviceDate: serviceDateRef.current?.value,
+        partnershipType: partnershipType.value,
+        cummulativeAmountNaira: totalNairaAmount,
+        cummulativeAmountDollar: totalDollarAmount,
+      };
+
+      fetch("https://celz4-api.herokuapp.com/v2/partnership/submit",{
+        method: "POST",
+        body: JSON.stringify(partnership),
+        headers: { "content-Type": "application/json" },
+      }).then(response => {return response.json()}).then((data) => {
+        alert('submitted successfully')
+        console.log(data)
+      })
+    }
 
   return (
     <Container>
@@ -443,11 +555,28 @@ const [count, setCount] = useState<number>(0)
         <Header />
         <Content>
           <ButtonWrap>
-            <button className="partnershipReport__button"> 
-              <span><BsDownload /></span> Download CSV
+            <button
+              className="partnershipReport__button "
+              onClick={() => {
+                navigate("/partnership-reports");
+              }}
+            >
+              <span>
+                <FaRegEye />
+              </span>{" "}
+              View Reports
             </button>{" "}
             <button className="partnershipReport__button">
-                <span><BsCloudUpload /></span>  Upload CSV
+              <span>
+                <BsDownload />
+              </span>{" "}
+              Download CSV
+            </button>{" "}
+            <button className="partnershipReport__button">
+              <span>
+                <BsCloudUpload />
+              </span>{" "}
+              Upload CSV
             </button>
           </ButtonWrap>
           <FormWrap>
@@ -462,7 +591,7 @@ const [count, setCount] = useState<number>(0)
                 <label className="partnershipReport__label">
                   Church Category
                 </label>
-                <select className="partnershipReport__input">
+                <select className="partnershipReport__input" id="churchSelect">
                   <option value={""}>select church category</option>
                   <option value={"Adult Church"}>Adult Church </option>
                   <option value={"Youth Church "}>Youth Church </option>
@@ -477,10 +606,62 @@ const [count, setCount] = useState<number>(0)
                     <h6> {"Partnerships "} </h6>
                     <NewButtonWrap>
                       <span>New Card </span>
-                      <NewCard onClick={() => { createCard();}}> {"+"} </NewCard>
+                      <NewCard
+                      // onClick={() => {
+                      //   createCard();
+                      // }}
+                      >
+                        {" "}
+                        {"+"}{" "}
+                      </NewCard>
                     </NewButtonWrap>
                   </CardTop>
                   <CardBody>
+                    <div className="input-wrapper">
+                      <label className="submitAttendance__label">
+                        Service Type
+                      </label>
+                      <select
+                        className="submitAttendance__input"
+                        id="serviceSelect"
+                      >
+                        <option className="submitAttendance__option" value={""}>
+                          select service type
+                        </option>
+                        <option
+                          className="submitAttendance__option"
+                          value={"Sunday Service"}
+                        >
+                          Sunday Service{" "}
+                        </option>
+                        <option
+                          className="submitAttendance__option"
+                          value={"Mid-Week Service "}
+                        >
+                          Mid-Week Service{" "}
+                        </option>
+                        <option
+                          className="submitAttendance__option"
+                          value={"All-Night Service "}
+                        >
+                          {" "}
+                          All-Night Service{" "}
+                        </option>
+                        <option className="submitAttendance__option" value={""}>
+                          Others
+                        </option>
+                      </select>
+                    </div>
+                    <div className="input-wrapper">
+                      <label className="submitAttendance__label">
+                        Service Date
+                      </label>
+                      <input
+                        type="date"
+                        ref={serviceDateRef}
+                        className="submitAttendance__input"
+                      />
+                    </div>
                     <div className="input-wrapper">
                       <label className="submitAttendance__label">
                         Partnership Type
@@ -517,55 +698,69 @@ const [count, setCount] = useState<number>(0)
                     </SubHeading> */}
                     <div className="inputsContainer">
                       <div className="wrapper">
-                          <Inputs>
-                            <div className="input-wrapper">
-                              <div className="input-group">
-                                <label className="partnershipReport__label">
-                                  Payment Method
-                                </label>
-                                <select className="multi__input">
-                                  <option value={""}>select method</option>
-                                  <option value={"Cash"}>Cash</option>
-                                  <option value={"Cheque"}>Cheque</option>
-                                  <option value={"POS"}>POS</option>
-                                  <option value={"Transfer"}>Transfer</option>
-                                </select>
-                              </div>
+                        <Inputs>
+                          <div className="input-wrapper">
+                            <div className="input-group">
+                              <label className="partnershipReport__label">
+                                Payment Method
+                              </label>
+                              <select className="multi__select">
+                                <option value={""}>select method</option>
+                                <option value={"Cash"}>Cash</option>
+                                <option value={"Cheque"}>Cheque</option>
+                                <option value={"POS"}>POS</option>
+                                <option value={"Transfer"}>Transfer</option>
+                              </select>
                             </div>
-                            <div className="input-wrapper">
-                              <div className="input-group">
-                                <label className="partnershipReport__label">
-                                  Amount <img className="imgs"  src="/images/naira-icon.png" />
-                                </label>
-                                <InputIcon>
-                                  {/* <img src="/images/naira-icon.png" /> */}
-                                  <input
-                                    type="number"
-                                    className="multi__input"
-                                    placeholder={"enter amount"}
-                                    min="0"
-                                  />
-                                </InputIcon>
-                              </div>
+                          </div>
+                          <div className="input-wrapper">
+                            <div className="input-group">
+                              <label className="partnershipReport__label">
+                                Amount{" "}
+                                <img
+                                  className="imgs"
+                                  src="/images/naira-icon.png"
+                                />
+                              </label>
+                              <InputIcon>
+                                {/* <img src="/images/naira-icon.png" /> */}
+                                <input
+                                  type="number"
+                                  className="multi__inputNaira"
+                                  placeholder={"enter amount"}
+                                  min="0"
+                                />
+                              </InputIcon>
                             </div>
-                            <div className="input-wrapper">
-                              <div className="input-group">
-                                <label className="partnershipReport__label">
-                                  Amount <img className="imgs" src="/images/dollar-icon.png" />
-                                </label>
-                                <InputIcon>
-                                  {/* <img src="/images/dollar-icon.png" /> */}
-                                  <input
-                                    type="number"
-                                    className="multi__input"
-                                    placeholder={"enter amount"}
-                                    min="0"
-                                  />
-                                </InputIcon>
-                              </div>
+                          </div>
+                          <div className="input-wrapper">
+                            <div className="input-group">
+                              <label className="partnershipReport__label">
+                                Amount{" "}
+                                <img
+                                  className="imgs"
+                                  src="/images/dollar-icon.png"
+                                />
+                              </label>
+                              <InputIcon>
+                                {/* <img src="/images/dollar-icon.png" /> */}
+                                <input
+                                  type="number"
+                                  className="multi__inputDollar"
+                                  placeholder={"enter amount"}
+                                  min="0"
+                                />
+                              </InputIcon>
                             </div>
-                          </Inputs>
-                          <NewCard onClick={() => {createInputRow2();}}>{"+"}</NewCard>
+                          </div>
+                        </Inputs>
+                        <NewCard
+                          onClick={() => {
+                            createInputRow2();
+                          }}
+                        >
+                          {"+"}
+                        </NewCard>
                       </div>
                     </div>
                   </CardBody>
@@ -579,15 +774,13 @@ const [count, setCount] = useState<number>(0)
                   cols={50}
                 ></textarea>
               </div>
-              <ButtonWrap>
-                <button className="cellReport__button">
-                  <span>
-                    <AiOutlineSend />
-                  </span>{" "}
-                  Submit
-                </button>
-              </ButtonWrap>
             </form>
+            <ButtonWrap>
+              <button className="partnershipReport__button" onClick={() => { handleSubmitPartnership(); }}>
+                <span> <AiOutlineSend /> </span>{" "}
+                Submit
+              </button>
+            </ButtonWrap>
           </FormWrap>
         </Content>
       </Contain>

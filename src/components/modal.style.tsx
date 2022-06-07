@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   z-index: 700;
   width: 50%;
+  max-width: 950px;
   outline: 0;
 `;
 
