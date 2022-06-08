@@ -13,6 +13,7 @@ import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
+import AttendanceReports from './pages/AttendanceReports';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
 import SubmitCellReport from './pages/SubmitCellReport';
 import PartnershipReports from './pages/PartnershipReports';
@@ -51,6 +52,7 @@ function MyRoutes() {
              {isLoggedIn && <Route path='/all-services' element={<AllServices />}/>}
              <Route path='/create-account' element ={<CreateAdmin/>} />
              <Route path="/sucessful" element={<Redirect />} />
+             <Route path="/attendance-reports" element={<AttendanceReports />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
               <Route path="/submit-cell-report" element={<SubmitCellReport />} />
               <Route path="/partnership-reports" element={<PartnershipReports />} />
