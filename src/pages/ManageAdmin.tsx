@@ -1,10 +1,10 @@
 import React, { useContext,  useState, useRef, useEffect } from 'react';
-import Header from '../components/Header'
+import Header from '../components/Header';
 import SideNav from '../components/SideNav';
 import  Styled  from 'styled-components';
 import './ManageAdmin.css';
 import Context from '../components/Contexts';
-import DataTable from '../components/DataTable'
+import DataTable from '../components/DataTable';
 import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
 import { useNavigate } from 'react-router';
@@ -246,11 +246,7 @@ function ManageAdmin() {
               {/* <div className='viewdetails__wrapper'>
                   <p className='viewlabel'>Status</p>
                   <p className='viewinput'>Emeka chinye</p>
-              </div> */}
-          
-            
-            
-            
+              </div> */}   
           </React.Fragment>
           )
       }

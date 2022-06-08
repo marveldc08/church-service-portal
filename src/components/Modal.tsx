@@ -35,20 +35,16 @@ export const Modal: FunctionComponent<ModalProps> = ({
     <React.Fragment>
       <Backdrop />
       <Wrapper className='animate__animated animate__fadeIn'>
-        <StyledModal>
-        
+        <StyledModal>    
           <Header>
             <HeaderText>
-              {headerText}
-              
+              {headerText}  
             </HeaderText>  
             <Close onClick={hide}><BiXCircle/></Close>
           </Header>
           <Content>
-            {modalContent}
-            
-          </Content>
-         
+            {modalContent}            
+          </Content>       
         </StyledModal>
       </Wrapper>
     </React.Fragment>

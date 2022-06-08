@@ -17,23 +17,21 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
      const userContext = useContext(Context);
  return (
     <Nav>
-     <LeftMenu>
-        <span>
-        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-        </span>
-     </LeftMenu>
- 
-   <Isme>
-   <Name>
-     <AdminsName>Stephen Nzubechukwu</AdminsName>
-     <ChurchAdmin>Church Admin</ChurchAdmin>
-   </Name>
-     
-     <UserImg src="./images/admin.jpg" />
-        <NavItem icon={<FaCaretDown />}>
-          <DropdownMenu className="dropdown"></DropdownMenu>
-        </NavItem>
-      </Isme>
+      <LeftMenu>
+          <span>
+          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+          </span>
+      </LeftMenu>
+      <RightMenu>
+          <Name>
+            <AdminsName>Stephen Nzubechukwu</AdminsName>
+            <ChurchAdmin>Church Admin</ChurchAdmin>
+          </Name>
+          <UserImg src="./images/admin.jpg" />
+          <NavItem icon={<FaCaretDown />}>
+            <DropdownMenu className="dropdown"></DropdownMenu>
+          </NavItem>
+      </RightMenu>
     
     </Nav>
   );
@@ -152,19 +150,19 @@ const AdminsName = styled.div`
   margin-right: 25px;
   display: flexbox;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 `
 const Name =styled.div`
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 `
 
 const ChurchAdmin = styled.div`
   text-align: center;
   margin-right: 20px;
   font-weight: bold;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 `
 
 const UserImg =styled.img`
@@ -176,9 +174,9 @@ const UserImg =styled.img`
     align-items: center;
     margin-right:10px;
 `
-const Isme=styled.div`
+const RightMenu=styled.div`
   display: flex;
-  
+ 
 `
 
 const LeftMenu =styled.div`

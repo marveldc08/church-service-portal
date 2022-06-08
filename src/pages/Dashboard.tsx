@@ -6,13 +6,10 @@ import Stats from '../components/Stats';
 import Charts from '../components/Charts';
 import styled from "styled-components";
 import Context from '../components/Contexts';
-import './Dashboard.css';
-
 
 
 function Dashboard() {
   const userContext = useContext(Context);
-  const useApiCall = useContext(Context);
   const navigate = useNavigate()
 
    

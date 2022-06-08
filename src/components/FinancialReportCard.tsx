@@ -16,7 +16,6 @@ function FinancialReportCard() {
         { label: "All-Night Service", value: 6 },
       ];
   return (
-    <form className='form_wrapper'>
 
         <div className="container">
             <div className="row">
@@ -25,21 +24,7 @@ function FinancialReportCard() {
                 </div>
             </div>
         </div>
-        <div className="card_wrapper">
-            <HeaderText>
-                <h2>FINANCIALS</h2>
-            </HeaderText>
-            <div className="container">
-                <div className="row mt-4">
-                    {/* <div className="col-sm-4">Finance Type</div> */}
-                    <div className=" col-md-4">
-                        <Select options={serviceType} placeholder={'Select Service Type...'} />
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </form>
   )
 }
 
