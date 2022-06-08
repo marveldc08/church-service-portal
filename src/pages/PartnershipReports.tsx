@@ -268,7 +268,7 @@ function PartnershipReports() {
 
 
     const headers = ['ID','Service Type', 'Service Date','Partnership Type', `Cummulative Amount (naira)`, `Cummulative Amount (dollar)`, 'Status']
-  const adminArray = userContext.partnershipTableData.map(({id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}) => {
+  const partnershipArray = userContext.partnershipTableData.map(({id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}) => {
       return {id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}
   })
   const actions = <React.Fragment >
@@ -296,7 +296,7 @@ function PartnershipReports() {
             </button>
           </Actions>
           <DataTable
-            data={adminArray}
+            data={partnershipArray}
             headers={headers}
             // actions={actions}
             tableTitle="Partnerships"
