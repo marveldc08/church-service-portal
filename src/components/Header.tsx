@@ -18,19 +18,20 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
  return (
     <Nav>
       <LeftMenu>
-          <span>
-          {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-          </span>
-      </LeftMenu>
+        <span>
+        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+        </span>
+       </LeftMenu>
       <RightMenu>
-          <Name>
-            <AdminsName>Stephen Nzubechukwu</AdminsName>
-            <ChurchAdmin>Church Admin</ChurchAdmin>
-          </Name>
-          <UserImg src="./images/admin.jpg" />
-          <NavItem icon={<FaCaretDown />}>
-            <DropdownMenu className="dropdown"></DropdownMenu>
-          </NavItem>
+      <Name>
+      <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
+      <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
+    </Name>
+      
+      <UserImg src="./images/admin.jpg" />
+         <NavItem icon={<FaCaretDown />}>
+           <DropdownMenu className="dropdown"></DropdownMenu>
+         </NavItem>
       </RightMenu>
     
     </Nav>
@@ -105,13 +106,13 @@ function DropdownMenu(props:Idropmenu) {
         unmountOnExit
         onEnter={calcHeight}>
         <div className="menu">
-            <DropdownItem active >Hi Stephen</DropdownItem>
+            <DropdownItem active >{ 'Hi ' + userContext.adminFirstName}</DropdownItem>
             <DropdownItem
               leftIcon={<FaCogs />}
               goToMenu="settings">
               Settings
             </DropdownItem>
-            <div onClick={() => { handleSignout(); userContext.signOut();} }>
+            <div onClick={() => { handleSignout(); navigate('/'); userContext.signOut();} }>
               <DropdownItem
                   leftIcon={<BiArrowToLeft />}
                 goToMenu="Sign Out" >
@@ -139,7 +140,7 @@ const Nav = styled.nav`
    padding: 0 39px;
    overflow: hidden;
    border-bottom: 1px solid #808080;
-   background: #fafbfd;
+   /* background: #fafbfd; */
    z-index: 9;
    .icon{
      width: 30px;

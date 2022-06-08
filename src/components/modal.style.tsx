@@ -34,12 +34,12 @@ export const Header = styled.div`
   justify-content: space-between;
   padding: 0.2rem;
   align-items: center;
-  background-color: #003366; 
+  background-color: #01162c; 
 
 `;
 
 export const HeaderText = styled.div`
-  color: #fff;
+  color: #ffffff;
   align-self: center;
   color: lightgray;
   font-size: 1.8rem;

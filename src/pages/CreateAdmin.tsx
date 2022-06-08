@@ -12,6 +12,13 @@ function CreateAdmin() {
      const [groupChurch, setGroupChurch] = useState<string | null>()
      const passwordRef = useRef<HTMLInputElement>()
      const confirmPasswordRef = useRef<HTMLInputElement>()
+
+     //Validate password state
+     const [validateUppercase, setValidateUppercase] = useState(false);
+     const [validateLowercase, setValidateLowercase] = useState(false);
+     const [validateNumber, setValidateNumber] = useState(false);
+     const [validateLenght, setValidateLenght] = useState(false);
+     const [validateConfirmPsw, setValidateConfirmPsw] = useState(false);
      useEffect(() => {
           let queryString = window.location.search;
           let params = new URLSearchParams(queryString); 
@@ -50,6 +57,100 @@ function CreateAdmin() {
           setChurch('');
           setGroupChurch('');
      }
+
+     useEffect(() => {
+          let password = document.getElementById("psw") as HTMLInputElement;
+          let userConfirmPassword = document.getElementById("confirmPsw") as HTMLInputElement;
+          let validationText = document.querySelector('.confirm__password');
+          let letter = document.getElementById("letter")!;
+          let capital = document.getElementById("capital")!;
+          let number = document.getElementById("number")!;
+          let length = document.getElementById("length")!;
+
+
+               password.onfocus = function() {
+                    document.getElementById("message")!.style.display = "block";
+               }
+             
+             // When the user clicks outside of the password field, hide the message box
+               password.onblur = function() {
+                    document.getElementById("message")!.style.display = "none";
+               }
+               
+               // When the user starts to type something inside the password field
+               password.onkeyup = function() {
+                    // Validate lowercase letters
+                    var lowerCaseLetters = /[a-z]/g;
+                    if(password.value.match(lowerCaseLetters)) {  
+                         letter.classList.remove("invalid");
+                         letter.classList.add("valid");
+                         setValidateLowercase(true);
+                    } else {
+                         letter.classList.remove("valid");
+                         letter.classList.add("invalid");
+                         setValidateLowercase(false);
+                    }
+                    
+                    // Validate capital letters
+                    var upperCaseLetters = /[A-Z]/g;
+                    if(password.value.match(upperCaseLetters)) {  
+                         capital.classList.remove("invalid");
+                         capital.classList.add("valid");
+                         setValidateUppercase(true);
+                    } else {
+                         capital.classList.remove("valid");
+                         capital.classList.add("invalid");
+                         setValidateUppercase(false)
+                    }
+                    
+                    // Validate numbers
+                    var numbers = /[0-9]/g;
+                    if(password.value.match(numbers)) {  
+                         number.classList.remove("invalid");
+                         number.classList.add("valid");
+                         setValidateNumber(true)
+                    } else {
+                         number.classList.remove("valid");
+                         number.classList.add("invalid");
+                         setValidateNumber(false)
+                    }
+                    
+                    // Validate length
+                    if(password.value.length >= 8) {
+                         length.classList.remove("invalid");
+                         length.classList.add("valid");
+                         setValidateLenght(true)
+                    } else {
+                         length.classList.remove("valid");
+                         length.classList.add("invalid");
+                         setValidateLenght(false);
+                    }
+               }
+
+               function checkPassword(password: HTMLInputElement, confirmPassword: HTMLInputElement){
+                    confirmPassword.addEventListener('keyup', function(){
+                         if(confirmPassword.value == password.value){
+                              confirmPassword.classList.remove('red-text')
+                              validationText!.innerHTML = '';
+                              validationText!.classList.remove('invalid');
+                              setValidateConfirmPsw(true);
+                         }
+                         else{
+                              confirmPassword.classList.add('red-text')
+                              validationText!.innerHTML = 'Password does not match';
+                              validationText!.classList.add('invalid');
+                              setValidateConfirmPsw(false);
+                         }
+                    })
+               }
+               checkPassword(password, userConfirmPassword);
+     }, [])
+    
+    
+     
+     
+
+
   return (
     <Container>
          <ImageDiv>
@@ -61,11 +162,11 @@ function CreateAdmin() {
                <form>
                     <div className='input__wrapper'>
                          <label className='flabel'>First Name</label>
-                         <input type="text" className='finput' id='fname' readOnly value={firstName} />
+                         <input type="text" className='finput' id='fname' value={firstName} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Last Name</label>
-                         <input type="text" className='finput' readOnly value ={lastName} />
+                         <input type="text" className='finput'  value ={lastName} />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Email</label>
@@ -85,16 +186,25 @@ function CreateAdmin() {
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Password</label>
-                         <input type="password" className='finput' placeholder='Create Password' ref={passwordRef} />
+                         <input type="password"  id= 'psw' className='finput' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  placeholder='Create Password' ref={passwordRef} required />
                     </div>
                     <div className='input__wrapper'>
                          <label className='flabel'>Confirm Password</label>
-                         <input type="password" className='finput' placeholder='Confirm Password' ref={confirmPasswordRef} />
+                         <input type="password" className='finput' id='confirmPsw' placeholder='Confirm Password' ref={confirmPasswordRef} required />
+                         
                     </div>
+                    <p className="confirm__password"></p>
                </form>
-               <Buttons>
-                    <button className='invite__button' onClick={() => {createAdmin()}}>Submit</button>
-               </Buttons>
+                    <Buttons>
+                         <button className='invite__button' onClick={() => {createAdmin()}} disabled = {(validateLenght && validateLowercase && validateNumber && validateUppercase && validateConfirmPsw)?false : true} >Submit</button>
+                    </Buttons>
+               <div id="message">
+                    <h3 className='message__header'>Password must contain the following:</h3>
+                    <p id="letter" className="invalid">A <b>lowercase</b> letter</p>
+                    <p id="capital" className="invalid">A <b>capital (uppercase)</b> letter</p>
+                    <p id="number" className="invalid">A <b>number</b></p>
+                    <p id="length" className="invalid">Minimum <b>8 characters</b></p>
+               </div>
          </FormDiv>
     </Container>
   )

@@ -126,16 +126,16 @@ function Charts() {
             }}
             data={[
               { x: "Jan", y: 25 },
-              { x: "Feb", y: 39 },
-              { x: "Mar", y: 40 },
+              { x: "Feb", y: 50 },
+              { x: "Mar", y: 10 },
               { x: "Apr", y: 100 },
-              { x: "May", y: 90 },
-              { x: "June", y: 19.0 },
-              { x: "July", y: 230 },
-              { x: "Aug", y: 80.99 },
-              { x: "Sept", y: 95.3 },
-              { x: "Oct", y: 70 },
-              { x: "Nov", y: 90 },
+              { x: "May", y: 80 },
+              { x: "June", y: 300 },
+              { x: "July", y: 500 },
+              { x: "Aug", y: 400 },
+              { x: "Sept", y: 300 },
+              { x: "Oct", y: 700 },
+              { x: "Nov", y: 500 },
               { x: "Dec", y: 900 },
             ]}
             interpolation="natural"
