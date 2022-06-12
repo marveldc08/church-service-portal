@@ -45,7 +45,7 @@ const Contain =styled.div<Iprops>`
     }
 `
 const Content = styled.div`
-  background: background-color: aliceblue;;
+  background-color: aliceblue;
   height: calc(100vh - 70px);
   padding: 1rem;
 

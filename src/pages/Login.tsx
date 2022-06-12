@@ -61,12 +61,12 @@ const Login = () => {
           </div>
           <h3 className="login__h3">Welcome to CELZ4 Admin</h3>
           <h6 className="login__h6">Kindly input your credential.</h6>
-          <form onSubmit={handleLogin}>
+          <form className="login__form" onSubmit={handleLogin}>
             <label className="login__lable">Email:</label>
             <input ref={emailRef} type="email"></input>
             <label className="login__lable">Password:</label>
             <input ref={passwordRef} type="password"></input>
-            <button className="login__button">Log In</button>
+            <button className="login__button">LogIn</button>
           </form>
         </div>
         {/* <Alerts /> */}

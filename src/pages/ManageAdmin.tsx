@@ -650,7 +650,7 @@ function ManageAdmin() {
   
   
 
-  const headers = ['ID','First Name', 'Last Name', 'Email', 'Role', 'Church', 'Group', 'Actions']
+  const headers = ['ID','First Name', 'Last Name', 'Email', 'Role', 'Church', 'Group', " "]
   const adminArray = userContext.adminTableData.map(({id, firstName, lastName, email, role, church, groupChurch}) => {
       return {id, firstName, lastName, email, role, church, groupChurch}
   })
@@ -720,7 +720,9 @@ const Actions = Styled.div`
 const Buttons =Styled.div`
    display: flex;
    justify-content: flex-end;
-   padding: 10px 50px;
+   margin: 10px 50px;
+   border: 1px solid red;
+   
 `
 
 
