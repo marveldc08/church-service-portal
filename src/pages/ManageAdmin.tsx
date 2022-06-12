@@ -12,8 +12,7 @@ import USEMODAL from '../components/USEMODAL';
 import { useNavigate } from 'react-router';
 import { BiPlusMedical } from "react-icons/bi";
 import jwt_decode from "jwt-decode";
-
-
+import { group } from 'console';
 
 let churchesDetails = 
      [
@@ -289,7 +288,7 @@ let churchesDetails =
           } 
     ]
 
-
+    
 function ManageAdmin() {
   const userContext = useContext(Context);
   const navigate = useNavigate();
@@ -304,17 +303,39 @@ function ManageAdmin() {
    const roleRef = useRef<HTMLInputElement >();
    const churchRef = useRef<HTMLInputElement>();
    const groupchurchRef = useRef<HTMLInputElement>();
+   const [groupChurch, setGroupChurch] = useState('');
 
+   // Alert states
+  const [alertHeader, setAlertHeader] = useState('');
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
+  const [alertClass, setAlertClass] = useState('');
 
+  // State for updating the admin
+  const [id, setId] = useState('')
+  const [updateFirstName, setUpdateFirstName] = useState('')
+  const [updateLastName, setUpdateLastName] = useState('')
+  const [updateEmail, setUpdateEmail] = useState('')
+  const [updateRole, setUpdateRole] = useState('')
+  const [updateChurch, setUpdateChurch] = useState('')
+  const [updateGroup, setUpdateGroup] = useState('')
 
-   // State for updating the admin
-   const [id, setId] = useState('')
-   const [updateFirstName, setUpdateFirstName] = useState('')
-   const [updateLastName, setUpdateLastName] = useState('')
-   const [updateEmail, setUpdateEmail] = useState('')
-   const [updateRole, setUpdateRole] = useState('')
-   const [updateChurch, setUpdateChurch] = useState('')
-   const [updateGroup, setUpdateGroup] = useState('')
+  
+  
+  // document.getElementById('church')!.addEventListener('change', handleChurchChange);
+  
+  function handleChurchChange(){
+    let currentChurch = document.getElementById('church') as HTMLInputElement; 
+    // let groupChurch = document.getElementById('groupChurch')! as HTMLInputElement; 
+    let currentValue = currentChurch.value; 
+    console.log(currentValue)
+    for(let i = 0; i < churchesDetails.length; i++){
+        if(currentValue == churchesDetails[i].ChurchName){
+          setGroupChurch(churchesDetails[i].Group);
+          console.log(groupChurch)
+        }
+    }
+  }
 
 
   function sendEmail(e?: { preventDefault: () => void; }) {
@@ -322,116 +343,117 @@ function ManageAdmin() {
       let params = new URLSearchParams()
       let role = document.getElementById('role') as HTMLSelectElement;
       let church = document.getElementById('church') as HTMLSelectElement;
+      let groupChurch = document.getElementById('groupChurch') as HTMLInputElement; 
       console.log(role.value);
       params.set('firstname', `${firstnameRef.current?.value}`)
       params.set('lastname', `${lastnameRef.current?.value}`)
       params.set('email', `${emailRef.current?.value}`)
       params.set('role', `${role.value}`)
       params.set('church', `${church.value}`)
-      params.set('groupchurch', `${groupchurchRef.current?.value}`);
+      params.set('groupchurch', `${groupChurch.value}`);
       console.log(params.toString())
-      console.log(Date.now())
-      clearForm();
-      role.value = '';
-      church.value = '';
-      // Email.send({
-      //      SecureToken : "f2cce189-d9e8-4bc6-8604-bb86a87a4f88",
-      //      To : `${emailRef.current?.value}`,
-      //      From : "michaelchinye2018@gmail.com",
-      //      Subject : "Admin Invitation",
-      //      Body : `<!DOCTYPE html>
-      //      <html lang="en">
-      //         <head>
-      //              <meta charset="UTF-8">
-      //              <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      //              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      //              <title>Document</title>
+      Email.send({
+           SecureToken : "f2cce189-d9e8-4bc6-8604-bb86a87a4f88",
+           To : `${emailRef.current?.value}`,
+           From : "michaelchinye2018@gmail.com",
+           Subject : "Admin Invitation",
+           Body : `<!DOCTYPE html>
+           <html lang="en">
+              <head>
+                   <meta charset="UTF-8">
+                   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                   <title>Document</title>
             
-      //              <style>
-      //                   .imgDiv{
-      //                     height: 300px;
-      //                   }
-      //                   .content{
-      //                     padding: 50px;
-      //                   }
-      //                   h2{
-      //                     font-size: 18px;
-      //                   }
-      //                   @media only screen and (min-width: 480px) and (max-width: 767px){
-      //                          h1{
-      //                               font-size: 22px;
-      //                          }
-      //                          h2{
-      //                               font-size: 20px;
-      //                          }
-      //                          h3{
-      //                               font-size: 19px;
-      //                          }
-      //                          p{
-      //                               font-size: 16px;
-      //                          }
-      //                          .content{
-      //                               padding: 20px;
-      //                          }
-      //                          .imgDiv{
-      //                               height: 180px;
-      //                          }
-      //                   }
-      //                   @media (max-width: 767px){
-      //                          h1{
-      //                               font-size: 22px;
-      //                          }
-      //                          h2{
-      //                               font-size: 20px;
-      //                          }
-      //                          h3{
-      //                               font-size: 19px;
-      //                          }
-      //                          p{
-      //                               font-size: 16px;
-      //                          }
-      //                          .content{
-      //                               padding: 20px;
-      //                          }
-      //                          .imgDiv{
-      //                               height: 180px;
-      //                          }
-      //                   }
-      //              </style>
-      //         </head>
-      //         <body>
-      //              <div class="emailContainer" style = "background-color: #f9f9f9; margin: 0px auto;">
-      //                   <div>
-      //                       <div style="width: 100%;" class="imgDiv">
-      //                            <a  href="index.html"><img style="width: 100%; height: 100%; object-fit: cover;" src="https://res.cloudinary.com/mike-ik/image/upload/v1652902981/Celz4-church-portal/toy-bricks-table-with-word-welcome_mdfguw.jpg"
-      //                            alt=""></a>
-      //                        </div>
-      //                   </div>
-      //                   <div  class="content">
-      //                          <h1 style="text-align: center; color:#003366;">Christ Embassy Lagos Zone 4</h1>
-      //                          <h2 class="title" style="color:#003366;">Admin Invitation!</h2>
-      //                          <h3><span id="applicantName" style="color: #003366; ">Hi <b><i>${firstnameRef.current?.value} ${lastnameRef.current?.value}</i></b></span></h3>
-      //                          <p style="color: lignt-grey; line-height: 20px;">
-      //                              Congratulations, you have been invited to become a ${roleRef.current?.value} for ${churchRef.current?.value} Church
-      //                               <br/><br/>
-      //                               Kindly follow the link below to complete your registration and begin your administrative work
-      //                          </p>
-      //                          <ul class="menu">
-      //                               <li style="list-style-type: none;">Full Name: <b style="color:#003366; padding: 0px 5px;">${firstnameRef.current?.value} ${lastnameRef.current?.value}</b></li>
-      //                               <li style="list-style-type: none;">Role: <b style="color:#003366; padding: 0px 5px;">${roleRef.current?.value}</b></li>
-      //                          </ul>
-      //                          <p class="sign-up">Click <span><a href="http://localhost:3000/create-account?${params.toString()}" id="signUpLink" >here</a></span> to proceed to Create your Account</p>
-      //                   </div>
-      //              </div>
-      //         </body>
-      //      </html>`
-      // }).then(
-      //      message => alert(message)
-      // );
+                   <style>
+                        .imgDiv{
+                          height: 300px;
+                        }
+                        .content{
+                          padding: 50px;
+                        }
+                        h2{
+                          font-size: 18px;
+                        }
+                        @media only screen and (min-width: 480px) and (max-width: 767px){
+                               h1{
+                                    font-size: 22px;
+                               }
+                               h2{
+                                    font-size: 20px;
+                               }
+                               h3{
+                                    font-size: 19px;
+                               }
+                               p{
+                                    font-size: 16px;
+                               }
+                               .content{
+                                    padding: 20px;
+                               }
+                               .imgDiv{
+                                    height: 180px;
+                               }
+                        }
+                        @media (max-width: 767px){
+                               h1{
+                                    font-size: 22px;
+                               }
+                               h2{
+                                    font-size: 20px;
+                               }
+                               h3{
+                                    font-size: 19px;
+                               }
+                               p{
+                                    font-size: 16px;
+                               }
+                               .content{
+                                    padding: 20px;
+                               }
+                               .imgDiv{
+                                    height: 180px;
+                               }
+                        }
+                   </style>
+              </head>
+              <body>
+                   <div class="emailContainer" style = "background-color: #f9f9f9; margin: 0px auto;">
+                        <div>
+                            <div style="width: 100%;" class="imgDiv">
+                                 <a  href="index.html"><img style="width: 100%; height: 100%; object-fit: cover;" src="https://res.cloudinary.com/mike-ik/image/upload/v1652902981/Celz4-church-portal/toy-bricks-table-with-word-welcome_mdfguw.jpg"
+                                 alt=""></a>
+                             </div>
+                        </div>
+                        <div  class="content">
+                               <h1 style="text-align: center; color:#003366;">Christ Embassy Lagos Zone 4</h1>
+                               <h2 class="title" style="color:#003366;">Admin Invitation!</h2>
+                               <h3><span id="applicantName" style="color: #003366; ">Hi <b><i>${firstnameRef.current?.value} ${lastnameRef.current?.value}</i></b></span></h3>
+                               <p style="color: lignt-grey; line-height: 20px;">
+                                   Congratulations, you have been invited to become a ${role.value} for ${church.value} Church
+                                    <br/><br/>
+                                    Kindly follow the link below to complete your registration and begin your administrative work
+                               </p>
+                               <ul class="menu">
+                                    <li style="list-style-type: none;">Full Name: <b style="color:#003366; padding: 0px 5px;">${firstnameRef.current?.value} ${lastnameRef.current?.value}</b></li>
+                                    <li style="list-style-type: none;">Role: <b style="color:#003366; padding: 0px 5px;">${role.value}</b></li>
+                               </ul>
+                               <p class="sign-up">Click <span><a href="http://localhost:3000/create-account?${params.toString()}" id="signUpLink" >here</a></span> to proceed to Create your Account</p>
+                        </div>
+                   </div>
+              </body>
+           </html>`
+      }).then(() => {
+        setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`
+        ${firstnameRef.current?.value} ${lastnameRef.current?.value} has successfully been invited as a ${role.value}. He or she should kindly check their email to continue to create their account`); setAlertHeader('Admin Successfully Invited!')
+      }).catch((err) => {
+        setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
+      })
   }
 
 
-//  Modals Start Here
+//Modals Start Here
+
   function openUpdateModal() {
     setHeaderText("Update Admin")
       setContent(
@@ -447,7 +469,7 @@ function ManageAdmin() {
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Email</label>
-            <input type="text" className='finput' ref = {emailRef} defaultValue={updateEmail} onChange = {event => setUpdateEmail(event.target.value)} />
+            <input type="email" className='finput' ref = {emailRef} defaultValue={updateEmail} onChange = {event => setUpdateEmail(event.target.value)} />
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Role</label>
@@ -458,7 +480,6 @@ function ManageAdmin() {
                   <option  className='finput' value="Top Admin">Top Admin</option>
                   <option  className='finput' value="Church Admin">Church Admin</option>
             </select>
-            {/* <input type="text" className='finput' ref={roleRef} defaultValue={updateRole} onChange = {event => setUpdateRole(event.target.value)} /> */}
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Church</label>
@@ -472,7 +493,7 @@ function ManageAdmin() {
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Group</label>
-            <input type="text" className='finput' ref={groupchurchRef} defaultValue={updateGroup} onChange = {event => setUpdateGroup(event.target.value)} />
+            <input type="text" className='finput' ref={groupchurchRef} id = 'groupChurch' defaultValue={updateGroup} onChange = {event => setUpdateGroup(event.target.value)} />
           </div>
           {/* <div className='input__wrapper'>
             <label className='flabel'>Status</label>
@@ -530,12 +551,13 @@ function ManageAdmin() {
   }
 
   function openInviteModal() {
-        setHeaderText("Invite Admin")
+      setHeaderText("Invite Admin")
       
       setContent(
         <React.Fragment>
         
         <form>
+              
               <div className='input__wrapper'>
                 <label className='flabel'>First Name</label>
                 <input type="text" className='finput' ref={firstnameRef} />
@@ -546,7 +568,7 @@ function ManageAdmin() {
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Email</label>
-                <input type="text" className='finput' ref = {emailRef} />
+                <input type="email" className='finput' ref = {emailRef} />
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Role</label>
@@ -560,27 +582,27 @@ function ManageAdmin() {
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Church</label>
-                <select className='finput' placeholder='Select Church' id='church'>
+                <select className='finput' placeholder='Select Church' id='church' onChange={() => {handleChurchChange();}}>
                   <option  className='finput' value="">Select Church</option>
                   {churchesDetails.map(element => (
-                    <option  className='finput' value={element.ChurchName}>{element.ChurchName}</option>
+                    <option  className='finput'  value={element.ChurchName}>{element.ChurchName}</option>
                   ))}
                 </select>
                 {/* <input type="text" className='finput' ref={churchRef} /> */}
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Group</label>
-                <input type="text" className='finput' ref={groupchurchRef} />
+                <input type="text" className='finput' id='groupChurch' value={groupChurch} readOnly />
               </div>
         </form>
-        <Buttons>
-            <button className='invite__button' onClick={() => {sendEmail();}}>Submit</button>
+        <Buttons>  
+            <button className='invite__button' onClick={() => { sendEmail();}}>Submit</button>
         </Buttons>
       </React.Fragment>
       )
-  }
+  } 
 // Modals End Here
-  
+
 
   function updateAdmin(e?: { preventDefault: () => void; }){
     let role = document.getElementById('role') as HTMLSelectElement;
@@ -601,8 +623,10 @@ function ManageAdmin() {
             'content-Type': 'application/json'
         }
       }).then(response =>{return response.json()}).then((data) => {
-        alert('admin updated successfully');
+        setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Details of admin with id ${id} has been successfully updated. Kindly refresh to see changes`); setAlertHeader('Admin Successfully Updated!')
         console.log(data);
+      }).catch(err => {
+        setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
       })
   }
 
@@ -650,7 +674,7 @@ function ManageAdmin() {
   
   
 
-  const headers = ['ID','First Name', 'Last Name', 'Email', 'Role', 'Church', 'Group', 'Actions']
+  const headers = ['ID','First Name', 'Last Name', 'Email', 'Role', 'Church', 'Group', " "]
   const adminArray = userContext.adminTableData.map(({id, firstName, lastName, email, role, church, groupChurch}) => {
       return {id, firstName, lastName, email, role, church, groupChurch}
   })
@@ -666,14 +690,19 @@ function ManageAdmin() {
 
   return (
     <Container>
-        <SideNav />
+      <SideNav />
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
           <Actions>
             <button className='invite__button' onClick={()=> {toggle();  openInviteModal();}}> <span ><BiPlusMedical /></span> Invite</button>
           </Actions>
-        <DataTable data={adminArray} headers = {headers} actions = {actions} tableTitle = 'CELZ4 Admins Database'/>  
+        <DataTable data={adminArray} headers = {headers} actions = {actions} tableTitle = 'CELZ4 Admins Database'/> 
+        <div className= {successAlert? alertClass : "hide"}>
+            <button type="button" className="close" data-dismiss="alert" onClick= {() => {setSuccessAlert(false);}}>&times;</button>
+              <h4><b>{alertHeader}</b></h4>
+              <p>{alertContent}</p>
+        </div> 
         <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
         </Content>
       </Contain>
@@ -720,7 +749,7 @@ const Actions = Styled.div`
 const Buttons =Styled.div`
    display: flex;
    justify-content: flex-end;
-   padding: 10px 50px;
+   /* margin: 10px 50px;  */
 `
 
 

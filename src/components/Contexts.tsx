@@ -49,6 +49,7 @@ export function AccessContexts(props: IContext){
      const [userActiveStatus, setUserActiveStatus] = useState(false);
      const token = localStorage.getItem('token')
      useEffect(() => {
+          let ignore = false;
           if(token){
                const decoded: IToken = jwt_decode(token);
                setAdminFirstName(decoded.data.firstName)
@@ -72,7 +73,8 @@ export function AccessContexts(props: IContext){
           fetch(`${BASE_URL}/v2/church`).then(response =>{return response.json()}).then((data) => {
                setChurchTable(data)
           })
-     }, [token])
+          console.log('I just mounted')
+     }, [])
      
      function closeSideNav(){
           setIsOpenSideNav(false)

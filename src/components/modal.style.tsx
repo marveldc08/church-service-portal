@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   transform: translate(-50%, -50%);
   z-index: 700;
   width: 50%;
+  max-width: 950px;
   outline: 0;
 `;
 
@@ -24,7 +25,7 @@ export const StyledModal = styled.div`
   z-index: 100;
   background-color: #f1f1f1; 
   position: relative;
-  margin: auto;
+  /* margin: auto; */
   border-radius: 8px;
 `;
 
@@ -68,11 +69,10 @@ export const Close = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 20px;
+  padding: 10px 50px;
   max-height: 30rem;
   overflow-x: hidden;
   overflow-y: auto;
-  
 `;
 
 export const Closebutton = styled.div`

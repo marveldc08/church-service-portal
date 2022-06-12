@@ -80,8 +80,8 @@ function DataTable({data, headers, actions, tableTitle}: IProps) {
          <table className='table sortable__table stripe' id='myTable' >
                <thead className='table__thead'>
                     <tr className='table__row'>
-                         {headers.map((element) => (
-                              <th className='table__header'>{element}</th>
+                         {headers.map((element, index) => (
+                              <th className='table__header' key = {index}>{element}</th>
                          ))}
                     </tr>  
                </thead>
@@ -89,7 +89,7 @@ function DataTable({data, headers, actions, tableTitle}: IProps) {
                     {data.map((element, index) =>(
                          <tr className='table__row' key={index}>
                               {Object.entries(element).map(([key, value]) =>(
-                                   <td className='table__column'>{value}</td>
+                                   <td className='table__column' key = {key}>{value}</td>
                               ))}
                               <td className='table__column button__group'>
                                    {actions}

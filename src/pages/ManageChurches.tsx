@@ -307,7 +307,11 @@ function ManageChurches() {
   const groupRef = useRef<HTMLInputElement >();
   const membershipRef = useRef<HTMLInputElement >();
    const { isShown, toggle } = USEMODAL();
-
+//    Alerts state
+const [alertHeader, setAlertHeader] = useState('');
+const [successAlert, setSuccessAlert] = useState(false);
+const [alertContent, setAlertContent] = useState('');
+const [alertClass, setAlertClass] = useState('');
   
 
     function openAddModal() {
@@ -412,14 +416,17 @@ function ManageChurches() {
         contact: contactRef.current?.value,
         membershipStrength: membershipRef.current?.value,
       }
-      fetch(`https://celz4-api.herokuapp.com/v2/churc/create`,{
+      fetch(`https://celz4-api.herokuapp.com/v2/church/create`,{
           method : 'POST',
           body : JSON.stringify(church),
           headers: {
               'content-Type': 'application/json'
           }
         }).then(response =>{return response.json()}).then((data) => {
-          alert('Church created successfully');
+          // alert('Church created successfully');
+          setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Church has been successfully created. Kindly refresh to see changes`); setAlertHeader('Church Successfully Created!')
+        }).catch(err => {
+          setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
         })
   }
 
@@ -441,8 +448,11 @@ function ManageChurches() {
               'content-Type': 'application/json'
           }
         }).then(response =>{return response.json()}).then((data) => {
-          alert('church updated successfully');
+          // alert('church updated successfully');
+          setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Church with id ${id} has been successfully updated. Kindly refresh to see changes`); setAlertHeader('Church Successfully Updated!')
           console.log(data);
+        }).catch(err => {
+          setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
         })
     }
 
@@ -479,6 +489,11 @@ function ManageChurches() {
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
+                <div className= {successAlert? alertClass : "hide"}>
+                    <button type="button" className="close" data-dismiss="alert" onClick= {() => {setSuccessAlert(false);}}>&times;</button>
+                    <h4><b>{alertHeader}</b></h4>
+                    <p>{alertContent}</p>
+                </div>
           <Wrap>
             <button className='invite__button' onClick={()=> {toggle(); openAddModal();}}> <span ><BiPlusMedical /></span> Add Church</button>
           </Wrap>

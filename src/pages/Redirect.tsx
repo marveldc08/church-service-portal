@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {BsCheck2Circle} from 'react-icons/bs';
+import { json } from 'stream/consumers';
+import { stringify } from 'querystring';
 
 function Redirect() {
   return (
-    <Container>
+    <Container id='c' >
       <Content>
         <div>
           <BsCheck2Circle className = 'icon' />

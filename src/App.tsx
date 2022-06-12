@@ -51,11 +51,8 @@ function MyRoutes() {
              <Route path="/sucessful" element={<Redirect />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
               <Route path="/submit-cell-report" element={<SubmitCellReport />} />
-             < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
+             < Route path='*' element={<Navigate to={ (!isLoggedIn) ? '/' : '/dashboard'  } />} />
            </Routes>
          </BrowserRouter>
      );
 }
-
-
-

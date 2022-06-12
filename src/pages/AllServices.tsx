@@ -33,7 +33,13 @@ function AllServices() {
    const serviceDateRef = useRef<HTMLInputElement >();
    const startTimeRef = useRef<HTMLInputElement >();
    const endTimeRef = useRef<HTMLInputElement >();
- 
+
+//    Alerts state
+    const [alertHeader, setAlertHeader] = useState('');
+    const [successAlert, setSuccessAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState('');
+    const [alertClass, setAlertClass] = useState('');
+
 
         function openCreateModal() {
             setHeaderText("Create Service")
@@ -84,11 +90,11 @@ function AllServices() {
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>Start Time</label>
-                                <input type="text" defaultValue={updateStartTime} ref={startTimeRef} className="finput" placeholder= 'e.g 7:30 AM' id='startTime'/>
+                                <input type="time" defaultValue={updateStartTime} ref={startTimeRef} className="finput" placeholder= 'e.g 7:30 AM' id='startTime'/>
                             </div>
                             <div className='input-wrapper'>
                                 <label className='flabel'>End Time</label>
-                                <input type="text" defaultValue={updateEndTime} ref={endTimeRef} className="finput"  placeholder= 'e.g 10:30 AM' id='endTime' />
+                                <input type="time" defaultValue={updateEndTime} ref={endTimeRef} className="finput"  placeholder= 'e.g 10:30 AM' id='endTime' />
                             </div>
                             
                         </form>
@@ -117,9 +123,11 @@ function AllServices() {
                     'content-Type': 'application/json'
                 }
               }).then(response =>{return response.json()}).then((data) => {
-                alert('Service created successfully');
+                setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Service has been successfully created. Kindly refresh to see changes`); setAlertHeader('Service Successfully Created!')
                 console.log(data);
                 console.log(startTimeRef.current?.value)
+              }).catch(err => {
+                setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
               })
         }
         function updateService(e?: { preventDefault: () => void; }){
@@ -137,8 +145,10 @@ function AllServices() {
                     'content-Type': 'application/json'
                 }
               }).then(response =>{return response.json()}).then((data) => {
-                alert('admin updated successfully');
-                console.log(data);
+                setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Details of Service with id ${id} has been successfully updated. Kindly refresh to see changes`); setAlertHeader('Service Successfully Updated!')
+                // console.log(data);
+              }).catch(err => {
+                setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
               })
         }
         document.querySelectorAll(".table__update__button")!.forEach(element => {
@@ -170,6 +180,11 @@ function AllServices() {
           <Contain show={userContext.isOpened}>
             <Header />
             <Content>
+                <div className= {successAlert? alertClass : "hide"}>
+                    <button type="button" className="close" data-dismiss="alert" onClick= {() => {setSuccessAlert(false);}}>&times;</button>
+                    <h4><b>{alertHeader}</b></h4>
+                    <p>{alertContent}</p>
+                </div>
                 <Wrapper>
                    <button className='invite__button' onClick={() => {toggle(); openCreateModal();}}><span><BiPlusMedical /></span> Create</button>
                 </Wrapper>
