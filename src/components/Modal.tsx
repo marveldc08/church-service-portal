@@ -34,7 +34,7 @@ export const Modal: FunctionComponent<ModalProps> = ({
   const modal = (
     <React.Fragment>
       <Backdrop />
-      <Wrapper >
+      <Wrapper className='animate__animated animate__fadeIn'>
         <StyledModal>
         
           <Header>
