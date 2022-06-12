@@ -47,7 +47,7 @@ export function AccessContexts(props: IContext){
      const [adminRole, setAdminRole] = useState('')
      const [adminChurch, setAdminChurch] = useState('')
      const [userActiveStatus, setUserActiveStatus] = useState(false);
-     const token = localStorage.getItem('')
+     const token = localStorage.getItem('token')
      useEffect(() => {
           let ignore = false;
           if(token){

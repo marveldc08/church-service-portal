@@ -19,14 +19,7 @@ function SideNav(){
           true){
           setToogleDropDown(false);
      }
-     // function toggleActive(this: any){
-     //      console.log(this.firstChild);
-     //      let children = this.firstChild;
-     //      children.classList.add('active__nav')
-     // }
-     // document.querySelectorAll('.items').forEach(item => {
-     //      item.addEventListener('click', toggleActive)
-     // })
+     
     let navLinks = document.querySelectorAll('.items');
     for(let i = 0; i < navLinks.length; i++){
          navLinks[i].addEventListener('click', function(this: any){
