@@ -1,4 +1,4 @@
-import React , {useState, useEffect, useContext}from 'react';
+import React , {useState, useEffect, useContext, useRef}from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
@@ -9,6 +9,41 @@ import './CellReport.css'
 function SubmitCellReport() {
      const userContext = useContext(Context);
 
+     const meetingDateRef = useRef<HTMLInputElement>();
+     const meetingTypeRef = useRef<HTMLInputElement>();
+     const startTimeRef = useRef<HTMLInputElement>();
+     const endTimeRef = useRef<HTMLInputElement>();
+     const numberOfMaleRef = useRef<HTMLInputElement>();
+     const numberOfFemaleRef = useRef<HTMLInputElement>();
+     const numberOfFirstTimerRef = useRef<HTMLInputElement>();
+     const numberOfNewConvertsRef = useRef<HTMLInputElement>();
+     const numberOfSpiritFilledRef = useRef<HTMLInputElement>();
+     const offeringRef = useRef<HTMLInputElement>(); 
+
+     const handleSubmtCellReport = (e?: {preventDefault: () => void;}) => {
+       let cellName = document.getElementById('selectCellName') as HTMLSelectElement;
+       e?.preventDefault();
+
+       const cellReport = {
+        cellName: cellName.value,
+        meetingDate: meetingDateRef.current?.value,
+        meetingType: meetingTypeRef.current?.value,
+        startTime: startTimeRef.current?.value,
+        endTime: endTimeRef.current?.value,
+        numberOfMale: numberOfMaleRef.current?.value,
+        numberOfFemale: numberOfFemaleRef.current?.value,
+        numberOfFirstTimer: numberOfFirstTimerRef.current?.value,
+        numberOfNewConverts: numberOfNewConvertsRef.current?.value,
+        numberOfSpiritFilled: numberOfSpiritFilledRef.current?.value,
+        Offering: offeringRef.current?.value,
+       }
+
+       fetch('https://celz4-api.herokuapp.com/v2/cell-report/submit',{
+         method: "POST",
+         body: JSON.stringify(cellReport),
+         headers: {"content-Type" : "application/json"}
+       }).then(response => {return response.json()}).then((data) => { alert('submitted successfully')})
+     }
 
   return (
     <Container>
@@ -37,7 +72,7 @@ function SubmitCellReport() {
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">Cell Name</label>
-                <select className="cellReport__input">
+                <select className="cellReport__input" id='selectCellName'>
                   <option className='cellReport__option' value={""}>select cell</option>
                   <option className='cellReport__option' value={"Sunday Service"}>Agape Cell </option>
                   <option className='cellReport__option' value={"Mid-Week Service "}>Heros Cell </option>
@@ -52,21 +87,21 @@ function SubmitCellReport() {
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">Meeting Date</label>
-                <input type="date" className="cellReport__input" />
+                <input type="date" className="cellReport__input" ref={meetingDateRef} />
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">Start Time</label>
-                <input type="time" className="cellReport__input" placeholder="no_ of male" min="0"/>
+                <input type="time" className="cellReport__input" placeholder="no_ of male" min="0" ref={startTimeRef} />
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">End Time</label>
-                <input type="time" className="cellReport__input" placeholder="no_ of female" min="0"/>
+                <input type="time" className="cellReport__input" placeholder="no_ of female" min="0" ref={endTimeRef} />
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">Offering</label>
                 <InputIcon>
-                    <img src='/images/naira-icon.png' />
-                    <input type="number" className="cellReport__input" placeholder={"  " +"enter amount"} min="0"/>
+                    {/* <img src='/images/naira-icon.png' /> */}
+                    <input type="number" className="cellReport__input" placeholder={"  " +"enter amount"} min="0"ref={offeringRef}/>
                 </InputIcon>
               
               </div>
@@ -75,30 +110,27 @@ function SubmitCellReport() {
               </SubHeading>
               <div className="input-wrapper">
                 <label className="cellReport__label">Male</label>
-               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0" ref={numberOfMaleRef}/>
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">Female</label>
-               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0" ref={numberOfFemaleRef}/>
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">First Timer</label>
-               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0" ref={numberOfFirstTimerRef}/>
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">New Convert</label>
-                <input type="number" className="cellReport__input" placeholder="no_ of new convert" min="0"/>
+                <input type="number" className="cellReport__input" placeholder="no_ of new convert" min="0" ref={numberOfNewConvertsRef}/>
               </div>
               <div className="input-wrapper">
                 <label className="cellReport__label">HolyGhost Filled</label>
-              <input type="number" className="cellReport__input" placeholder="no_ of spirit filled" min="0"/>
+              <input type="number" className="cellReport__input" placeholder="no_ of spirit filled" min="0"ref={numberOfSpiritFilledRef}/>
               </div>
               <ButtonWrap>
-                <button className="cellReport__button">
-                  <span>
-                    <AiOutlineSend />
-                  </span>{" "}
-                  Submit
+                <button className="cellReport__button" onClick={() => {handleSubmtCellReport();}}>
+                  <span> <AiOutlineSend /></span>{" "}Submit
                 </button>
               </ButtonWrap>
             </form>

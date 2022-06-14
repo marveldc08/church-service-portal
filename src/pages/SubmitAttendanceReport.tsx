@@ -1,4 +1,4 @@
-import React , {useState, useEffect, useContext}from 'react';
+import React , {useState, useEffect, useContext, useRef}from 'react';
 import styled from 'styled-components';
 import Header from '../components/Header';
 import SideNav from '../components/SideNav';
@@ -9,6 +9,30 @@ import './AttendanceReport.css'
 function SubmitAttendanceReport() {
      const userContext = useContext(Context);
 
+     const serviceDateRef = useRef<HTMLInputElement>();
+     const numberOfMaleRef = useRef<HTMLInputElement>();
+     const numberOfFemaleRef = useRef<HTMLInputElement>();
+     const numberOfFirstTimerRef = useRef<HTMLInputElement>();
+     const numberOfNewConvertsRef = useRef<HTMLInputElement>();
+     const numberOfSpiritFilledRef = useRef<HTMLInputElement>();
+
+     const handleSubmitAttendanceReport = (e?: {preventDefault: () => void;}) => {
+      const attendance = {
+        serviceDate: serviceDateRef.current?.value,
+        numberOfMale: numberOfMaleRef.current?.value,
+        numberOfFemale: numberOfFemaleRef.current?.value,
+        numberOfFirstTimer: numberOfFirstTimerRef.current?.value,
+        numberOfNewConverts: numberOfNewConvertsRef.current?.value,
+        numberOfSpiritFilled: numberOfSpiritFilledRef.current?.value
+      }
+
+      fetch('https://celz4-api.herokuapp.com/v2/attendance/submit',{
+        method: "POST",
+        body: JSON.stringify(attendance),
+        headers: {"content-Type" : "application/json"}
+      }).then(response => {return response.json()}).then((data) => { alert('submitted successfully')})
+
+     }
 
   return (
     <Container>
@@ -73,7 +97,7 @@ function SubmitAttendanceReport() {
               <input type="number" className="submitAttendance__input" placeholder="no_ of spirit filled" min="0"/>
               </div>
               <ButtonWrap>
-                <button className="submitAttendance__button">
+                <button className="submitAttendance__button" onClick={() => {handleSubmitAttendanceReport();}}>
                   <span>
                     <AiOutlineSend />
                   </span>{" "}

@@ -15,6 +15,7 @@ import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
 import AttendanceReports from './pages/AttendanceReports';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
+import CellReports from './pages/CellReports'
 import SubmitCellReport from './pages/SubmitCellReport';
 import PartnershipReports from './pages/PartnershipReports';
 import SubmitPartnershipReport from './pages/SubmitPartnershipReport';
@@ -54,6 +55,7 @@ function MyRoutes() {
              <Route path="/sucessful" element={<Redirect />} />
              <Route path="/attendance-reports" element={<AttendanceReports />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
+             <Route path="/cell-reports" element={<CellReports />} />
               <Route path="/submit-cell-report" element={<SubmitCellReport />} />
               <Route path="/partnership-reports" element={<PartnershipReports />} />
               <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
