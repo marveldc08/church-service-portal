@@ -74,7 +74,7 @@ export function AccessContexts(props: IContext){
                setChurchTable(data)
           })
           console.log('I just mounted')
-     }, [])
+     }, [token])
      
      function closeSideNav(){
           setIsOpenSideNav(false)

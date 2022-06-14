@@ -592,7 +592,7 @@ function ManageAdmin() {
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Group</label>
-                <input type="text" className='finput' id='groupChurch' value={groupChurch} readOnly />
+                <input type="text" className='finput' id='groupChurch' ref={groupchurchRef} />
               </div>
         </form>
         <Buttons>  

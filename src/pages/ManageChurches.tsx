@@ -456,7 +456,7 @@ const [alertClass, setAlertClass] = useState('');
         })
     }
 
-    const headers = ['ID','Church Name', "Pastor's Name", 'Contact', 'Address', 'Group', 'Memebership Strenght', 'Actions']
+    const headers = ['ID','Church Name', "Pastor's Name", 'Contact', 'Address', 'Group', 'Memebership Strenght', ``]
     const churchesArray = userContext.churchTableData.map(({id, churchName, pastorName, groupName, address, contact, membershipStrength}) => {
         return {id, churchName, pastorName, contact, address, groupName, membershipStrength}
     })

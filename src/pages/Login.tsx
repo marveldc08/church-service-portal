@@ -12,6 +12,8 @@ const Login = () => {
   const passwordRef = useRef<HTMLInputElement>();
   const [encoded, setEncoded] = useState<string>('')
   const [errorAlert, setErrorAlert] = useState(false);
+  const [alertHeader, setAlertHeader] = useState('');
+  const [alertText, setAlertText] = useState('');
   const navigate = useNavigate();
   const userContext = useContext(Context)
    const storage = useStorage();    
@@ -34,11 +36,16 @@ const Login = () => {
           userContext.signIn();
         }else{
           setErrorAlert(true);
+          setAlertHeader('Invalid Credentials!')
+          setAlertText('Your login credentials are invalid. Kindly check your email and password and try again')
         }
 
       }).catch(error => {
         
         console.log(error);
+        setErrorAlert(true);
+          setAlertHeader('An Error Occured!')
+          setAlertText('An error occured while trying to log you in. kindly check your network connection and try again later');
       }) 
     
     }
@@ -56,8 +63,8 @@ const Login = () => {
         <div className="sub-main">
           <div className= {errorAlert? 'alert alert-danger alert-dismissible display' : "hide"}>
             <button type="button" className="close" data-dismiss="alert" onClick= {() => {setErrorAlert(false);}}>&times;</button>
-              <h4><b>Invalid Credentials!</b></h4>
-              <p>Your login credentials are invalid. Kindly check your email and password and try again.</p>
+              <h4><b>{alertHeader}</b></h4>
+              <p>{alertText}</p>
           </div>
           <h3 className="login__h3">Welcome to CELZ4 Admin</h3>
           <h6 className="login__h6">Kindly input your credential.</h6>

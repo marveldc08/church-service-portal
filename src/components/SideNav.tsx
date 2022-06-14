@@ -47,21 +47,21 @@ function SideNav(){
           <Navigations show = {userContext.isOpened}>
                <ul className='menu'>
                     <li className='items' onClick={() => {navigate("/dashboard")}}>
-                         <a>
+                         <a href='#'>
                               <BiGridAlt className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Dashboard</span>
                          </a>
                          
                     </li>
                     <li className='items' onClick={()=> {navigate('/all-services')}}>
-                         <a>
+                         <a href='#'>
                               <BsBroadcast className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Service</span>
                          </a>
                     </li>
                     <li className='items'> 
                          <div className='icon-link'>
-                              <a>
+                              <a href='#'>
                                    <BiCollection className='icon' />
                                    <span className={userContext.isOpened? 'link-name': 'hide'} onClick={()=>{setToogleDropDown(!toggleDropDown)} }>Manage Report</span>
                               </a>
@@ -77,13 +77,13 @@ function SideNav(){
                          </ul>
                     </li>
                     <li className='items' onClick={() => {navigate("/manage-churches")}}>
-                         <a>
+                         <a href='#'>
                               <BiChurch className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'}>Manage Church</span>
                          </a>
                     </li>
                     <li className='items'onClick={() => {navigate("/manage-admin")}} >
-                         <a>
+                         <a href='#'>
                               <MdAdminPanelSettings className='icon' />
                               <span className={userContext.isOpened? 'link-name': 'hide'} >Manage Admin</span>
                          </a>
@@ -94,7 +94,7 @@ function SideNav(){
                <div className='admin-shortcuts'>
                     {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
                     <p className={userContext.isOpened? 'admin-details': 'hide'}> 
-                         <span className='name'>{userContext.adminFirstName}{userContext.adminLastName}</span>
+                         <span className='name'>{userContext.adminFirstName} {userContext.adminLastName}</span>
                          <span className='office'>{userContext.adminChurch} {userContext.adminRole}</span>
                     </p>
                     <a href=''>
