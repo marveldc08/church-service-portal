@@ -775,12 +775,14 @@ function SubmitPartnershipReport() {
                 ></textarea>
               </div>
             </form>
-            <ButtonWrap>
-              <button className="partnershipReport__button" onClick={() => { handleSubmitPartnership(); }}>
-                <span> <AiOutlineSend /> </span>{" "}
-                Submit
-              </button>
-            </ButtonWrap>
+           <PreButtonWrap>
+              <ButtonWrap>
+                  <button className="partnershipReport__button" onClick={() => { handleSubmitPartnership(); }}>
+                    <span> <AiOutlineSend /> </span>{" "}
+                    Submit
+                  </button>
+                </ButtonWrap>
+           </PreButtonWrap>
           </FormWrap>
         </Content>
       </Contain>
@@ -839,6 +841,12 @@ const FormWrap = styled.div`
           }
       }
   }
+`
+const PreButtonWrap = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 71%;
 `
 const ButtonWrap = styled.div`
   display: flex;
