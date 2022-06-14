@@ -25,48 +25,48 @@ function SubmitCellReport() {
             </h2>
             <form>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Church Category</label>
-                <select className="submitAttendance__input">
-                  <option className='submitAttendance__option' value={""}>select church category</option>
-                  <option className='submitAttendance__option' value={"Adult Church"}>Adult Church </option>
-                  <option className='submitAttendance__option' value={"Youth Church "}>Youth Church </option>
-                  <option className='submitAttendance__option' value={"Children Church"}> Children Church </option>
-                  <option className='submitAttendance__option' value={"Teens Church"}>Teens Church </option>
-                  <option className='submitAttendance__option' value={""}> Others </option>
+                <label className="cellReport__label">Church Category</label>
+                <select className="cellReport__input">
+                  <option className='cellReport__option' value={""}>select church category</option>
+                  <option className='cellReport__option' value={"Adult Church"}>Adult Church </option>
+                  <option className='cellReport__option' value={"Youth Church "}>Youth Church </option>
+                  <option className='cellReport__option' value={"Children Church"}> Children Church </option>
+                  <option className='cellReport__option' value={"Teens Church"}>Teens Church </option>
+                  <option className='cellReport__option' value={""}> Others </option>
                 </select>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Cell Name</label>
-                <select className="submitAttendance__input">
-                  <option className='submitAttendance__option' value={""}>select cell</option>
-                  <option className='submitAttendance__option' value={"Sunday Service"}>Agape Cell </option>
-                  <option className='submitAttendance__option' value={"Mid-Week Service "}>Heros Cell </option>
-                  <option className='submitAttendance__option' value={"All-Night Service "}>Love Cell</option>
-                  <option className='submitAttendance__option' value={"Women PCF"}>Women PCF</option>
-                  <option className='submitAttendance__option' value={"Men PCF"}>Men PCF</option>
-                  <option className='submitAttendance__option' value={"Heaven's Best Cell 3"}>Heaven's Best Cell 3</option>
-                  <option className='submitAttendance__option' value={"Treasure Cell"}>Treasure Cell</option>
-                  <option className='submitAttendance__option' value={"Women PCF"}>Perfection Cell 2</option>
-                  <option className='submitAttendance__option' value={"Women PCF"}>Truth Cell 1</option>
+                <label className="cellReport__label">Cell Name</label>
+                <select className="cellReport__input">
+                  <option className='cellReport__option' value={""}>select cell</option>
+                  <option className='cellReport__option' value={"Sunday Service"}>Agape Cell </option>
+                  <option className='cellReport__option' value={"Mid-Week Service "}>Heros Cell </option>
+                  <option className='cellReport__option' value={"All-Night Service "}>Love Cell</option>
+                  <option className='cellReport__option' value={"Women PCF"}>Women PCF</option>
+                  <option className='cellReport__option' value={"Men PCF"}>Men PCF</option>
+                  <option className='cellReport__option' value={"Heaven's Best Cell 3"}>Heaven's Best Cell 3</option>
+                  <option className='cellReport__option' value={"Treasure Cell"}>Treasure Cell</option>
+                  <option className='cellReport__option' value={"Women PCF"}>Perfection Cell 2</option>
+                  <option className='cellReport__option' value={"Women PCF"}>Truth Cell 1</option>
                 </select>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Meeting Date</label>
-                <input type="date" className="submitAttendance__input" />
+                <label className="cellReport__label">Meeting Date</label>
+                <input type="date" className="cellReport__input" />
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Start Time</label>
-                <input type="time" className="submitAttendance__input" placeholder="no_ of male" min="0"/>
+                <label className="cellReport__label">Start Time</label>
+                <input type="time" className="cellReport__input" placeholder="no_ of male" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">End Time</label>
-                <input type="time" className="submitAttendance__input" placeholder="no_ of female" min="0"/>
+                <label className="cellReport__label">End Time</label>
+                <input type="time" className="cellReport__input" placeholder="no_ of female" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Offering</label>
+                <label className="cellReport__label">Offering</label>
                 <InputIcon>
                     <img src='/images/naira-icon.png' />
-                    <input type="number" className="submitAttendance__input" placeholder={"  " +"enter amount"} min="0"/>
+                    <input type="number" className="cellReport__input" placeholder={"  " +"enter amount"} min="0"/>
                 </InputIcon>
               
               </div>
@@ -74,27 +74,27 @@ function SubmitCellReport() {
                   <hr style={{"width": "20%"}} /><h6>Attendance</h6><hr style={{"width": "40%"}}/>
               </SubHeading>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Male</label>
-               <input type="number" className="submitAttendance__input" placeholder="no_ of first timer" min="0"/>
+                <label className="cellReport__label">Male</label>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">Female</label>
-               <input type="number" className="submitAttendance__input" placeholder="no_ of first timer" min="0"/>
+                <label className="cellReport__label">Female</label>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">First Timer</label>
-               <input type="number" className="submitAttendance__input" placeholder="no_ of first timer" min="0"/>
+                <label className="cellReport__label">First Timer</label>
+               <input type="number" className="cellReport__input" placeholder="no_ of first timer" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">New Convert</label>
-                <input type="number" className="submitAttendance__input" placeholder="no_ of new convert" min="0"/>
+                <label className="cellReport__label">New Convert</label>
+                <input type="number" className="cellReport__input" placeholder="no_ of new convert" min="0"/>
               </div>
               <div className="input-wrapper">
-                <label className="submitAttendance__label">HolyGhost Filled</label>
-              <input type="number" className="submitAttendance__input" placeholder="no_ of spirit filled" min="0"/>
+                <label className="cellReport__label">HolyGhost Filled</label>
+              <input type="number" className="cellReport__input" placeholder="no_ of spirit filled" min="0"/>
               </div>
               <ButtonWrap>
-                <button className="submitAttendance__button">
+                <button className="cellReport__button">
                   <span>
                     <AiOutlineSend />
                   </span>{" "}

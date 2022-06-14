@@ -15,8 +15,11 @@ import FinancialReport from './pages/FinancialReport';
 import SubmitFinancialReport from './pages/SubmitFinancialReport';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
+import AttendanceReports from './pages/AttendanceReports';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
 import SubmitCellReport from './pages/SubmitCellReport';
+import PartnershipReports from './pages/PartnershipReports';
+import SubmitPartnershipReport from './pages/SubmitPartnershipReport';
 function App(){
   return (
     <div className="App">
@@ -60,6 +63,3 @@ function MyRoutes() {
          </BrowserRouter>
      );
 }
-
-
-

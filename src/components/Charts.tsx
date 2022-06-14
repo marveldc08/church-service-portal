@@ -133,9 +133,9 @@ function Charts() {
               { x: "June", y: 300 },
               { x: "July", y: 500 },
               { x: "Aug", y: 400 },
-              { x: "Sept", y: 300 },
+              { x: "Sept", y: 550 },
               { x: "Oct", y: 700 },
-              { x: "Nov", y: 500 },
+              { x: "Nov", y: 600 },
               { x: "Dec", y: 900 },
             ]}
             interpolation="natural"

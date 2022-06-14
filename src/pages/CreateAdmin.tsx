@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react'
+import { useNavigate } from 'react-router';
 import styled from 'styled-components';
 import './CreateAdmin.css';
-import { usePost } from '../utilities/HttpConnection';
 import { setAccount } from '../utilities/HttpConnection';
 function CreateAdmin() {
      const [firstName, setFirstName] = useState<string | null>()
@@ -12,6 +12,7 @@ function CreateAdmin() {
      const [groupChurch, setGroupChurch] = useState<string | null>()
      const passwordRef = useRef<HTMLInputElement>()
      const confirmPasswordRef = useRef<HTMLInputElement>()
+     const navigate = useNavigate();
 
      //Validate password state
      const [validateUppercase, setValidateUppercase] = useState(false);
@@ -19,6 +20,10 @@ function CreateAdmin() {
      const [validateNumber, setValidateNumber] = useState(false);
      const [validateLenght, setValidateLenght] = useState(false);
      const [validateConfirmPsw, setValidateConfirmPsw] = useState(false);
+
+     // alert state
+     const [successAlert, setSuccessAlert] = useState(false);
+
      useEffect(() => {
           let queryString = window.location.search;
           let params = new URLSearchParams(queryString); 
@@ -31,7 +36,6 @@ function CreateAdmin() {
      }, []);
 
      
-     let post = usePost()
      function createAdmin(){
           const admin: setAccount = {
                firstName: firstName,
@@ -42,12 +46,18 @@ function CreateAdmin() {
                groupChurch: groupChurch,
                password: passwordRef.current?.value,
           }
-          post.makePost(admin,'http://localhost:8000/v2/admin/create'); // posts the data
-         if(post.responsMessage === "Successful"){
-              alert('Successfully created an admin')
-         }else{
-              alert(post.serverError)
-         }
+
+          fetch(`https://celz4-api.herokuapp.com/v2/admin/create`,{
+               method : 'POST',
+               body : JSON.stringify(admin),
+               headers: {
+               'content-Type': 'application/json'
+               }
+          }).then(response =>{return response.json()}).then((data) => {
+               alert('Church created successfully');
+               navigate('/sucessful')
+
+          })
      }
      function clearForm(){
           setFirstName('');
@@ -196,7 +206,7 @@ function CreateAdmin() {
                     <p className="confirm__password"></p>
                </form>
                     <Buttons>
-                         <button className='invite__button' onClick={() => {createAdmin()}} disabled = {(validateLenght && validateLowercase && validateNumber && validateUppercase && validateConfirmPsw)?false : true} >Submit</button>
+                         <button className='invite__button' onClick={() => {createAdmin()}} disabled = {(validateLenght && validateLowercase && validateNumber && validateUppercase && validateConfirmPsw && firstName != null && email != null && role != null)?false : true} >Submit</button>
                     </Buttons>
                <div id="message">
                     <h3 className='message__header'>Password must contain the following:</h3>

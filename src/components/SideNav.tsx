@@ -19,14 +19,7 @@ function SideNav(){
           true){
           setToogleDropDown(false);
      }
-     // function toggleActive(this: any){
-     //      console.log(this.firstChild);
-     //      let children = this.firstChild;
-     //      children.classList.add('active__nav')
-     // }
-     // document.querySelectorAll('.items').forEach(item => {
-     //      item.addEventListener('click', toggleActive)
-     // })
+     
     let navLinks = document.querySelectorAll('.items');
     for(let i = 0; i < navLinks.length; i++){
          navLinks[i].addEventListener('click', function(this: any){
@@ -77,7 +70,7 @@ function SideNav(){
                          <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
                               <li onClick={() => {navigate("/financial-reports")}}><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
-                              <li><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report</a></li>
+                              <li onClick={() => {navigate("/partnership-reports");}}><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report  </a></li>
                               <li onClick={() => {navigate("/submit-attendance-report")}} ><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li>
                               <li onClick={() => {navigate("/submit-cell-report");}}><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
                               
@@ -101,8 +94,8 @@ function SideNav(){
                <div className='admin-shortcuts'>
                     {/* <img src='/images/admin.jpg' className={userContext.isOpened? 'show': 'hide'} /> */}
                     <p className={userContext.isOpened? 'admin-details': 'hide'}> 
-                         <span className='name'>{userContext.adminFirstName}{userContext.adminLastName}</span>
-                         <span className='office'>{userContext.adminChurch} Church Admin</span>
+                         <span className='name'>{userContext.adminFirstName} {userContext.adminLastName}</span>
+                         <span className='office'>{userContext.adminChurch} {userContext.adminRole}</span>
                     </p>
                     <a href=''>
                          <BiLogOut className ='logout-icon' />
@@ -136,7 +129,7 @@ const LogoDiv = styled.div`
      justify-content: center;
      align-items: center;
      border-bottom: 1px solid #c4c4c4;
-     background-color: #021e3f !important;
+     background-color: #01162c !important;
 
      .logoCont{
           flex: 60%;
@@ -176,6 +169,7 @@ export const Navigations = styled.nav<Iprops>`
           position: relative;
           margin: 15px 0px ;
           padding: 5px;
+          cursor: pointer;
           /* border: 1px solid green; */
           transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
           .icon-link{

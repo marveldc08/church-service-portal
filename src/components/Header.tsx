@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import { FaCaretDown } from 'react-icons/fa';
 import { FaCogs } from 'react-icons/fa';
 import { BiArrowToLeft } from 'react-icons/bi';
@@ -11,10 +11,16 @@ import './Header.css';
 import {useNavigate, Link} from "react-router-dom";
 import { useStorage, useGetStorage } from "../utilities/LocalStorage";
 
-
+  const imageArray = [
+    './images/icon1.jpeg',
+    './images/icon2.jpg',
+    './images/icon3.png',
+    './images/icon4.jpg',
+    './images/icon5.jpg',
+  ]
   function Header() {
-    //  const [burgernav, setBurgernav] = useState(false);
      const userContext = useContext(Context);
+<<<<<<< HEAD
  return (
     <Nav>
       <LeftMenu>
@@ -36,6 +42,59 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
     
     </Nav>
   );
+||||||| 98c73ca
+ return (
+    <Nav>
+     <LeftMenu>
+        <span>
+        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+        </span>
+     </LeftMenu>
+ 
+   <Isme>
+   <Name>
+     <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
+     <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
+   </Name>
+     
+     <UserImg src="./images/admin.jpg" />
+        <NavItem icon={<FaCaretDown />}>
+          <DropdownMenu className="dropdown"></DropdownMenu>
+        </NavItem>
+      </Isme>
+    
+    </Nav>
+  );
+=======
+     const [iconSrc, setIconSrc] = useState('');
+     useEffect(() => {
+        let randomNum = Math.floor(Math.random() * imageArray.length); 
+        setIconSrc(imageArray[randomNum])
+     }, [iconSrc])
+     
+      return (
+          <Nav>
+          <LeftMenu>
+              <span>
+              {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
+              </span>
+          </LeftMenu>
+      
+        <Isme>
+          <Name>
+            <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
+            <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
+          </Name>
+          
+          <UserImg src={iconSrc} />
+          <NavItem icon={<FaCaretDown />}>
+            <DropdownMenu className="dropdown"></DropdownMenu>
+          </NavItem>
+        </Isme>
+          
+          </Nav>
+        );
+>>>>>>> 573ee04aa7b840cfe50c044c707478edc30447f5
 }
   interface Inav {
     icon?: JSX.Element;
@@ -167,8 +226,8 @@ const ChurchAdmin = styled.div`
 `
 
 const UserImg =styled.img`
-    width: 48px;
-    height: 48px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -177,7 +236,14 @@ const UserImg =styled.img`
 `
 const RightMenu=styled.div`
   display: flex;
+<<<<<<< HEAD
  
+||||||| 98c73ca
+  
+=======
+  align-items: center;
+  
+>>>>>>> 573ee04aa7b840cfe50c044c707478edc30447f5
 `
 
 const LeftMenu =styled.div`

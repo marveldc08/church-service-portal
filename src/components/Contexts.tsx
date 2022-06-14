@@ -4,20 +4,21 @@ import jwt_decode from "jwt-decode";
 import { decode } from "punycode";
 const BASE_URL: string  = 'https://celz4-api.herokuapp.com';
 const Context = createContext({
-     openSideNav: () => {},
-     collapseSideNav: () => {},
-     isOpened: true,
-     adminFirstName: '',
-     adminLastName: '',
-     adminRole: '',
-     adminChurch: '',
-     adminTableData: [],
-     serviceTableData: [],
-     churchTableData: [],
-     signIn: () => {},
-     signOut: () => {},
-     result: true,
-
+  openSideNav: () => {},
+  collapseSideNav: () => {},
+  isOpened: true,
+  adminFirstName: "",
+  adminLastName: "",
+  adminRole: "",
+  adminChurch: "",
+  adminTableData: [],
+  serviceTableData: [],
+  churchTableData: [],
+  partnershipTableData: [],
+  attendanceTableData: [],
+  signIn: () => {},
+  signOut: () => {},
+  result: true,
 });
 interface IContext{
      children: JSX.Element;
@@ -42,6 +43,11 @@ export function AccessContexts(props: IContext){
      const [tableData, setTableData] = useState([])
      const [serviceTable, setServiceTable] = useState([])
      const [churchTable, setChurchTable] = useState([])
+     const [partnershipTable, setPartnershipTable] = useState([])
+     const [attendanceTable, setAttendanceTable] = useState([]);
+
+
+
      const [adminFirstName, setAdminFirstName] = useState('')
      const [adminLastName, setAdminLastName] = useState('')
      const [adminRole, setAdminRole] = useState('')
@@ -49,6 +55,7 @@ export function AccessContexts(props: IContext){
      const [userActiveStatus, setUserActiveStatus] = useState(false);
      const token = localStorage.getItem('token')
      useEffect(() => {
+          let ignore = false;
           if(token){
                const decoded: IToken = jwt_decode(token);
                setAdminFirstName(decoded.data.firstName)
@@ -71,6 +78,13 @@ export function AccessContexts(props: IContext){
 
           fetch(`${BASE_URL}/v2/church`).then(response =>{return response.json()}).then((data) => {
                setChurchTable(data)
+          })
+         
+          fetch(`${BASE_URL}/v2/partnership`).then(response =>{return response.json()}).then((data) => {
+               setPartnershipTable(data)
+          })
+          fetch(`${BASE_URL}/v2/attendance`).then(response =>{return response.json()}).then((data) => {
+               setAttendanceTable(data)
           })
      }, [token])
      
@@ -101,6 +115,8 @@ export function AccessContexts(props: IContext){
           adminTableData: tableData,
           serviceTableData: serviceTable,
           churchTableData: churchTable,
+          partnershipTableData: partnershipTable,
+          attendanceTableData: attendanceTable,
           result : userActiveStatus,
           signIn: signedIn,
           signOut: signedOut,
