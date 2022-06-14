@@ -1,4 +1,4 @@
-.submitAttendance__input{
+.cellReport__input{
     padding: 0 30px;
     border: 1px solid #003366;
     border-radius: 10px;
@@ -7,13 +7,13 @@
     
 }
 
-.submitAttendance__label{
+.cellReport__label{
     flex: 20%;
     font-weight: 600;
     margin: 10px;
     color: #003366;
 }
-.submitAttendance__option:hover{
+.cellReport__option:hover{
     background-color: #003366 ; 
     color: #ffffff;
     border: 1px solid #ff0000;
@@ -29,7 +29,7 @@
     /* border: 1px solid red; */
     padding: 5px;
 }
-.submitAttendance__button{
+.cellReport__button{
   background-color: #003366;
   color: #ffffff;
   padding: 12px 25px;
@@ -41,7 +41,7 @@
   justify-content: center;
   align-items: center;
 }
-.submitAttendance__button:hover{
+.cellReport__button:hover{
   color: #ffffff;
   background-color: #08539e;
   border: 1px solid #003366;

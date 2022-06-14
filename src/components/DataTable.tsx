@@ -6,7 +6,7 @@ import './DataTable.css';
 interface IProps{
      data: {}[];
      headers: string[];
-     actions: JSX.Element, 
+     actions?: JSX.Element, 
      tableTitle: string,
 }
 function DataTable({data, headers, actions, tableTitle}: IProps) {

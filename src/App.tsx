@@ -13,8 +13,11 @@ import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
+import AttendanceReports from './pages/AttendanceReports';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
 import SubmitCellReport from './pages/SubmitCellReport';
+import PartnershipReports from './pages/PartnershipReports';
+import SubmitPartnershipReport from './pages/SubmitPartnershipReport';
 function App(){
   return (
     <div className="App">
@@ -49,9 +52,12 @@ function MyRoutes() {
              <Route path='/all-services' element={<AllServices />}/>
              <Route path='/create-account' element ={<CreateAdmin/>} />
              <Route path="/sucessful" element={<Redirect />} />
+             <Route path="/attendance-reports" element={<AttendanceReports />} />
              <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
               <Route path="/submit-cell-report" element={<SubmitCellReport />} />
-              < Route path='*' element={<Navigate to={ (!isLoggedIn) ? '/' : '/dashboard'  } />} /> 
+              <Route path="/partnership-reports" element={<PartnershipReports />} />
+              <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
+             < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
            </Routes>
          </BrowserRouter>
      );

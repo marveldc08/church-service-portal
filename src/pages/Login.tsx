@@ -73,7 +73,7 @@ const Login = () => {
             <input ref={emailRef} type="email"></input>
             <label className="login__lable">Password:</label>
             <input ref={passwordRef} type="password"></input>
-            <button className="login__button">Log In</button>
+            <button className="login__button">LogIn</button>
           </form>
         </div>
         {/* <Alerts /> */}
