@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
+import FinancialReport from './pages/FinancialReport';
+import SubmitFinancialReport from './pages/SubmitFinancialReport';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
 import AttendanceReports from './pages/AttendanceReports';
@@ -44,21 +46,22 @@ function MyRoutes() {
   
      return (
          <BrowserRouter>
-           <Routes>
-            {(!isLoggedIn) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
-             <Route path="/error" element={<Error />} />
-             <Route path="/manage-admin" element={<ManageAdmin />} /> 
-             <Route path="/manage-churches" element={<ManageChurches />} />
-             <Route path='/all-services' element={<AllServices />}/>
-             <Route path='/create-account' element ={<CreateAdmin/>} />
-             <Route path="/sucessful" element={<Redirect />} />
-             <Route path="/attendance-reports" element={<AttendanceReports />} />
-             <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
-              <Route path="/submit-cell-report" element={<SubmitCellReport />} />
-              <Route path="/partnership-reports" element={<PartnershipReports />} />
-              <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
-             < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
-           </Routes>
+            <Routes>
+                  {(!isLoggedIn ) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
+                  <Route path="/error" element={<Error />} />
+                  {isLoggedIn && <Route path="/manage-admin" element={<ManageAdmin />} />}
+                  {isLoggedIn && <Route path="/manage-churches" element={<ManageChurches />} />}
+                  {isLoggedIn && <Route path='/all-services' element={<AllServices />}/>}
+                  <Route path='/create-account' element ={<CreateAdmin/>} />
+                  <Route path="/sucessful" element={<Redirect />} />
+                  <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
+                  <Route path='/financial-reports' element={<FinancialReport/>} />
+                  <Route path='/partnership-reports' element={<PartnershipReports/>} />
+                  <Route path="/submit-financial-report" element={<SubmitFinancialReport/>} />
+                  <Route path="/submit-partnership-report" element={<SubmitPartnershipReport/>} />
+                    <Route path="/submit-cell-report" element={<SubmitCellReport />} />
+                  < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
+            </Routes>
          </BrowserRouter>
      );
 }

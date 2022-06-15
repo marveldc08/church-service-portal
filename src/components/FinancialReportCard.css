@@ -1,0 +1,48 @@
+.form_wrapper{
+    padding: 100px;
+    /* border: 1px solid red; */
+}
+.card_wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background: #ffffff;
+    margin: 2em 0;
+    padding: 2em;
+    /* border: 1px solid red; */
+    width: 1090px;
+}
+
+.select_wrrapper{
+    position: relative;
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    width: 450px;
+
+    justify-content: space-between;
+    /* align-items: center;
+    width: 450px;
+    border: 1px solid red;
+    padding: 5px; */
+}
+
+/* .select{
+    
+        padding: 14px 25px;
+        border: 1px solid #003366;
+        height: 50px;
+    
+} */
+
+.inputcard__wrapper{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    /* border: 1px solid red; */
+    padding: 5px;
+}

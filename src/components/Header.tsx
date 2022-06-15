@@ -34,7 +34,7 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
               </span>
           </LeftMenu>
       
-        <Isme>
+        <RightMenu>
           <Name>
             <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
             <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
@@ -44,7 +44,7 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
           <NavItem icon={<FaCaretDown />}>
             <DropdownMenu className="dropdown"></DropdownMenu>
           </NavItem>
-        </Isme>
+        </RightMenu>
           
           </Nav>
         );
@@ -128,8 +128,7 @@ function DropdownMenu(props:Idropmenu) {
               <DropdownItem
                   leftIcon={<BiArrowToLeft />}
                 goToMenu="Sign Out" >
-                  Sign Out
-                
+                  Sign Out  
               </DropdownItem>
             </div>
         </div>
@@ -164,13 +163,19 @@ const AdminsName = styled.div`
   margin-right: 25px;
   display: flexbox;
   align-items: center;
+  /* justify-content: center; */
 `
-const Name =styled.div``
+const Name =styled.div`
+  /* justify-content: center;
+  align-items: center; */
+`
 
 const ChurchAdmin = styled.div`
   text-align: center;
   margin-right: 20px;
   font-weight: bold;
+  /* justify-content: center;
+  align-items: center; */
 `
 
 const UserImg =styled.img`
@@ -182,8 +187,9 @@ const UserImg =styled.img`
     align-items: center;
     margin-right:10px;
 `
-const Isme=styled.div`
+const RightMenu=styled.div`
   display: flex;
+ 
   align-items: center;
   
 `
