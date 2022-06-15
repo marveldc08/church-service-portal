@@ -1,23 +1,22 @@
 .csv{
-    background-color: #003366;
-    color: hsl(0, 0%, 100%);
-    padding: 12px 25px;
-    margin: 0px 15px;
-    width: 250px;
-    border-radius: 8px;
-    border: 1px solid #003366;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
+    background-color: #01162c;
+  color: #ffffff;
+  padding: 10px 25px;
+  margin: 0px 15px;
+  width: 180px;
+  border-radius: 50px;
+  border: 1px solid #01162c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .csv:hover{
-    color: #003366;
-    background-color: gold;
-    border: 1px solid #003366;
+    background-color: goldenrod;
+    border: 1px solid goldenrod;
     transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s;
-    text-decoration: none; 
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .th{
@@ -29,4 +28,8 @@
 .tr{
     padding:15px 30px;
     border: 1px solid #003366;
+}
+
+.csvButton span{
+    padding: 0px 6px;
 }

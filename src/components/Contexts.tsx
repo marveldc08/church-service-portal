@@ -16,6 +16,7 @@ const Context = createContext({
   churchTableData: [],
   partnershipTableData: [],
   attendanceTableData: [],
+  financeTableData: [],
   signIn: () => {},
   signOut: () => {},
   result: true,
@@ -45,6 +46,7 @@ export function AccessContexts(props: IContext){
      const [churchTable, setChurchTable] = useState([])
      const [partnershipTable, setPartnershipTable] = useState([])
      const [attendanceTable, setAttendanceTable] = useState([]);
+     const [financeTable, setFinanceTable] = useState([]);
 
 
 
@@ -86,6 +88,9 @@ export function AccessContexts(props: IContext){
           fetch(`${BASE_URL}/v2/attendance`).then(response =>{return response.json()}).then((data) => {
                setAttendanceTable(data)
           })
+          fetch(`${BASE_URL}/v2/finance`).then(response =>{return response.json()}).then((data) => {
+               setFinanceTable(data)
+          })
      }, [token])
      
      function closeSideNav(){
@@ -117,6 +122,7 @@ export function AccessContexts(props: IContext){
           churchTableData: churchTable,
           partnershipTableData: partnershipTable,
           attendanceTableData: attendanceTable,
+          financeTableData: financeTable,
           result : userActiveStatus,
           signIn: signedIn,
           signOut: signedOut,

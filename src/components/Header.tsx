@@ -20,52 +20,6 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
   ]
   function Header() {
      const userContext = useContext(Context);
-<<<<<<< HEAD
- return (
-    <Nav>
-      <LeftMenu>
-        <span>
-        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-        </span>
-       </LeftMenu>
-      <RightMenu>
-      <Name>
-      <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
-      <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
-    </Name>
-      
-      <UserImg src="./images/admin.jpg" />
-         <NavItem icon={<FaCaretDown />}>
-           <DropdownMenu className="dropdown"></DropdownMenu>
-         </NavItem>
-      </RightMenu>
-    
-    </Nav>
-  );
-||||||| 98c73ca
- return (
-    <Nav>
-     <LeftMenu>
-        <span>
-        {userContext.isOpened ? <AiOutlineBars className ='icon' onClick={()=> {userContext.collapseSideNav()}} /> : <RiBarChartHorizontalLine className ='icon' onClick={()=> {userContext.openSideNav()}}/>}
-        </span>
-     </LeftMenu>
- 
-   <Isme>
-   <Name>
-     <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
-     <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
-   </Name>
-     
-     <UserImg src="./images/admin.jpg" />
-        <NavItem icon={<FaCaretDown />}>
-          <DropdownMenu className="dropdown"></DropdownMenu>
-        </NavItem>
-      </Isme>
-    
-    </Nav>
-  );
-=======
      const [iconSrc, setIconSrc] = useState('');
      useEffect(() => {
         let randomNum = Math.floor(Math.random() * imageArray.length); 
@@ -80,7 +34,7 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
               </span>
           </LeftMenu>
       
-        <Isme>
+        <RightMenu>
           <Name>
             <AdminsName>{userContext.adminFirstName} {userContext.adminLastName}</AdminsName>
             <ChurchAdmin>{userContext.adminRole}</ChurchAdmin>
@@ -90,11 +44,10 @@ import { useStorage, useGetStorage } from "../utilities/LocalStorage";
           <NavItem icon={<FaCaretDown />}>
             <DropdownMenu className="dropdown"></DropdownMenu>
           </NavItem>
-        </Isme>
+        </RightMenu>
           
           </Nav>
         );
->>>>>>> 573ee04aa7b840cfe50c044c707478edc30447f5
 }
   interface Inav {
     icon?: JSX.Element;
@@ -236,14 +189,9 @@ const UserImg =styled.img`
 `
 const RightMenu=styled.div`
   display: flex;
-<<<<<<< HEAD
  
-||||||| 98c73ca
-  
-=======
   align-items: center;
   
->>>>>>> 573ee04aa7b840cfe50c044c707478edc30447f5
 `
 
 const LeftMenu =styled.div`

@@ -6,18 +6,24 @@ import { BiDownload } from "react-icons/bi";
 import Papa from "papaparse";
 import Modal from '../components/Modal';
 import USEMODAL from '../components/USEMODAL';
-
-function FileCSV() {
+import { BsDownload, BsCloudUpload } from "react-icons/bs";
+import { FaRegEye } from "react-icons/fa";
+import { useNavigate } from 'react-router'
+interface ICsv {
+  type?: string;
+}
+function FileCSV({type}: ICsv) {
   const csvData = [
-    ['ID', 'Service Type', "Cummulative Amount Naira", "Cummulative Amount  $Dollar"],
-    ["01", "Thankgiving", "200,000", "400,000"],
-    ["02", "Communion Service", "200,000", "40,000"],
-    ["03", "Mid-week Service", "40,000", "50,000"]
+    ['id', 'serviceType', "serviceDate", `${type == 'finance' ? 'financeType' : 'partnershipType'}` , "cummulativeAmountNaira", "cummulativeAmountDollar"],
+    ["01", "Thankgiving", "06-09-2022", "Tithe", "200,000", "400,000"],
+    ["02", "Communion Service", "06-09-2022", "Offering", "200,000", "40,000"],
+    ["03", "Mid-week Service", "06-09-2022", "Thanksgiving seed", "40,000", "50,000"]
   ];
 
   const {isShown, toggle } = USEMODAL();
   const [content, setContent] = useState(<></>)
    const [headerText, setHeaderText] = useState("")
+   const navigate = useNavigate();
 
    function importCsv() {
     setHeaderText("Import CSV")
@@ -37,14 +43,6 @@ function FileCSV() {
     )
 }
 
-    // State to store parsed data
-    const [parsedData, setParsedData] = useState([]);
-
-    //State to store table Column name
-    const [tableRows, setTableRows] = useState([]);
-  
-    //State to store the values
-    const [values, setValues] = useState([]);
   
 
   const changeHandler = (event:any) => {
@@ -52,23 +50,21 @@ function FileCSV() {
       header: true,
       skipEmptyLines: true,
       complete: function (results) {
-        const rowsArray = [];
-        const valuesArray = [];
+        const rowsArray: any[] = [];
+        const valuesArray: any[] = [];
+
 
         // Iterating data to get column name and their values
-        results.data.map((d) => {
-          rowsArray.push(Object.keys(d));
-          valuesArray.push(Object.values(d));
+        results.data.forEach((element, index) => {
+          fetch(`${type == 'finance' ? "https://celz4-api.herokuapp.com/v2/finance/submit" : "https://celz4-api.herokuapp.com/v2/partnership/submit"}`,{
+            method: "POST",
+            body: JSON.stringify(element),
+            headers: { "content-Type": "application/json" },
+          }).then(response => {return response.json()}).then(data =>{
+             console.log('posted element with id ' + index)
+             console.log(element);
+          })
         });
-
-        // Parsed Data Response in array format
-        setParsedData(results.data);
-
-        // Filtered Column Names
-        setTableRows(rowsArray[0]);
-
-        // Filtered Values
-        setValues(valuesArray);
       },
     
     });
@@ -78,32 +74,13 @@ function FileCSV() {
   return(
     <React.Fragment>
         <Div>
-          <CSVLink data={csvData} className="csv" ><BiDownload/> Download CSV</CSVLink>
-          <button className='csv' onClick={() => { toggle(); importCsv();}}>Import CSV</button>
+          <button className="csv" onClick={() => { navigate(`${type == 'finance' ? "/financial-reports" : "/partnership-reports"}`); }}>
+              <span> <FaRegEye /> </span>{" "}View Reports
+          </button>
+            <CSVLink data={csvData} className="csv csvButton" ><span><BiDownload/></span> Download CSV</CSVLink>
+            <button className='csv' onClick={() => { toggle(); importCsv();}}> <span><BsCloudUpload /></span> Import CSV</button>
         </Div>
         <Modal isShown={isShown} hide={toggle} modalContent={content} headerText={headerText} />
-
-          {/* Table */}
-          <Table>
-            <thead >
-              <tr className="tr">
-                {tableRows.map((rows, index) => {
-                  return <th key={index} className="th">{rows}</th>;
-                })}
-              </tr>
-            </thead>
-            <tbody>
-              {values.map((value, index) => {
-                return (
-                  <tr key={index}>
-                    {value.map((val, i) => {
-                      return <td key={i} className="tr">{val}</td>;
-                    })}
-                  </tr>
-                );
-              })}
-            </tbody>
-          </Table>
           
     </React.Fragment>
   );
@@ -113,20 +90,33 @@ function FileCSV() {
 
 export default FileCSV;
 
-const Form = styled.div`
-  display: flex;
-  align-items: center;
-`
 
 const Div = styled.div`
   display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     margin-bottom: 30px;
+
+    button {
+      span {
+        padding: 0px 8px;
+      }
+    }
+
+    CSVLink {
+      span {
+        padding: 0px 8px;
+      }
+    }
 `
+
 
 const Table = styled.table`
   justify-content: center;
   align-items: center;
   margin-left: 50px;
 `
+function d(d: any): never {
+  throw new Error("Function not implemented.");
+}
+

@@ -3,8 +3,11 @@ import SideNav from '../components/SideNav';
 import Header from '../components/Header'
 import  Styled  from 'styled-components';
 import Context from '../components/Contexts';
-import DataTable from '../components/DataTable'
-
+import DataTable from '../components/DataTable';
+import Modal from "../components/Modal";
+import USEMODAL from "../components/USEMODAL";
+import { FaRegEye } from "react-icons/fa";
+import { FiRefreshCw } from "react-icons/fi";
 import { useNavigate } from 'react-router';
 import { BiPlusMedical } from "react-icons/bi";
 import './FinancialReport.css';
@@ -12,144 +15,247 @@ import './FinancialReport.css';
 function FinancialReport() {
     const userContext = useContext(Context);
     const navigate = useNavigate();
+    const { isShown, toggle } = USEMODAL();
 
 
-    //Impliment the table
-    const firstnameRef = useRef<HTMLInputElement>();
-    const lastnameRef = useRef<HTMLInputElement >();
-    const emailRef = useRef<HTMLInputElement >();
-    const roleRef = useRef<HTMLInputElement >();
-    const churchRef = useRef<HTMLInputElement>();
-    const groupchurchRef = useRef<HTMLInputElement>();
+    const [content, setContent] = useState(<></>);
+    const [headerText, setHeaderText] = useState("");
+    const serviceTypeRef = useRef<HTMLSelectElement>();
+    const serviceDateRef = useRef<HTMLInputElement>();
+    const financeTypeRef = useRef<HTMLSelectElement>();
+    const cummulativeAmountNairaRef = useRef();
+    const cummulativeAmountDollarRef = useRef();
  
  
  
     // State for updating the admin
-    // const [id, setId] = useState('')
-    // const [updateFirstName, setUpdateFirstName] = useState('')
-    // const [updateLastName, setUpdateLastName] = useState('')
-    // const [updateEmail, setUpdateEmail] = useState('')
-    // const [updateRole, setUpdateRole] = useState('')
-    // const [updateChurch, setUpdateChurch] = useState('')
-    // const [updateGroup, setUpdateGroup] = useState('')
+    const [id, setId] = useState('')
+    const [updateFirstName, setUpdateFirstName] = useState('')
+    const [updateLastName, setUpdateLastName] = useState('')
+    const [updateEmail, setUpdateEmail] = useState('')
+    const [updateRole, setUpdateRole] = useState('')
+    const [updateChurch, setUpdateChurch] = useState('')
+    const [updateGroup, setUpdateGroup] = useState('')
  
- 
-    function sendEmail(e?: { preventDefault: () => void; }) {
-     e?.preventDefault();
-         let params = new URLSearchParams()
-         params.set('firstname', `${firstnameRef.current?.value}`)
-         params.set('lastname', `${lastnameRef.current?.value}`)
-         params.set('email', `${emailRef.current?.value}`)
-         params.set('role', `${roleRef.current?.value}`)
-         params.set('church', `${churchRef.current?.value}`)
-         params.set('groupchurch', `${groupchurchRef.current?.value}`);
-         console.log(params.toString())
-         Email.send({
-              SecureToken : "f2cce189-d9e8-4bc6-8604-bb86a87a4f88",
-              To : `${emailRef.current?.value}`,
-              From : "michaelchinye2018@gmail.com",
-              Subject : "Admin Invitation",
-              Body : `<!DOCTYPE html>
-              <html lang="en">
-                 <head>
-                      <meta charset="UTF-8">
-                      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                      <title>Document</title>
-              
-                      <style>
-                           .imgDiv{
-                             height: 300px;
-                           }
-                           .content{
-                             padding: 50px;
-                           }
-                           h2{
-                             font-size: 18px;
-                           }
-                           @media only screen and (min-width: 480px) and (max-width: 767px){
-                                  h1{
-                                       font-size: 22px;
-                                  }
-                                  h2{
-                                       font-size: 20px;
-                                  }
-                                  h3{
-                                       font-size: 19px;
-                                  }
-                                  p{
-                                       font-size: 16px;
-                                  }
-                                  .content{
-                                       padding: 20px;
-                                  }
-                                  .imgDiv{
-                                       height: 180px;
-                                  }
-                           }
-                           @media (max-width: 767px){
-                                  h1{
-                                       font-size: 22px;
-                                  }
-                                  h2{
-                                       font-size: 20px;
-                                  }
-                                  h3{
-                                       font-size: 19px;
-                                  }
-                                  p{
-                                       font-size: 16px;
-                                  }
-                                  .content{
-                                       padding: 20px;
-                                  }
-                                  .imgDiv{
-                                       height: 180px;
-                                  }
-                           }
-                      </style>
-                 </head>
-                 <body>
-                      <div class="emailContainer" style = "background-color: #f9f9f9; margin: 0px auto;">
-                           <div>
-                               <div style="width: 100%;" class="imgDiv">
-                                    <a  href="index.html"><img style="width: 100%; height: 100%; object-fit: cover;" src="https://res.cloudinary.com/mike-ik/image/upload/v1652902981/Celz4-church-portal/toy-bricks-table-with-word-welcome_mdfguw.jpg"
-                                    alt=""></a>
-                                </div>
-                           </div>
-                           <div  class="content">
-                                  <h1 style="text-align: center; color:#003366;">Christ Embassy Lagos Zone 4</h1>
-                                  <h2 class="title" style="color:#003366;">Admin Invitation!</h2>
-                                  <h3><span id="applicantName" style="color: #003366; ">Hi <b><i>${firstnameRef.current?.value} ${lastnameRef.current?.value}</i></b></span></h3>
-                                  <p style="color: lignt-grey; line-height: 20px;">
-                                      Congratulations, you have been invited to become a ${roleRef.current?.value} for ${churchRef.current?.value} Church
-                                       <br/><br/>
-                                       Kindly follow the link below to complete your registration and begin your administrative work
-                                  </p>
-                                  <ul class="menu">
-                                       <li style="list-style-type: none;">Full Name: <b style="color:#003366; padding: 0px 5px;">${firstnameRef.current?.value} ${lastnameRef.current?.value}</b></li>
-                                       <li style="list-style-type: none;">Role: <b style="color:#003366; padding: 0px 5px;">${roleRef.current?.value}</b></li>
-                                  </ul>
-                                  <p class="sign-up">Click <span><a href="http://localhost:3000/create-account?${params.toString()}" id="signUpLink" >here</a></span> to proceed to Create your Account</p>
-                           </div>
-                      </div>
-                 </body>
-              </html>`
-         }).then(
-              message => alert(message)
-         );
+    //  Modals Start Here
+    function openUpdateModal() {
+        setHeaderText("Update Admin")
+          setContent(
+            <React.Fragment>
+              <form>
+                <div className="input__wrapper">
+                  <label className="flabel">Service Type</label>
+                  {/* <input type="text" className='finput' ref={serviceTypeRef} defaultValue={updateFirstName}  onChange = {event => setUpdateFirstName(event.target.value)} /> */}
+                  <select
+                    className="partnershipReport__input"
+                    onChange={(event) => setUpdateFirstName(event.target.value)}
+                  >
+                    <option value={""}>select church category</option>
+                    <option value={"Adult Church"}>Adult Church </option>
+                    <option value={"Youth Church "}>Youth Church </option>
+                    <option value={"Children Church"}> Children Church </option>
+                    <option value={"Teens Church"}>Teens Church </option>
+                    <option value={""}> Others </option>
+                  </select>
+                </div> 
+                <div className="input__wrapper">
+                  <label className="flabel">Service Date</label>
+                  <input
+                    type="text"
+                    className="finput"
+                    ref={serviceDateRef}
+                    defaultValue={updateLastName}
+                    onChange={(event) => setUpdateLastName(event.target.value)}
+                  />
+                </div>
+                <div className="input__wrapper">
+                  <label className="flabel">Finance Type</label>
+                  {/* <input
+                    type="text"
+                    className="finput"
+                    ref={financeTypeRef}
+                    defaultValue={updateEmail}
+                    onChange={(event) => setUpdateEmail(event.target.value)}
+                  /> */}
+                  <select
+                    className="submitAttendance__input"
+                    id="selectPartnership"
+                    onChange={(event) => setUpdateEmail(event.target.value)}
+                    ref={financeTypeRef}
+                    defaultValue={updateEmail}
+                  >
+                    <option value={""}>select partnership type</option>
+                    <option value={"Bible Sponsorship"}>Bible Sponsorship</option>
+                    <option value={"Loveworld Plus"}>Loveworld Plus</option>
+                    <option value={"Loveworld Sat"}>Loveworld Sat</option>
+                    <option value={"Loveworld TV Ministry"}>
+                      {" "}
+                      Loveworld TV Ministry
+                    </option>
+                    <option value={"Rhapsody"}>Rhapsody</option>
+                    <option value={"Loveworld Radio"}>Healing School</option>
+                    <option value={"PCDL"}>PCDL</option>
+                    <option value={"Loveworld Radio"}>Innercity Mission</option>
+                    <option value={"Loveworld Radio"}>
+                      Teens Advance Partners
+                    </option>
+                  </select>
+                </div>
+                <div className="input__wrapper">
+                  <label className="flabel">Cummulative Amount Naira</label>
+                  <input
+                    type="text"
+                    className="finput"
+                    ref={cummulativeAmountNairaRef}
+                    defaultValue={updateEmail}
+                    onChange={(event) => setUpdateEmail(event.target.value)}
+                  />
+                  {/* <input type="text" className='finput' ref={cummulativeAmountNairaRef} defaultValue={updateRole} onChange = {event => setUpdateRole(event.target.value)} /> */}
+                </div>
+                <div className="input__wrapper">
+                  <label className="flabel">Church</label>
+                  <select
+                    className="finput"
+                    placeholder="Select Role"
+                    id="church"
+                    defaultValue={updateChurch}
+                  >
+                    <option className="finput" value="">
+                      Select Church
+                    </option>
+                    {/* {churchesDetails.map(element => (
+                        <option  className='finput' value={element.ChurchName}>{element.ChurchName}</option>
+                      ))} */}
+                  </select>
+                </div>
+                <div className="input__wrapper">
+                  <label className="flabel">Group</label>
+                  <input
+                    type="text"
+                    className="finput"
+                    ref={cummulativeAmountDollarRef}
+                    defaultValue={updateGroup}
+                    onChange={(event) => setUpdateGroup(event.target.value)}
+                  />
+                </div>
+                {/* <div className='input__wrapper'>
+                <label className='flabel'>Status</label>
+                <input type="text" className='finput' />
+              </div> */}
+              </form>
+    
+              <Buttons>
+                <button
+                  className="invite__button"
+               
+                >
+                  Submit
+                </button>
+                <button className="invite__button" onClick={toggle}>
+                  Close
+                </button>
+              </Buttons>
+            </React.Fragment>
+          );
+      }
+      
+      function openViewModal() {
+        setHeaderText("Admin Details")
+        setContent(
+          <React.Fragment>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>First Name</p>
+                <p className='viewinput'>{updateFirstName}</p>
+            </div>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Last Name</p>
+                <p className='viewinput'>{updateLastName}</p>
+            </div>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Email</p>
+                <p className='viewinput'>{updateEmail}</p>
+            </div>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Role</p>
+                <p className='viewinput'>{updateRole}</p>
+            </div>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Church</p>
+                <p className='viewinput'>{updateChurch}</p>
+            </div>
+            <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Group</p>
+                <p className='viewinput'>{updateGroup}</p>
+            </div>
+            {/* <div className='viewdetails__wrapper'>
+                <p className='viewlabel'>Status</p>
+                <p className='viewinput'>Emeka chinye</p>
+            </div> */}
+        
+          
+          
+          
+        </React.Fragment>
+        )
     }
+  
+    
+
+
+    document.querySelectorAll(".table__update__button")!.forEach((element) => {
+        element.addEventListener("click", handleUpdateAdmin);
+      });
+    
+      document.querySelectorAll(".table__view__button")!.forEach((element) => {
+        element.addEventListener("click", handleViewAdmin);
+      });
+      function handleUpdateAdmin(this: any) {
+        let tableRow = this.parentNode.parentNode;
+        setId(tableRow.cells[0].innerHTML);
+        setUpdateFirstName(tableRow.cells[1].innerHTML);
+        setUpdateLastName(tableRow.cells[2].innerHTML);
+        setUpdateEmail(tableRow.cells[3].innerHTML);
+        setUpdateRole(tableRow.cells[4].innerHTML);
+        setUpdateChurch(tableRow.cells[5].innerHTML);
+        setUpdateGroup(tableRow.cells[6].innerHTML);
+      }
+    
+      function handleViewAdmin(this: any) {
+        let tableRow = this.parentNode.parentNode;
+        setId(tableRow.cells[0].innerHTML);
+        setUpdateFirstName(tableRow.cells[1].innerHTML);
+        setUpdateLastName(tableRow.cells[2].innerHTML);
+        setUpdateEmail(tableRow.cells[3].innerHTML);
+        setUpdateRole(tableRow.cells[4].innerHTML);
+        setUpdateChurch(tableRow.cells[5].innerHTML);
+        setUpdateGroup(tableRow.cells[6].innerHTML);
+      }
+
+      function clearForm() {
+        serviceTypeRef.current!.value = "";
+        serviceDateRef.current!.value = "";
+        financeTypeRef.current!.value = "";
+        // cummulativeAmountNairaRef.current!.value = "";
+        // cummulativeAmountDollarRef.current!.value = "";
+      }
+
+
+
  
 
-    const headers = ['ID','First Name', 'Last Name', 'Email', 'Role', 'Church', 'Group', 'Actions']
-  const adminArray = userContext.adminTableData.map(({id, firstName, lastName, email, role, church, groupChurch}) => {
-      return {id, firstName, lastName, email, role, church, groupChurch}
+    const headers = ['ID','Service Type', 'Service Date','Finance Type', `Cummulative Amount (naira)`, `Cummulative Amount (dollar)`]
+  const FinancialArray = userContext.financeTableData.map(({id, serviceType, serviceDate, financeType, cummulativeAmountNaira, cummulativeAmountDollar}) => {
+      return {id, serviceType, serviceDate, financeType, cummulativeAmountNaira, cummulativeAmountDollar}
   })
 
   const actions = <React.Fragment >
-      {/* <button className='table__button table__update__button' onClick={() => { toggle(); openUpdateModal();}}>Update</button>
-      <button className='table__button table__view__button' onClick={() => { toggle(); openViewModal();}}>View</button> */}
-  </React.Fragment>
+                      <button className='table__button table__update__button' onClick={() => { toggle(); openUpdateModal();}}>
+                        <span><FiRefreshCw className='table-button-icon' /></span> Update
+                      </button>
+                      {/* <button className='table__button table__view__button' onClick={() => { toggle(); openViewModal();}}>
+                        <span><FaRegEye className='table-button-icon' /></span> View
+                      </button> */}
+                  </React.Fragment>
 
 //Impliment the table
   return (
@@ -159,9 +265,17 @@ function FinancialReport() {
             <Header />
             <Content>
                 <Actions>
-                    <button className='report__button' onClick={() => {navigate("/submit-financial-report")}}> <span ><BiPlusMedical /></span>Submit Report</button>
+                    <button className='report__button' onClick={() => {navigate("/submit-financial-report")}}>
+                        {" "} <span ><BiPlusMedical /></span>{" "}Submit Report
+                    </button>
                 </Actions>
-                <DataTable data={adminArray} columns = {headers} actions = {actions} tableTitle = 'Christ Embassy Lagos Zone 4  Admins Database'/>  
+                <DataTable data={FinancialArray} headers = {headers}  tableTitle = 'Finanacial Report'/>
+                <Modal
+            isShown={isShown}
+            hide={toggle}
+            modalContent={content}
+            headerText={headerText}
+          />  
             </Content>
       </Contain>
     </Container>
@@ -206,8 +320,8 @@ button{
   }
 }
 ` 
-// const Buttons =Styled.div`
-// display: flex;
-// justify-content: flex-end;
-// padding: 10px;
-// `
+const Buttons = Styled.div`
+   display: flex;
+   justify-content: flex-end;
+   padding: 10px 50px;
+`;

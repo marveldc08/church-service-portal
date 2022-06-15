@@ -91,9 +91,9 @@ function DataTable({data, headers, actions, tableTitle}: IProps) {
                               {Object.entries(element).map(([key, value]) =>(
                                    <td className='table__column' key = {key}>{value}</td>
                               ))}
-                              <td className='table__column button__group'>
+                              { actions && <td className='table__column button__group'>
                                    {actions}
-                              </td>
+                              </td>}
                          </tr>
                     ) )}
                </tbody>
