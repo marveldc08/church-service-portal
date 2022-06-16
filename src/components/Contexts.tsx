@@ -88,7 +88,7 @@ export function AccessContexts(props: IContext){
           fetch(`${BASE_URL}/v2/attendance`).then(response =>{return response.json()}).then((data) => {
                setAttendanceTable(data)
           })
-          fetch(`${BASE_URL}/v2/cell`).then(response =>{return response.json()}).then((data) => {
+          fetch(`${BASE_URL}/v2/cell-report`).then(response =>{return response.json()}).then((data) => {
                setCellTable(data)
           })
      }, [token])
