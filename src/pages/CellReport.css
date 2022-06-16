@@ -7,6 +7,11 @@
     
 }
 
+.cellReport__input:focus{
+    outline: none;
+    
+}
+
 .cellReport__label{
     flex: 20%;
     font-weight: 600;
@@ -46,3 +51,7 @@
    border: 1px solid goldenrod;
    transition: all 250ms cubic-bezier(0.25, 0.45, 0.45, 0.94) 0s; 
 }
+.cellReport__button:focus{
+    outline-style: none;
+}
+

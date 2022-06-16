@@ -18,9 +18,9 @@ function CellReports() {
   const navigate = useNavigate();
   const { isShown, toggle } = USEMODAL();
 
-  const headers = ['ID', 'Cell Name','Meeting Date', 'Meeting Type', 'Start Time', 'End Time', 'Male', 'Female', 'First Timers', 'Offering', 'New Converts', 'Holy Ghost Filled']
-  const cellArray = userContext.cellTableData.map(({id, cellName, meetingDate, meetingType, startTime, endTime, male, female, firstTimers, offering, newConverts, holyGhostFilled}) => {
-      return {id, cellName, meetingDate, meetingType, startTime, endTime, male, female, firstTimers, offering, newConverts, holyGhostFilled}
+  const headers = [ 'Cell Name','Meeting Date', 'Meeting Type', 'Start Time', 'End Time', 'Male', 'Female', 'First Timers', 'Offering', 'New Converts', 'Spirit Filled']
+  const cellArray = userContext.cellTableData.map(({ cellName, meetingDate, meetingType, startTime, endTime, numberOfMale, numberOfFemale, numberOfFirstTimer, Offering, numberOfNewConverts, numberOfSpiritFilled}) => {
+      return { cellName, meetingDate, meetingType, startTime, endTime, numberOfMale, numberOfFemale, numberOfFirstTimer, Offering, numberOfNewConverts, numberOfSpiritFilled}
   })
 
   return( 
