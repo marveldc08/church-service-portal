@@ -11,6 +11,8 @@ import Login from './pages/Login';
 import Error from './pages/Error';
 import ManageAdmin  from "./pages/ManageAdmin";
 import ManageChurches from './pages/ManageChurches';
+import FinancialReport from './pages/FinancialReport';
+import SubmitFinancialReport from './pages/SubmitFinancialReport';
 import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
 import AttendanceReports from './pages/AttendanceReports';
@@ -45,6 +47,7 @@ function MyRoutes() {
   
      return (
          <BrowserRouter>
+
            <Routes>
             {(!isLoggedIn) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
              <Route path="/error" element={<Error />} />
@@ -59,8 +62,11 @@ function MyRoutes() {
               <Route path="/submit-cell-report" element={<SubmitCellReport />} />
               <Route path="/partnership-reports" element={<PartnershipReports />} />
               <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
+            <Route path='/financial-reports' element={<FinancialReport/>} />
+            <Route path="/submit-partnership-report" element={<SubmitPartnershipReport/>} />
              < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
            </Routes>
+
          </BrowserRouter>
      );
 }

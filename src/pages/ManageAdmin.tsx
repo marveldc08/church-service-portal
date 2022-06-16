@@ -1,10 +1,10 @@
 import React, { useContext,  useState, useRef, useEffect } from 'react';
-import Header from '../components/Header'
+import Header from '../components/Header';
 import SideNav from '../components/SideNav';
 import  Styled  from 'styled-components';
 import './ManageAdmin.css';
 import Context from '../components/Contexts';
-import DataTable from '../components/DataTable'
+import DataTable from '../components/DataTable';
 import Modal from '../components/Modal';
 import { FaRegEye} from 'react-icons/fa';
 import {FiRefreshCw} from 'react-icons/fi';
@@ -753,11 +753,5 @@ const Buttons =Styled.div`
 `
 
 
-function setheaderText() {
-  throw new Error('Function not implemented.');
-}
 
-function setheader(arg0: JSX.Element) {
-  throw new Error('Function not implemented.');
-}
 

@@ -277,6 +277,7 @@ function PartnershipReports() {
 
 
     const headers = ['ID','Service Type', 'Service Date','Partnership Type', `Cummulative Amount (naira)`, `Cummulative Amount (dollar)`]
+
   const partnershipArray = userContext.partnershipTableData.map(({id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}) => {
       return {id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}
   })

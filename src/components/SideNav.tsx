@@ -69,10 +69,12 @@ function SideNav(){
                          </div>
                          <ul className={toggleDropDown? 'sub-menu show': 'hide'}>
                               <li><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Service Report</a></li>
-                              <li><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
+                              <li onClick={() => {navigate("/financial-reports")}}><span><AiOutlineLineChart className = 'small-icon' /></span><a href='#'>Financial Report</a></li>
                               <li onClick={() => {navigate("/partnership-reports");}}><span><FaHandHoldingUsd className = 'small-icon' /></span><a href='#'>Partnership Report  </a></li>
                               <li onClick={() => {navigate("/attendance-reports")}} ><span><FaRegListAlt className = 'small-icon' /></span><a href='#'>Attendance Report</a></li> 
                               <li onClick={() => {navigate("/cell-reports");}}><span><AiOutlineFileText className = 'small-icon' /></span><a href='#'>Cell Report</a></li>
+
+               
                          </ul>
                     </li>
                     <li className='items' onClick={() => {navigate("/manage-churches")}}>

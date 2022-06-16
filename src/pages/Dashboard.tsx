@@ -10,6 +10,7 @@ import Context from '../components/Contexts';
 
 function Dashboard() {
   const userContext = useContext(Context);
+  const navigate = useNavigate()
   return (
     <Container>
       <SideNav />

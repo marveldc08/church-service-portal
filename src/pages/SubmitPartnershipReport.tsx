@@ -9,6 +9,7 @@ import { BsDownload, BsCloudUpload } from "react-icons/bs";
 import { FaRegEye } from "react-icons/fa";
 import "./PartnershipReport.css";
 import "animate.css";
+import FileCSV from "../components/FileCSV";
 
 function SubmitPartnershipReport() {
   const navigate = useNavigate();
@@ -566,31 +567,7 @@ function SubmitPartnershipReport() {
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
-          <ButtonWrap>
-            <button
-              className="partnershipReport__button "
-              onClick={() => {
-                navigate("/partnership-reports");
-              }}
-            >
-              <span>
-                <FaRegEye />
-              </span>{" "}
-              View Reports
-            </button>{" "}
-            <button className="partnershipReport__button">
-              <span>
-                <BsDownload />
-              </span>{" "}
-              Download CSV
-            </button>{" "}
-            <button className="partnershipReport__button">
-              <span>
-                <BsCloudUpload />
-              </span>{" "}
-              Upload CSV
-            </button>
-          </ButtonWrap>
+          <FileCSV />
           <FormWrap>
             <h2>
               Partnership Report{" "}

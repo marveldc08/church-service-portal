@@ -94,6 +94,7 @@ function DataTable({data, headers, actions, tableTitle}: IProps) {
                               {actions && <td className='table__column button__group'>
                                    {actions}
                               </td>} 
+
                          </tr>
                     ) )}
                </tbody>
