@@ -149,7 +149,7 @@ function Charts() {
               { x: "Jan", y: 20.5 },
               { x: "Feb", y: 36 },
               { x: "Mar", y: 400 },
-              { x: "Apr", y: 13 },
+              { x: "Apr", y: 13  },
               { x: "May", y: 940 },
               { x: "June", y: 90.0 },
               { x: "July", y: 30 },
