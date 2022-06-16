@@ -37,7 +37,16 @@ function PartnershipReports() {
     const [updateChurch, setUpdateChurch] = useState("");
     const [updateGroup, setUpdateGroup] = useState("");
 
-   //  Modals Start Here
+
+
+    // Alert states
+    const [alertHeader, setAlertHeader] = useState('');
+    const [successAlert, setSuccessAlert] = useState(false);
+    const [alertContent, setAlertContent] = useState('');
+    const [alertClass, setAlertClass] = useState('');
+
+
+    //  Modals Start Here
   function openUpdateModal() {
     setHeaderText("Update Admin")
       setContent(
@@ -267,7 +276,7 @@ function PartnershipReports() {
   }
 
 
-    const headers = ['ID','Service Type', 'Service Date','Partnership Type', `Cummulative Amount (naira)`, `Cummulative Amount (dollar)`, 'Status']
+    const headers = ['ID','Service Type', 'Service Date','Partnership Type', `Cummulative Amount (naira)`, `Cummulative Amount (dollar)`]
   const partnershipArray = userContext.partnershipTableData.map(({id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}) => {
       return {id, serviceType, serviceDate, partnershipType, cummulativeAmountNaira, cummulativeAmountDollar}
   })
@@ -301,6 +310,7 @@ function PartnershipReports() {
             // actions={actions}
             tableTitle="Partnerships"
           />
+          
           <Modal
             isShown={isShown}
             hide={toggle}
