@@ -17,6 +17,7 @@ import CreateAdmin from './pages/CreateAdmin';
 import Redirect from './pages/Redirect';
 import AttendanceReports from './pages/AttendanceReports';
 import SubmitAttendanceReport from './pages/SubmitAttendanceReport';
+import CellReports from './pages/CellReports'
 import SubmitCellReport from './pages/SubmitCellReport';
 import PartnershipReports from './pages/PartnershipReports';
 import SubmitPartnershipReport from './pages/SubmitPartnershipReport';
@@ -46,22 +47,26 @@ function MyRoutes() {
   
      return (
          <BrowserRouter>
-            <Routes>
-                  {(!isLoggedIn ) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
-                  <Route path="/error" element={<Error />} />
-                  {isLoggedIn && <Route path="/manage-admin" element={<ManageAdmin />} />}
-                  {isLoggedIn && <Route path="/manage-churches" element={<ManageChurches />} />}
-                  {isLoggedIn && <Route path='/all-services' element={<AllServices />}/>}
-                  <Route path='/create-account' element ={<CreateAdmin/>} />
-                  <Route path="/sucessful" element={<Redirect />} />
-                  <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
-                  <Route path='/financial-reports' element={<FinancialReport/>} />
-                  <Route path='/partnership-reports' element={<PartnershipReports/>} />
-                  <Route path="/submit-financial-report" element={<SubmitFinancialReport/>} />
-                  <Route path="/submit-partnership-report" element={<SubmitPartnershipReport/>} />
-                    <Route path="/submit-cell-report" element={<SubmitCellReport />} />
-                  < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
-            </Routes>
+
+           <Routes>
+            {(!isLoggedIn) ? <Route path="/" element={<Login />} /> : <Route path="/dashboard" element={<Dashboard />} />}
+             <Route path="/error" element={<Error />} />
+             <Route path="/manage-admin" element={<ManageAdmin />} /> 
+             <Route path="/manage-churches" element={<ManageChurches />} />
+             <Route path='/all-services' element={<AllServices />}/>
+             <Route path='/create-account' element ={<CreateAdmin/>} />
+             <Route path="/sucessful" element={<Redirect />} />
+             <Route path="/attendance-reports" element={<AttendanceReports />} />
+             <Route path="/submit-attendance-report" element={<SubmitAttendanceReport />} />
+             <Route path="/cell-reports" element={<CellReports />} />
+              <Route path="/submit-cell-report" element={<SubmitCellReport />} />
+              <Route path="/partnership-reports" element={<PartnershipReports />} />
+              <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
+            <Route path='/financial-reports' element={<FinancialReport/>} />
+            <Route path="/submit-partnership-report" element={<SubmitPartnershipReport/>} />
+             < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
+           </Routes>
+
          </BrowserRouter>
      );
 }

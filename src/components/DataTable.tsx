@@ -7,7 +7,7 @@ interface IProps{
      data: {}[];
      headers: string[];
      actions?: JSX.Element, 
-     tableTitle: string,
+     tableTitle: string, 
 }
 function DataTable({data, headers, actions, tableTitle}: IProps) {
      const [postPerPage, setPostPerPage] = useState(10)
@@ -91,9 +91,10 @@ function DataTable({data, headers, actions, tableTitle}: IProps) {
                               {Object.entries(element).map(([key, value]) =>(
                                    <td className='table__column' key = {key}>{value}</td>
                               ))}
-                              { actions && <td className='table__column button__group'>
+                              {actions && <td className='table__column button__group'>
                                    {actions}
-                              </td>}
+                              </td>} 
+
                          </tr>
                     ) )}
                </tbody>

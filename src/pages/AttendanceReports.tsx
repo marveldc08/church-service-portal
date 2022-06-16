@@ -19,8 +19,8 @@ function AttendanceReports() {
    const { isShown, toggle } = USEMODAL();
 
 
-  const headers = ['ID', 'Service Date','Number of male', 'Number of Female', 'New Converts', 'First Timer', 'Number of Spirit Filled']
-  const attendanceArray = userContext.attendanceTableData.map(({id,  serviceDate, numberOfMale, numberOfFemale, numberOfNewConvert, numberOfFirstTimer, numberOfSpiritFilled}) => {
+  const headers = ['ID', 'Service Date',' Male', 'Female', 'New Converts', 'First Timer', 'Number of Spirit Filled']
+  const attendanceArray = userContext.attendanceTableData.map(({id, serviceDate, numberOfMale, numberOfFemale, numberOfNewConvert, numberOfFirstTimer, numberOfSpiritFilled}) => {
       return {id, serviceDate, numberOfMale, numberOfFemale, numberOfNewConvert, numberOfFirstTimer, numberOfSpiritFilled}
   })
 

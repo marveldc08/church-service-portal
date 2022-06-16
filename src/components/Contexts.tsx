@@ -16,6 +16,7 @@ const Context = createContext({
   churchTableData: [],
   partnershipTableData: [],
   attendanceTableData: [],
+  cellTableData: [],
   financeTableData: [],
   signIn: () => {},
   signOut: () => {},
@@ -46,7 +47,9 @@ export function AccessContexts(props: IContext){
      const [churchTable, setChurchTable] = useState([])
      const [partnershipTable, setPartnershipTable] = useState([])
      const [attendanceTable, setAttendanceTable] = useState([]);
+     const [cellTable, setCellTable] = useState([]);
      const [financeTable, setFinanceTable] = useState([]);
+
 
 
 
@@ -88,6 +91,9 @@ export function AccessContexts(props: IContext){
           fetch(`${BASE_URL}/v2/attendance`).then(response =>{return response.json()}).then((data) => {
                setAttendanceTable(data)
           })
+
+          fetch(`${BASE_URL}/v2/cell-report`).then(response =>{return response.json()}).then((data) => {
+               setCellTable(data)
           fetch(`${BASE_URL}/v2/finance`).then(response =>{return response.json()}).then((data) => {
                setFinanceTable(data)
           })
@@ -122,6 +128,7 @@ export function AccessContexts(props: IContext){
           churchTableData: churchTable,
           partnershipTableData: partnershipTable,
           attendanceTableData: attendanceTable,
+          cellTableData: cellTable,
           financeTableData: financeTable,
           result : userActiveStatus,
           signIn: signedIn,

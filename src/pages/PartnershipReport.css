@@ -177,3 +177,20 @@
   background-color: #f8e6e6; 
   cursor: pointer;
 }
+
+.hide{
+  display: none;
+}
+.display{
+  display: block;
+  position: fixed;
+  top: 5%;
+  left: 50%;
+  z-index: 1000;
+  transform: translate(-50%, -5%);
+  width: 100%;
+  max-width: 500px;
+}
+.display .close:focus{
+  outline: none !important;
+}

@@ -20,7 +20,11 @@ function SubmitPartnershipReport() {
   const partnershipTypeRef = useRef();
   const cummulativeAmountNairaRef = useRef();
   const cummulativeAmountDollarRef = useRef();
-    
+  // Alert states
+  const [alertHeader, setAlertHeader] = useState('');
+  const [successAlert, setSuccessAlert] = useState(false);
+  const [alertContent, setAlertContent] = useState('');
+  const [alertClass, setAlertClass] = useState('');
       
     // const createCard = () => {
      
@@ -544,14 +548,22 @@ function SubmitPartnershipReport() {
         body: JSON.stringify(partnership),
         headers: { "content-Type": "application/json" },
       }).then(response => {return response.json()}).then((data) => {
-        alert('submitted successfully')
+        // alert('submitted successfully')
+        setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Partnership report  has been successfully submited.`); setAlertHeader('Partnership Successfully submited!')
         console.log(data)
+      }).catch(error =>{
+        setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`There was an error while trying to submit your report. Kindly check your network connection and try again later`); setAlertHeader('Error!')
       })
     }
 
   return (
     <Container>
       <SideNav />
+      <div className= {successAlert? alertClass : "hide"}>
+            <button type="button" className="close" data-dismiss="alert" onClick= {() => {setSuccessAlert(false);}}>&times;</button>
+              <h4><b>{alertHeader}</b></h4>
+              <p>{alertContent}</p>
+      </div> 
       <Contain show={userContext.isOpened}>
         <Header />
         <Content>
@@ -658,14 +670,14 @@ function SubmitPartnershipReport() {
                           Loveworld TV Ministry
                         </option>
                         <option value={"Rhapsody"}>Rhapsody</option>
-                        <option value={"Loveworld Radio"}>
+                        <option value={"Healing School"}>
                           Healing School
                         </option>
                         <option value={"PCDL"}>PCDL</option>
-                        <option value={"Loveworld Radio"}>
+                        <option value={"Innercity Mission"}>
                           Innercity Mission
                         </option>
-                        <option value={"Loveworld Radio"}>
+                        <option value={"Teens Advance Partnership"}>
                           Teens Advance Partnership
                         </option>
                       </select>
