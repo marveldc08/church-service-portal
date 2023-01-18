@@ -16,39 +16,39 @@ const Login = () => {
   const [alertText, setAlertText] = useState('');
   const navigate = useNavigate();
   const userContext = useContext(Context)
-   const storage = useStorage();    
-    
-   async function handleLogin(event?: React.FormEvent<HTMLFormElement>) {
-      event?.preventDefault();
-      const password = passwordRef.current?.value;
-      const email = emailRef.current?.value
-     await fetch(`${BASE_URL}/v2/admin/login`,{
-        headers: {
-          'content-Type': 'application/json'
-         },
-        method : 'post',
-        body : JSON.stringify({email, password}),
-      }).then(response =>{return response.json()}).then((data) => {
-        if(data.status == 'ok'){
-          console.log(data);
-          storage.storeData(data.token);
-          navigate('/dashboard'); 
-          userContext.signIn();
-        }else{
-          setErrorAlert(true);
-          setAlertHeader('Invalid Credentials!')
-          setAlertText('Your login credentials are invalid. Kindly check your email and password and try again')
-        }
-
-      }).catch(error => {
-        
-        console.log(error);
+  const storage = useStorage();    
+  
+  async function handleLogin(event?: React.FormEvent<HTMLFormElement>) {
+    event?.preventDefault();
+    const password = passwordRef.current?.value;
+    const email = emailRef.current?.value
+    await fetch(`${BASE_URL}/v2/admin/login`,{
+      headers: {
+        'content-Type': 'application/json'
+        },
+      method : 'post',
+      body : JSON.stringify({email, password}),
+    }).then(response =>{return response.json()}).then((data) => {
+      if(data.status == 'ok'){
+        console.log(data);
+        storage.storeData(data.token);
+        navigate('/dashboard'); 
+        userContext.signIn();
+      }else{
         setErrorAlert(true);
-          setAlertHeader('An Error Occured!')
-          setAlertText('An error occured while trying to log you in. kindly check your network connection and try again later');
-      }) 
-    
-    }
+        setAlertHeader('Invalid Credentials!')
+        setAlertText('Your login credentials are invalid. Kindly check your email and password and try again')
+      }
+
+    }).catch(error => {
+      
+      console.log(error);
+      setErrorAlert(true);
+        setAlertHeader('An Error Occured!')
+        setAlertText('An error occured while trying to log you in. kindly check your network connection and try again later');
+    }) 
+  
+  }
 
 
   

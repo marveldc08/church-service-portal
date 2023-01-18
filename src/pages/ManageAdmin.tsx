@@ -287,7 +287,7 @@ let churchesDetails =
               "Group":"Central Group"
           } 
     ]
-
+    
     
 function ManageAdmin() {
   const userContext = useContext(Context);
@@ -320,22 +320,21 @@ function ManageAdmin() {
   const [updateChurch, setUpdateChurch] = useState('')
   const [updateGroup, setUpdateGroup] = useState('')
 
-  
-  
-  // document.getElementById('church')!.addEventListener('change', handleChurchChange);
-  
   function handleChurchChange(){
-    let currentChurch = document.getElementById('church') as HTMLInputElement; 
-    // let groupChurch = document.getElementById('groupChurch')! as HTMLInputElement; 
+    let currentChurch = document.getElementById('church') as HTMLSelectElement; 
+    let groupChurch = document.getElementById('groupChurch')! as HTMLInputElement; 
     let currentValue = currentChurch.value; 
-    console.log(currentValue)
     for(let i = 0; i < churchesDetails.length; i++){
         if(currentValue == churchesDetails[i].ChurchName){
-          setGroupChurch(churchesDetails[i].Group);
-          console.log(groupChurch)
+          groupChurch.value = churchesDetails[i].Group;
         }
     }
+    console.log(currentValue);
+    console.log(groupChurch.value);
+    
   }
+        
+  
 
 
   function sendEmail(e?: { preventDefault: () => void; }) {
@@ -425,6 +424,7 @@ function ManageAdmin() {
                                  alt=""></a>
                              </div>
                         </div>
+                        
                         <div  class="content">
                                <h1 style="text-align: center; color:#003366;">Christ Embassy Lagos Zone 4</h1>
                                <h2 class="title" style="color:#003366;">Admin Invitation!</h2>
@@ -469,7 +469,7 @@ function ManageAdmin() {
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Email</label>
-            <input type="email" className='finput' ref = {emailRef} defaultValue={updateEmail} onChange = {event => setUpdateEmail(event.target.value)} />
+            <input type="email" className='finput' id='updateEmail' required ref = {emailRef} defaultValue={updateEmail} onChange = {event => {setUpdateEmail(event.target.value)}} />
           </div>
           <div className='input__wrapper'>
             <label className='flabel'>Role</label>
@@ -560,19 +560,19 @@ function ManageAdmin() {
               
               <div className='input__wrapper'>
                 <label className='flabel'>First Name</label>
-                <input type="text" className='finput' ref={firstnameRef} />
+                <input type="text" className='finput' ref={firstnameRef} required />
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Last Name</label>
-                <input type="text" className='finput' ref ={lastnameRef} />
+                <input type="text" className='finput' ref ={lastnameRef} required />
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Email</label>
-                <input type="email" className='finput' ref = {emailRef} />
+                <input type="email" id='email' className='finput' ref = {emailRef} required />
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Role</label>
-                <select className='finput' placeholder='Select Role' id='role'>
+                <select className='finput' placeholder='Select Role' id='role' required>
                   <option  className='finput' value="">Select Role</option>
                   <option  className='finput' value="Zonal Pastor">Zonal Pastor</option>
                   <option  className='finput' value="Church Pastor">Church Pastor</option>
@@ -582,17 +582,16 @@ function ManageAdmin() {
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Church</label>
-                <select className='finput' placeholder='Select Church' id='church' onChange={() => {handleChurchChange();}}>
+                <select className='finput' placeholder='Select Church' id='church' required onChange={() => {handleChurchChange();}}>
                   <option  className='finput' value="">Select Church</option>
                   {churchesDetails.map(element => (
                     <option  className='finput'  value={element.ChurchName}>{element.ChurchName}</option>
                   ))}
                 </select>
-                {/* <input type="text" className='finput' ref={churchRef} /> */}
               </div>
               <div className='input__wrapper'>
                 <label className='flabel'>Group</label>
-                <input type="text" className='finput' id='groupChurch' ref={groupchurchRef} />
+                <input type="text" className='finput' id='groupChurch' readOnly required onChange={handleChurchChange} />
               </div>
         </form>
         <Buttons>  
@@ -625,6 +624,7 @@ function ManageAdmin() {
       }).then(response =>{return response.json()}).then((data) => {
         setSuccessAlert(true); setAlertClass('alert alert-success alert-dismissible display'); setAlertContent(`Details of admin with id ${id} has been successfully updated. Kindly refresh to see changes`); setAlertHeader('Admin Successfully Updated!')
         console.log(data);
+        
       }).catch(err => {
         setSuccessAlert(true); setAlertClass('alert alert-danger alert-dismissible display'); setAlertContent(`${err}`); setAlertHeader('Error!')
       })
@@ -696,7 +696,7 @@ function ManageAdmin() {
         <Content>
           <Actions>
             <button className='invite__button' onClick={()=> {toggle();  openInviteModal();}}> <span ><BiPlusMedical /></span> Invite</button>
-          </Actions>
+          </Actions> 
         <DataTable data={adminArray} headers = {headers} actions = {actions} tableTitle = 'CELZ4 Admins Database'/> 
         <div className= {successAlert? alertClass : "hide"}>
             <button type="button" className="close" data-dismiss="alert" onClick= {() => {setSuccessAlert(false);}}>&times;</button>

@@ -18,6 +18,7 @@ const Context = createContext({
   attendanceTableData: [],
   cellTableData: [],
   financeTableData: [],
+  serviceReportTableData: [],
   signIn: () => {},
   signOut: () => {},
   result: true,
@@ -44,6 +45,7 @@ export function AccessContexts(props: IContext){
      const [isOpenSideNav, setIsOpenSideNav] = useState(true);
      const [tableData, setTableData] = useState([])
      const [serviceTable, setServiceTable] = useState([])
+     const [serviceReportTable, setServiceReportTable] = useState([])
      const [churchTable, setChurchTable] = useState([])
      const [partnershipTable, setPartnershipTable] = useState([])
      const [attendanceTable, setAttendanceTable] = useState([]);
@@ -60,7 +62,6 @@ export function AccessContexts(props: IContext){
      const [userActiveStatus, setUserActiveStatus] = useState(false);
      const token = localStorage.getItem('token')
      useEffect(() => {
-          let ignore = false;
           if(token){
                const decoded: IToken = jwt_decode(token);
                setAdminFirstName(decoded.data.firstName)
@@ -94,10 +95,14 @@ export function AccessContexts(props: IContext){
 
           fetch(`${BASE_URL}/v2/cell-report`).then(response =>{return response.json()}).then((data) => {
                setCellTable(data)
+          })
           fetch(`${BASE_URL}/v2/finance`).then(response =>{return response.json()}).then((data) => {
                setFinanceTable(data)
           })
-     }, [token])
+          fetch(`${BASE_URL}/v2/service-report`).then(response =>{return response.json()}).then((data) => {
+               setServiceReportTable(data)
+          })
+     }, [token] );
      
      function closeSideNav(){
           setIsOpenSideNav(false)
@@ -124,21 +129,25 @@ export function AccessContexts(props: IContext){
           adminRole: adminRole,
           adminChurch: adminChurch,
           adminTableData: tableData,
-          serviceTableData: serviceTable,
           churchTableData: churchTable,
           partnershipTableData: partnershipTable,
-          attendanceTableData: attendanceTable,
+          serviceTableData: serviceTable, 
           cellTableData: cellTable,
+          attendanceTableData: attendanceTable,
           financeTableData: financeTable,
+          serviceReportTableData: serviceReportTable,
           result : userActiveStatus,
           signIn: signedIn,
           signOut: signedOut,
      }
 
 
-     return <Context.Provider value={value}>
+     return (
+          <Context.Provider value={value}>
           {props.children}
      </Context.Provider>
-}
+     ) 
+};
+
 export default Context;
 //https://github.com/marveldc08/church-service-portal.git

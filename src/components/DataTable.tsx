@@ -4,7 +4,7 @@ import { actions } from 'react-table';
 import { Slice } from 'victory';
 import './DataTable.css';
 interface IProps{
-     data: {}[];
+      data: {}[];
      headers: string[];
      actions?: JSX.Element, 
      tableTitle: string, 

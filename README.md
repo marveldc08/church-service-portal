@@ -76,4 +76,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
      (2) animate.css (npm install animate.css --save)  // for really cool css animations ---- visit https://animate.style/
 
-     installed jwt decoder with (npm install jwt-decode)
+    (3) installed jwt decoder with (npm install jwt-decode);
+
+    (4) installed react csv with (npm i react-csv)

@@ -21,6 +21,8 @@ import CellReports from './pages/CellReports'
 import SubmitCellReport from './pages/SubmitCellReport';
 import PartnershipReports from './pages/PartnershipReports';
 import SubmitPartnershipReport from './pages/SubmitPartnershipReport';
+import SubmitServiceReport from './pages/SubmitServiceReport';
+import ServiceReports from './pages/ServiceReports';
 function App(){
   return (
     <div className="App">
@@ -63,7 +65,9 @@ function MyRoutes() {
               <Route path="/partnership-reports" element={<PartnershipReports />} />
               <Route path="/submit-partnership-report" element={<SubmitPartnershipReport />} />
             <Route path='/financial-reports' element={<FinancialReport/>} />
-            <Route path="/submit-partnership-report" element={<SubmitPartnershipReport/>} />
+            <Route path='/submit-financial-report' element={<SubmitFinancialReport/>} />
+            <Route path='/service-reports' element={<ServiceReports/>} />
+            <Route path="/submit-service-report" element={<SubmitServiceReport/>} />
              < Route path='*' element={<Navigate to={ (!isLoggedIn ) ? '/' : '/dashboard'  } />} />
            </Routes>
 

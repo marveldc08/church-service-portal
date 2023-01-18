@@ -197,7 +197,7 @@ function CreateAdmin() {
                     <div className='input__wrapper'>
                          <label className='flabel'>Password</label>
                          <input type="password"  id= 'psw' className='finput' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  placeholder='Create Password' ref={passwordRef} required />
-                    </div>
+                    </div> 
                     <div className='input__wrapper'>
                          <label className='flabel'>Confirm Password</label>
                          <input type="password" className='finput' id='confirmPsw' placeholder='Confirm Password' ref={confirmPasswordRef} required />
@@ -206,7 +206,7 @@ function CreateAdmin() {
                     <p className="confirm__password"></p>
                </form>
                     <Buttons>
-                         <button className='invite__button' onClick={() => {createAdmin()}} disabled = {(validateLenght && validateLowercase && validateNumber && validateUppercase && validateConfirmPsw && firstName != null && email != null && role != null)?false : true} >Submit</button>
+                         <button className='invite__button' onClick={() => {createAdmin()}} disabled = {(validateLenght && validateLowercase && validateNumber && validateUppercase && validateConfirmPsw && firstName != null && email != null && role != null)? false : true}>Submit</button>
                     </Buttons>
                <div id="message">
                     <h3 className='message__header'>Password must contain the following:</h3>

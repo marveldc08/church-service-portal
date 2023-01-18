@@ -21,7 +21,7 @@ export const useGet = () =>  {
      //      }
           
      //      fetchData();
-     // }, []);
+     // }, [endPoint]);
      const refetch = (endPoint:string) => {
           setIsLoading(true);
           const fetchData = async () =>{
@@ -42,13 +42,15 @@ export const useGet = () =>  {
      }
      return { isLoading, apiData, serverError, refetch };
 }
+
+
 export interface createService{
      serviceType: string;
      serviceDate: string;
      startTime: string;
      endTime:string;
 }
-export interface updateService extends createService{
+export interface updateService extends createService {
      facilitator: string;
      designation: string;
      description: string;
@@ -118,11 +120,11 @@ export const usePost = () => {
        //postData(); I disabled the "postData()" so as to prevent the usePost from making a post immideately when it is invoked e.g  let post = usePost({}, ''); the postData will be fired immediately
       
      }, []) */
-     const makePost = (props: createService | updateService | financialReport | manageChurch |inviteAdmin | setAccount |logaInAdmin, endpoint:string) =>{
+     const makePost = (props: createService | updateService | financialReport | manageChurch |inviteAdmin | setAccount |logaInAdmin, endPoint:string) =>{
           const postData = async () => {
                setIsLoading(true)
                try{
-                       fetch(endpoint,{
+                       fetch(`${BASE_URL}${endPoint}`,{
                             method : 'post',
                             body : JSON.stringify(props),
                             headers: {

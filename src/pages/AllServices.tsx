@@ -6,6 +6,7 @@ import { BiPlusMedical } from 'react-icons/bi';
 import {FiRefreshCw} from 'react-icons/fi';
 import Context from '../components/Contexts';
 import { useNavigate } from 'react-router';
+import { useGet, usePost } from '../utilities/HttpConnection';
 import USEMODAL from '../components/USEMODAL';
 import styled from 'styled-components';
 import Modal from '../components/Modal';
@@ -40,6 +41,9 @@ function AllServices() {
     const [alertContent, setAlertContent] = useState('');
     const [alertClass, setAlertClass] = useState('');
 
+
+    const postData = usePost()
+    
 
         function openCreateModal() {
             setHeaderText("Create Service")
